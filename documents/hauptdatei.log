@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.4.23)  24 APR 2023 09:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.4.23)  24 APR 2023 16:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -179,7 +179,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 {/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
 al/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}] (./stunde
 nprotokolle/teammeetings.tex
-Underfull \hbox (badness 10000) in paragraph at lines 14--29
+Underfull \hbox (badness 10000) in paragraph at lines 15--30
 
  []
 
@@ -188,8 +188,57 @@ Underfull \hbox (badness 10000) in paragraph at lines 14--29
 (./stundenprotokolle/svenwolfstunden.tex)
 (./stundenprotokolle/dennisbehrendtstunden.tex)
 (./stundenprotokolle/timsilbumstunden.tex)
-(./stundenprotokolle/hannesschererstunden.tex) [3] (./pflichtenheft.tex)
-[4] (./hauptdatei.aux) ) 
+(./stundenprotokolle/hannesschererstunden.tex) [3] (./pflichtenheft.tex
+Underfull \hbox (badness 10000) in paragraph at lines 4--12
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--23
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--29
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--32
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--40
+
+ []
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 48--50
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--56
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 58--66
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 70--75
+
+ []
+
+)
+Underfull \hbox (badness 10000) in paragraph at lines 79--37
+
+ []
+
+[5] [6] (./hauptdatei.aux) ) 
 Here is how much of TeX's memory you used:
  2554 strings out of 476025
  43620 string characters out of 5790017
@@ -197,18 +246,18 @@ Here is how much of TeX's memory you used:
  22993 multiletter control sequences out of 15000+600000
  521336 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,6n,65p,221b,196s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2023/texmf-dist/fonts/type1/public/
-cm-super/sfbx1200.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm
--super/sfbx1440.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-s
-uper/sfbx1728.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-sup
-er/sfrm1200.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super
-/sfrm1440.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/s
-frm2074.pfb>
-Output written on hauptdatei.pdf (4 pages, 106734 bytes).
+ 62i,6n,65p,237b,196s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2023/texmf-dist/fonts/type1/pub
+lic/cm-super/sfbx1200.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/publi
+c/cm-super/sfbx1440.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/
+cm-super/sfbx1728.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm
+-super/sfrm1200.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-s
+uper/sfrm1440.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-sup
+er/sfrm2074.pfb>
+Output written on hauptdatei.pdf (6 pages, 110556 bytes).
 PDF statistics:
- 48 PDF objects out of 1000 (max. 8388607)
- 29 compressed objects within 1 object stream
+ 54 PDF objects out of 1000 (max. 8388607)
+ 33 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
