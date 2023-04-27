@@ -28,9 +28,10 @@ Unser Produkt wird keine Verkaufsplattform haben  \newline
 Keine Bevorzugung von Händlern \newline
 Wir berücksichtigen keine nicht offiziellen Klemmbausteine \newline
 Website ist nur für deutschsprachige Benutzer \newline
+Alte Sets ohne Stückliste in der Anleitung können nicht berücksichtigt werden (2006) \newline
 
 \subsection{Produkteinsatz}
- Das Produkt soll Benutzer bei Kaufentscheidung unterstützen, außerdem unterstützt die Benutzer Sets zu bauen die aus irgendwelchen Gründen nicht mehr verfügbar sind.\newline
+ Das Produkt soll Benutzer bei Kaufentscheidung unterstützen, außerdem unterstützt es die Benutzer Sets zu bauen die aus irgendwelchen Gründen nicht mehr verfügbar sind.\newline
 
 \subsection{Produktfunktionen}
 PDFs mit Crawler ansprechen können \newline
@@ -41,10 +42,29 @@ Preisvergeich zwischen Sets und Einzelteilen \newline
 Darstellung der Endergebnisse \newline
 
 \subsection{Produktdaten}
-test
-\subsection{Produktleistungen}
 
-\subsection{Produktdaten}
+\subsubsection{Bauteil}
+Element-ID\newline
+Name \newline
+
+\subsubsection{Bauteil/Set-Preis}
+Element-ID\newline
+Preis\newline
+Anbieter\newline
+URL\newline
+
+\subsubsection{Set}
+Set-ID \newline
+List: Element-ID \newline
+Name \newline
+Bool: Verfügbarkeit \newline
+UVP \newline
+
+\subsection{Produktleistungen}
+Bestandsdatenbank soll aufgebaut werden mit Informationen aus den Anleitunge \newline
+Preise sollen bei der Suche gecrawlt werden \newline
+Die verwendete Datenbank muss in der Lage sein große Datenmengen zu speichern und zu verarbeiten \newline
+Der Crawler soll in der Lage sein schnell Preisdaten bei den Anbietern zu crawlen, außerdem soll ein Algorithmus regelmäßig die neuen Anleitungen erkennen und dem Parser übergeben \newline
 
 \subsection{Qualitätsanforderungen}
 Dokumentation der Änderungshistorie \newline
@@ -52,9 +72,13 @@ Programmcode auskommentieren \newline
 
 \subsection{Benutzungsoberfläche}
 
+
 \subsection{Nichtfunktionale Anforderungen}
 Barrierefreiheit \newline
 Intuitives Design \newline
+ISO Normen aus dem MCIW-Modul einhalten \newline
+Revisionsinstanzen Scrum etablieren \newline
+Websitendaten schützen die gecrawlt werden \newline
 
 \subsection{Technische Produktumgebung}
 Datenbank \newline
@@ -65,8 +89,8 @@ Angular \newline
 HTML \newline
 CSS \newline
 Python \newline
-
-\subsection{Spezielle Anforderungen an die Entwicklungsumgebung}
+Tex \newline
+Git \newline
 
 \subsection{Gliederung in Teilprodukte}
 Bauanleitung suchen \newline
@@ -76,7 +100,11 @@ Preisvergleich \newline
 Ausgabe generierern \newline
 
 \subsection{Ergänzungen}
+Rechtlich sollen Anbieter vor dem Crawling angefragt \newline
+Installationsanleitung und Handbuch sollen bereitgestellt werden \newline
 
 \subsection{Globale Testfälle}
+Set händisch recherchieren, um Soll-Wert für Unit-Test zu ermitteln und mit Algortihmusausgabe testen \newline
+Set-ID mit Bauanleitung ohne Stückzahl \newline
 Gülige Set-ID suchen \newline
 Ungültige Set-ID suchen \newline
