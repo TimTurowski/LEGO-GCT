@@ -22,15 +22,17 @@
 \contentsline {subsubsection}{\numberline {2.1.4}Abgrenzungskriterien}{6}{}%
 \contentsline {subsection}{\numberline {2.2}Produkteinsatz}{7}{}%
 \contentsline {subsection}{\numberline {2.3}Produktfunktionen}{7}{}%
-\contentsline {subsection}{\numberline {2.4}Produktdaten}{7}{}%
-\contentsline {subsubsection}{\numberline {2.4.1}Bauteil}{7}{}%
-\contentsline {subsubsection}{\numberline {2.4.2}Bauteil/Set-Preis}{7}{}%
-\contentsline {subsubsection}{\numberline {2.4.3}Set}{7}{}%
-\contentsline {subsection}{\numberline {2.5}Produktleistungen}{8}{}%
-\contentsline {subsection}{\numberline {2.6}Qualitätsanforderungen}{8}{}%
-\contentsline {subsection}{\numberline {2.7}Benutzungsoberfläche}{9}{}%
-\contentsline {subsection}{\numberline {2.8}Nichtfunktionale Anforderungen}{9}{}%
-\contentsline {subsection}{\numberline {2.9}Technische Produktumgebung}{10}{}%
-\contentsline {subsection}{\numberline {2.10}Gliederung in Teilprodukte}{10}{}%
-\contentsline {subsection}{\numberline {2.11}Ergänzungen}{10}{}%
-\contentsline {subsection}{\numberline {2.12}Globale Testfälle}{11}{}%
+\contentsline {subsubsection}{\numberline {2.3.1}Produktfunktion Benutzer Sicht}{7}{}%
+\contentsline {subsubsection}{\numberline {2.3.2}Produktfunktionen Backend}{8}{}%
+\contentsline {subsection}{\numberline {2.4}Produktdaten}{8}{}%
+\contentsline {subsubsection}{\numberline {2.4.1}Bauteil}{8}{}%
+\contentsline {subsubsection}{\numberline {2.4.2}Bauteil/Set-Preis}{8}{}%
+\contentsline {subsubsection}{\numberline {2.4.3}Set}{9}{}%
+\contentsline {subsection}{\numberline {2.5}Produktleistungen}{9}{}%
+\contentsline {subsection}{\numberline {2.6}Qualitätsanforderungen}{9}{}%
+\contentsline {subsection}{\numberline {2.7}Benutzungsoberfläche}{10}{}%
+\contentsline {subsection}{\numberline {2.8}Nichtfunktionale Anforderungen}{10}{}%
+\contentsline {subsection}{\numberline {2.9}Technische Produktumgebung}{11}{}%
+\contentsline {subsection}{\numberline {2.10}Gliederung in Teilprodukte}{11}{}%
+\contentsline {subsection}{\numberline {2.11}Ergänzungen}{11}{}%
+\contentsline {subsection}{\numberline {2.12}Globale Testfälle}{12}{}%
