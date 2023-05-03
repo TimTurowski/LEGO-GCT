@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.4) (preloaded format=pdflatex 2023.4.24)  3 MAY 2023 21:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.4) (preloaded format=pdflatex 2023.4.24)  3 MAY 2023 22:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -513,7 +513,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 170--37
 Here is how much of TeX's memory you used:
  3444 strings out of 476331
  59529 string characters out of 5787293
- 1867660 words of memory out of 5000000
+ 1869660 words of memory out of 5000000
  23822 multiletter control sequences out of 15000+600000
  521336 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -525,7 +525,7 @@ en/ec/dpi600\ecbx1440.pk> <C:\Users\Hannes\AppData\Local\MiKTeX\fonts/pk/ljfour
 onts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\Hannes\AppData\Local\M
 iKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\Hannes\AppData\
 Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm2074.pk>
-Output written on hauptdatei.pdf (12 pages, 4495608 bytes).
+Output written on hauptdatei.pdf (12 pages, 4495908 bytes).
 PDF statistics:
  311 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
