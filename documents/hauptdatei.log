@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.4.23)  3 MAY 2023 22:31
+=======
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.4) (preloaded format=pdflatex 2023.4.24)  3 MAY 2023 22:04
+>>>>>>> e1ec1ba0710ef95bbd9294519207b097c0f1ade3
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -461,6 +465,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 171--37
 [11 <./pictures/datenbankupdate.png> <./pictures/vorgaenge.png>] [12]
 (./hauptdatei.aux) ) 
 Here is how much of TeX's memory you used:
+<<<<<<< HEAD
  3435 strings out of 476025
  57896 string characters out of 5790017
  1867388 words of memory out of 5000000
@@ -476,6 +481,23 @@ frm1200.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfr
 m1440.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm2
 074.pfb>
 Output written on hauptdatei.pdf (12 pages, 4512164 bytes).
+=======
+ 3444 strings out of 476331
+ 59529 string characters out of 5787293
+ 1869660 words of memory out of 5000000
+ 23822 multiletter control sequences out of 15000+600000
+ 521336 words of font info for 51 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 62i,6n,65p,360b,196s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\Hannes\AppData\Local\MiKTeX\fonts/pk/ljfour/jknapp
+en/ec/dpi600\ecbx1440.pk> <C:\Users\Hannes\AppData\Local\MiKTeX\fonts/pk/ljfour
+/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\Hannes\AppData\Local\MiKTeX\fonts/pk
+/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\Hannes\AppData\Local\MiKTeX\f
+onts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\Hannes\AppData\Local\M
+iKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\Hannes\AppData\
+Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm2074.pk>
+Output written on hauptdatei.pdf (12 pages, 4495908 bytes).
+>>>>>>> e1ec1ba0710ef95bbd9294519207b097c0f1ade3
 PDF statistics:
  92 PDF objects out of 1000 (max. 8388607)
  48 compressed objects within 1 object stream
