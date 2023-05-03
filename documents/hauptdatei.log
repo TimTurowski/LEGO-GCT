@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.4.23)  3 MAY 2023 22:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.4.23)  3 MAY 2023 22:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -276,107 +276,72 @@ Underfull \hbox (badness 10000) in paragraph at lines 7--18
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 23--32
+Underfull \hbox (badness 10000) in paragraph at lines 20--22
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 34--39
+Underfull \hbox (badness 10000) in paragraph at lines 24--30
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--37
 
  []
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 41--43
+Underfull \hbox (badness 10000) in paragraph at lines 39--41
 
  []
 
 
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.46 \subsubsection{Benutzersicht} \newline
-                                            \newline
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.46 ...ubsection{Benutzersicht} \newline \newline
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 48--93
+Underfull \hbox (badness 10000) in paragraph at lines 45--90
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 48--93
+Underfull \hbox (badness 10000) in paragraph at lines 45--90
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 48--93
+Underfull \hbox (badness 10000) in paragraph at lines 45--90
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 48--93
+Underfull \hbox (badness 10000) in paragraph at lines 45--90
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 48--93
+Underfull \hbox (badness 10000) in paragraph at lines 45--90
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 48--93
+Underfull \hbox (badness 10000) in paragraph at lines 45--90
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 48--93
+Underfull \hbox (badness 10000) in paragraph at lines 45--90
 
  []
 
 [7]
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.94 ...section{Produktfunktionen Backend}\newline
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 96--102
+Underfull \hbox (badness 10000) in paragraph at lines 92--98
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 106--108
+Underfull \hbox (badness 10000) in paragraph at lines 102--104
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 110--114
+Underfull \hbox (badness 10000) in paragraph at lines 106--110
 
  []
 
@@ -384,85 +349,85 @@ Underfull \hbox (badness 10000) in paragraph at lines 110--114
 <pictures/chen1.png, id=34, 695.59875pt x 320.99925pt>
 File: pictures/chen1.png Graphic file (type png)
 <use pictures/chen1.png>
-Package pdftex.def Info: pictures/chen1.png  used on input line 121.
+Package pdftex.def Info: pictures/chen1.png  used on input line 117.
 (pdftex.def)             Requested size: 227.62204pt x 105.03862pt.
 <pictures/klassendiagramm2.png, id=36, 665.48625pt x 194.52675pt>
 File: pictures/klassendiagramm2.png Graphic file (type png)
 <use pictures/klassendiagramm2.png>
-Package pdftex.def Info: pictures/klassendiagramm2.png  used on input line 122.
+Package pdftex.def Info: pictures/klassendiagramm2.png  used on input line 118.
 
 (pdftex.def)             Requested size: 227.62204pt x 66.53299pt.
 <pictures/klassendiagramm.png, id=37, 862.72313pt x 403.5075pt>
 File: pictures/klassendiagramm.png Graphic file (type png)
 <use pictures/klassendiagramm.png>
-Package pdftex.def Info: pictures/klassendiagramm.png  used on input line 123.
+Package pdftex.def Info: pictures/klassendiagramm.png  used on input line 119.
 (pdftex.def)             Requested size: 227.62204pt x 106.46104pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 116--124
+Underfull \hbox (badness 10000) in paragraph at lines 112--120
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 116--124
+Underfull \hbox (badness 10000) in paragraph at lines 112--120
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 116--124
+Underfull \hbox (badness 10000) in paragraph at lines 112--120
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 126--130
+Underfull \hbox (badness 10000) in paragraph at lines 122--126
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 132--134
+Underfull \hbox (badness 10000) in paragraph at lines 128--130
 
  []
 
 <pictures/skizzeausgabe.jpg, id=38, 930.47626pt x 958.58125pt>
 File: pictures/skizzeausgabe.jpg Graphic file (type jpg)
 <use pictures/skizzeausgabe.jpg>
-Package pdftex.def Info: pictures/skizzeausgabe.jpg  used on input line 136.
+Package pdftex.def Info: pictures/skizzeausgabe.jpg  used on input line 132.
 (pdftex.def)             Requested size: 227.62204pt x 234.49611pt.
 <pictures/programmvorschau1.png, id=39, 408.3255pt x 230.0595pt>
 File: pictures/programmvorschau1.png Graphic file (type png)
 <use pictures/programmvorschau1.png>
-Package pdftex.def Info: pictures/programmvorschau1.png  used on input line 137
+Package pdftex.def Info: pictures/programmvorschau1.png  used on input line 133
 .
 (pdftex.def)             Requested size: 227.62204pt x 128.2497pt.
 <pictures/programmvorschau2.png, id=40, 419.166pt x 248.127pt>
 File: pictures/programmvorschau2.png Graphic file (type png)
 <use pictures/programmvorschau2.png>
-Package pdftex.def Info: pictures/programmvorschau2.png  used on input line 138
+Package pdftex.def Info: pictures/programmvorschau2.png  used on input line 134
 .
 (pdftex.def)             Requested size: 227.62204pt x 134.74379pt.
 <pictures/programmvorschau3.png, id=41, 1450.6697pt x 801.74532pt>
 File: pictures/programmvorschau3.png Graphic file (type png)
 <use pictures/programmvorschau3.png>
-Package pdftex.def Info: pictures/programmvorschau3.png  used on input line 139
+Package pdftex.def Info: pictures/programmvorschau3.png  used on input line 135
 .
 (pdftex.def)             Requested size: 227.62204pt x 125.79843pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 136--140
+Underfull \hbox (badness 10000) in paragraph at lines 132--136
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 136--140
+Underfull \hbox (badness 10000) in paragraph at lines 132--136
 
  []
 
 [9 <./pictures/chen1.png> <./pictures/klassendiagramm2.png> <./pictures/klassen
 diagramm.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 142--147
+Underfull \hbox (badness 10000) in paragraph at lines 138--143
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 149--159
+Underfull \hbox (badness 10000) in paragraph at lines 145--155
 
  []
 
@@ -471,25 +436,25 @@ es/programmvorschau2.png> <./pictures/programmvorschau3.png>]
 <pictures/datenbankupdate.png, id=54, 459.51675pt x 224.037pt>
 File: pictures/datenbankupdate.png Graphic file (type png)
 <use pictures/datenbankupdate.png>
-Package pdftex.def Info: pictures/datenbankupdate.png  used on input line 166.
+Package pdftex.def Info: pictures/datenbankupdate.png  used on input line 162.
 (pdftex.def)             Requested size: 227.62204pt x 110.97556pt.
 <pictures/vorgaenge.png, id=55, 554.67226pt x 458.9145pt>
 File: pictures/vorgaenge.png Graphic file (type png)
 <use pictures/vorgaenge.png>
-Package pdftex.def Info: pictures/vorgaenge.png  used on input line 167.
+Package pdftex.def Info: pictures/vorgaenge.png  used on input line 163.
 (pdftex.def)             Requested size: 227.62204pt x 188.32422pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 161--168
+Underfull \hbox (badness 10000) in paragraph at lines 157--164
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 171--173
+Underfull \hbox (badness 10000) in paragraph at lines 167--169
 
  []
 
 )
-Underfull \hbox (badness 10000) in paragraph at lines 175--37
+Underfull \hbox (badness 10000) in paragraph at lines 171--37
 
  []
 
@@ -510,7 +475,7 @@ er/sfbx1440.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super
 frm1200.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfr
 m1440.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm2
 074.pfb>
-Output written on hauptdatei.pdf (12 pages, 4512142 bytes).
+Output written on hauptdatei.pdf (12 pages, 4512164 bytes).
 PDF statistics:
  92 PDF objects out of 1000 (max. 8388607)
  48 compressed objects within 1 object stream
