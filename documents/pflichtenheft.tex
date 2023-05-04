@@ -118,6 +118,14 @@ UVP \newline  \newline
 \includegraphics[width=8cm]{pictures/klassendiagramm2.png}  \newline  \newline
 \includegraphics[width=8cm]{pictures/klassendiagramm.png} 
 
+\subsection{Benutzeraccount}
+Benutzername \newline
+Passwort (verschlüsselt) \newline
+List: Suchhistorie \newline
+
+\subsection{Administrator extends Benutzeraccount}
+
+
 \subsection{Produktleistungen}
 Bestandsdatenbank soll aufgebaut werden mit Informationen aus den Anleitunge \newline
 Preise sollen bei der Suche gecrawlt werden \newline
@@ -169,6 +177,13 @@ Installationsanleitung und Handbuch sollen bereitgestellt werden \newline
 
 \subsection{Globale Testfälle}
 Set händisch recherchieren, um Soll-Wert für Unit-Test zu ermitteln und mit Algortihmusausgabe testen \newline
-Set-ID mit Bauanleitung ohne Stückzahl \newline
-Gülige Set-ID suchen \newline
-Ungültige Set-ID suchen \newline
+Gesucht wird ein Lego-Set, dessen Bauanleitung keine Stückliste besitzt -> Meldung besagt, dass die Applikation dieses Set nicht unterstützt, der Link zur Bauanleitung wird allerdings ausgegeben \newline
+Gültige Set-ID wird gesucht -> Die Applikation gibt eine Stückliste aus, pro Webshop einen Preis für das fertige Set und einen Preis für den Kauf der Einzelteile, pro Shop \newline
+Ungültige Set-ID wird gesucht -> Eine Fehlermeldung wird ausgegeben, die besagt dass zu dieser Setnummer kein Lego Set existiert oder aufgrund von Neuheit noch nicht in der Datenbank enthalten ist \newline
+Historie anzeigen, obwohl noch kein Suchvorgang ausgeführt wurde -> Die Historie ist leer \newline
+E-Mail Adresse beim Registrieren schon vergeben -> Dem Benutzer wird mitgeteilt, dass zu dieses Email-Adresse bereits ein Benutzerkonto besteht \newline
+Datenbank während Registrierung nicht ansprechbar -> Der Benutzer wird gebeten seine Aktion später nochmal zu wiederholen, da ein Fehler aufgetreten ist \newline
+Passwort für Benutzerkonto ist zu unsicher -> Der Benutzer wird aufgefordert ein neues Passwort einzugeben, welches eine höhere Sicherheitsstufe besitzt \newline
+Benutzername und Passwort stimmen bei Anmeldung nicht überein -> Dem Benutzer wird mitgeteilt, dass das Passwort nicht zum Benutzernamen passt und er es nochmal versuchen soll \newline
+Benutzername bei Anmeldung noch nicht Registriert -> Eine Meldung wird ausgegeben, dass der Benutzername noch keinem Benutzerkonto zugeteilt ist \newline
+Bestimmt viele Einzelteile sind bei Händlern nicht verfügbar -> Eine Mitteilung 
