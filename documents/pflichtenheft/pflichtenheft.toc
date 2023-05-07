@@ -1,0 +1,24 @@
+\babel@toc {ngerman}{}\relax 
+\contentsline {section}{\numberline {1}Zielbestimmung}{3}{}%
+\contentsline {subsection}{\numberline {1.1}Musskriterien}{3}{}%
+\contentsline {subsection}{\numberline {1.2}Kannkriterien}{3}{}%
+\contentsline {subsection}{\numberline {1.3}Wunschkriterien}{3}{}%
+\contentsline {subsection}{\numberline {1.4}Abgrenzungskriterien}{4}{}%
+\contentsline {section}{\numberline {2}Produkteinsatz}{4}{}%
+\contentsline {section}{\numberline {3}Produktfunktionen}{4}{}%
+\contentsline {subsection}{\numberline {3.1}Benutzersicht}{4}{}%
+\contentsline {subsection}{\numberline {3.2}Produktfunktionen Backend}{5}{}%
+\contentsline {section}{\numberline {4}Produktdaten}{6}{}%
+\contentsline {subsection}{\numberline {4.1}Bauteil}{6}{}%
+\contentsline {subsection}{\numberline {4.2}Bauteil/Set-Preis}{6}{}%
+\contentsline {subsection}{\numberline {4.3}Set}{6}{}%
+\contentsline {section}{\numberline {5}Benutzeraccount}{6}{}%
+\contentsline {section}{\numberline {6}Administrator extends Benutzeraccount}{7}{}%
+\contentsline {section}{\numberline {7}Produktleistungen}{7}{}%
+\contentsline {section}{\numberline {8}Qualitätsanforderungen}{7}{}%
+\contentsline {section}{\numberline {9}Benutzungsoberfläche}{7}{}%
+\contentsline {section}{\numberline {10}Nichtfunktionale Anforderungen}{8}{}%
+\contentsline {section}{\numberline {11}Technische Produktumgebung}{8}{}%
+\contentsline {section}{\numberline {12}Gliederung in Teilprodukte}{8}{}%
+\contentsline {section}{\numberline {13}Ergänzungen}{9}{}%
+\contentsline {section}{\numberline {14}Globale Testfälle}{9}{}%
