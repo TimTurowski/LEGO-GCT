@@ -14,13 +14,12 @@
 \contentsline {subsection}{\numberline {5.2}Benutzeraccount}{7}{}%
 \contentsline {section}{\numberline {6}Produktleistungen}{7}{}%
 \contentsline {section}{\numberline {7}Benutzungsoberfläche}{8}{}%
-\contentsline {section}{\numberline {8}Nichtfunktionale Anforderungen}{8}{}%
-\contentsline {section}{\numberline {9}Technische Produktumgebung}{9}{}%
-\contentsline {section}{\numberline {10}Gliederung in Teilprodukte}{9}{}%
-\contentsline {subsection}{\numberline {10.1}Crawler}{9}{}%
-\contentsline {subsection}{\numberline {10.2}TeileFilter}{10}{}%
-\contentsline {subsection}{\numberline {10.3}Anleitungsparser}{10}{}%
-\contentsline {subsection}{\numberline {10.4}Anleitungsloader}{10}{}%
-\contentsline {subsection}{\numberline {10.5}Datenzugriffsobjekt}{10}{}%
-\contentsline {subsection}{\numberline {10.6}Teilevergleicher}{10}{}%
-\contentsline {section}{\numberline {11}Globale Testfälle}{10}{}%
+\contentsline {section}{\numberline {8}Technische Produktumgebung}{8}{}%
+\contentsline {section}{\numberline {9}Gliederung in Teilprodukte}{9}{}%
+\contentsline {subsection}{\numberline {9.1}Crawler}{9}{}%
+\contentsline {subsection}{\numberline {9.2}TeileFilter}{9}{}%
+\contentsline {subsection}{\numberline {9.3}Anleitungsparser}{9}{}%
+\contentsline {subsection}{\numberline {9.4}Anleitungsloader}{9}{}%
+\contentsline {subsection}{\numberline {9.5}Datenzugriffsobjekt}{9}{}%
+\contentsline {subsection}{\numberline {9.6}Teilevergleicher}{10}{}%
+\contentsline {section}{\numberline {10}Globale Testfälle}{10}{}%

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.12.13)  7 MAY 2023 12:15
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.12.13)  7 MAY 2023 12:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -313,119 +313,115 @@ Underfull \hbox (badness 10000) in paragraph at lines 156--160
 File: pictures/programmvorschau3.png Graphic file (type bmp)
 <pictures/programmvorschau3.png>
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 165--170
-
- []
-
 File: pictures/systemdurchlauf.png Graphic file (type bmp)
 <pictures/systemdurchlauf.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 172--182
+Underfull \hbox (badness 10000) in paragraph at lines 165--175
 
  []
 
-[8] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 191--193
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 191--193
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 184--186
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 194--196
+Underfull \hbox (badness 10000) in paragraph at lines 184--186
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 194--196
+Underfull \hbox (badness 10000) in paragraph at lines 187--189
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 197--199
+Underfull \hbox (badness 10000) in paragraph at lines 187--189
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 197--199
+Underfull \hbox (badness 10000) in paragraph at lines 190--192
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 200--201
+Underfull \hbox (badness 10000) in paragraph at lines 190--192
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 203--245
+Underfull \hbox (badness 10000) in paragraph at lines 193--194
+
+ []
+
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 196--238
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 203--245
+Underfull \hbox (badness 10000) in paragraph at lines 196--238
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 203--245
+Underfull \hbox (badness 10000) in paragraph at lines 196--238
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 203--245
+Underfull \hbox (badness 10000) in paragraph at lines 196--238
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 203--245
+Underfull \hbox (badness 10000) in paragraph at lines 196--238
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 203--245
+Underfull \hbox (badness 10000) in paragraph at lines 196--238
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 203--245
+Underfull \hbox (badness 10000) in paragraph at lines 196--238
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 203--245
+Underfull \hbox (badness 10000) in paragraph at lines 196--238
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 203--245
+Underfull \hbox (badness 10000) in paragraph at lines 196--238
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 203--245
+Underfull \hbox (badness 10000) in paragraph at lines 196--238
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 203--245
+Underfull \hbox (badness 10000) in paragraph at lines 196--238
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 203--245
+Underfull \hbox (badness 10000) in paragraph at lines 196--238
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 203--245
+Underfull \hbox (badness 10000) in paragraph at lines 196--238
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 203--245
+Underfull \hbox (badness 10000) in paragraph at lines 196--238
 
  []
 
@@ -433,7 +429,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 203--245
 Here is how much of TeX's memory you used:
  3206 strings out of 476179
  53135 string characters out of 5813071
- 374942 words of memory out of 5000000
+ 375942 words of memory out of 5000000
  23938 multiletter control sequences out of 15000+600000
  493938 words of font info for 48 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
