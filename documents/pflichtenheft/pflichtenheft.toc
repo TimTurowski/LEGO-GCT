@@ -1,24 +1,26 @@
 \babel@toc {ngerman}{}\relax 
-\contentsline {section}{\numberline {1}Zielbestimmung}{3}{}%
-\contentsline {subsection}{\numberline {1.1}Musskriterien}{3}{}%
-\contentsline {subsection}{\numberline {1.2}Kannkriterien}{3}{}%
-\contentsline {subsection}{\numberline {1.3}Wunschkriterien}{3}{}%
-\contentsline {subsection}{\numberline {1.4}Abgrenzungskriterien}{4}{}%
-\contentsline {section}{\numberline {2}Produkteinsatz}{4}{}%
-\contentsline {section}{\numberline {3}Produktfunktionen}{4}{}%
-\contentsline {subsection}{\numberline {3.1}Benutzersicht}{4}{}%
-\contentsline {subsection}{\numberline {3.2}Produktfunktionen Backend}{5}{}%
-\contentsline {section}{\numberline {4}Produktdaten}{6}{}%
-\contentsline {subsection}{\numberline {4.1}Bauteil}{6}{}%
-\contentsline {subsection}{\numberline {4.2}Bauteil/Set-Preis}{6}{}%
-\contentsline {subsection}{\numberline {4.3}Set}{6}{}%
-\contentsline {section}{\numberline {5}Benutzeraccount}{6}{}%
-\contentsline {section}{\numberline {6}Administrator extends Benutzeraccount}{7}{}%
-\contentsline {section}{\numberline {7}Produktleistungen}{7}{}%
-\contentsline {section}{\numberline {8}Qualitätsanforderungen}{7}{}%
-\contentsline {section}{\numberline {9}Benutzungsoberfläche}{7}{}%
-\contentsline {section}{\numberline {10}Nichtfunktionale Anforderungen}{8}{}%
-\contentsline {section}{\numberline {11}Technische Produktumgebung}{8}{}%
-\contentsline {section}{\numberline {12}Gliederung in Teilprodukte}{8}{}%
-\contentsline {section}{\numberline {13}Ergänzungen}{9}{}%
-\contentsline {section}{\numberline {14}Globale Testfälle}{9}{}%
+\contentsline {section}{\numberline {1}Änderungshistorie}{2}{}%
+\contentsline {section}{\numberline {2}Zielbestimmung}{4}{}%
+\contentsline {subsection}{\numberline {2.1}Musskriterien}{4}{}%
+\contentsline {subsection}{\numberline {2.2}Kannkriterien}{4}{}%
+\contentsline {subsection}{\numberline {2.3}Wunschkriterien}{4}{}%
+\contentsline {subsection}{\numberline {2.4}Abgrenzungskriterien}{5}{}%
+\contentsline {section}{\numberline {3}Produkteinsatz}{5}{}%
+\contentsline {section}{\numberline {4}Produktfunktionen}{5}{}%
+\contentsline {subsection}{\numberline {4.1}Benutzersicht}{5}{}%
+\contentsline {subsection}{\numberline {4.2}Produktfunktionen Backend}{6}{}%
+\contentsline {section}{\numberline {5}Produktdaten}{7}{}%
+\contentsline {subsection}{\numberline {5.1}System}{7}{}%
+\contentsline {subsection}{\numberline {5.2}Benutzeraccount}{7}{}%
+\contentsline {section}{\numberline {6}Produktleistungen}{7}{}%
+\contentsline {section}{\numberline {7}Benutzungsoberfläche}{8}{}%
+\contentsline {section}{\numberline {8}Nichtfunktionale Anforderungen}{8}{}%
+\contentsline {section}{\numberline {9}Technische Produktumgebung}{9}{}%
+\contentsline {section}{\numberline {10}Gliederung in Teilprodukte}{9}{}%
+\contentsline {subsection}{\numberline {10.1}Crawler}{9}{}%
+\contentsline {subsection}{\numberline {10.2}TeileFilter}{10}{}%
+\contentsline {subsection}{\numberline {10.3}Anleitungsparser}{10}{}%
+\contentsline {subsection}{\numberline {10.4}Anleitungsloader}{10}{}%
+\contentsline {subsection}{\numberline {10.5}Datenzugriffsobjekt}{10}{}%
+\contentsline {subsection}{\numberline {10.6}Teilevergleicher}{10}{}%
+\contentsline {section}{\numberline {11}Globale Testfälle}{10}{}%

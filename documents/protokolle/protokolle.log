@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.12.13)  6 MAY 2023 14:53
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.12.13)  7 MAY 2023 12:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -144,155 +144,47 @@ Package: array 2021/10/04 v2.5f Tabular extension package (FMi)
 \TX@delta=\dimen170
 \TX@cols=\count199
 \TX@ftn=\toks19
-))
-(c:/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
-File: l3backend-xetex.def 2022-02-07 L3 backend support: XeTeX
-
-(|extractbb --version)
-\c__kernel_sys_dvipdfmx_version_int=\count266
-\l__color_backend_stack_int=\count267
-\g__color_backend_stack_int=\count268
-\g__graphics_track_int=\count269
-\l__pdf_internal_box=\box52
-\g__pdf_backend_object_int=\count270
-\g__pdf_backend_annotation_int=\count271
-\g__pdf_backend_link_int=\count272
-) (./protokolle.aux)
-\openout1 = `protokolle.aux'.
-
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 3.
-LaTeX Font Info:    ... okay on input line 3.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 3.
-LaTeX Font Info:    ... okay on input line 3.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 3.
-LaTeX Font Info:    ... okay on input line 3.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 3.
-LaTeX Font Info:    ... okay on input line 3.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 3.
-LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 3
-.
-
-(c:/texlive/2022/texmf-dist/tex/latex/base/ts1cmr.fd
-File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 3.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 3.
-LaTeX Font Info:    ... okay on input line 3.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 3.
-LaTeX Font Info:    ... okay on input line 3.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 3.
-LaTeX Font Info:    ... okay on input line 3.
+(c:/texlive/2022/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2021-09-01 v4.17 Multi-page Table package (DPC)
+\LTleft=\skip53
+\LTright=\skip54
+\LTpre=\skip55
+\LTpost=\skip56
+\LTchunksize=\count266
+\LTcapwidth=\dimen171
+\LT@head=\box52
+\LT@firsthead=\box53
+\LT@foot=\box54
+\LT@lastfoot=\box55
+\LT@gbox=\box56
+\LT@cols=\count267
+\LT@rows=\count268
+\c@LT@tables=\count269
+\c@LT@chunks=\count270
+\LT@p@ftn=\toks20
+)
 
-*geometry* driver: auto-detecting
-*geometry* detected driver: xetex
-*geometry* verbose mode - [ preamble ] result:
-* driver: xetex
-* paper: a4paper
-* layout: <same size as paper>
-* layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: 
-* h-part:(L,W,R)=(28.45274pt, 540.60239pt, 28.45274pt)
-* v-part:(T,H,B)=(56.9055pt, 731.23584pt, 56.9055pt)
-* \paperwidth=597.50787pt
-* \paperheight=845.04684pt
-* \textwidth=540.60239pt
-* \textheight=731.23584pt
-* \oddsidemargin=-43.81725pt
-* \evensidemargin=-43.81725pt
-* \topmargin=-52.36449pt
-* \headheight=12.0pt
-* \headsep=25.0pt
-* \topskip=12.0pt
-* \footskip=30.0pt
-* \marginparwidth=35.0pt
-* \marginparsep=10.0pt
-* \columnsep=10.0pt
-* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
-* \hoffset=0.0pt
-* \voffset=0.0pt
-* \mag=1000
-* \@twocolumnfalse
-* \@twosidefalse
-* \@mparswitchfalse
-* \@reversemarginfalse
-* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+! LaTeX Error: File `flushleft.sty' not found.
 
-(./stundenprotokolle/teammeetings.tex
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 3.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 3.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 3.
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: sty)
 
-Underfull \hbox (badness 10000) in paragraph at lines 17--32
+Enter file name: 
+! Emergency stop.
+<read *> 
+         
+l.14 ^^M
+        
+*** (cannot \read from terminal in nonstop modes)
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 34--51
-
- []
-
-[1
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 53--68
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 53--68
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 70--97
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 70--97
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 70--97
-
- []
-
-[2]
-Underfull \hbox (badness 10000) in paragraph at lines 98--111
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 98--111
-
- []
-
-) [3] (./stundenprotokolle/timturowskistunden.tex)
-(./stundenprotokolle/carnerkarastunden.tex)
-(./stundenprotokolle/svenwolfstunden.tex)
-(./stundenprotokolle/dennisbehrendtstunden.tex)
-Overfull \hbox (421.04263pt too wide) in paragraph at lines 1--21
-[]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1--21
-
- []
-
-(./stundenprotokolle/timsilbumstunden.tex)
-(./stundenprotokolle/hannesschererstunden.tex) [4] (./protokolle.aux) ) 
+ 
 Here is how much of TeX's memory you used:
- 3107 strings out of 476179
- 52269 string characters out of 5813071
- 376080 words of memory out of 5000000
- 23829 multiletter control sequences out of 15000+600000
- 483997 words of font info for 42 fonts, out of 8000000 for 9000
+ 2868 strings out of 476179
+ 44619 string characters out of 5813071
+ 355326 words of memory out of 5000000
+ 23634 multiletter control sequences out of 15000+600000
+ 472266 words of font info for 30 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 60i,6n,65p,265b,142s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-Output written on protokolle.pdf (4 pages).
+ 60i,0n,65p,265b,91s stack positions out of 10000i,1000n,20000p,200000b,200000s
+No pages of output.

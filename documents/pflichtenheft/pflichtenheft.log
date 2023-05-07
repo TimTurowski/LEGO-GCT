@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.12.13)  7 MAY 2023 10:40
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.12.13)  7 MAY 2023 12:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -144,19 +144,38 @@ Package: array 2021/10/04 v2.5f Tabular extension package (FMi)
 \TX@delta=\dimen170
 \TX@cols=\count199
 \TX@ftn=\toks19
+)
+(c:/texlive/2022/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2021-09-01 v4.17 Multi-page Table package (DPC)
+\LTleft=\skip53
+\LTright=\skip54
+\LTpre=\skip55
+\LTpost=\skip56
+\LTchunksize=\count266
+\LTcapwidth=\dimen171
+\LT@head=\box52
+\LT@firsthead=\box53
+\LT@foot=\box54
+\LT@lastfoot=\box55
+\LT@gbox=\box56
+\LT@cols=\count267
+\LT@rows=\count268
+\c@LT@tables=\count269
+\c@LT@chunks=\count270
+\LT@p@ftn=\toks20
 ))
 (c:/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
 File: l3backend-xetex.def 2022-02-07 L3 backend support: XeTeX
 
 (|extractbb --version)
-\c__kernel_sys_dvipdfmx_version_int=\count266
-\l__color_backend_stack_int=\count267
-\g__color_backend_stack_int=\count268
-\g__graphics_track_int=\count269
-\l__pdf_internal_box=\box52
-\g__pdf_backend_object_int=\count270
-\g__pdf_backend_annotation_int=\count271
-\g__pdf_backend_link_int=\count272
+\c__kernel_sys_dvipdfmx_version_int=\count271
+\l__color_backend_stack_int=\count272
+\g__color_backend_stack_int=\count273
+\g__graphics_track_int=\count274
+\l__pdf_internal_box=\box57
+\g__pdf_backend_object_int=\count275
+\g__pdf_backend_annotation_int=\count276
+\g__pdf_backend_link_int=\count277
 ) (./pflichtenheft.aux)
 \openout1 = `pflichtenheft.aux'.
 
@@ -221,159 +240,203 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <14.4> on input line 5.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 5.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 9.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 9.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 9.
-(./pflichtenheft.toc [1
+[1
 
-])
+] [2] (./pflichtenheft.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 4.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 4.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 4.
+)
 \tf@toc=\write3
 \openout3 = `pflichtenheft.toc'.
 
- [2] [3]
-Underfull \hbox (badness 10000) in paragraph at lines 69--71
+ [3] [4]
+Underfull \hbox (badness 10000) in paragraph at lines 86--88
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 75--120
+Underfull \hbox (badness 10000) in paragraph at lines 92--137
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 75--120
+Underfull \hbox (badness 10000) in paragraph at lines 92--137
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 75--120
+Underfull \hbox (badness 10000) in paragraph at lines 92--137
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 75--120
+Underfull \hbox (badness 10000) in paragraph at lines 92--137
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 75--120
+Underfull \hbox (badness 10000) in paragraph at lines 92--137
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 75--120
+Underfull \hbox (badness 10000) in paragraph at lines 92--137
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 75--120
-
- []
-
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 122--128
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 132--134
+Underfull \hbox (badness 10000) in paragraph at lines 92--137
 
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 136--140
+Underfull \hbox (badness 10000) in paragraph at lines 139--145
 
  []
 
-File: pictures/chen1.png Graphic file (type bmp)
-<pictures/chen1.png>
-File: pictures/klassendiagramm2.png Graphic file (type bmp)
-<pictures/klassendiagramm2.png>
-File: pictures/klassendiagramm.png Graphic file (type bmp)
-<pictures/klassendiagramm.png>
-
-Underfull \hbox (badness 10000) in paragraph at lines 142--150
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 142--150
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 142--150
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 152--155
-
- []
-
+File: pictures/Architektur_Klassendiagramm.png Graphic file (type bmp)
+<pictures/Architektur_Klassendiagramm.png>
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 160--164
+Underfull \hbox (badness 10000) in paragraph at lines 151--154
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--168
+Underfull \hbox (badness 10000) in paragraph at lines 156--160
 
  []
 
-File: pictures/skizzeausgabe.jpg Graphic file (type bmp)
-<pictures/skizzeausgabe.jpg>
-File: pictures/programmvorschau1.png Graphic file (type bmp)
-<pictures/programmvorschau1.png>
-File: pictures/programmvorschau2.png Graphic file (type bmp)
-<pictures/programmvorschau2.png>
 File: pictures/programmvorschau3.png Graphic file (type bmp)
 <pictures/programmvorschau3.png>
-
-Underfull \hbox (badness 10000) in paragraph at lines 170--174
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 170--174
-
- []
-
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 176--181
+Underfull \hbox (badness 10000) in paragraph at lines 165--170
+
+ []
+
+File: pictures/systemdurchlauf.png Graphic file (type bmp)
+<pictures/systemdurchlauf.png>
+
+Underfull \hbox (badness 10000) in paragraph at lines 172--182
+
+ []
+
+[8] [9]
+Underfull \hbox (badness 10000) in paragraph at lines 191--193
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 183--193
+Underfull \hbox (badness 10000) in paragraph at lines 191--193
 
  []
 
-File: pictures/datenbankupdate.png Graphic file (type bmp)
-<pictures/datenbankupdate.png>
-File: pictures/vorgaenge.png Graphic file (type bmp)
-<pictures/vorgaenge.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 195--202
+Underfull \hbox (badness 10000) in paragraph at lines 194--196
 
  []
 
-[8]
-Underfull \hbox (badness 10000) in paragraph at lines 205--207
+
+Underfull \hbox (badness 10000) in paragraph at lines 194--196
 
  []
 
-[9] [10] (./pflichtenheft.aux) ) 
+
+Underfull \hbox (badness 10000) in paragraph at lines 197--199
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 197--199
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 200--201
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 203--245
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 203--245
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 203--245
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 203--245
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 203--245
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 203--245
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 203--245
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 203--245
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 203--245
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 203--245
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 203--245
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 203--245
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 203--245
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 203--245
+
+ []
+
+[10] [11] (./pflichtenheft.aux) ) 
 Here is how much of TeX's memory you used:
- 3146 strings out of 476179
- 52862 string characters out of 5813071
- 377088 words of memory out of 5000000
- 23873 multiletter control sequences out of 15000+600000
+ 3206 strings out of 476179
+ 53135 string characters out of 5813071
+ 374942 words of memory out of 5000000
+ 23938 multiletter control sequences out of 15000+600000
  493938 words of font info for 48 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 60i,8n,65p,333b,227s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 60i,6n,65p,583b,242s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on pflichtenheft.pdf (10 pages).
+Output written on pflichtenheft.pdf (11 pages).

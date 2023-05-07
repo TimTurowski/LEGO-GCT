@@ -4,17 +4,34 @@
 
 \maketitle
 
-Änderungshistorie
+\newpage
+\section{Änderungshistorie}
 
-\begin{tabular}{|p{2cm}|p{2cm}|p{4cm}|p{8cm}|}
-	\hline
-	A & B & C-Spalte & C-Spalte \\ \hline
-	A & B & C-Spalte & C-Spalte \\ 
-	A & B & C-Spalte & C-Spalte \\ 
-	A & B & C-Spalte & C-Spalte \\ 
-	A & B & C-Spalte & C-Spalte \\ 
-	\hline
-\end{tabular}
+\begin{flushleft}
+		\begin{longtable}{p{2cm}p{2cm}p{3cm}p{9cm}c}
+        %% Tabellenkopf
+            \toprule
+            \textbf{Version} & \textbf{Datum} & \textbf{Autor} & \textbf{Änderungen}\\
+            \midrule\endfirsthead
+            \toprule
+            \textbf{Version} & \textbf{Datum} & \textbf{Autor} & \textbf{Änderungen}\\
+            \midrule\endhead
+        %% Tabelleninhalte
+            	Version 1.0 & 23.04.2023 & Tim Turowski & Git-Repository angelegt und Pflichtenheft Tex-Dokument \\ \midrule
+				Version 1.1 & 26.04.2023 & Tim Silbum & ERM und UML Diagramm zur Datenstruktur eingefügt \\ \midrule
+				Version 1.2 & 26.04.2023 & Hannes Scherer & Frontend Prototypen entwickelt \\ 
+				Version 1.3 & 27.04.2023 & Tim Silbum & Sequenzdiagramm, Zustandsdiagramm und GUI Skizze \\ \midrule
+ 				Version 1.4 & 28.04.2022 & Tim Turowski & Bilder ins Pflichtenheft eingefügt und Tabellen angepasst \\ \midrule
+				Version 1.5 & 02.05.2023 & Dennis Behrendt & Bezogen auf das erste Feedback: Inhalte korrigiert und Ausformulierungen angepasst \\ \midrule
+				Version 1.6 & 03.05.2023 & Hannes Scherer & Bezogen auf das erste Feedback: Frontend Prototypen angepasst \\ \midrule
+				Version 1.7 & 06.05.2023 & Tim Turowski & Nach Problemen beim mergen im Repository: Pflichtenheft ist eigenständiges Dokument \\ \midrule
+				Version 1.8 & 07.05.2023 & Tim Turowski & Inhalte der Projektmitglieder eingefügt für morgiges Meeting \\ 
+            \bottomrule
+    \end{longtable}
+    ~\vspace{-23pt}
+\end{flushleft}
+
+\newpage
 
 \tableofcontents
 
@@ -127,34 +144,13 @@ Preisvergeich zwischen Sets und Einzelteilen \newline
 Darstellung der Endergebnisse \newline
 
 \section{Produktdaten}
+\subsection{System}
+\includegraphics[width=18cm]{pictures/Architektur_Klassendiagramm.png}
 
-\subsection{Bauteil}
-Element-ID\newline
-Name \newline
-
-\subsection{Bauteil/Set-Preis}
-Element-ID\newline
-Preis\newline
-Anbieter\newline
-URL\newline
-
-\subsection{Set}
-Set-ID \newline
-List: Element-ID \newline
-Name \newline
-Bool: Verfügbarkeit \newline
-UVP \newline  \newline
-\includegraphics[width=8cm]{pictures/chen1.png} \newline  \newline
-\includegraphics[width=8cm]{pictures/klassendiagramm2.png}  \newline  \newline
-\includegraphics[width=8cm]{pictures/klassendiagramm.png} 
-
-\section{Benutzeraccount}
+\subsection{Benutzeraccount}
 Benutzername \newline
 Passwort (verschlüsselt) \newline
 List: Suchhistorie \newline
-
-\section{Administrator extends Benutzeraccount}
-
 
 \section{Produktleistungen}
 Bestandsdatenbank soll aufgebaut werden mit Informationen aus den Anleitunge \newline
@@ -162,15 +158,8 @@ Preise sollen bei der Suche gecrawlt werden \newline
 Die verwendete Datenbank muss in der Lage sein große Datenmengen zu speichern und zu verarbeiten \newline
 Der Crawler soll in der Lage sein schnell Preisdaten bei den Anbietern zu crawlen, außerdem soll ein Algorithmus regelmäßig die neuen Anleitungen erkennen und dem Parser übergeben \newline
 
-\section{Qualitätsanforderungen}
-Dokumentation der Änderungshistorie \newline
-Programmcode auskommentieren \newline
-
 \section{Benutzungsoberfläche}
-\includegraphics[width=8cm]{pictures/skizzeausgabe.jpg} \newline \newline
-\includegraphics[width=8cm]{pictures/programmvorschau1.png}
-\includegraphics[width=8cm]{pictures/programmvorschau2.png} \newline \newline
-\includegraphics[width=8cm]{pictures/programmvorschau3.png}
+\includegraphics[width=18cm]{pictures/programmvorschau3.png}
 
 \section{Nichtfunktionale Anforderungen}
 Barrierefreiheit \newline
@@ -180,42 +169,77 @@ Revisionsinstanzen Scrum etablieren \newline
 Websitendaten schützen die gecrawlt werden \newline
 
 \section{Technische Produktumgebung}
-Datenbank \newline
-Crawler \newline
-Webserver \newline
-OCR \newline
-Angular \newline
-HTML \newline
-CSS \newline
-Python \newline
-Tex \newline
-Git \newline
+\includegraphics[width=18cm]{pictures/systemdurchlauf.png} \newline
+Eine Datenbank wird mithilfe von SQLAlchemy in Python erstellt und aufgesetzt. Dies läuft auf einem Server mit xB Speicher, damit die ganzen Daten gespeichert werden können \newline
+Es wird 1/2 Crawler erstellt in Python, die auf dem Server laufen. Diese dienen zur Suche von Preisen, so wie zur Suche der richtigen PDF \newline
+Der Webserver ist jederzeit ansprechbar, damit Benutzer auf unser Tool jederzeit zugreifen können
+OCR wird zum auslesen der PDF benutzt, damit die jeweilige Stückzahl und ID der Einzelteile herausgefunden werden kann \newline
+Angular dient als Frameworkerstellungstool für eine interaktive Front End \newline
+HTML und CSS zur Aufbesserung des Framework \newline
+Python als primäre Programmiersprache, für alle Bereiche, wo programmiert werden soll \newline
+Tex zur gemeinsame Dokumentation \newline
+Git zum einfachen austausch von Fortschritt und jegliche andere Projekt relevante Erzeugnis \newline
 
 \section{Gliederung in Teilprodukte}
-Bauanleitung suchen \newline
-Bauanleitung parsen \newline
-Datenbank füllen \newline
-Preisvergleich \newline
-Ausgabe generierern \newline
-\includegraphics[width=8cm]{pictures/datenbankupdate.png} \newline  \newline
-\includegraphics[width=8cm]{pictures/vorgaenge.png}
+\subsection{Crawler}
+Die Klassen, welche das ShopCrawler Interface implementieren, besitzen die Logik einen Bestimmten Shop zu Crawlen. Für jeden berücksichtigten Shop wird eine Klasse benötigt, welche das Interface ShopCrawler implementiert.  Durch die Verwendung des Interfaces ist es möglich von unterschiedlichen Anbieter Webseiten die gecrawlten Ergebnisse in der gleichen Struktur zurückzugeben. Es ist möglich einen ShopCrawler ein Objekt der Klasse Filter zu übergeben, welcher es ermöglicht, beim Crawlen nach bestimmten Eigenschaften die Daten zu filtern.
 
+\subsection{TeileFilter}
+Der Teile Filter verfügt über Funktionen, welche auf die gecrawlten Daten angewendet werden und prüft, ob die Daten auf die Filtereigenschaften zutreffen.
 
-\section{Ergänzungen}
-Aus rechtlichen Gründen sollen Anbieter vor dem Crawling angefragt werden \newline
-Installationsanleitung und Handbuch sollen bereitgestellt werden \newline
+\subsection{Anleitungsparser}
+Das Interface Anleitungsparser liefert eine Struktur eines Parsers für Bauanleitungen. Dadurch ist gewährleistet, dass die Klassen, die das Interface implementieren die Geparste Anleitung in der Richtigen Struktur zurückgeben. Die Jeweiligen Klassen der Parser müssen zusätzlich eine OCR-Bibliothek einbinden, welche das auslesen von PDF Dateien ermöglicht. \newline 
+\newline 
+\subsection{Anleitungsloader}
+Für das Parsen einer Anleitung muss die Anleitung aus dem Internet heruntergeladen werden, dies Ermöglicht der Anleitungsloader. Mit einem Web-Crawler findet er die PDF-Datei zu einer Angegebenen SetID und lädt diese herunter und stellt sie einer Anleitungsparser Implementierung zur Verfügung. \newline 
+\newline 
+\subsection{Datenzugriffsobjekt}
+Das Datenzugriffsobjekt ermöglicht den Zugriff auf die Datenbank. Es besitzt die die nötigen Funktionen die notwendigen Objekte auf der Datenbank zu persistieren oder auf der Datenbank persistente Daten abzurufen. \newline 
+\newline 
+\subsection{Teilevergleicher}
+Teilevergleicher ist die Zentrale Klasse im System.  Die Klasse besitzt die Funktion eine Suche zu starten und sie bündelt alle anderen Objekte im System. Sie bestimmt den logischen Ablauf der Ausführung der Suche.\newline 
 
 \section{Globale Testfälle}
-Set händisch recherchieren, um Soll-Wert für Unit-Test zu ermitteln und mit Algortihmusausgabe testen \newline
-Gesucht wird ein Lego-Set, dessen Bauanleitung keine Stückliste besitzt -> Meldung besagt, dass die Applikation dieses Set nicht unterstützt, der Link zur Bauanleitung wird allerdings ausgegeben \newline
-Gültige Set-ID wird gesucht -> Die Applikation gibt eine Stückliste aus, pro Webshop einen Preis für das fertige Set und einen Preis für den Kauf der Einzelteile, pro Shop \newline
-Ungültige Set-ID wird gesucht -> Eine Fehlermeldung wird ausgegeben, die besagt dass zu dieser Setnummer kein Lego Set existiert oder aufgrund von Neuheit noch nicht in der Datenbank enthalten ist \newline
-Historie anzeigen, obwohl noch kein Suchvorgang ausgeführt wurde -> Die Historie ist leer \newline
-E-Mail Adresse beim Registrieren schon vergeben -> Dem Benutzer wird mitgeteilt, dass zu dieses Email-Adresse bereits ein Benutzerkonto besteht \newline
-Datenbank während Registrierung nicht ansprechbar -> Der Benutzer wird gebeten seine Aktion später nochmal zu wiederholen, da ein Fehler aufgetreten ist \newline
-Passwort für Benutzerkonto ist zu unsicher -> Der Benutzer wird aufgefordert ein neues Passwort einzugeben, welches eine höhere Sicherheitsstufe besitzt \newline
-Benutzername und Passwort stimmen bei Anmeldung nicht überein -> Dem Benutzer wird mitgeteilt, dass das Passwort nicht zum Benutzernamen passt und er es nochmal versuchen soll \newline
-Benutzername bei Anmeldung noch nicht Registriert -> Eine Meldung wird ausgegeben, dass der Benutzername noch keinem Benutzerkonto zugeteilt ist \newline
-Bestimmt viele Einzelteile sind bei Händlern nicht verfügbar -> Eine Mitteilung 
-
+/T010/\newline 
+Set suchen: Der Nutzer gibt in der Suchleiste die Lego-Setnummer 75355 ein. \newline
+\newline
+/T020/ \newline Historie anzeigen: Der Nutzer klickt auf "Historie" um sich seine persönliche Such-Historie anzeigen zu lassen. \newline
+\newline
+/T030/ \newline Registrieren: Der Nutzer klickt auf "Registrieren" und registriert sich mit den Daten \newline           
+- Name: Max Mustermann \newline
+- E-Mail: mustermann@gmx.de \newline                               
+- Passwort: passwort \newline
+\newline
+/T040/ \newline 
+Anmelden:  Der Nutzer klickt auf "Anmelden" und meldet sich mit den in /T30/ benannten Daten an.\newline
+\newline
+/T050/ \newline 
+Stückliste anzeigen: Der Nutzer lässt sich die Stückliste anzeigen ? \newline
+\newline
+/T060/ \newline
+Kommt aufs Design der Nutzeroberfläche an ?  \newline
+\newline
+/T100/ \newline
+PDF crawlen: Der Nutzer gibt die Set-Nummer 75192 in die Suchleiste ein, welche noch nicht in der Datenbank liegt. Der Web-Crawler sucht die jeweilige PDF Anleitung des Lego Sets. \newline
+\newline
+/T110/ \newline
+PDF auslesen: Nach /T100/ wird das entsprechende PDF-Dokument mittels OCR ausgelesen. \newline
+\newline
+/T120/ \newline
+Einzeilteile in Datenbank speichern: Nach /T110/  werden die Nummern der Einzelteile korrekt in die Datenbank gespeichert. \newline
+\newline
+/T130/ \newline
+Preise crawlen: Nach /T120/ werden die Preise auf den Händlerseiten je nach Set und Einzelteilen abgefragt und gespeichert. \newline
+\newline
+/T140/ \newline
+Preise vergleichen: Nach  /T130/ findet ein Preisvergleich zwischen den Sets und Einzelteilen ab. Dies erfolgt für alle erfassten Händler. \newline
+\newline
+/T150/ \newline
+Darstellung des Ergebnis-Fensters: Nach der Funktion /F100/ wird das nächste Fenster mit den entsprechenden Ergebnissen nach /F110/ - /F140/ angezeigt. \newline
+\newline
+/T160/ \newline
+Benutzer verwalten: Der Admin löscht den Nutzer Max Mustermann aus /T030/. \newline
+\newline
+/T170/ \newline
+Statistiken anzeigen: Der Admin Maxine Mustermann klickt auf die Einstellung "Dashboard" um sich Statistiken zu den Suchanfragen anzeigen zu lassen. \newline
 \end{document}
