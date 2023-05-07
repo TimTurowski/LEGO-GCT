@@ -31,4 +31,23 @@ Datenzugriffsobjekt:
 Das Datenzugriffsobjekt ermöglicht den Zugriff auf die Datenbank. Es besitzt die die nötigen Funktionen die notwendigen Objekte auf der Datenbank zu persistieren oder auf der Datenbank persistente Daten abzurufen.
 
 Teilevergleicher:
-Teilevergleicher ist die Zentrale Klasse im System.  Die Klasse besitzt die Funktion eine Suche zu starten und sie bündelt alle anderen Objekte im System. Sie bestimmt den logischen Ablauf der Ausführung der Suche.
+Teilevergleicher ist die Zentrale Klasse im System.  Die Klasse besitzt die Funktion eine Suche zu starten und sie bündelt alle anderen Objekte im System. Sie bestimmt den logischen Ablauf der Ausführung der Suche.
+
+____________
+
+Globale Testfälle:
+/T010/ Set suchen: Der Nutzer gibt in der Suchleiste die Lego-Setnummer 75355 ein.
+/T020/ Historie anzeigen: Der Nutzer klickt auf "Historie" um sich seine persönliche Such-Historie anzeigen zu lassen.
+/T030/ Registrieren: Der Nutzer klickt auf "Registrieren" und registriert sich mit den Daten            - Name: Max Mustermann
+            - E-Mail: mustermann@gmx.de                                - Passwort: passwort
+/T040/ Anmelden:  Der Nutzer klickt auf "Anmelden" und meldet sich mit den in /T30/ benannten Daten an.
+/T050/ Stückliste anzeigen: Der Nutzer lässt sich die Stückliste anzeigen ?
+/T060/ Kommt aufs Design der Nutzeroberfläche an ?  /
+/T100/ PDF crawlen: Der Nutzer gibt die Set-Nummer 75192 in die Suchleiste ein, welche noch nicht in der Datenbank liegt. Der Web-Crawler sucht die jeweilige PDF Anleitung des Lego Sets.
+/T110/ PDF auslesen: Nach /T100/ wird das entsprechende PDF-Dokument mittels OCR ausgelesen.
+/T120/ Einzeilteile in Datenbank speichern: Nach /T110/  werden die Nummern der Einzelteile korrekt in die Datenbank gespeichert.
+/T130/ Preise crawlen: Nach /T120/ werden die Preise auf den Händlerseiten je nach Set und Einzelteilen abgefragt und gespeichert.
+/T140/ Preise vergleichen: Nach  /T130/ findet ein Preisvergleich zwischen den Sets und Einzelteilen ab. Dies erfolgt für alle erfassten Händler.
+/T150/ Darstellung des Ergebnis-Fensters: Nach der Funktion /F100/ wird das nächste Fenster mit den entsprechenden Ergebnissen nach /F110/ - /F140/ angezeigt.
+/T160/ Benutzer verwalten: Der Admin löscht den Nutzer Max Mustermann aus /T030/.
+/T170/ Statistiken anzeigen: Der Admin Maxine Mustermann klickt auf die Einstellung "Dashboard" um sich Statistiken zu den Suchanfragen anzeigen zu lassen.
