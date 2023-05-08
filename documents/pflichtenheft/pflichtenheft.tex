@@ -89,7 +89,8 @@ Das Tool ist für Lego-Enthusiasten und Sammler gedacht, die nach dem günstigst
 \section{Produktfunktionen}
 
 \subsection{Benutzersicht}
-/F10/\newline
+
+/F10/ \newline
 Geschäftsprozess: Über eine Suchmaske können Lego Setnummern eingeben\newline
 Vorbedingung: User befindet auf der Website des LegoGCT\newline
 Nachbedingung: Nach der Eingabe wird die Datenbank auf die Existenz des Lego Sets geprüft\newline
@@ -97,26 +98,26 @@ Fehlerfall: Die Eingegebene Setnummer stimmt nicht mit einer in der Datenbank vo
 Anwender: Akteur im Kontext der Webapplikation\newline
 Beschreibung: Über die Suchfunktion kann der Benutzer eine Setnummer eingeben.\newline\newline
 /F20/\newline
-Geschäftsprozess: Anzeigen der Historie\newline
-Vorbedingung: Benutzer sollte auf der Webplattform angemeldet sein\newline
-Nachbedingung: Benutzer kann sich seine persönliche Historie anzeigen lassen\newline
-Fehlerfall: Benutzer hat bisher noch keinen Suchvorgang gestartet\newline
-Anwender: Akteur im Kontext der Webapplikation\newline
-Beschreibung: Für Angemeldete Nutzer steht die Historie vergangener Suchen zur Verfügung. Diese unterstützt den Benutzer bereits gesuchte Sets wiederzufinden.\newline\newline
-/F30/\newline
 Geschäftsprozess: Registrierung auf der Webplattform\newline
 Vorbedingung: User befindet auf der Website des LegoGCT und hat den Registrieren Button gedrückt\newline
 Nachbedingung: User konnte sich Erfolgreich registrieren lassen sein Benutzer Account wurde in einer Datenbank abgelegt\newline
 Fehlerfall: E-Mail ist bereits vergeben, Datenbank ist nicht ansprechbar, Passwortsicherheit zu gering\newline
 Anwender: Akteur im Kontext der Webapplikation\newline
 Beschreibung: Um die vollen Funktionsumfang der Webapplikation zu nutzen. Muss der Benutzer eine Registrierung durchführen.\newline\newline
-/F40/\newline
+/F30/\newline
 Geschäftsprozess: Anmeldung auf der Webplattform\newline
 Vorbedingung: Benutzer befindet auf der Website des LegoGCT und ist ein Registrierter Nutzer\newline
 Nachbedingung: Benutzer konnte sich erfolgreich an Webplattform anmelden\newline
 Fehlerfall: Eine Anmeldung war nicht erfolgreich, weil Passwort und Benutzername nicht übereinstimmen oder der Benutzer noch keine Registrierung vorgenommen hat.\newline
 Anwender: Akteur im Kontext der Webapplikation\newline
 Beschreibung: Um die volle Funktion der Webapplikation nutzen zu können, kann sich der Benutzer an der Webplattform anmelden\newline\newline
+/F40/ \newline
+Geschäftsprozess: Abmelden von der Webplattform \newline
+Vorbedingung: Benutzer ist auf der Webplattform angemeldet.\newline
+Nachbedingung: Kunde befindet sich wieder auf der Startseite, ihm wird mitgeteilt, dass er sich abgemeldet hat. \newline
+Fehlerfall: Abmeldung schlägt fehl \newline
+Anwender: Akteur im Kontext der Webapplikation \newline 
+Beschreibung: Eine Abmeldung von der Webplattform sollte ermöglicht werden \newline \newline
 /F50/\newline
 Geschäftsprozess: Darstellung der Stücklisten\newline
 Vorbedingung: Benutzer hat nach einer Setnummer gesucht, welche in der Datenbank vorhanden ist.\newline
@@ -132,16 +133,79 @@ Fehlerfall: keinen\newline
 Anwender: Akteur im Kontext der Webapplikation \newline
 Beschreibung: Der Benutzer möchte eine übersichtlichere Anzeige haben und minimiert deshalb die Stückliste, um sich den Endpreis übersichtlicher darstellen zu lassen.\newline\newline
 /F70/\newline
-Geschäftsprozess: Anzeigen des Endpreises \newline
-Vorbedingung: Benutzer \newline
+Geschäftsprozess: Anzeigen der Historie\newline
+Vorbedingung: Benutzer sollte auf der Webplattform angemeldet sein\newline
+Nachbedingung: Benutzer kann sich seine persönliche Historie anzeigen lassen\newline
+Fehlerfall: Benutzer hat bisher noch keinen Suchvorgang gestartet\newline
+Anwender: Akteur im Kontext der Webapplikation\newline
+Beschreibung: Für Angemeldete Nutzer steht die Historie vergangener Suchen zur Verfügung. Diese unterstützt den Benutzer bereits gesuchte Sets wiederzufinden.\newline\newline
+/F80/ \newline
+Geschäftsprozess: Historie Suchen erneut durchführen \newline
+Vorbedingung: Benutzer ist auf Webplattform angemeldet \newline
+Nachbedingung: Kunde bekommt die Stückliste sowie den Endpreis angezeigt.\newline 
+Fehlerfall: Einzelteil oder Set nicht mehr verfügbar \newline
+Anwender: Akteur im Kontext der Webapplikation \newline
+Beschreibung: Um vergangene Suchen erneut aufzurufen, um eventuelle  Preisveränderungen zu dokumentieren. \newline \newline \newline
+/F90/ \newline
+Geschäftsprozess: Passwort ändern \newline
+Vorbedingung: User klickte auf "Profil bearbeiten" und gab neues Passwort ein \newline
+Nachbedingung: Passwort wurde in Datenbank angepasst \newline
+Fehlerfall: Passwort das selbe wie zuvor, Passwort hat zu niedrigen Sicherheitsfaktor \newline
+Anwender: Akteur im Kontext der Webapplikation \newline
+Beschreibung: Der Benutzer möchte sein Passwort ändern \newline \newline
+/F100/ \newline
+Geschäftsprozess: Email-Adresse ändern \newline
+Vorbedingung: User klickte auf "Profil bearbeiten" und gab neue Email-Adresse ein \newline
+Nachbedingung: Email-Adresse wurde in Datenbank angepasst \newline
+Fehlerfall: Email-Adresse die selbe wie davor, Eingabe entsprach keiner Email-Adresse \newline
+Anwender: Akteur im Kontext der Webapplikation \newline
+Beschreibung: Der Benutzer möchte seine Email-Adresse ändern \newline \newline
 
 \subsection{Produktfunktionen Backend} 
-PDFs mit Crawler ansprechen können \newline
-PDFs mittels OCR auslesen \newline
-Einzelteile in Datenbank zwischenspeichern \newline
-Informationen bei Händlern abfragen können \newline
-Preisvergeich zwischen Sets und Einzelteilen \newline
-Darstellung der Endergebnisse \newline
+
+/F110/ \newline
+Geschäftsprozess: Nach neuen PDFs/Legosets suchen \newline
+Vorbedingung: Festgelegte Dauer ist erreicht worden \newline
+Nachbedingung: Neue PDFs/Legosets wurden gefunden oder auch keine neuen PDFs werden gefunden \newline
+Fehlerfall: Suche konnte nicht durchgeführt werden \newline
+Anwender: Geschäftslogik, Lego.com, Datenbank \newline
+Beschreibung: Um die Datenbank auf aktuellen stand zu halten, ist es erforderlich die Datenbank in regelmäßigen abständen zu aktualisieren und mit neuen Datensätzen zu füllen \newline \newline
+/F120/ \newline
+Geschäftsprozess: Neue PDFs auslesen \newline
+Vorbedingungen: Es wurde nach neuen PDFs gesucht \newline
+Nachbedingung: Die neuen PDF/s wurde via OCR ausgelesen \newline
+Fehlerfall: Das auslesen der PDF/s schlägt fehl \newline
+Anwender: Geschäftslogik, Lego.com, Datenbank \newline
+Beschreibung: Wenn eine PDF gefunden wurde, die anhand der Lego Setnummer nicht einer anderen Nummer in der Datenbank zuzuordnen ist. Wird in die Datenbank mit aufgenommen \newline \newline
+/F130/ \newline
+Geschäftsprozess: Ausgelesene PDF-Informationen in Datenbank ablegen \newline
+Vorbedingungen: Es wurde nach neuen PDFs gesucht \newline
+Nachbedingungen: Die PDF-Informationen wurden in der Datenbank abgelegt \newline
+Fehlerfall: Daten werden falsch abgelegt, Daten könnten nicht hinterlegt werden \newline
+Anwender: Geschäftslogik, Datenbank \newline
+Beschreibung: Die vorher gefundenen Informationen, werden nun in einer Datenbank gespeichert. \newline \newline
+/F140/ \newline
+Geschäftsprozess: Preise bei Händlern abfragen \newline
+Vorbedingungen: Setnummer ist in Datenbank vorhanden \newline
+Nachbedingungen: Die Preise wurden bei den Händlern abgerufen \newline
+Fehlerfall: Die Preise konnten nicht abgerufen werden \newline
+Anwender: Geschäftslogik, Datenbank \newline
+Beschreibung: Um den Preisvergleich zu ermöglichen müssen die Preise einzeln bei den Händlern abgefragt werden. \newline \newline
+/F150/ \newline
+Geschäftsprozess: Einzelteil-Preise berechnen \newline
+Vorbedingung: Preise und Stücklisten gesammelt \newline
+Nachbedingung: alle Preise berechnet und zwischengespeichert\newline
+Fehlerfall: keine \newline
+Anwender: Geschäftslogik \newline
+Beschreibung: Die zuvor gesammelten Stücklisten und Preise werden zusammengerechnet und für alle, eingebetteten, Shops der Gesamtpreis berechnet. \newline \newline
+/F160/ \newline
+Geschäftsprozess: Benutzeraccount in Datenbank aufnehmen \newline
+Vorbedingung: Der Benutzer gab Benutzername, Email-Adresse und Passwort ein \newline
+Nachbedingung: Der Benutzeraccount wurde der Datenbank hinzugefügt \newline
+Fehlerfall: Datenbank ist nicht erreichbar \newline
+Anwender: Geschäftslogik, Datenbank \newline
+Beschreibung: Die Benutzeraccount-Daten werden in der Datenbank verschlüsselt und hinterlegt.
+\newline \newline
 
 \section{Produktdaten}
 \subsection{System}
