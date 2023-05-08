@@ -15,6 +15,7 @@
 				Termin 3 & 27.04.2022 & 12:00 - 15:00 & 3 & Besprechung zum Pflichtenheft \\ \midrule
 				Termin 4 & 02.05.2022 & 10:00 - 11:30 & 1,5 & Präsentation 1. Entwurf Pflichtenheft \\ \midrule
 				Termin 5 & 04.05.2022 & 11:00 - 12:00 & 1 & Zwischenstandbesprechung \\
+				Termin 6 & 08.05.2022 & 14:30 - 17:00 & 2,5 & Weekly\\
             \bottomrule
     \end{longtable}
 \end{flushleft}
@@ -117,3 +118,33 @@ Abwesend: - \newline \newline
   - Es wurde besprochen das wir uns damit befassen die Google Authentifizierung mit einzubauen \newline
   - Testfälle sollen erst nach den Produktfunktionen definiert werden \newline
 
+\newpage
+
+\subsection{Protokoll zu Termin 6}
+Protokollführer: Tim Turowski \newline
+Zusätzliche Teilnehmer: - \newline
+Abwesend: - \newline \newline
+Aus der heutigen Besprechung haben sich folgende Arbeitspakete ergeben, die bis zur nächsten Woche noch abgearbeitet sein müssen:
+\begin{flushleft}
+	\begin{longtable}{p{3cm}p{2cm}p{2cm}p{10cm}}
+		%% Tabellenkopf
+		\toprule
+		\textbf{Arbeitspaket} & \textbf{Kapitel} & \textbf{Bearbeiter} & \textbf{TODO}\\
+		\midrule\endfirsthead
+		\toprule
+		\textbf{Arbeitspaket} & \textbf{Kapitel} & \textbf{Bearbeiter} & \textbf{TODO}\\
+\midrule\endfirsthead
+		%% Tabelleninhalte
+		AP1 & Kapitel 2 &  Tim T & Mit in die Abgrenzungskriterien aufnehmen, dass keine Retailpreise berücksichtigt werden sollen, wir nehmen nur ofizielle Bauanleitungen von der Legodatenbank \\ \midrule
+		AP2& Kapitel 4 &  Hannes & Funktionen formulieren für: Suchmaske, Anzeigenhistorie, Registrierung, Anmeldung, Stückliste, Minimieren Stückliste, Historie Wiederholen, Neue Legosets crawlen, Neue PDFs auslesen, PDF Informationen auslesen, Informationen in Datenbank ablegen, Preise bei Händlern crawlen, Einzelteile die neu sind in DB ablegen, Preise sollen automatisiert geupdatet werden. Außerdem Warenkorbfunktion nicht mehr berücksichtigen und alles in logische Reihenfolge bringen\\ \midrule
+		AP3 & Kapitel 5.1 &  Tim S & Es fehlen Informationen zur Datenverwaltung, rechte Seite muss überarbeitet werden, außerdem noch Nutzer hinzufügen. Einzelangebot muss Marktpreis werden und Verbindung zum Set bekommen \\ \midrule
+		AP4 & Kapitel 8 & Caner & Folgende Teilproduktverbindungen müssen noch deutlicher werden: Phyton -> SQL Datenbank, Crawler -> PDF -> OCR (Parser) -> Python, Crawler -> Website -> Phyton  \\ \midrule
+		AP5 & Kapitel 8 &  Team &  Anforderungen definieren für VM, Websever, DB, Fileserver \\ \midrule
+		AP6 & - &  Sven &  Use Case Diagramm erstellen \\ \midrule
+		AP7 & - & Tim S &  Klassendiagramm überarbeiten, es gibt eine Liste die PreisId hat und zu alle Preise verwaltet, die gefunden wurden. Weitere Attribute könnten sein: TeileID, Preis, Händler...\\ \midrule
+		AP8 & Kapitel 9 &  & Strukturierung Ändern: 9.1 Letzten Satz streichen, 9.2 Teilefilter, 9.3 In Anleitungscrawler umändern, 9.4 muss auch geändert werden, 9.6 in Geschäftslogik ändern \\ \midrule
+		AP8 & Kapitel 10 & Dennis &  T60 streichen, ansonsten noch weitere hinzufügen, dabei mit Hannes absprechen und an AP2 orientieren \\ 
+		\bottomrule
+	\end{longtable}
+\end{flushleft}
+In naher Zukunft müssen wir unsere Stundenkontigente außerdem noch auf die 25 Wochen aufteilen. 
