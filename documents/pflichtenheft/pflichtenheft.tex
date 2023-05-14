@@ -29,7 +29,7 @@
 				Version 1.7 & 06.05.2023 & Tim Turowski & Nach Problemen beim mergen im Repository: Pflichtenheft ist eigenständiges Dokument \\ \midrule
 				Version 1.8 & 07.05.2023 & Tim Turowski & Inhalte der Projektmitglieder eingefügt für morgiges Meeting \\ \midrule
 				Version 1.9 & 07.05.2023 & Tim Turowski & Inhaltliche Änderungen nach Zwischenbesprechung \\ \midrule
-				Version 1.10 & 07.05.2023 & Tim Turowski & Finale Änderungen für morgiges Kundenmeeting \\ 
+				Version 1.10 & 14.05.2023 & Tim Turowski & Finale Änderungen für morgiges Kundenmeeting: Inhaltliche Anpassung/Ergänzungen der Projektmitglieder hinzugefügt \\ 
             \bottomrule
     \end{longtable}
 
@@ -49,50 +49,50 @@ Das Ziel des Projekts ist genau diese Fragestellungen, durch die Entwicklung ein
 \subsection{Musskriterien}
 \begin{enumerate}
 \item Es soll eine Datenbank mit Stücklisten und Bauteilen geben
-\item Die PDF-Bauanleitungen der Lego-Sets sollen mit OCR auslesbar sein
+\item Die PDF-Bauanleitungen der Lego-Sets werden mit OCR auslesbar sein
 \item Ein Crawler bezieht die Preise der unterschiedlichen Händler zur Laufzeit der Suche
 \item  Ein Preisvergleich unter den Händlern, im Bezug auf Kauf eines Sets oder der jeweiligen Einzelteile, findet statt
 \item Darstellung des Tools als graphische Oberfläche. (Startseite, Benuterverwaltung, Preisvergleich, Warenkorb)
 \item Es soll möglich sein Benutzeraccounts anzulegen und diese zu verwalten
 \item Drei feste Händler sollen beim Vergleich berücksichtigt werden
 \item Auf nicht verfügbare Einzelteile sollte hinreichend hingewiesen werden.
-\item Die Lieferkosten sollen beim Preisvergleich berücksichtigt werden.
 \item Bei der Ausgabe des Vergleichs soll eine Verlinkung zum Produkt, sowie eine Liste der Bauteile, angezeigt werden.
 \end{enumerate}
 
 \subsection{Kannkriterien}
 \begin{enumerate}
 \item Plattform sollte auch auf Mobilgeräten gut dargestellt sein
-\item Mehr Händler sollten noch mit aufnehmbar sein
+\item Mehr Händler sollen implementierbar sein
 \end{enumerate}
 
 \subsection{Wunschkriterien}
 \begin{enumerate}
-\item Es sollte eine Funktion geben um den Warenkorb beim entsprechenden Händler automatisch befüllen zu lassen
-\item Filterfunktion um zum Beispiel Figuren rauszufiltern
+\item Die ausgegebene Stückliste wird automatisch auf Wunsch in einen Warenkorb des gewählten Shops umgewandelt
+\item Filterfunktion um zum Beispiel Figuren ausfiltern zu können
 \item Sticker berücksichtigen
-\item Eigene Bauanleitung auslesen lassen
-\item Aktuelle Angebote hervorheben
+\item Eigens kreierte Bauanleitung sind ebenfalls auslesbar
+\item Aktuelle Angebote werden hervorgehobe
 \item Dashboard: Statistiken zum Suchverhalten unserer Benutzer / Wie erfolgreich war unser Programm?
 \item Einzelteile die besonders selten/teuer sind sollten gesondert aufgelistet werden
+\item Die Lieferkosten sollen beim Preisvergleich berücksichtigt werden.
 \end{enumerate}
 
 \subsection{Abgrenzungskriterien}
 \begin{enumerate}
 \item Unser Produkt wird keine Verkaufsplattform haben
 \item Keine Bevorzugung von Händlern
-\item Wir berücksichtigen keine nicht offiziellen Klemmbausteine
+\item Wir berücksichtigen nur offizielle Klemmbausteine
 \item Website ist nur für deutschsprachige Benutzer
-\item Alte Sets ohne Stückliste in der Anleitung können nicht berücksichtigt werden (2006)
+\item Alte Sets (vor 2006 erschienen) ohne Stückliste in der Anleitung werden nicht berücksichtigt
 \item Wir berücksichtigen keine Retailpreise
-\item Nur Bauanleitungen aus der Lego-Datenbank sollen aufgenommen werden
+\item Bauanleitungen werden nur von der offiziellen Lego-Webseite gecrawelt
 \item Die Entwicklungsumgebung sollte vom Kunden gestellt werden
 \end{enumerate}
 
 \section{Produkteinsatz}
  Das Produkt soll Benutzer bei Kaufentscheidung unterstützen, außerdem unterstützt es die Benutzer Sets zu bauen die aus irgendwelchen Gründen nicht mehr verfügbar sind.\newline
 Das Tool ist für Lego-Enthusiasten und Sammler gedacht, die nach dem günstigsten Angebot suchen. Das Tool kann auch von Einzelpersonen oder Unternehmen genutzt werden, die große Mengen an Lego-Sets kaufen möchten. \newline
-
+\includegraphics[width=18cm]{pictures/3.UseCase.png} \newpage
 \section{Produktfunktionen}
 
 \subsection{Benutzersicht}
@@ -152,7 +152,7 @@ Vorbedingung: Benutzer ist auf Webplattform angemeldet \newline
 Nachbedingung: Kunde bekommt die Stückliste sowie den Endpreis angezeigt.\newline 
 Fehlerfall: Einzelteil oder Set nicht mehr verfügbar \newline
 Anwender: Akteur im Kontext der Webapplikation \newline
-Beschreibung: Um vergangene Suchen erneut aufzurufen, um eventuelle  Preisveränderungen zu dokumentieren. \newline \newline \newline
+Beschreibung: Um vergangene Suchen erneut aufzurufen, um eventuelle  Preisveränderungen zu dokumentieren. \newline \newline
 /F90/ \newline
 Geschäftsprozess: Passwort ändern \newline
 Vorbedingung: User klickte auf "Passwort ändern" und gab neues Passwort ein \newline
@@ -167,7 +167,7 @@ Nachbedingung: Email-Adresse wurde in Datenbank angepasst \newline
 Fehlerfall: Email-Adresse die selbe wie davor, Eingabe entsprach keiner Email-Adresse \newline
 Anwender: Akteur im Kontext der Webapplikation \newline
 Beschreibung: Der Benutzer möchte seine Email-Adresse ändern \newline \newline
-
+\newline \newline
 \subsection{Produktfunktionen Backend} 
 
 /F110/ \newline
@@ -215,12 +215,33 @@ Beschreibung: Die Benutzeraccount-Daten werden in der Datenbank verschlüsselt u
 \newline \newline
 
 \section{Produktdaten}
-\subsection{System}
+\subsection{Produktdaten}
 \includegraphics[width=18cm]{pictures/5.1.System.png}
 
+\subsection{Ergänzungen}
+\subsubsection{Benutzerdaten}
+Die Persönlichen Daten der Benutzer sollen auf der Datenbank gespeichert werden. Zu den Benutzerdaten gehören: \newline
+- Username \newline
+- E-Mail-Adresse \newline
+- Passwort \newline
+- Berechtigungen \newline
+- Eine Historie der Sets, welche gesucht worden sind \newline
+Die Passwörter der Nutzer werden gehashed auf der Datenbank gespeichert. Dies kann die Speicherung von Sensiblen daten sichern. Der Klarname der Nutzer wird nicht gespeichert, sondern lediglich ein Nutzername. Nutzern wird eine Berechtigung zugewiesen. So können einfache Endanwender lediglich die Funktionen nutzen. Die Administratoren hingegen haben zusätzlich den Zugriff aus einem Dashboard mit Statistiken zu den Suchanfragen.
+
+\subsubsection{Result}
+Das Result Objekt beinhaltet alle Informationen, welche bei dem gesamten Prozess zusammengetragen worden sind. Dazu gehört eine Repräsentation des gesuchten Sets und dessen Einzelteile. Zudem verwaltet Result die gefundenen Shop Angebote der Einzelteile des Sets. Das Result Objekt verfügt über eine Funktion die Einzelteile zu Bewerten. Dabei soll ein Wert geliefert werden, welcher den Einzelteilpreis, die Häufigkeit im Set, den Set preis und gegebenenfalls die Verfügbarkeit des Teils einbezieht. Dieser Wert dient als Indikator, ob das Einzelteil besonders ist. Die Metadaten über die Suchanfrage werden auch in Result gespeichert.
+
+\subsubsection{LegoSet}
+Ein Lego Set Objekt repräsentiert ein Lego Set und seine Einzelteile. Es Verwaltet auch den aktuellen Wert des Sets und die Verfügbarkeit. Eine URL zum Download der PDF wird auch in diesem Objekt verwaltet. 
+
+\subsubsection{Einzelteilmarktwert}
+Die Objekte vom Typ Einzelteilmarktwert sollen zu einem bestimmten Lego Teil jeweils den Entsprechenden Preis eines Bestimmten Anbieters speichern. Zudem verwaltet es die URL zu dem Angebot und den Zeitpunkt der Peis Abfrage. Wenn der Shop eine Bestands Angabe macht, ist auch möglich diese in dem Objekt zu speichern. 
+
+\subsubsection{Bauanleitung}
+Bauanleitungen sind PDF-Dateien. Diese PDF-Dateien haben auf den Letzten Seiten eine Stückliste der Einzelteile. Die PDF-Dateien werden nicht gespeichert und nach dem Parsen gelöscht.
+\newpage
 \section{Anforderungen an Entwicklungsumgebung}
 \subsection{Anforderungen}
-Vorraussetzungen: \newline
 Bestandsdatenbank soll aufgebaut werden mit Informationen aus den Anleitungen \newline
 Die verwendete Datenbank muss in der Lage sein große Datenmengen zu speichern und zu verarbeiten \newline
 Preise sollen bei der Suche gecrawlt werden \newline
@@ -230,89 +251,103 @@ Der Crawler soll in der Lage sein schnell Preisdaten bei den Anbietern zu crawle
 6 Core Prozessor \newline
 1 TB Speicher \newline
 32 GB RAM \newline
-Windows Betriebssystem (2019 bzw. neuer) \newline
+Microsoft Windows Server 2019 \newline
 
 \section{Benutzungsoberfläche}
-\includegraphics[width=18cm]{pictures/Benutzeroberfläche1.png} \newline \newline
-\includegraphics[width=18cm]{pictures/Benutzeroberfläche2.png}
+\subsection{Suche}
+\includegraphics[width=18cm]{pictures/7.Benutzeroberfläche1.png} 
+\subsection{Suchergebnis}
+\includegraphics[width=18cm]{pictures/7.Benutzeroberfläche2.png} \newline \newline
+\subsection{Registrierungs- und Anmeldefenster}
+\includegraphics[width=9cm]{pictures/7.Benutzeroberfläche3.png}
+\includegraphics[width=9cm]{pictures/7.Benutzeroberfläche4.png}
 
 \section{Technische Produktumgebung}
-\includegraphics[width=18cm]{pictures/systemdurchlauf.png} \newline
-Eine Datenbank wird mithilfe von SQLAlchemy in Python erstellt und aufgesetzt. Dies läuft auf einem Server mit xB Speicher, damit die ganzen Daten gespeichert werden können \newline
-Es wird 1/2 Crawler erstellt in Python, die auf dem Server laufen. Diese dienen zur Suche von Preisen, so wie zur Suche der richtigen PDF \newline
-Der Webserver ist jederzeit ansprechbar, damit Benutzer auf unser Tool jederzeit zugreifen können
-OCR wird zum auslesen der PDF benutzt, damit die jeweilige Stückzahl und ID der Einzelteile herausgefunden werden kann \newline
-Angular dient als Frameworkerstellungstool für eine interaktive Front End \newline
-HTML und CSS zur Aufbesserung des Framework \newline
-Python als primäre Programmiersprache, für alle Bereiche, wo programmiert werden soll \newline
-Tex zur gemeinsame Dokumentation \newline
-Git zum einfachen austausch von Fortschritt und jegliche andere Projekt relevante Erzeugnis \newline
+\subsection{Produktvorschau}
+\includegraphics[width=18cm]{pictures/8.TechnischeProduktumgebung.png}
+
+\subsection{Projekt- und Produktumgebungsinformationen}
+Git, zur Versionsverwaltung der Dokumentationen und der Software \newline
+Tex, zum Dokumentieren \newline
+Phython, als Entwicklungssprache für Verwaltung der Daten in DB und Preisvergleich \newline
+SQL-Datenbank, zum Speichern der Datensätze \newline
+Github, zur Projektplanung \newline
+Webserver, zum hosten der Internetseite/Benutzeroberfläche \newline
+VM (Server), auf dem die DB läuft, Webserver und Phythonscript ausgeführt wird \newline
 
 \section{Gliederung in Teilprodukte}
 
-\includegraphics[width=18cm]{pictures/Objektdiagramm.png}
+\includegraphics[width=18cm]{pictures/9.GliederungDerTeilprodukte.png}
+\subsection{Informationen}
+\subsubsection{ShopCrawler}
+Die Klassen, welche das ShopCrawler Interface implementieren, besitzen die Logik einen Bestimmten Shop zu Crawlen. Für jeden berücksichtigten Shop wird eine Klasse benötigt, welche das Interface ShopCrawler implementiert.  Durch die Verwendung des Interfaces ist es möglich von unterschiedlichen Anbieter Webseiten die gecrawlten Ergebnisse in der gleichen Struktur zurückzugeben.
 
-\subsection{Crawler}
-Die Klassen, welche das ShopCrawler Interface implementieren, besitzen die Logik einen Bestimmten Shop zu Crawlen. Für jeden berücksichtigten Shop wird eine Klasse benötigt, welche das Interface ShopCrawler implementiert.  Durch die Verwendung des Interfaces ist es möglich von unterschiedlichen Anbieter Webseiten die gecrawlten Ergebnisse in der gleichen Struktur zurückzugeben. Es ist möglich einen ShopCrawler ein Objekt der Klasse Filter zu übergeben, welcher es ermöglicht, beim Crawlen nach bestimmten Eigenschaften die Daten zu filtern.
-
-\subsection{TeileFilter}
+\subsubsection{TeileFilter}
 Der Teile Filter verfügt über Funktionen, welche auf die gecrawlten Daten angewendet werden und prüft, ob die Daten auf die Filtereigenschaften zutreffen.
 
-\subsection{Anleitungsparser}
-Das Interface Anleitungsparser liefert eine Struktur eines Parsers für Bauanleitungen. Dadurch ist gewährleistet, dass die Klassen, die das Interface implementieren die Geparste Anleitung in der Richtigen Struktur zurückgeben. Die Jeweiligen Klassen der Parser müssen zusätzlich eine OCR-Bibliothek einbinden, welche das auslesen von PDF Dateien ermöglicht. \newline 
+\subsubsection{AnleitungsCrawler}
+Das Interface Shopcrawler liefert eine Struktur eines Parsers für Bauanleitungen. Dadurch ist gewährleistet, dass die Klassen, die das Interface implementieren die geparste Anleitung in der Richtigen Struktur zurückgeben. Die jeweiligen Klassen der Parser müssen zusätzlich eine OCR-Bibliothek einbinden, welche das auslesen von PDF Dateien ermöglicht. 
 \newline 
-\subsection{Anleitungsloader}
-Für das Parsen einer Anleitung muss die Anleitung aus dem Internet heruntergeladen werden, dies Ermöglicht der Anleitungsloader. Mit einem Web-Crawler findet er die PDF-Datei zu einer Angegebenen SetID und lädt diese herunter und stellt sie einer Anleitungsparser Implementierung zur Verfügung. \newline 
-\newline 
-\subsection{Datenzugriffsobjekt}
-Das Datenzugriffsobjekt ermöglicht den Zugriff auf die Datenbank. Es besitzt die die nötigen Funktionen die notwendigen Objekte auf der Datenbank zu persistieren oder auf der Datenbank persistente Daten abzurufen. \newline 
-\newline 
-\subsection{Teilevergleicher}
-Teilevergleicher ist die Zentrale Klasse im System.  Die Klasse besitzt die Funktion eine Suche zu starten und sie bündelt alle anderen Objekte im System. Sie bestimmt den logischen Ablauf der Ausführung der Suche.\newline 
+\subsubsection{Anleitungsparser}
+Für das Parsen einer Anleitung muss die Anleitung aus dem Internet heruntergeladen werden, dies Ermöglicht der Anleitungsloader. Mit einem Web-Crawler findet er die PDF-Datei zu einer Angegebenen SetID und lädt diese herunter und stellt sie einer Anleitungsparser Implementierung zur Verfügung. 
 
-\includegraphics[width=18cm]{pictures/Anleitungsparser_Sequenzdiagramm.png}
+\subsubsection{Datenzugriffsobjekt}
+Das Datenzugriffsobjekt ermöglicht den Zugriff auf die Datenbank. Es besitzt die die nötigen Funktionen die notwendigen Objekte auf der Datenbank zu persistieren oder auf der Datenbank persistente Daten abzurufen. 
+
+\subsubsection{Geschäftslogik}
+Teilevergleicher ist die Zentrale Klasse im System.  Die Klasse besitzt die Funktion eine Suche zu starten und sie bündelt alle anderen Objekte im System. Sie bestimmt den logischen Ablauf der Ausführung der Suche.\newpage 
+\subsection{Prozess: Anleitungen Parsen}
+\includegraphics[width=9cm]{pictures/9.Sequenzdiagramm.png}
+\subsection{Prozess: Anleitungen Crawlen}
+\includegraphics[width=9cm]{pictures/9.Sequenzdiagramm2.png}
+\subsection{Logik: Update der Datenbank}
+\includegraphics[width=9cm]{pictures/9.EinspielenNeuerTeile.png} \newpage 
 
 \section{Globale Testfälle}
-/T010/\newline 
-Set suchen: Der Nutzer gibt in der Suchleiste die Lego-Setnummer 75355 ein. \newline
+/T10/ \newline 
+Set suchen: Der Nutzer gibt in der Suchleiste die Lego-Setnummer 75355 ein. \newline 
+\newline 
+/T20/ \newline 
+Registrieren: Der Nutzer klickt auf „Registrieren“ und registriert sich mit den Daten: \newline 
+-Name: Max Mustermann \newline 
+-E-Mail: mustermann@gmx.de \newline 
+-Passwort: Passwort1! \newline 
+\newline 
+/T30/ \newline 
+Anmelden: Der Nutzer klickt auf „Anmelden“ und meldet sich mit den in /T20/ benanneten Daten an. \newline 
+\newline 
+/T40/ \newline 
+Abmelden: Der Nutzer Max Mustermann klickt auf „Abmelden“ um sich wieder abzumelden. \newline 
+\newline 
+/T50/ \newline 
+Stückliste anzeigen: Der Nutzer gibt die Lego-Setnummer wie in /T10/ ein. Auf der Ergebnisseite klickt der Nutzer auf „Stückliste anzeigen“, um sich die Einzelteile des Sets anzeigen zu lassen. \newline 
+\newline 
+/T60/ \newline 
+Stückliste minimieren: Der Nutzer agiert wie in /T50/ und klickt darauf auf „Minimieren“,, um die Stückliste wieder einzuklappen. \newline 
+\newline 
+/T70/ \newline 
+Historie anzeigen: Der Nutzer Max Mustermann meldet sich wie in /T30/ an. Er klickt daraufhin auf „Historie“, um sich seine persönliche Such-Historie anzeigen zu lassen. \newline 
+\newline 
+/T80/ \newline 
+In der Historie vergangene Suchen erneut durchführen: Der Nutzer Max Mustermann agiert wie in /T70/. Daraufhin klickt er auf die Setnummer 75355 in der Historie (Link), um die Sucher erneut durchzuführen. \newline 
+\newline 
+/T90/ \newline Passwort ändern: Der Nutzer Max Mustermann klickt auf „Mein Profil“ und dann auf „Passwort ändern“. Er ändert sein Passwort mit den Daten: \newline 
+- Altes Passwort: Passwort1! \newline 
+- Neues Passwort: Passwort2! \newline 
+- Neues Passwort (Wiederholen): Passwort2! \newline 
+\newline 
+/T100/ \newline 
+Email-Adresse ändern: Der Nutzer Max Mustermann klickt auf „Mein Profil“ und dann auf „Email-Adresse ändern“. Er gibt die Email-Adresse: mustermann2@gmx.de im Textfeld „Neue Email-Adresse“ ein und drückt auf „Speichern“. \newline 
+\newline 
+/T110/ \newline 
+Nach PDF’s der Legosets suchen: Nach einer festgelegten Dauer sucht der PDF Crawler automatisch auf www.lego.com nach PDF’s von Legosets, die noch nicht in der Datenbank liegen. \newline \newline
 \newline
-/T020/ \newline Historie anzeigen: Der Nutzer klickt auf "Historie" um sich seine persönliche Such-Historie anzeigen zu lassen. \newline
-\newline
-/T030/ \newline Registrieren: Der Nutzer klickt auf "Registrieren" und registriert sich mit den Daten \newline           
-- Name: Max Mustermann \newline
-- E-Mail: mustermann@gmx.de \newline                               
-- Passwort: passwort \newline
-\newline
-/T040/ \newline 
-Anmelden:  Der Nutzer klickt auf "Anmelden" und meldet sich mit den in /T30/ benannten Daten an.\newline
-\newline
-/T050/ \newline 
-Stückliste anzeigen: Der Nutzer lässt sich die Stückliste anzeigen ? \newline
-\newline
-/T060/ \newline
-Kommt aufs Design der Nutzeroberfläche an ?  \newline
-\newline
-/T100/ \newline
-PDF crawlen: Der Nutzer gibt die Set-Nummer 75192 in die Suchleiste ein, welche noch nicht in der Datenbank liegt. Der Web-Crawler sucht die jeweilige PDF Anleitung des Lego Sets. \newline
-\newline
-/T110/ \newline
-PDF auslesen: Nach /T100/ wird das entsprechende PDF-Dokument mittels OCR ausgelesen. \newline
-\newline
-/T120/ \newline
-Einzeilteile in Datenbank speichern: Nach /T110/  werden die Nummern der Einzelteile korrekt in die Datenbank gespeichert. \newline
-\newline
-/T130/ \newline
-Preise crawlen: Nach /T120/ werden die Preise auf den Händlerseiten je nach Set und Einzelteilen abgefragt und gespeichert. \newline
-\newline
-/T140/ \newline
-Preise vergleichen: Nach  /T130/ findet ein Preisvergleich zwischen den Sets und Einzelteilen ab. Dies erfolgt für alle erfassten Händler. \newline
-\newline
-/T150/ \newline
-Darstellung des Ergebnis-Fensters: Nach der Funktion /F100/ wird das nächste Fenster mit den entsprechenden Ergebnissen nach /F110/ - /F140/ angezeigt. \newline
-\newline
-/T160/ \newline
-Benutzer verwalten: Der Admin löscht den Nutzer Max Mustermann aus /T030/. \newline
-\newline
-/T170/ \newline
-Statistiken anzeigen: Der Admin Maxine Mustermann klickt auf die Einstellung "Dashboard" um sich Statistiken zu den Suchanfragen anzeigen zu lassen. \newline
+/T120/ \newline 
+PDF’s der Legosets auslesen: Nachdem ein PDF laut /T110/ gefunden wurde, wird dieses per OCR ausgelesen und gibt die Informationen über die Einzelteile des Sets weiter. \newline 
+\newline 
+/T130/ \newline 
+Ausgelesene PDF-Informationen in Datenbank speichern: Nachdem die Informationen laut /T120/ ausgelesen wurden, werden diese in die Datenbank gespeichert. \newline 
+\newline 
+/T140/ \newline 
+Preise bei Händlern abfragen: Der Nutzer sucht nach dem Lego-Set 13138 (wurde noch nicht gesucht). Der Preis-Crawler bezieht aus den Händlerseiten die jeweiligen Preise der Gesamtsets sowie der Einzelteile des Sets. Diese werden in die Datenbank gespeichert. \newline 
 \end{document}
