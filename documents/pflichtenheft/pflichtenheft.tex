@@ -28,6 +28,7 @@
 				Version 1.6 & 03.05.2023 & Hannes Scherer & Bezogen auf das erste Feedback: Frontend Prototypen angepasst \\ \midrule
 				Version 1.7 & 06.05.2023 & Tim Turowski & Nach Problemen beim mergen im Repository: Pflichtenheft ist eigenständiges Dokument \\ \midrule
 				Version 1.8 & 07.05.2023 & Tim Turowski & Inhalte der Projektmitglieder eingefügt für morgiges Meeting \\ 
+				Version 1.9 & 07.05.2023 & Tim Turowski inhaltliche Änderungen nach Zwischenbesprechung \\ 
             \bottomrule
     \end{longtable}
 
@@ -213,12 +214,7 @@ Beschreibung: Die Benutzeraccount-Daten werden in der Datenbank verschlüsselt u
 
 \section{Produktdaten}
 \subsection{System}
-\includegraphics[width=18cm]{pictures/Architektur_Klassendiagramm.png}
-
-\subsection{Benutzeraccount}
-Benutzername \newline
-Passwort (verschlüsselt) \newline
-List: Suchhistorie \newline
+\includegraphics[width=18cm]{pictures/Datenstrucktur_Klassendiagramm.png}
 
 \section{Produktleistungen}
 Bestandsdatenbank soll aufgebaut werden mit Informationen aus den Anleitunge \newline
@@ -227,7 +223,7 @@ Die verwendete Datenbank muss in der Lage sein große Datenmengen zu speichern u
 Der Crawler soll in der Lage sein schnell Preisdaten bei den Anbietern zu crawlen, außerdem soll ein Algorithmus regelmäßig die neuen Anleitungen erkennen und dem Parser übergeben \newline
 
 \section{Benutzungsoberfläche}
-\includegraphics[width=18cm]{pictures/programmvorschau3.png}
+\includegraphics[width=18cm]{pictures/Datenstrucktur_Klassendiagramm.png}
 
 \section{Technische Produktumgebung}
 \includegraphics[width=18cm]{pictures/systemdurchlauf.png} \newline
@@ -242,6 +238,9 @@ Tex zur gemeinsame Dokumentation \newline
 Git zum einfachen austausch von Fortschritt und jegliche andere Projekt relevante Erzeugnis \newline
 
 \section{Gliederung in Teilprodukte}
+
+\includegraphics[width=18cm]{pictures/Objektdiagramm.png}
+
 \subsection{Crawler}
 Die Klassen, welche das ShopCrawler Interface implementieren, besitzen die Logik einen Bestimmten Shop zu Crawlen. Für jeden berücksichtigten Shop wird eine Klasse benötigt, welche das Interface ShopCrawler implementiert.  Durch die Verwendung des Interfaces ist es möglich von unterschiedlichen Anbieter Webseiten die gecrawlten Ergebnisse in der gleichen Struktur zurückzugeben. Es ist möglich einen ShopCrawler ein Objekt der Klasse Filter zu übergeben, welcher es ermöglicht, beim Crawlen nach bestimmten Eigenschaften die Daten zu filtern.
 
@@ -259,6 +258,8 @@ Das Datenzugriffsobjekt ermöglicht den Zugriff auf die Datenbank. Es besitzt di
 \newline 
 \subsection{Teilevergleicher}
 Teilevergleicher ist die Zentrale Klasse im System.  Die Klasse besitzt die Funktion eine Suche zu starten und sie bündelt alle anderen Objekte im System. Sie bestimmt den logischen Ablauf der Ausführung der Suche.\newline 
+
+\includegraphics[width=18cm]{pictures/Anleitungsparser_Sequenzdiagramm.png}
 
 \section{Globale Testfälle}
 /T010/\newline 
