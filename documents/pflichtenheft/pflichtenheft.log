@@ -1,182 +1,190 @@
-<<<<<<< HEAD
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.12.13)  10 MAY 2023 11:21
-=======
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.4.23)  11 MAY 2023 12:44
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.12.13)  14 MAY 2023 14:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **pflichtenheft.tex
 (./pflichtenheft.tex
-LaTeX2e <2022-11-01> patch level 1
-L3 programming layer <2023-02-22> (../zentraleBausteine.tex
-(/usr/local/texlive/2023/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
-(/usr/local/texlive/2023/texmf-dist/tex/latex/base/size12.clo
-File: size12.clo 2022/07/02 v1.4n Standard LaTeX file (size option)
+LaTeX2e <2021-11-15> patch level 1
+L3 programming layer <2022-02-24> (../zentraleBausteine.tex
+(c:/texlive/2022/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(c:/texlive/2022/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
 )
-\c@part=\count185
-\c@section=\count186
-\c@subsection=\count187
-\c@subsubsection=\count188
-\c@paragraph=\count189
-\c@subparagraph=\count190
-\c@figure=\count191
-\c@table=\count192
-\abovecaptionskip=\skip48
-\belowcaptionskip=\skip49
-\bibindent=\dimen140
+\c@part=\count181
+\c@section=\count182
+\c@subsection=\count183
+\c@subsubsection=\count184
+\c@paragraph=\count185
+\c@subparagraph=\count186
+\c@figure=\count187
+\c@table=\count188
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
 )
-(/usr/local/texlive/2023/texmf-dist/tex/latex/geometry/geometry.sty
+(c:/texlive/2022/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
 
-(/usr/local/texlive/2023/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+(c:/texlive/2022/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks16
 )
-(/usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifvtex.sty
+(c:/texlive/2022/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 
-(/usr/local/texlive/2023/texmf-dist/tex/generic/iftex/iftex.sty
+(c:/texlive/2022/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2022/02/03 v1.0f TeX engine tests
 ))
-\Gm@cnth=\count193
-\Gm@cntv=\count194
-\c@Gm@tempcnt=\count195
-\Gm@bindingoffset=\dimen141
-\Gm@wd@mp=\dimen142
-\Gm@odd@mp=\dimen143
-\Gm@even@mp=\dimen144
-\Gm@layoutwidth=\dimen145
-\Gm@layoutheight=\dimen146
-\Gm@layouthoffset=\dimen147
-\Gm@layoutvoffset=\dimen148
+\Gm@cnth=\count189
+\Gm@cntv=\count190
+\c@Gm@tempcnt=\count191
+\Gm@bindingoffset=\dimen139
+\Gm@wd@mp=\dimen140
+\Gm@odd@mp=\dimen141
+\Gm@even@mp=\dimen142
+\Gm@layoutwidth=\dimen143
+\Gm@layoutheight=\dimen144
+\Gm@layouthoffset=\dimen145
+\Gm@layoutvoffset=\dimen146
 \Gm@dimlist=\toks17
 )
-(/usr/local/texlive/2023/texmf-dist/tex/latex/base/inputenc.sty
+(c:/texlive/2022/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2021/02/14 v1.3d Input encoding file
 \inpenc@prehook=\toks18
 \inpenc@posthook=\toks19
-)
-(/usr/local/texlive/2023/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2023/02/13 3.86 The Babel package
-\babel@savecnt=\count196
-\U@D=\dimen149
+
+
+Package inputenc Warning: inputenc package ignored with utf8 based engines.
+
+) (c:/texlive/2022/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2022/02/26 3.73 The Babel package
+\babel@savecnt=\count192
+\U@D=\dimen147
 \l@unhyphenated=\language87
 
-(/usr/local/texlive/2023/texmf-dist/tex/generic/babel/txtbabel.def)
+(c:/texlive/2022/texmf-dist/tex/generic/babel/xebabel.def
+(c:/texlive/2022/texmf-dist/tex/generic/babel/txtbabel.def))
 \bbl@readstream=\read2
-\bbl@dirlevel=\count197
+\bbl@dirlevel=\count193
 
-(/usr/local/texlive/2023/texmf-dist/tex/generic/babel-german/ngerman.ldf
+(c:/texlive/2022/texmf-dist/tex/generic/babel-german/ngerman.ldf
 Language: ngerman 2021/02/27 v2.13 German support for babel (post-1996 orthogra
 phy)
 
-(/usr/local/texlive/2023/texmf-dist/tex/generic/babel-german/ngermanb.ldf
+(c:/texlive/2022/texmf-dist/tex/generic/babel-german/ngermanb.ldf
 Language: ngermanb 2021/02/27 v2.13 German support for babel (post-1996 orthogr
 aphy)
 Package babel Info: Making " an active character on input line 122.
 )))
-(/usr/local/texlive/2023/texmf-dist/tex/generic/babel/locale/de/babel-ngerman.t
-ex
-Package babel Info: Importing font and identification data for ngerman
-(babel)             from babel-de.ini. Reported on input line 11.
-) (/usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+(c:/texlive/2022/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
-)
-(/usr/local/texlive/2023/texmf-dist/tex/latex/booktabs/booktabs.sty
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 11
+2.
+
+(c:/texlive/2022/texmf-dist/tex/latex/lm/t1lmr.fd
+File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+))
+(c:/texlive/2022/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
-\heavyrulewidth=\dimen150
-\lightrulewidth=\dimen151
-\cmidrulewidth=\dimen152
-\belowrulesep=\dimen153
-\belowbottomsep=\dimen154
-\aboverulesep=\dimen155
-\abovetopsep=\dimen156
-\cmidrulesep=\dimen157
-\cmidrulekern=\dimen158
-\defaultaddspace=\dimen159
-\@cmidla=\count198
-\@cmidlb=\count199
-\@aboverulesep=\dimen160
-\@belowrulesep=\dimen161
-\@thisruleclass=\count266
-\@lastruleclass=\count267
-\@thisrulewidth=\dimen162
+\heavyrulewidth=\dimen148
+\lightrulewidth=\dimen149
+\cmidrulewidth=\dimen150
+\belowrulesep=\dimen151
+\belowbottomsep=\dimen152
+\aboverulesep=\dimen153
+\abovetopsep=\dimen154
+\cmidrulesep=\dimen155
+\cmidrulekern=\dimen156
+\defaultaddspace=\dimen157
+\@cmidla=\count194
+\@cmidlb=\count195
+\@aboverulesep=\dimen158
+\@belowrulesep=\dimen159
+\@thisruleclass=\count196
+\@lastruleclass=\count197
+\@thisrulewidth=\dimen160
 )
-(/usr/local/texlive/2023/texmf-dist/tex/latex/multirow/multirow.sty
+(c:/texlive/2022/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
-\multirow@colwidth=\skip50
-\multirow@cntb=\count268
-\multirow@dima=\skip51
-\bigstrutjot=\dimen163
+\multirow@colwidth=\skip49
+\multirow@cntb=\count198
+\multirow@dima=\skip50
+\bigstrutjot=\dimen161
 )
-(/usr/local/texlive/2023/texmf-dist/tex/latex/graphics/graphicx.sty
+(c:/texlive/2022/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/local/texlive/2023/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+(c:/texlive/2022/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/local/texlive/2023/texmf-dist/tex/latex/graphics/trig.sty
+(c:/texlive/2022/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
 )
-(/usr/local/texlive/2023/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+(c:/texlive/2022/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 107.
+Package graphics Info: Driver file: xetex.def on input line 107.
 
-(/usr/local/texlive/2023/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+(c:/texlive/2022/texmf-dist/tex/latex/graphics-def/xetex.def
+File: xetex.def 2021/03/18 v5.0k Graphics/color driver for xetex
 ))
-\Gin@req@height=\dimen164
-\Gin@req@width=\dimen165
+\Gin@req@height=\dimen162
+\Gin@req@width=\dimen163
 )
-(/usr/local/texlive/2023/texmf-dist/tex/latex/tools/tabularx.sty
+(c:/texlive/2022/texmf-dist/tex/latex/tools/tabularx.sty
 Package: tabularx 2020/01/15 v2.11c `tabularx' package (DPC)
 
-(/usr/local/texlive/2023/texmf-dist/tex/latex/tools/array.sty
-Package: array 2022/09/04 v2.5g Tabular extension package (FMi)
-\col@sep=\dimen166
-\ar@mcellbox=\box51
-\extrarowheight=\dimen167
+(c:/texlive/2022/texmf-dist/tex/latex/tools/array.sty
+Package: array 2021/10/04 v2.5f Tabular extension package (FMi)
+\col@sep=\dimen164
+\ar@mcellbox=\box50
+\extrarowheight=\dimen165
 \NC@list=\toks20
-\extratabsurround=\skip52
-\backup@length=\skip53
-\ar@cellbox=\box52
+\extratabsurround=\skip51
+\backup@length=\skip52
+\ar@cellbox=\box51
 )
-\TX@col@width=\dimen168
-\TX@old@table=\dimen169
-\TX@old@col=\dimen170
-\TX@target=\dimen171
-\TX@delta=\dimen172
-\TX@cols=\count269
+\TX@col@width=\dimen166
+\TX@old@table=\dimen167
+\TX@old@col=\dimen168
+\TX@target=\dimen169
+\TX@delta=\dimen170
+\TX@cols=\count199
 \TX@ftn=\toks21
 )
-(/usr/local/texlive/2023/texmf-dist/tex/latex/tools/longtable.sty
+(c:/texlive/2022/texmf-dist/tex/latex/tools/longtable.sty
 Package: longtable 2021-09-01 v4.17 Multi-page Table package (DPC)
-\LTleft=\skip54
-\LTright=\skip55
-\LTpre=\skip56
-\LTpost=\skip57
-\LTchunksize=\count270
-\LTcapwidth=\dimen173
-\LT@head=\box53
-\LT@firsthead=\box54
-\LT@foot=\box55
-\LT@lastfoot=\box56
-\LT@gbox=\box57
-\LT@cols=\count271
-\LT@rows=\count272
-\c@LT@tables=\count273
-\c@LT@chunks=\count274
+\LTleft=\skip53
+\LTright=\skip54
+\LTpre=\skip55
+\LTpost=\skip56
+\LTchunksize=\count266
+\LTcapwidth=\dimen171
+\LT@head=\box52
+\LT@firsthead=\box53
+\LT@foot=\box54
+\LT@lastfoot=\box55
+\LT@gbox=\box56
+\LT@cols=\count267
+\LT@rows=\count268
+\c@LT@tables=\count269
+\c@LT@chunks=\count270
 \LT@p@ftn=\toks22
 ))
-(/usr/local/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count275
-\l__pdf_internal_box=\box58
-)
-(./pflichtenheft.aux)
+(c:/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
+File: l3backend-xetex.def 2022-02-07 L3 backend support: XeTeX
+
+(|extractbb --version)
+\c__kernel_sys_dvipdfmx_version_int=\count271
+\l__color_backend_stack_int=\count272
+\g__color_backend_stack_int=\count273
+\g__graphics_track_int=\count274
+\l__pdf_internal_box=\box57
+\g__pdf_backend_object_int=\count275
+\g__pdf_backend_annotation_int=\count276
+\g__pdf_backend_link_int=\count277
+) (./pflichtenheft.aux)
 \openout1 = `pflichtenheft.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 3.
@@ -188,6 +196,14 @@ LaTeX Font Info:    ... okay on input line 3.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 3.
 LaTeX Font Info:    ... okay on input line 3.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 3.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 3
+.
+
+(c:/texlive/2022/texmf-dist/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 3.
 LaTeX Font Info:    ... okay on input line 3.
 LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 3.
 LaTeX Font Info:    ... okay on input line 3.
@@ -195,9 +211,9 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 3.
 LaTeX Font Info:    ... okay on input line 3.
 
 *geometry* driver: auto-detecting
-*geometry* detected driver: pdftex
+*geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
-* driver: pdftex
+* driver: xetex
 * paper: a4paper
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
@@ -228,60 +244,17 @@ LaTeX Font Info:    ... okay on input line 3.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(/usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count276
-\scratchdimen=\dimen174
-\scratchbox=\box59
-\nofMPsegments=\count277
-\nofMParguments=\count278
-\everyMPshowfont=\toks23
-\MPscratchCnt=\count279
-\MPscratchDim=\dimen175
-\MPnumerator=\count280
-\makeMPintoPDFobject=\count281
-\everyMPtoPDFconversion=\toks24
-) (/usr/local/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
-Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-85.
-
-(/usr/local/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
-e
-))
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <14.4> on input line 5.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 5.
-<pictures/LogoRiesig.png, id=1, 597.432pt x 421.0932pt>
-File: pictures/LogoRiesig.png Graphic file (type png)
-<use pictures/LogoRiesig.png>
-Package pdftex.def Info: pictures/LogoRiesig.png  used on input line 7.
-(pdftex.def)             Requested size: 512.1496pt x 361.01508pt.
-
+File: pictures/LogoRiesig.png Graphic file (type bmp)
+<pictures/LogoRiesig.png>
 [1
 
-{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
-al/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc} <./picture
-s/LogoRiesig.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 31--32
-[]|\T1/cmr/m/n/12 Tim Tu-row-ski
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 31--32
-\T1/cmr/m/n/12 in-halt-li-che Än-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 31--32
-\T1/cmr/m/n/12 de-run-gen nach
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 31--32
-\T1/cmr/m/n/12 Zwi-schen-be-spre-
+]
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+[]|\T1/lmr/m/n/12 Sequenzdiagramm, Zu-stands-dia-gramm und
  []
 
 [2] (./pflichtenheft.toc
@@ -296,472 +269,245 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 \openout3 = `pflichtenheft.toc'.
 
  [3] [4]
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 90--92
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 91--93
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+Underfull \hbox (badness 10000) in paragraph at lines 92--94
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 97--167
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 98--168
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+Underfull \hbox (badness 10000) in paragraph at lines 99--169
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 97--167
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 98--168
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+Underfull \hbox (badness 10000) in paragraph at lines 99--169
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 97--167
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 98--168
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+Underfull \hbox (badness 10000) in paragraph at lines 99--169
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 97--167
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 98--168
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+Underfull \hbox (badness 10000) in paragraph at lines 99--169
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 97--167
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 98--168
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+Underfull \hbox (badness 10000) in paragraph at lines 99--169
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 97--167
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 98--168
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+Underfull \hbox (badness 10000) in paragraph at lines 99--169
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 97--167
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 98--168
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+Underfull \hbox (badness 10000) in paragraph at lines 99--169
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 97--167
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 98--168
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+Underfull \hbox (badness 10000) in paragraph at lines 99--169
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 97--167
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 98--168
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+Underfull \hbox (badness 10000) in paragraph at lines 99--169
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 97--167
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 98--168
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+Underfull \hbox (badness 10000) in paragraph at lines 99--169
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 97--167
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 98--168
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+Underfull \hbox (badness 10000) in paragraph at lines 99--169
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 97--167
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 98--168
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+Underfull \hbox (badness 10000) in paragraph at lines 99--169
 
  []
 
 [5] [6]
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 170--213
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 171--214
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+Underfull \hbox (badness 10000) in paragraph at lines 172--215
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 170--213
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 171--214
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+Underfull \hbox (badness 10000) in paragraph at lines 172--215
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 170--213
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 171--214
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+Underfull \hbox (badness 10000) in paragraph at lines 172--215
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 170--213
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 171--214
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+Underfull \hbox (badness 10000) in paragraph at lines 172--215
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 170--213
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 171--214
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+Underfull \hbox (badness 10000) in paragraph at lines 172--215
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 170--213
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 171--214
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+Underfull \hbox (badness 10000) in paragraph at lines 172--215
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 170--213
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 171--214
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+Underfull \hbox (badness 10000) in paragraph at lines 172--215
 
  []
 
 [7]
-<<<<<<< HEAD
-File: pictures/Architektur_Klassendiagramm.png Graphic file (type bmp)
-<pictures/Architektur_Klassendiagramm.png>
+File: pictures/Datenstrucktur_Klassendiagramm.png Graphic file (type bmp)
+<pictures/Datenstrucktur_Klassendiagramm.png>
  [8]
-Underfull \hbox (badness 10000) in paragraph at lines 219--222
-
- []
+Overfull \vbox (11.088pt too high) has occurred while \output is active []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 224--228
-
- []
-
-File: pictures/programmvorschau3.png Graphic file (type bmp)
-<pictures/programmvorschau3.png>
 [9]
+Underfull \hbox (badness 10000) in paragraph at lines 221--225
+
+ []
+
+File: pictures/Datenstrucktur_Klassendiagramm.png Graphic file (type bmp)
+<pictures/Datenstrucktur_Klassendiagramm.png>
+[10]
 File: pictures/systemdurchlauf.png Graphic file (type bmp)
 <pictures/systemdurchlauf.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 233--243
-
- []
-
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 252--254
-=======
-<pictures/Datenstrucktur_Klassendiagramm.png, id=34, 446.8695pt x 601.0455pt>
-File: pictures/Datenstrucktur_Klassendiagramm.png Graphic file (type png)
-<use pictures/Datenstrucktur_Klassendiagramm.png>
-Package pdftex.def Info: pictures/Datenstrucktur_Klassendiagramm.png  used on i
-nput line 217.
-(pdftex.def)             Requested size: 512.1496pt x 688.93166pt.
- [8]
-Overfull \vbox (11.12367pt too high) has occurred while \output is active []
-
-
-[9 <./pictures/Datenstrucktur_Klassendiagramm.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 220--224
-
- []
-
-File: pictures/Datenstrucktur_Klassendiagramm.png Graphic file (type png)
-<use pictures/Datenstrucktur_Klassendiagramm.png>
-Package pdftex.def Info: pictures/Datenstrucktur_Klassendiagramm.png  used on i
-nput line 226.
-(pdftex.def)             Requested size: 512.1496pt x 688.93166pt.
-[10]
-<pictures/systemdurchlauf.png, id=45, 797.98125pt x 474.27188pt>
-File: pictures/systemdurchlauf.png Graphic file (type png)
-<use pictures/systemdurchlauf.png>
-Package pdftex.def Info: pictures/systemdurchlauf.png  used on input line 229.
-(pdftex.def)             Requested size: 512.1496pt x 304.40138pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 229--239
+Underfull \hbox (badness 10000) in paragraph at lines 230--240
 
  []
 
 [11]
-<pictures/Objektdiagramm.png, id=49, 695.59875pt x 425.79076pt>
-File: pictures/Objektdiagramm.png Graphic file (type png)
-<use pictures/Objektdiagramm.png>
-Package pdftex.def Info: pictures/Objektdiagramm.png  used on input line 242.
-(pdftex.def)             Requested size: 512.1496pt x 313.50795pt.
- [12 <./pictures/systemdurchlauf.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 251--253
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
-
- []
-
-
-<<<<<<< HEAD
+File: pictures/Objektdiagramm.png Graphic file (type bmp)
+<pictures/Objektdiagramm.png>
+ [12]
 Underfull \hbox (badness 10000) in paragraph at lines 252--254
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 251--253
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
 
  []
 
 
-<<<<<<< HEAD
+Underfull \hbox (badness 10000) in paragraph at lines 252--254
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 255--257
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 254--256
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
 
  []
 
 
-<<<<<<< HEAD
 Underfull \hbox (badness 10000) in paragraph at lines 255--257
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 254--256
 
  []
 
-[13 <./pictures/Objektdiagramm.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 257--259
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
-
- []
-
-
-<<<<<<< HEAD
+[13]
 Underfull \hbox (badness 10000) in paragraph at lines 258--260
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 257--259
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
 
  []
 
 
-<<<<<<< HEAD
 Underfull \hbox (badness 10000) in paragraph at lines 258--260
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 260--261
-
- []
-
-<pictures/Anleitungsparser_Sequenzdiagramm.png, id=59, 460.119pt x 408.3255pt>
-File: pictures/Anleitungsparser_Sequenzdiagramm.png Graphic file (type png)
-<use pictures/Anleitungsparser_Sequenzdiagramm.png>
-Package pdftex.def Info: pictures/Anleitungsparser_Sequenzdiagramm.png  used on
- input line 262.
-(pdftex.def)             Requested size: 512.1496pt x 454.54884pt.
-[14]
-Underfull \hbox (badness 10000) in paragraph at lines 265--307
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
 
  []
 
 
-<<<<<<< HEAD
 Underfull \hbox (badness 10000) in paragraph at lines 261--262
 
  []
 
-[11]
-Underfull \hbox (badness 10000) in paragraph at lines 264--306
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 265--307
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+File: pictures/Anleitungsparser_Sequenzdiagramm.png Graphic file (type bmp)
+<pictures/Anleitungsparser_Sequenzdiagramm.png>
+[14]
+Underfull \hbox (badness 10000) in paragraph at lines 266--308
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 264--306
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 265--307
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+Underfull \hbox (badness 10000) in paragraph at lines 266--308
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 264--306
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 265--307
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+Underfull \hbox (badness 10000) in paragraph at lines 266--308
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 264--306
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 265--307
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+Underfull \hbox (badness 10000) in paragraph at lines 266--308
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 264--306
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 265--307
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+Underfull \hbox (badness 10000) in paragraph at lines 266--308
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 264--306
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 265--307
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+Underfull \hbox (badness 10000) in paragraph at lines 266--308
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 264--306
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 265--307
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+Underfull \hbox (badness 10000) in paragraph at lines 266--308
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 264--306
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 265--307
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+Underfull \hbox (badness 10000) in paragraph at lines 266--308
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 264--306
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 265--307
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+Underfull \hbox (badness 10000) in paragraph at lines 266--308
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 264--306
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 265--307
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+Underfull \hbox (badness 10000) in paragraph at lines 266--308
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 264--306
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 265--307
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+Underfull \hbox (badness 10000) in paragraph at lines 266--308
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 264--306
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 265--307
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+Underfull \hbox (badness 10000) in paragraph at lines 266--308
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 264--306
+Underfull \hbox (badness 10000) in paragraph at lines 266--308
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 264--306
+Underfull \hbox (badness 10000) in paragraph at lines 266--308
 
  []
 
-[12] [13] (./pflichtenheft.aux) ) 
-=======
-Underfull \hbox (badness 10000) in paragraph at lines 265--307
-
- []
-
-[15 <./pictures/Anleitungsparser_Sequenzdiagramm.png>] [16]
-(./pflichtenheft.aux) ) 
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+[15] [16] (./pflichtenheft.aux) ) 
 Here is how much of TeX's memory you used:
- 3618 strings out of 476025
- 59920 string characters out of 5790017
- 1864388 words of memory out of 5000000
- 24034 multiletter control sequences out of 15000+600000
- 521336 words of font info for 51 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 62i,6n,65p,591b,238s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2023/texmf-dist/fonts/type1/public/c
-m-super/sfbx1200.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-
-super/sfbx1440.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-su
-per/sfbx1728.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-supe
-r/sfrm1200.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/
-sfrm1440.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sf
-rm2074.pfb>
-Output written on pflichtenheft.pdf (16 pages, 447029 bytes).
-PDF statistics:
- 98 PDF objects out of 1000 (max. 8388607)
- 57 compressed objects within 1 object stream
- 0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 3256 strings out of 476179
+ 54536 string characters out of 5813071
+ 377721 words of memory out of 5000000
+ 23983 multiletter control sequences out of 15000+600000
+ 493938 words of font info for 48 fonts, out of 8000000 for 9000
+ 1348 hyphenation exceptions out of 8191
+ 60i,6n,65p,583b,242s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-<<<<<<< HEAD
-Output written on pflichtenheft.pdf (13 pages).
-=======
->>>>>>> f354967b900ac224021f21b61b3a55008f6fec6a
+Output written on pflichtenheft.pdf (16 pages).
