@@ -15,7 +15,8 @@
 				Termin 3 & 27.04.2022 & 12:00 - 15:00 & 3 & Besprechung zum Pflichtenheft \\ \midrule
 				Termin 4 & 02.05.2022 & 10:00 - 11:30 & 1,5 & Präsentation 1. Entwurf Pflichtenheft \\ \midrule
 				Termin 5 & 04.05.2022 & 11:00 - 12:00 & 1 & Zwischenstandbesprechung \\ \midrule
-				Termin 6 & 08.05.2022 & 14:30 - 17:00 & 2,5 & Weekly\\
+				Termin 6 & 08.05.2022 & 14:30 - 17:00 & 2,5 & Weekly\\ \midrule
+				Termin 7 & 11.05.2022 & 12:30 - 13:30 & 1,5 & Zwischenbesprechung\\
             \bottomrule
     \end{longtable}
 \end{flushleft}
@@ -34,7 +35,12 @@
         %% Tabelleninhalte
             	Tim Turowski & 25.05.2022 - 31.05.2022 & Urlaub \\ \midrule
 				Team & 26.06.2022 - 07.07.2022 & Klausurenphase \\ \midrule
+<<<<<<< HEAD
 				Tim Turowski & 17.07.2022 - 24.07.2022 & Urlaub \\ 
+=======
+				Tim Turowski & 17.07.2022 - 24.07.2022 & Urlaub \\ \midrule
+				Tim Sibum & 17.07.2022 - 24.07.2022 & Urlaub \\
+>>>>>>> 6ee1cfc8eed1f9ce6cde809ee7ff2f5f31637abe
             \bottomrule
     \end{longtable}
 \end{flushleft}
@@ -167,3 +173,53 @@ Aus der heutigen Besprechung haben sich folgende Arbeitspakete ergeben, die bis 
 	\end{longtable}
 \end{flushleft}
 In naher Zukunft müssen wir unsere Stundenkontigente außerdem noch auf die 25 Wochen aufteilen. 
+
+\subsection{Protokoll zu Termin 7}
+Protokollführer: Tim Turowski \newline
+Zusätzliche Teilnehmer: - \newline
+Abwesend: - \newline \newline
+Wir haben uns das Pflichtenheft nochmal genauer angeguckt und besprochen wie weit jeder bei seinen Aufgaben ist, die sich aus dem letzten Termin ergeben haben. \newline
+Wir haben eine bessere Strukturierung für die Produktfunktionen festgelegt \newline
+Außerdem haben wir besprochen in wie fern noch Bilder eingefügt werden müssen, die eigentlich schon im Repository liegen \newline
+Wir haben das weitere Vorgehen besprochen und festgelegt, dass wir die weitere Projektplanung mit Github machen wollen \newline
+Zum besseren Entwickeln im Team möchten wir mit einem Kanbanboard nutzen \newline
+
+\subsection{Protokoll zu Termin 8}
+Protokollführer: Dennis Behrendt \newline
+Zusätzliche Teilnehmer: Kolja Dunkel, Prof. Henning Ahlf \newline
+Abwesend: Hannes Scherer \newline \newline
+Wir hatten unser Meeting mit Prof. Ahlf und Herr Dunkel. Das Pflichtenheft wurde angenommen, es kann also mit den Vorbereitungen für die Implementationsphase begonnen werden. \newline
+Einige kleine Punkte im Plichtenheft müssen jedoch noch am Plichtenheft verbessert und Prof. Ahlf geschickt werden: \newline
+  - "Eigene PDF's laden" zu den Wunschkriterien \newline
+  - Administratorfunktionen zu den Produktfuntionen hinzufügen \newline
+  - Use-Case-Diagramm zu den Administratorfunktionen einfügen \newline
+  - Set und Einzelteile an die Anbieter binden (Produktdaten) \newline
+  - 32GB Arbeitsspeicher zu viel, Server Linux-basiert wählen (_Ubuntu CentOS), 1TB zuviel \newline
+  - Händler, die wir auswählen, im notieren \newline
+
+Daraufhin hatten wir ein einstündiges Discord-Meeting, indem wir unser künftiges Vorgehen besprochen haben: \newline
+  - Abstraktion der Aufgabenbereiche \newline
+  - Erstellen eines Projektboards \newline
+  - Aufteilung der Aufwandszeit der Teilaufgaben zu der Gesamtzeit des Projekts \newline
+Daraus haben sich ebenfalls folgende Rechearbeiten ergeben, die bis zur nächsten Woche noch abgearbeitet sein müssen:
+\begin{flushleft}
+	\begin{longtable}{p{3cm}p{2cm}p{2cm}}
+		%% Tabellenkopf
+		\toprule
+		\textbf{Arbeitspaket} & \textbf{Thema} & \textbf{Bearbeiter}\\
+		\midrule\endfirsthead
+		\toprule
+		\textbf{Arbeitspaket} & \textbf{Thema} & \textbf{Bearbeiter}\\
+\midrule\endfirsthead
+		%% Tabelleninhalte
+		AP1 & Crawler &  Tim S, Sven\\ \midrule
+		AP2& Parser PDF &  Dennis, Caner\\ \midrule
+		AP3 & Benutzeroberfläche & Tim T, Hannes\\ \midrule
+		AP4 & Datenbanken & Caner, Tim S\\ \midrule
+		AP5 & Python und Geschäftslogik &  Alle\\ \midrule
+		AP6 & Accountverwaltung &  Sven, Tim S, Dennis\\ \midrule
+		AP7 & Webserver & Hannes, Tim T\\ \midrule
+		AP8 & Kanban und Sorum & Tim T, Hannes\\
+		\bottomrule
+	\end{longtable}
+\end{flushleft}
