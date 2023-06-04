@@ -6,7 +6,7 @@ from pdfminer.high_level import extract_pages, extract_text
 #        print(element)
 
 text = extract_text("/Users/timturowski/Desktop/Bauanleitungen/10323_DE_BI_Build_Translate.pdf")
-#print(text)
+#print(text) für Textausgabe
 
 class Bauteil:
     def __init__(self, anzahl, einzelteil_id):
