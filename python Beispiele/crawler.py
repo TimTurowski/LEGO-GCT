@@ -3,7 +3,7 @@ from pathlib import Path
 import scrapy
 from scrapy.crawler import CrawlerProcess
 
-class QuotesSpider(scrapy.Spider):
+class LegoShopSpider(scrapy.Spider):
     name = "quotes"
 
     def __init__(self, shop_url, element_id, result):
@@ -34,7 +34,7 @@ process = CrawlerProcess(
     }
 )
 results = set()
-process.crawl(QuotesSpider, shop_url="https://www.lego.com/de-de/pick-and-build/pick-a-brick", element_id="6416527", result=results)
+process.crawl(LegoShopSpider, shop_url="https://www.lego.com/de-de/pick-and-build/pick-a-brick", element_id="6416527", result=results)
 process.start()
 
 for i in results:
