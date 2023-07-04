@@ -1,0 +1,20 @@
+Bennenung von python files:
+Datei name in lower case und Leerzeichen sind "_"
+Bsp.: lego_crawler.py
+
+Test files fangen immer mit "test" an
+Bsp.: test_lego_crawler.py
+
+Bennenung von Klassen:
+Klassen fangen immer mit einen Großbuchstaben an anstatt von Leerzeichen
+wird das nächste Wort beginnend mit einen Großbuchstaben angefügt
+Bsp.: LegoCrawler
+
+private und protected Variablen und Funktionen:
+private Methoden oder Variablen müssen mit "__" beginnen
+Bsp.: __legostein
+
+protected Methoden oder Variablen müssen mit "_" beginnen
+Bsp.: _legostein
+
+
