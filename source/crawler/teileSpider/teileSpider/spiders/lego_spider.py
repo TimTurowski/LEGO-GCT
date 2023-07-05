@@ -1,10 +1,18 @@
 import scrapy
+from scrapy.crawler import CrawlerProcess
 
 
-class LegoSpiderSpider(scrapy.Spider):
+class LegoSpider(scrapy.Spider):
     name = "lego_spider"
-    allowed_domains = ["Lego.com"]
-    start_urls = ["http://Lego.com/"]
+    start_urls = ["https://www.lego.com/de-de/pick-and-build/pick-a-brick"]
 
     def parse(self, response):
-        pass
+        element = response.xpath("/html/body/div[1]/div/main/div[1]/div[6]/div[3]/div/div/ul/li[1]/div/div[1]/span/span/text()").get()
+        print(element)
+
+
+
+process = CrawlerProcess()
+process.crawl(LegoSpider)
+process.start()
+
