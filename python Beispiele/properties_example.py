@@ -1,5 +1,6 @@
 from datetime import date
 
+"""Beispiel für Klasse mit Properties"""
 class Employee:
     def __init__(self, name, birth_date):
         self.name = name

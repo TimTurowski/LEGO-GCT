@@ -25,17 +25,11 @@ class LegoSpider(scrapy.Spider):
 
     """parset die jeweiligen HTML seiten und filtert die Relevanten HTML Tags, welche im Result benötigt werden"""
     def parse(self, response):
-        element = response\
+        element_id = response.xpath("/html/body/div[1]/div/main/div[1]/div[6]/div[2]/div[1]/div/form/input").attrib["value"]
+        preis = response\
             .xpath("/html/body/div[1]/div/main/div[1]/div[6]/div[3]/div/div/ul/li[1]/div/div[1]/span/span/text()").get()
-        self.result.add(element)
+        name = response\
+            .xpath("/html/body/div[1]/div/main/div[1]/div[6]/div[3]/div/div/ul/li/div/button/span/text()").get()
+        self.result.append((preis, name))
 
-
-
-process = CrawlerProcess()
-results = set()
-process.crawl(LegoSpider, einzelteil_ids=["300526", "6435930"], result=results)
-process.start()
-
-for i in results:
-    print(i)
 

@@ -33,9 +33,3 @@ process = CrawlerProcess(
         },
     }
 )
-results = set()
-process.crawl(LegoShopSpider, shop_url="https://www.lego.com/de-de/pick-and-build/pick-a-brick", element_id="300526", result=results)
-process.start()
-
-for i in results:
-    print(i)

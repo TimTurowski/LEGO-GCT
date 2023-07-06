@@ -30,6 +30,12 @@ class Einzelteil:
     def name(self, new_name):
         self.__name = new_name
 
+    def __eq__(self, other):
+        if isinstance(other, self.__class__):
+            return self.__element_id == other.__element_id
+        else:
+            return False
+
 
 
 
