@@ -12,7 +12,7 @@ class LegoSpider(scrapy.Spider):
 
 
 
-process = CrawlerProcess()
-process.crawl(LegoSpider)
-process.start()
+# process = CrawlerProcess()
+# process.crawl(LegoSpider)
+# process.start()
 
