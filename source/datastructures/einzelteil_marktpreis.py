@@ -55,3 +55,11 @@ class EinzelTeilMarktpreis:
     @bestand.setter
     def bestand(self, new_bestand):
         self.__bestand = new_bestand
+
+    def __eq__(self, other):
+        if isinstance(other, self.__class__):
+            return self.__preis == other.__preis and \
+                self.__einzelteil == other.__einzelteil and \
+                self.__url == other.__url
+        else:
+            return False

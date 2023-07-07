@@ -10,7 +10,7 @@ class CrawlResult:
         self.__failed_lego_teile = failed_lego_teile
         self.__success_rate = success_rate
         self.__crawl_duration = crawl_duration
-        self.__crawl_datetime = datetime.datetime.now()
+        # self.__crawl_datetime = datetime.datetime.now()
 
     """gibt Objekt zurück, welches zu den Legoteilen den gecrawlten Preis verwaltet"""
 
