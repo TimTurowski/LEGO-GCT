@@ -6,7 +6,7 @@ from scrapy.crawler import CrawlerProcess
 class LegoSpider(scrapy.Spider):
     name = "lego_spider"
     custom_settings = {
-        "LOG_ENABLED": False,
+        "LOG_ENABLED": True,
     }
 
     """Spider wird mit den elementId der zu crawlenden Einzelteiele initiert. 

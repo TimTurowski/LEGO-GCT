@@ -13,6 +13,8 @@ class LegoCrawler(Crawler):
     def __init__(self):
         pass
 
+
+
     """startet eine Spider, welche zu einer Element Id den Preis vom Offiziellen Lego Shop abfragt"""
     def crawl_preis(self, legoteile):
 
