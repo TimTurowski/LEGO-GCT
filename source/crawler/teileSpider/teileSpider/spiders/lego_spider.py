@@ -37,7 +37,7 @@ class LegoSpider(scrapy.Spider):
             .xpath("/html/body/div[1]/div/main/div[1]/div[6]/div[3]/div/div/ul/li[1]/div/div[1]/span/span/text()").get()
         name = response\
             .xpath("/html/body/div[1]/div/main/div[1]/div[6]/div[3]/div/div/ul/li/div/button/span/text()").get()
-
+        print(name, preis)
         self.result.append((self.__legoteile[self.__parse_counter], preis, name, self.search_urls[self.__parse_counter]))
 
         self.__parse_counter = self.__parse_counter + 1
