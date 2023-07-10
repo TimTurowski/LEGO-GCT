@@ -25,11 +25,15 @@ class LegoCrawler(Crawler):
         process.start()
 
         einzelteil_markrpreise = []
+        failed_einzelteile = []
         for i in results:
             """Resultaufbau:(0:einzelteil, 1:preis, 2:name, 3:url)"""
-            einzelteil_markrpreise.append(EinzelTeilMarktpreis(i[0], preis_zu_float(i[1]), datetime.datetime.now(),i[3]))
+            if i[1] == None:
+                failed_einzelteile.append(i[0])
+            else:
+                einzelteil_markrpreise.append(EinzelTeilMarktpreis(i[0], preis_zu_float(i[1]), datetime.datetime.now(),i[3]))
 
-        crawl_result = CrawlResult(einzelteil_markrpreise,[],1,1,)
+        crawl_result = CrawlResult(einzelteil_markrpreise,failed_einzelteile,1,1,)
         return crawl_result
 
 

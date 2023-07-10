@@ -35,7 +35,8 @@ class Einzelteil:
             return self.__element_id == other.__element_id
         else:
             return False
-
+    def __str__(self):
+        return "ElementId: " + self.__element_id + " Name: " +self.__name
 
 
 

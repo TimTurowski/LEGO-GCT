@@ -31,15 +31,19 @@ class LegoSpider(scrapy.Spider):
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)
 
-    """parset die jeweiligen HTML seiten und filtert die Relevanten HTML Tags, welche im Result benötigt werden"""
+    """parst die jeweiligen HTML seiten und filtert die Relevanten HTML Tags, welche im Result benötigt werden"""
     def parse(self, response):
-        preis = response\
-            .xpath("/html/body/div[1]/div/main/div[1]/div[6]/div[3]/div/div/ul/li[1]/div/div[1]/span/span/text()").get()
-        name = response\
-            .xpath("/html/body/div[1]/div/main/div[1]/div[6]/div[3]/div/div/ul/li/div/button/span/text()").get()
+        preis_xpath = "/html/body/div[1]/div/main/div[1]/div[6]/div[3]/div/div/ul/li[1]/div/div[1]/span/span/text()"
+        name_xpath = "/html/body/div[1]/div/main/div[1]/div[6]/div[3]/div/div/ul/li/div/button/span/text()"
 
-        print(name, preis)
-        self.result.append((Einzelteil(element_id_von_url(response.request.url), name), preis, name, response.request.url))
+
+        preis = response.xpath(preis_xpath).get(default=None)
+        name = response.xpath(name_xpath).get(default=None)
+
+        if preis == name == None:
+            self.result.append((Einzelteil(element_id_von_url(response.request.url)), None, None, None))
+        else:
+            self.result.append((Einzelteil(element_id_von_url(response.request.url), name), preis, name, response.request.url))
 
 
 

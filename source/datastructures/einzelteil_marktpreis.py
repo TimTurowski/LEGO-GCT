@@ -9,7 +9,7 @@ class EinzelTeilMarktpreis:
     - Objektrelationales Modell erstellen
     - umgang mit Bestand diskutieren
     """
-    def __init__(self, einzelteil, preis, zeitpunkt, url, bestand = None):
+    def __init__(self, einzelteil, preis, zeitpunkt, url, bestand=None):
         self.__einzelteil = einzelteil
         self.__preis = preis
         self.__zeitpunkt = zeitpunkt
@@ -63,3 +63,5 @@ class EinzelTeilMarktpreis:
                 self.__url == other.__url
         else:
             return False
+    def __str__(self):
+        return str(self.__einzelteil) + "Preis: "+ str(self.__preis)+"€" + " Zeitpunkt: " + str(self.__zeitpunkt) + " Url: " + self.__url

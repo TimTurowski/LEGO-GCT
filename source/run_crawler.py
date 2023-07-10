@@ -8,13 +8,12 @@ def execute_crawling(einzelteile):
     crawler = LegoCrawler()
     result = crawler.crawl_preis(einzelteile)
 
-    for i in result.get_lego_teile():
-        print(i.einzelteil.element_id, i.einzelteil.name, i.preis, i.url)
+    print(result)
 
 """ohne main ist Multiprozessing nicht möglich"""
 if __name__ == '__main__':
     """erstellt Prozess in welchem der Crawl vorgang gestartet wird dies ermöglicht mehrere Crawl vorgänge"""
-    p = Process(target=execute_crawling, args=([Einzelteil("6438899"), Einzelteil("6359941")],))
+    p = Process(target=execute_crawling, args=([Einzelteil("6438898"), Einzelteil("6438899")],))
     p.start()
     p.join()
 
