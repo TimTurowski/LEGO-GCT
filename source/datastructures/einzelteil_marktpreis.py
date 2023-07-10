@@ -1,14 +1,17 @@
-"""Die Klasse EinzelTeilMarktpreis repräsentiert ein Objekt, welches zu einem Einzelteil den jeweiligen Preis verwaltet
-zudem wird der Zeitpunkt gespeiichert wann der Preis Gecrawlt wurde. Desweiteren wird auch die Url gespeichert wo der
+"""Die Klasse EinzelTeilMarktpreis repräsentiert ein Objekt, welches zu einem Einzelteil den jeweiligen Preis verwaltet,
+zudem, wird der Zeitpunkt gespeichert, wann der Preis gecrawlt wurde. Des Weiteren wird auch die Url gespeichert, wo der
 Preis gecrawlt wurde(für spätere Updates)"""
+
+
 class EinzelTeilMarktpreis:
-    """Bestand ist standard mässig auf None, da die Meisten Shops keine Bestands angabe machen"""
+    """Bestand ist standard mässig auf None, da die meisten Shops keine Angaben über den Bestand machen"""
 
     """
     TODO 
     - Objektrelationales Modell erstellen
     - umgang mit Bestand diskutieren
     """
+
     def __init__(self, einzelteil, preis, zeitpunkt, url, bestand=None):
         self.__einzelteil = einzelteil
         self.__preis = preis
@@ -31,6 +34,8 @@ class EinzelTeilMarktpreis:
     @preis.setter
     def preis(self, new_preis):
         self.__preis = new_preis
+
+    """Zeitpunkt gibt an wann der Preis gecrawlt wurde"""
 
     @property
     def zeitpunkt(self):
@@ -56,6 +61,8 @@ class EinzelTeilMarktpreis:
     def bestand(self, new_bestand):
         self.__bestand = new_bestand
 
+    """Equals ignoriert momentan den Zeitpunkt ist in diesen Fall sinnvoll"""
+
     def __eq__(self, other):
         if isinstance(other, self.__class__):
             return self.__preis == other.__preis and \
@@ -63,5 +70,9 @@ class EinzelTeilMarktpreis:
                 self.__url == other.__url
         else:
             return False
+
+    """gibt Textuelle Darstellung von einzelteil Marktpreis"""
+
     def __str__(self):
-        return str(self.__einzelteil) + "Preis: "+ str(self.__preis)+"€" + " Zeitpunkt: " + str(self.__zeitpunkt) + " Url: " + self.__url
+        return str(self.__einzelteil) + " Preis: " + str(self.__preis) + "€" + " Zeitpunkt: " + str(
+            self.__zeitpunkt) + " Url: " + self.__url

@@ -33,7 +33,7 @@ class LegoCrawler(Crawler):
             else:
                 einzelteil_markrpreise.append(EinzelTeilMarktpreis(i[0], preis_zu_float(i[1]), datetime.datetime.now(),i[3]))
 
-        crawl_result = CrawlResult(einzelteil_markrpreise,failed_einzelteile,1,1,)
+        crawl_result = CrawlResult(einzelteil_markrpreise,failed_einzelteile,1)
         return crawl_result
 
 
