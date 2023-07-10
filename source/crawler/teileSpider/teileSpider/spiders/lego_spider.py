@@ -1,12 +1,13 @@
 import scrapy
-from scrapy.crawler import CrawlerProcess
 
+from source.datastructures.einzelteil import Einzelteil
+from source.utility import element_id_von_url
 """Die Klasse Lego Spider ist eine Scrapy Spider, welcher die einzelteilpreise Crawlen kann"""
 
 class LegoSpider(scrapy.Spider):
     name = "lego_spider"
     custom_settings = {
-        "LOG_ENABLED": True,
+        "LOG_ENABLED": False,
     }
 
     """Spider wird mit den elementId der zu crawlenden Einzelteiele initiert. 
@@ -22,7 +23,6 @@ class LegoSpider(scrapy.Spider):
         for i in element_ids:
             self.search_urls.append(shop_url + "?query=" + i)
         self.result = result
-        self.__parse_counter = 0
         self.__legoteile = legoteile
 
     """die generierten search_urls werden als zu crawlende Urls übergeben und der Crawl prozess wird gestartet"""
@@ -37,9 +37,9 @@ class LegoSpider(scrapy.Spider):
             .xpath("/html/body/div[1]/div/main/div[1]/div[6]/div[3]/div/div/ul/li[1]/div/div[1]/span/span/text()").get()
         name = response\
             .xpath("/html/body/div[1]/div/main/div[1]/div[6]/div[3]/div/div/ul/li/div/button/span/text()").get()
-        print(name, preis)
-        self.result.append((self.__legoteile[self.__parse_counter], preis, name, self.search_urls[self.__parse_counter]))
 
-        self.__parse_counter = self.__parse_counter + 1
+        print(name, preis)
+        self.result.append((Einzelteil(element_id_von_url(response.request.url), name), preis, name, response.request.url))
+
 
 
