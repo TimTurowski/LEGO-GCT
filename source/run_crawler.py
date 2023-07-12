@@ -30,7 +30,6 @@ if __name__ == '__main__':
                                                 Einzelteil("6360199")],))
     p.start()
     p.join()
-"""Dieser Workaround ist nicht optimal es gibt probleme wenn den Methoden der Prozesse parameter übergeben werden.
-Eine weitere Idee um das Problem das nur ein Crawl vorgang gestartet werden kann ist für jeden Vorgang ein Python 
+"""Eine weitere Idee um das Problem das nur ein Crawl vorgang gestartet werden kann ist für jeden Vorgang ein Python 
 Script zu starten. Das Problem ist darauf zurück zuführen, dass der reactor für die Internet verbindung während des
 Script durchlauf nicht neu gestartet werden kann"""
