@@ -13,7 +13,8 @@ class LegoCrawler(Crawler):
     def __init__(self):
         pass
 
-    """startet eine Spider, welche zu einer Element Id den Preis vom Offiziellen Lego Shop abfragt"""
+    """startet eine Spider, welche zu einer Element Id den Preis vom Offiziellen Lego Shop abfragt. Wenn diese Methode
+    angewendet muss sie in einem Prozess gestartet werden"""
     def crawl_preis(self, legoteile):
 
         process = CrawlerProcess()
@@ -29,8 +30,10 @@ class LegoCrawler(Crawler):
         for i in results:
             """Resultaufbau:(0:einzelteil, 1:preis, 2:name, 3:url)"""
             if i[1] == None:
+                """Fall gescheitertes Einzelteil wird zu den failed Einzelteilen hinzugefügt"""
                 failed_einzelteile.append(i[0])
             else:
+                """Fall erfolgreiche Einzelteil wird als Marktwert erstellt und zu den Erfolgreichen hinzugefügt"""
                 einzelteil_markrpreise.append(EinzelTeilMarktpreis(i[0], preis_zu_float(i[1]), datetime.datetime.now(),i[3]))
 
         crawl_result = CrawlResult(einzelteil_markrpreise,failed_einzelteile,1)
