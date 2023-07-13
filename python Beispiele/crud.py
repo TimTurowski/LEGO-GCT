@@ -9,7 +9,7 @@ from model import Einzelteil
 """dialect+driver://username:password@host:port/database
 """
 
-"""baut Verbidung zur Datenbank auf wenn man in der VPN ist"""
+"""baut Verbindung zur Datenbank auf wenn man in der VPN ist"""
 
 engine = create_engine("postgresql+psycopg2://postgres:27R569RX@192.168.198.47:5432/legoSampel")
 

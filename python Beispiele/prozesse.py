@@ -1,12 +1,16 @@
 from multiprocessing import Process
 
+
 def funcA(n):
     result = 0
-    for i in range(1,n):
+    for i in range(1, n):
         result = result + i
-    print("A:" ,result)
+    print("A:", result)
+
+
 def funcB():
-    print("B:",10)
+    print("B:", 10)
+
 
 if __name__ == "__main__":
     p = Process(target=funcA, args=(100,))
@@ -16,7 +20,6 @@ if __name__ == "__main__":
     funcB früher Fertig ist"""
     p.join()
     print("p is alive", p.is_alive())
-
 
     p = Process(target=funcB)
     p.start()
