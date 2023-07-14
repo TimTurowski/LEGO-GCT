@@ -22,8 +22,3 @@ def show_marktpreis_comparision(legolist, toyprolist):
         print("{:<11} {:<10} {:<10}".format(i, "{:4.2f}".format(lego_dict[i]) + " €", "{:4.2f}".format(toypro_dict[i]) + " €"))
 
 
-
-
-a = EinzelTeilMarktpreis(Einzelteil("123567"),10.1,datetime.datetime.now()," ")
-show_marktpreis_comparision([a],[a])
-
