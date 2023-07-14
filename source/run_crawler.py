@@ -1,5 +1,6 @@
 from multiprocessing import Process
 from source.crawler import LegoCrawler
+from source.crawler.toypro_crawler import ToyproCrawler
 from source.datastructures.einzelteil import Einzelteil
 
 """Diese Datei ist eine Art beispiel Geschäftslogik in welcher der Crawler ausgeführt werden kann"""
@@ -8,8 +9,8 @@ from source.datastructures.einzelteil import Einzelteil
 Einzelteilen übergeben werden auch bei nur einem Einzelteil"""
 
 
-def execute_crawling(einzelteile):
-    crawler = LegoCrawler()
+def execute_crawling(einzelteile, teile_crawler):
+    crawler = teile_crawler
     result = crawler.crawl_preis(einzelteile)
     """gibt informationen über den Crawl vorgang aus"""
     print(result)
@@ -19,7 +20,7 @@ def execute_crawling(einzelteile):
 
 if __name__ == '__main__':
     """erstellt Prozess in welchem der Crawl vorgang gestartet wird dies ermöglicht mehrere Crawl vorgänge"""
-    p = Process(target=execute_crawling, args=([Einzelteil("6438898"), Einzelteil("6438899")],))
+    p = Process(target=execute_crawling, args=([Einzelteil("6438898"), Einzelteil("6438899")],LegoCrawler(),))
     p.start()
     p.join()
 
@@ -27,7 +28,7 @@ if __name__ == '__main__':
                                                 Einzelteil("6406522"),
                                                 Einzelteil("6411329"),
                                                 Einzelteil("6390506"),
-                                                Einzelteil("6360199")],))
+                                                Einzelteil("6360199")],ToyproCrawler(),))
     p.start()
     p.join()
 """Eine weitere Idee um das Problem das nur ein Crawl vorgang gestartet werden kann ist für jeden Vorgang ein Python 

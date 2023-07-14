@@ -13,7 +13,7 @@ Element das Richtige ist"""
 def is_correct_toypro_element(element_id, toypro_string):
     regex = re.compile("[0-9]{6,7}")
     match = re.search(regex, toypro_string)
-    return element_id == toypro_string[match.regs[0][0]:match.regs[0][1]]
+    return match is not None and element_id == toypro_string[match.regs[0][0]:match.regs[0][1]]
 
 
 

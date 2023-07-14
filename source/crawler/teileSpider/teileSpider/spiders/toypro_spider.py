@@ -4,11 +4,14 @@ from scrapy.crawler import CrawlerProcess
 from source.datastructures.einzelteil import Einzelteil
 from source.utility.validator import is_correct_toypro_element
 from source.utility.converter import element_id_von_url
-from source.utility.converter import preis_zu_float
 
 
 class ToyproSpider(scrapy.Spider):
     name = "toypro_spider"
+
+    custom_settings = {
+        "LOG_ENABLED": False,
+    }
 
     def __init__(self, legoteile, result, shop_url="https://www.toypro.com/en/"):
 
@@ -36,17 +39,18 @@ class ToyproSpider(scrapy.Spider):
         """es ist sinnvoll hier die die Element Id der ToyPro Seite, auf übereinstimmung mit der gesuchten Id zu 
         prüfen. Da die Suche des Crawlers auf die Suche der Website basiert kann es sein das andere Suchergebnisse als
         die Einzelteile zur gesuchten Id angezeigt werden"""
-        print(
-            is_correct_toypro_element(element_id_von_url(response.request.url), response.xpath(element_id_xpath).get()))
 
-        print(response.xpath(name_xpath).get())
-        print(preis_zu_float(response.xpath(preis_xpath).get()))
+        raw_element_id = response.xpath(element_id_xpath).get(default=None)
+        preis = response.xpath(preis_xpath).get(default=None)
+        name = response.xpath(name_xpath).get(default=None)
 
 
-process = CrawlerProcess()
+        if raw_element_id is not None and is_correct_toypro_element(element_id_von_url(response.request.url), raw_element_id):
 
-"""result sammelt die gecrawlten Ergebnisse mit prozess.crawl wird der Crawl prozess initialisiert und der
-Spider werden die Initialisierungsparameter übergeben"""
-results = []
-process.crawl(ToyproSpider, legoteile=[Einzelteil("6411329")], result=results)
-process.start()
+            self.result.append((Einzelteil(element_id_von_url(response.request.url), name), preis, name, response.request.url))
+
+        else:
+            self.result.append((Einzelteil(element_id_von_url(response.request.url)), None, None, None))
+
+
+
