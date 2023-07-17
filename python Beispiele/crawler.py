@@ -9,7 +9,8 @@ class LegoShopSpider(scrapy.Spider):
     name = "quotes"
 
     def __init__(self, shop_url, element_id, result):
-        self.search_url = shop_url +"?query=" + element_id
+        # self.search_url = shop_url +"?query=" + element_id
+        self.search_url = "https://www.steinelager.de/de/set/21058-1"
         self.result = result
 
     def start_requests(self):
@@ -20,13 +21,14 @@ class LegoShopSpider(scrapy.Spider):
 
     def parse(self, response):
 
-        element = response.xpath("/html/body/div[1]/div/main/div[1]/div[6]/div[3]/div/div/ul/li/div/button/span/text()").get() \
-                  + " " + response.xpath("/html/body/div[1]/div/main/div[1]/div[6]/div[3]/div/div/ul/li/div/div[1]/span/span/text()").get()
-        self.result.append(element)
 
-        # page = response.url.split("/")[-2]
-        # filename = f"quotes-{page}.html"
-        # Path(filename).write_bytes(response.body)
+        print(response.xpath("/html/body/div/div[2]/div/div/div[2]/div/div[2]/div[5]/div/div[2]/div/div/div[1]/div/div[3]/div/div/a").attrib["href"])
+        # path = response.url.split('/')[-1] +".html"
+        # self.logger.info('Saving HTML %s', path)
+        #
+        # with open(path, 'w') as f:
+        #     f.write(response.text)
+
 
 process = CrawlerProcess(
     settings={
