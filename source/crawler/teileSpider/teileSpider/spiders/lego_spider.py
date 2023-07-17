@@ -38,14 +38,20 @@ class LegoSpider(scrapy.Spider):
     """parst die jeweiligen HTML seiten und filtert die Relevanten HTML Tags, welche im Result benötigt werden"""
 
     def parse(self, response):
+        """Vollständige Xpath zu den jeweiligen Elementen der Html Seite"""
+
         preis_xpath = "/html/body/div[1]/div/main/div[1]/div[6]/div[3]/div/div/ul/li[1]/div/div[1]/span/span/text()"
         name_xpath = "/html/body/div[1]/div/main/div[1]/div[6]/div[3]/div/div/ul/li/div/button/span/text()"
 
+        """default auf None so wird falls kein Stein zur Element ID gefunden wird None zurück in das Result 
+        geschrieben"""
         preis = response.xpath(preis_xpath).get(default=None)
         name = response.xpath(name_xpath).get(default=None)
 
         if preis == name is None:
+            """Fall das Einzelteil nicht gefunden Wird gibt Einzelteil mit None Werten zurück"""
             self.result.append((Einzelteil(element_id_von_url(response.request.url)), None, None, None))
         else:
+            """Fall das gefunden Einzelteil nicht gefunden Wird"""
             self.result.append(
                 (Einzelteil(element_id_von_url(response.request.url), name), preis, name, response.request.url))
