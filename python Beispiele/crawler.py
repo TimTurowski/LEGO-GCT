@@ -47,7 +47,7 @@ process = CrawlerProcess(
 """ermöglicht es mehrere Crallvorgänge zu starten"""
 def execute_crawling():
     results = []
-    process = CrawlerProcess()  # same way can be done for Crawlrunner
+    process = CrawlerProcess()
     process.crawl(LegoShopSpider, shop_url="https://www.lego.com/de-de/pick-and-build/pick-a-brick",
                   element_id="6359941", result=results)
     process.start()

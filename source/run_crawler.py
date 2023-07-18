@@ -14,6 +14,7 @@ Einzelteilen übergeben werden auch bei nur einem Einzelteil"""
 def execute_crawling(einzelteile, teile_crawler, conn2):
     crawler = teile_crawler
     result = crawler.crawl_preis(einzelteile)
+    print(result)
     """gibt informationen über den Crawl vorgang aus"""
     conn2.send(result)
     # print(result)
@@ -26,7 +27,7 @@ if __name__ == '__main__':
                           Einzelteil("6406522"),
                           Einzelteil("6411329"),
                           Einzelteil("6390506"),
-                          Einzelteil("6360199")]
+                          Einzelteil("6360899")]
 
     """multiprocessing Pipe ermöglicht den Zugriff auf Objekte aus einem anderen Prozess
      conn1 für recieve und conn2 für send"""

@@ -18,3 +18,19 @@ def element_id_von_url(url):
     else:
         return None
 
+def set_id_von_url(url):
+    regex = re.compile("[0-9]{4,5}")
+    match = re.search(regex, url)
+    if match is not None:
+        return url[match.regs[0][0]:match.regs[0][1]]
+    else:
+        return None
+
+def clean_setname(rawname):
+    result = ""
+    for i in rawname.split(" ")[1:-1]:
+        result = result + i + " "
+    return result.strip()
+
+
+
