@@ -3,11 +3,11 @@ from scrapy.crawler import CrawlerProcess
 
 
 class PdfSpider(scrapy.Spider):
-    name ="pdfSpider"
+    name = "pdfSpider"
 
     def start_requests(self):
         """Seite hat informationen über Lego sets und verweist auf Lego set anleitungen"""
-        urls = ["https://www.steinelager.de/de/set/79015-1"]
+        urls = ["https://www.steinelager.de/de/set/75235-1"]
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)
 

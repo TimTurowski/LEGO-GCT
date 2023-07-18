@@ -2,7 +2,6 @@ import scrapy
 
 from source.datastructures.einzelteil import Einzelteil
 from source.utility import element_id_von_url
-
 """Die Klasse Lego Spider ist eine Scrapy Spider, welcher die einzelteilpreise Crawlen kann"""
 
 
