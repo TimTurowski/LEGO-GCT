@@ -6,17 +6,15 @@ from source.utility import clean_setname
 
 class PdfSpider(scrapy.Spider):
     name = "pdfSpider"
-    path = "source/anleitungen"
-    urlbase = "https://www.steinelager.de/de/set/"
+    url_base = "https://www.steinelager.de/de/set/"
 
     def __init__(self, set_ids, result):
         self.set_ids = set_ids
         self.result = result
-        self.start_urls = list(map(lambda a: self.urlbase + a + "-1", set_ids))
+        self.start_urls = list(map(lambda a: self.url_base + a + "-1", set_ids))
 
     def start_requests(self):
         """Seite hat informationen über Lego sets und verweist auf Lego set anleitungen"""
-        # urls = ["https://www.steinelager.de/de/set/75235-1"]
         urls = self.start_urls
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)
@@ -26,7 +24,6 @@ class PdfSpider(scrapy.Spider):
         """soll alle Download Links auslesen und Pdf herunterladen"""
         setname = response.css("h1::text").get(default=None)
 
-        print(response.css("h1::text").get())
         if setname is None:
             self.result[set_id_von_url(response.url)] = None
 
@@ -34,6 +31,7 @@ class PdfSpider(scrapy.Spider):
 
             """nimmt alle Download urls aus dem Download bereich und entfernt Duplikate"""
             download_urls = list(set(response.xpath(download_xpath).css("a::attr(href)").getall()))
+            """als Result wird ein dict übergeben, welches  den Namen des Sets beinhaltet und ob das Set eine Anleitung hat"""
             self.result[set_id_von_url(response.url)] = (clean_setname(setname), len(download_urls) > 0)
 
             for i in download_urls:
@@ -41,16 +39,12 @@ class PdfSpider(scrapy.Spider):
 
     def savePdf(self, response):
 
-        """pfad zum Speichern der Datei"""
-        path = response.url.split('/')[-1]
+        """pfad zum Speichern der Dateien. Dateien werden nach der Artikelnummer der Anleitung bennant"""
+        path = "../anleitungen/" + response.url.split('/')[-1]
         self.logger.info('PDF speichern %s', path)
         """pdf Writer wb für binary modus"""
-        with open("../anleitungen/" + path, 'wb') as writer:
+        with open(path, 'wb') as writer:
             writer.write(response.body)
 
 
-process = CrawlerProcess()
-r = {}
-process.crawl(PdfSpider, set_ids=["10293"], result=r)
-process.start()
-print(r)
+
