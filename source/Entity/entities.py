@@ -47,7 +47,10 @@ class EinzelteilMarktpreis (Base):
     anbieter = relationship("Anbieter", backref="einzelteile_preise")
 
     def __str__(self):
-        return str(self.einzelteil_id) + " Preis: " + str(self.preis) + "€" + " Url: " + self.url
+        return "Einzelteil: " + str(self.einzelteil_id) \
+            + " Anbieter: " + str(self.anbieter_url) \
+            + " Preis: " + str(self.preis) + "€" \
+            + " Url: " + self.url
 
     def __repr__(self):
         f"({self.einzelteil_id} {self.anbieter_url}) {self.preis} {self.url}"
@@ -59,8 +62,14 @@ class SetMarktpreis (Base):
     anbieter_url = Column(ForeignKey("Anbieter.url"), primary_key=True)
     preis = Column(FLOAT)
     url = Column(String)
-    sets = relationship("Legoset", backref="anbieter_marktpreise")
+    set = relationship("Legoset", backref="anbieter_marktpreise")
     anbieter = relationship("Anbieter", backref="set_preise")
+
+    def __str__(self):
+        return "Einzelteil: " + str(self.set_id) \
+            + " Anbieter: " + str(self.anbieter_url) \
+            + " Preis: " + str(self.preis) + "€" \
+            + " Url: " + self.url
 
     def __repr__(self):
         f"({self.set_id} {self.anbieter_url}) {self.preis} {self.url}"
