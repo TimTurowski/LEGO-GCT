@@ -1,23 +1,26 @@
-from sqlalchemy import String, ForeignKey, Column,FLOAT
+from sqlalchemy import String, ForeignKey, Column, FLOAT, Integer
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
-from sqlalchemy.schema import Table
-from sqlalchemy.types import Date
 
 Base = declarative_base()
 
-einzelteil_legoset = Table("einzelteil_legoset",
-                          Base.metadata,
-                          Column("set_id", ForeignKey("Legoset.set_id")),
-                          Column("einzelteil_id", ForeignKey("Einzelteil.einzelteil_id")))
+class EinzelzeilLegoset (Base):
+    __tablename__ = "Einzelteil_legoset"
+
+    einzelteil_id = Column(ForeignKey("Einzelteil.einzelteil_id"), primary_key=True)
+    set_id = Column(ForeignKey("Legoset.set_id"), primary_key=True)
+    anzahl = Column(Integer)
+    einzelteile = relationship("Einzelteil", backref="einzelteile")
+    set = relationship("Legoset", backref="set")
+
+    def __repr__(self):
+        f"({self.einzelteil_id} {self.set_id}) {self.anzahl}"
 
 class Legoset (Base):
     __tablename__ = "Legoset"
 
     set_id = Column(String, primary_key=True)
     name = Column(String)
-    zeitpunkt = Column(Date)
-    einzelteile = relationship("Einzelteil", secondary=einzelteil_legoset, backref="legosets")
 
     def __repr__(self):
         f"{self.set_id} {self.name}"
@@ -26,7 +29,9 @@ class Einzelteil (Base):
     __tablename__ = "Einzelteil"
 
     einzelteil_id = Column(String, primary_key=True)
-    zeitpunkt = Column(Date)
+
+    def __str__(self):
+        return "ElementId: " + self.einzelteil_id
 
     def __repr__(self):
         f"{self.einzelteil_id}"
@@ -40,6 +45,9 @@ class EinzelteilMarktpreis (Base):
     url = Column(String)
     einzelteile = relationship("Einzelteil", backref="anbieter_marktpreise")
     anbieter = relationship("Anbieter", backref="einzelteile_preise")
+
+    def __str__(self):
+        return str(self.einzelteil_id) + " Preis: " + str(self.preis) + "€" + " Url: " + self.url
 
     def __repr__(self):
         f"({self.einzelteil_id} {self.anbieter_url}) {self.preis} {self.url}"
