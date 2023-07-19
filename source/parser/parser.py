@@ -2,25 +2,16 @@ import re
 import stueckliste
 from pdfminer.high_level import extract_pages, extract_text
 
-for page_layout in extract_pages("C:\Users\denni\Desktop\lego_url"):
-     for element in page_layout:
-         print(element)
+#for page_layout in extract_pages(r"c:\Users\denni\Desktop\lego_url.pdf"):
+#     for element in page_layout:
+#         print(element)
 
-URL = extract_text("/Users/timturowski/Desktop/Bauanleitungen/6449317.pdf")
-#print(text)
+URL = extract_text(r"c:\Users\denni\Desktop\lego_url.pdf")
+#print(URL)
+stueckliste = Stueckliste()
 class Parsser:
-    class Bauteil:
-        def __init__(self, anzahl, einzelteil_id):
-            self.anzahl = anzahl
-            self.einzelteil_id = einzelteil_id
-
-    class Legoset:
-        def __init__(self):
-            self.bauteile = []
-
     def parse_text(URL):
-        legoset = Legoset()
-        lines = text.split('\n')
+        lines = URL.split('\n')
         num_lines = len(lines)
 
         i = 0
@@ -31,14 +22,15 @@ class Parsser:
                 if len(next_line) == 7 and next_line.isdigit():
                     anzahl = (line[:-1])
                     einzelteil_id = next_line
-                    bauteil = Bauteil(anzahl, einzelteil_id)
-                    legoset.bauteile.append(bauteil)
+                    stueckliste.add_to_stueckliste(anzahl, einzelteil_id)
                     i += 1  # Skip the next line since it has been processed
             i += 1
+        print(stueckliste)
+        return stueckliste
+    
+    #for teile in stueckliste.stueckliste:
+        #print(f"Anzahl: {}")
 
-        return legoset
-
-    legoset = parse_text(URL)
-
-    for bauteil in legoset.bauteile:
-        print(f"Anzahl: {bauteil.anzahl}, Einzelteil-ID: {bauteil.einzelteil_id}")
+    #legoset = parse_text(URL)
+    #for bauteil in legoset.bauteile:
+        #print(f"Anzahl: {bauteil.anzahl}, Einzelteil-ID: {bauteil.einzelteil_id}")
