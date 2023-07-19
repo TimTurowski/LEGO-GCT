@@ -40,7 +40,7 @@ class PdfSpider(scrapy.Spider):
     def savePdf(self, response):
 
         """pfad zum Speichern der Dateien. Dateien werden nach der Artikelnummer der Anleitung bennant"""
-        path = "../anleitungen/" + response.url.split('/')[-1]
+        path = "./anleitungen/" + response.url.split('/')[-1]
         self.logger.info('PDF speichern %s', path)
         """pdf Writer wb für binary modus"""
         with open(path, 'wb') as writer:

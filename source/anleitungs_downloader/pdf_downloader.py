@@ -25,8 +25,3 @@ class PdfDownloader():
 
         download_result = DownloadResult(succesfull_sets, failed_sets)
         return download_result
-
-
-p = PdfDownloader()
-
-print(p.download_anleitung(["75191", "75019", "75085"]))

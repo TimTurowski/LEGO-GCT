@@ -17,7 +17,6 @@ def execute_crawling(einzelteile, teile_crawler, conn2):
     print(result)
     """gibt informationen über den Crawl vorgang aus"""
     conn2.send(result)
-    # print(result)
 
 
 """ohne main ist Multiprocessing nicht möglich"""
