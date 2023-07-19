@@ -1,11 +1,12 @@
 import re
+import stueckliste
 from pdfminer.high_level import extract_pages, extract_text
 
-# for page_layout in extract_pages("/Users/timturowski/Desktop/Bauanleitungen/10323_DE_BI_Build_Translate.pdf"):
-#     for element in page_layout:
-#         print(element)
+for page_layout in extract_pages("C:\Users\denni\Desktop\lego_url"):
+     for element in page_layout:
+         print(element)
 
-# URL = extract_text("/Users/timturowski/Desktop/Bauanleitungen/6449317.pdf")
+URL = extract_text("/Users/timturowski/Desktop/Bauanleitungen/6449317.pdf")
 #print(text)
 class Parsser:
     class Bauteil:
@@ -37,7 +38,7 @@ class Parsser:
 
         return legoset
 
-    #legoset = parse_text(text)
+    legoset = parse_text(URL)
 
-    #for bauteil in legoset.bauteile:
-        #print(f"Anzahl: {bauteil.anzahl}, Einzelteil-ID: {bauteil.einzelteil_id}")
+    for bauteil in legoset.bauteile:
+        print(f"Anzahl: {bauteil.anzahl}, Einzelteil-ID: {bauteil.einzelteil_id}")
