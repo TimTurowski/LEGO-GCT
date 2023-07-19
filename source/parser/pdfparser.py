@@ -1,16 +1,15 @@
 import re
-import stueckliste
+from stueckliste import Stueckliste
 from pdfminer.high_level import extract_pages, extract_text
 
-#for page_layout in extract_pages(r"c:\Users\denni\Desktop\lego_url.pdf"):
-#     for element in page_layout:
-#         print(element)
 
-URL = extract_text(r"c:\Users\denni\Desktop\lego_url.pdf")
-#print(URL)
 stueckliste = Stueckliste()
-class Parsser:
-    def parse_text(URL):
+# Klasse des PDFParsers
+class PDFParser:
+    def __init__(self):
+        pass
+    # Parst die PDF "URL" nach den Einzelteil-Ids und der Häufigkeit und speichert die Informationen in die Stückliste    
+    def parse_text(self, URL):
         lines = URL.split('\n')
         num_lines = len(lines)
 
@@ -25,12 +24,4 @@ class Parsser:
                     stueckliste.add_to_stueckliste(anzahl, einzelteil_id)
                     i += 1  # Skip the next line since it has been processed
             i += 1
-        print(stueckliste)
         return stueckliste
-    
-    #for teile in stueckliste.stueckliste:
-        #print(f"Anzahl: {}")
-
-    #legoset = parse_text(URL)
-    #for bauteil in legoset.bauteile:
-        #print(f"Anzahl: {bauteil.anzahl}, Einzelteil-ID: {bauteil.einzelteil_id}")
