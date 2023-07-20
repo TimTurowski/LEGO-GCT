@@ -6,7 +6,9 @@ from pdfminer.high_level import extract_pages, extract_text
 def main():
     pdfparser = PDFParser()
     stueckliste = Stueckliste()
-    URL = extract_text(r"c:\Users\denni\Desktop\lego_url.pdf")
+    # URL = extract_text(r"c:\Users\denni\Desktop\lego_url.pdf")
+    URL = extract_text(r"../anleitungen/6281933.pdf")
+
     stueckliste = PDFParser.parse_text(pdfparser, URL)
     stueckliste.print_stueckliste()
 

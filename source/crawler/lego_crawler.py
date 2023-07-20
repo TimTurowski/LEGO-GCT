@@ -4,10 +4,7 @@ from source.crawler.crawler import Crawler
 from source.crawler.teileSpider.teileSpider.spiders import LegoSpider
 from source.datastructures.crawl_result import CrawlResult
 from scrapy.crawler import CrawlerProcess
-
-
 from source.Entity.entities import Einzelteil, EinzelteilMarktpreis, Anbieter
-
 from source.utility.converter import preis_zu_float
 
 """API für die Lego.com Spider"""
@@ -43,7 +40,6 @@ class LegoCrawler(Crawler):
                                          url=i[3],
                                          anbieter=Anbieter(name="Lego", url="https://www.lego.com/de-de/pick-and-build/pick-a-brick")))
 
-        print(einzelteil_marktpreise)
 
         crawl_result = CrawlResult(einzelteil_marktpreise,failed_einzelteile,1)
         return crawl_result
