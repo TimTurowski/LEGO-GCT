@@ -54,6 +54,8 @@ class Anbieter(Base):
     def __repr__(self):
         return f"{self.url} {self.name}"
 
+
+
 """Erstellen einer Verbindung zur Datenbank"""
 engine = create_engine("postgresql+psycopg2://postgres:27R569RX@192.168.198.47:5432/legoSampel")
 """Automatisches einfügen von allen definierten Klassen in die Datenbank"""

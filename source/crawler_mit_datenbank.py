@@ -4,6 +4,7 @@ from multiprocessing import Process
 
 from source.Entity.entities import Einzelteil
 from source.crawler import LegoCrawler
+from source.datenbanklogik.datenzugriffsobjekt import marktpreis_hinzufuegen
 
 
 def execute_crawling(einzelteile, teile_crawler, conn2):
@@ -25,3 +26,6 @@ if __name__ == '__main__':
     lego_crawl_result = conn1.recv()
     einzelteil_marktpreise = lego_crawl_result.einzelteil_marktpreise
     print(einzelteil_marktpreise)
+    for i in einzelteil_marktpreise:
+        print(i)
+        marktpreis_hinzufuegen(i)
