@@ -1,7 +1,5 @@
 import scrapy
-from scrapy.crawler import CrawlerProcess
 
-from source.datastructures.einzelteil import Einzelteil
 from source.utility.validator import is_correct_toypro_element
 from source.utility.converter import element_id_von_url
 
@@ -17,7 +15,7 @@ class ToyproSpider(scrapy.Spider):
 
         self.search_urls = []
         """erstellt eine Liste mit element_ids zu den Einzelteilen"""
-        element_ids = list(map(lambda n: n.element_id, legoteile))
+        element_ids = list(map(lambda n: n.einzelteil_id, legoteile))
         for i in element_ids:
             """search?search= wird an die Shop Url dran gehangen, da dies eine Url für die Suche nach den 
             Einzelteilen ist"""
@@ -44,13 +42,8 @@ class ToyproSpider(scrapy.Spider):
         preis = response.xpath(preis_xpath).get(default=None)
         name = response.xpath(name_xpath).get(default=None)
 
-
-        if raw_element_id is not None and is_correct_toypro_element(element_id_von_url(response.request.url), raw_element_id):
-
-            self.result.append((Einzelteil(element_id_von_url(response.request.url), name), preis, name, response.request.url))
-
+        if raw_element_id is not None and is_correct_toypro_element(element_id_von_url(response.request.url),
+                                                                    raw_element_id):
+            self.result.append((element_id_von_url(response.request.url), preis, name, response.request.url))
         else:
-            self.result.append((Einzelteil(element_id_von_url(response.request.url)), None, None, None))
-
-
-
+            self.result.append((element_id_von_url(response.request.url), None, None, None))

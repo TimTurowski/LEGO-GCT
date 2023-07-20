@@ -4,8 +4,10 @@ from source.crawler.crawler import Crawler
 from source.crawler.teileSpider.teileSpider.spiders import LegoSpider
 from source.datastructures.crawl_result import CrawlResult
 from scrapy.crawler import CrawlerProcess
-from source.datastructures.einzelteil import Einzelteil
-from source.datastructures.einzelteil_marktpreis import EinzelTeilMarktpreis
+
+
+from source.Entity.entities import Einzelteil, EinzelteilMarktpreis, Anbieter
+
 from source.utility.converter import preis_zu_float
 
 """API für die Lego.com Spider"""
@@ -31,10 +33,17 @@ class LegoCrawler(Crawler):
             """Resultaufbau:(0:einzelteil, 1:preis, 2:name, 3:url)"""
             if i[1] == None:
                 """Fall gescheitertes Einzelteil wird zu den failed Einzelteilen hinzugefügt"""
-                failed_einzelteile.append(i[0])
+                failed_einzelteile.append(Einzelteil(einzelteil_id=i[0]))
             else:
                 """Fall erfolgreiche Einzelteil wird als Marktwert erstellt und zu den Erfolgreichen hinzugefügt"""
-                einzelteil_marktpreise.append(EinzelTeilMarktpreis(i[0], preis_zu_float(i[1]), datetime.datetime.now(),i[3]))
+
+                einzelteil_marktpreise.append(
+                    EinzelteilMarktpreis(einzelteile=Einzelteil(einzelteil_id=i[0]),
+                                         preis=preis_zu_float(i[1]),
+                                         url=i[3],
+                                         anbieter=Anbieter(name="Lego", url="https://www.lego.com/de-de/pick-and-build/pick-a-brick")))
+
+        print(einzelteil_marktpreise)
 
         crawl_result = CrawlResult(einzelteil_marktpreise,failed_einzelteile,1)
         return crawl_result

@@ -20,7 +20,8 @@ class LegoSpider(scrapy.Spider):
         """aus die übergebenen einzelteile werden durch ein Zusammen hängen mit der Shop Url und ?query=
          eine Url generiert, welche die Suche nach einen Einzelteil wieder spiegelt"""
 
-        element_ids = list(map(lambda n: n.element_id, legoteile))
+        # element_ids = list(map(lambda n: n.element_id, legoteile))
+        element_ids = list(map(lambda n: n.einzelteil_id, legoteile))
 
         for i in element_ids:
             self.search_urls.append(shop_url + "?query=" + i)
@@ -49,8 +50,10 @@ class LegoSpider(scrapy.Spider):
 
         if preis == name is None:
             """Fall das Einzelteil nicht gefunden Wird gibt Einzelteil mit None Werten zurück"""
-            self.result.append((Einzelteil(element_id_von_url(response.request.url)), None, None, None))
+
+            self.result.append((element_id_von_url(response.request.url), None, None, None))
         else:
             """Fall das gefunden Einzelteil nicht gefunden Wird"""
+
             self.result.append(
-                (Einzelteil(element_id_von_url(response.request.url), name), preis, name, response.request.url))
+                (element_id_von_url(response.request.url), preis, name, response.request.url))

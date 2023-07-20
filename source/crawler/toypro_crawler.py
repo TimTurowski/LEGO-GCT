@@ -5,7 +5,7 @@ from scrapy.crawler import CrawlerProcess
 from source.crawler.crawler import Crawler
 from source.crawler.teileSpider.teileSpider.spiders.toypro_spider import ToyproSpider
 from source.datastructures import CrawlResult
-from source.datastructures.einzelteil_marktpreis import EinzelTeilMarktpreis
+from source.Entity.entities import Einzelteil, EinzelteilMarktpreis, Anbieter
 from source.utility import preis_zu_float
 
 
@@ -28,11 +28,14 @@ class ToyproCrawler(Crawler):
             """Realtaufbau:(0:einzelteil, 1:preis, 2:name, 3:url)"""
             if i[1] is None:
                 """Fall gescheitertes Einzelteil wird zu den failed Einzelteilen hinzugefügt"""
-                failed_einzelteile.append(i[0])
+                failed_einzelteile.append(Einzelteil(einzelteil_id=i[0]))
             else:
                 """Fall erfolgreiche Einzelteil wird als Marktwert erstellt und zu den Erfolgreichen hinzugefügt"""
                 einzelteil_marktpreise.append(
-                    EinzelTeilMarktpreis(i[0], preis_zu_float(i[1]), datetime.datetime.now(), i[3]))
+                    EinzelteilMarktpreis(einzelteile=Einzelteil(einzelteil_id=i[0]),
+                                         preis=preis_zu_float(i[1]),
+                                         url=i[3],
+                                         anbieter=Anbieter(name="Toypro", url="https://www.toypro.com")))
 
         crawl_result = CrawlResult(einzelteil_marktpreise, failed_einzelteile, 1)
         return crawl_result
