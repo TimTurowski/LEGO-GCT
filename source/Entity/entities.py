@@ -47,13 +47,13 @@ class EinzelteilMarktpreis (Base):
     anbieter = relationship("Anbieter", backref="einzelteile_preise")
 
     def __str__(self):
-        return "Einzelteil: " + str(self.einzelteil_id) \
-            + " Anbieter: " + str(self.anbieter_url) \
-            + " Preis: " + str(self.preis) + "€" \
+        return "Einzelteil: " + str(self.einzelteile.einzelteil_id) \
+            + " Anbieter: " + str(self.anbieter.url) \
+            + " Preis: " + "{:4.2f}".format(self.preis) + " €" \
             + " Url: " + self.url
 
     def __repr__(self):
-        return f"({self.einzelteil_id} {self.anbieter_url}) {self.preis} {self.url}"
+        return f"({self.einzelteile.einzelteil_id} {self.anbieter.url}) {self.preis} {self.url}"
 
 class SetMarktpreis (Base):
     __tablename__ = "SetMarktpreis"
