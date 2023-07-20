@@ -4,7 +4,7 @@ from sqlalchemy.orm import relationship
 
 Base = declarative_base()
 
-class EinzelzeilLegoset (Base):
+class EinzelteilLegoset (Base):
     __tablename__ = "Einzelteil_legoset"
 
     einzelteil_id = Column(ForeignKey("Einzelteil.einzelteil_id"), primary_key=True)
@@ -14,7 +14,7 @@ class EinzelzeilLegoset (Base):
     set = relationship("Legoset", backref="set")
 
     def __repr__(self):
-        f"({self.einzelteil_id} {self.set_id}) {self.anzahl}"
+        return f"({self.einzelteil_id} {self.set_id}) {self.anzahl}"
 
 class Legoset (Base):
     __tablename__ = "Legoset"
@@ -23,7 +23,7 @@ class Legoset (Base):
     name = Column(String)
 
     def __repr__(self):
-        f"{self.set_id} {self.name}"
+        return f"{self.set_id} {self.name}"
 
 class Einzelteil (Base):
     __tablename__ = "Einzelteil"
@@ -34,7 +34,7 @@ class Einzelteil (Base):
         return "ElementId: " + self.einzelteil_id
 
     def __repr__(self):
-        f"{self.einzelteil_id}"
+        return f"{self.einzelteil_id}"
 
 class EinzelteilMarktpreis (Base):
     __tablename__ = "EinzelteilMarktpreis"
@@ -53,7 +53,7 @@ class EinzelteilMarktpreis (Base):
             + " Url: " + self.url
 
     def __repr__(self):
-        f"({self.einzelteil_id} {self.anbieter_url}) {self.preis} {self.url}"
+        return f"({self.einzelteil_id} {self.anbieter_url}) {self.preis} {self.url}"
 
 class SetMarktpreis (Base):
     __tablename__ = "SetMarktpreis"
@@ -72,7 +72,7 @@ class SetMarktpreis (Base):
             + " Url: " + self.url
 
     def __repr__(self):
-        f"({self.set_id} {self.anbieter_url}) {self.preis} {self.url}"
+        return f"({self.set_id} {self.anbieter_url}) {self.preis} {self.url}"
 
 class Anbieter (Base):
     __tablename__ = "Anbieter"
@@ -81,4 +81,4 @@ class Anbieter (Base):
     name = Column(String)
 
     def __repr__(self):
-        f"{self.url} {self.name}"
+        return f"{self.url} {self.name}"
