@@ -8,10 +8,11 @@ class PdfSpider(scrapy.Spider):
     name = "pdfSpider"
     url_base = "https://www.steinelager.de/de/set/"
 
-    def __init__(self, set_ids, result):
+    def __init__(self, set_ids, result, path_base):
         self.set_ids = set_ids
         self.result = result
         self.start_urls = list(map(lambda a: self.url_base + a + "-1", set_ids))
+        self.path_base = path_base
 
     def start_requests(self):
         """Seite hat informationen über Lego sets und verweist auf Lego set anleitungen"""
@@ -40,7 +41,7 @@ class PdfSpider(scrapy.Spider):
     def savePdf(self, response):
 
         """pfad zum Speichern der Dateien. Dateien werden nach der Artikelnummer der Anleitung bennant"""
-        path = "./anleitungen/" + response.url.split('/')[-1]
+        path = self.path_base + response.url.split('/')[-1]
         self.logger.info('PDF speichern %s', path)
         """pdf Writer wb für binary modus"""
         with open(path, 'wb') as writer:
