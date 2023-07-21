@@ -1,134 +1,111 @@
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 from source.Entity import entities
-from sqlalchemy import inspect
 
-engine = create_engine("postgresql+psycopg2://postgres:27R569RX@192.168.198.47:5432/LegoGCT")
-Session = sessionmaker(engine)
 
-def einzelteilliste():
-    session = Session()
-    result = session.query(entities.Einzelteil).all()
-    return result
+class Datenzugriffsobjekt:
 
-def legosetliste():
-    session = Session()
-    result = session.query(entities.Legoset).all()
-    return result
+    def __init__(self):
+        engine = create_engine("postgresql+psycopg2://postgres:27R569RX@192.168.198.47:5432/LegoGCT")
+        self.Session = sessionmaker(engine)
 
-def anbieterliste():
-    session = Session()
-    result = session.query(entities.Anbieter).all()
-    return result
+    """Eine Liste von allen Einzelteilen wird übergeben"""
+    def einzelteil_liste(self):
+        session = self.Session()
+        result = session.query(entities.Einzelteil).all()
+        return result
 
-def legosetpreise(legoset):
-    session = Session()
-    if isinstance(legoset,entities.Legoset):
-        result = session.query(entities.SetMarktpreis).filter(entities.SetMarktpreis.set == legoset).all()
-        if not result:
-            result = "Legoset ist nicht in der Datenbank oder hat keine gecrawlten Preise"
-    else:
-        result = "Übergebenes Objekt ist kein Legoset"
-    return result
+    """Eine Liste von allen Legosets wird übergeben"""
+    def lego_set_liste(self):
+        session = self.Session()
+        result = session.query(entities.Legoset).all()
+        return result
 
-def einzelteilpreise(einzelteil):
-    session = Session()
-    if isinstance(einzelteil, entities.Einzelteil):
-        result = session.query(entities.EinzelteilMarktpreis)\
-            .filter(entities.EinzelteilMarktpreis.einzelteile == einzelteil).all()
-        if not result:
-            result = "Einzelteil ist nicht in der Datenbank oder hat keine gecrawlten Preise"
-    else:
-        result = "Übergebenes Objekt ist kein Legoset"
-    return result
+    """Eine Liste von allen Anbietern wird übergeben"""
+    def anbieter_liste(self):
+        session = self.Session()
+        result = session.query(entities.Anbieter).all()
+        return result
 
-def einspeisen(entität):
-    session = Session()
-    result = "Objekt enspricht keinem Datenbankobjekt"
-    session.begin()
-    if isinstance(entität,entities.SetMarktpreis):
-        session.add(entities.SetMarktpreis(set_id=entität.set.set_id,anbieter_url=entität.anbieter.url,
-                                           preis=entität.preis,url=entität.url))
-        result = "Neuer SetMarktpreis wurde erfolgreich hinzugefügt"
-    if isinstance(entität,entities.EinzelteilMarktpreis):
-        einzelteil = session.query(entität.einzelteile.__class__).filter(
-            entities.Einzelteil.einzelteil_id == entität.einzelteile.einzelteil_id).all()
-        anbieter = session.query(entität.anbieter.__class__).filter(entities.Anbieter.url == entität.anbieter.url).all()
-        print(anbieter)
-        if not session.query(entität.__class__)\
-                .filter(entities.EinzelteilMarktpreis.einzelteil_id == entität.einzelteile.einzelteil_id)\
-                .filter(entities.EinzelteilMarktpreis.anbieter_url == entität.anbieter.url).all():
-            if einzelteil and anbieter:
-                print("tim")
-                session.add(
-                    entities.EinzelteilMarktpreis(einzelteil_id=entität.einzelteile.einzelteil_id,
-                                                  anbieter_url=entität.anbieter.url,url=entität.url,preis=entität.preis)
-                )
-                result = "Neuer EinzelteilMarktpreis wurde erfolgreich hinzugefügt"
-            elif einzelteil or anbieter:
-                if einzelteil:
-                    print("ok")
-                    session.add(
-                        entities.EinzelteilMarktpreis(einzelteil_id=entität.einzelteile.einzelteil_id, url=entität.url,
-                                                   anbieter=entität.anbieter,preis=entität.preis))
-                    result = "Neuer EinzelteilMarktpreis und neuer Anbieter wurde erfolgreich hinzugefügt"
-                else:
-                    print("hi")
-                    session.add(entities.EinzelteilMarktpreis(url=entität.url,einzelteile=entität.einzelteile,
-                                                              preis=entität.preis,anbieter=session.query(entität.anbieter.__class__).filter(entities.Anbieter.url == entität.anbieter.url).first()))
-                    result = "Neuer EinzelteilMarktpreis und neues Einzelteil wurde erfolgreich hinzugefügt"
-            else:
-                print("nicht ok")
-                session.add(entität)
-                result = "Neuer EinzelteilMarktpreis, neues Einzelteil und neues Anbieter wurde erfolgreich hinzugefügt"
-        else:
-            result = "EinzelteilMarktpreis ist schon vorhanden"
-    if isinstance(entität,entities.EinzelteilLegoset):
-        einzelteil = session.query(entität.einzelteile.__class__).filter(
-            entities.Einzelteil.einzelteil_id == entität.einzelteile.einzelteil_id).all()
-        anbieter = session.query(entität.set.__class__).filter(entities.Legoset.set_id == entität.set.set_id).all()
-        if einzelteil and anbieter:
-            session.add(
-                entities.EinzelteilLegoset(einzelteil_id=entität.einzelteile.einzelteil_id,set_id=entität.set.set_id,
-                                           anzahl=entität.anzahl))
-            result = "Neuer EinzelteilLegoset wurde erfolgreich hinzugefügt"
-        elif einzelteil or anbieter:
-            if einzelteil:
-                session.add(
-                    entities.EinzelteilLegoset(einzelteil_id=entität.einzelteile.einzelteil_id,anzahl=entität.anzahl,
-                                               set=entität.set))
-                result = "Neuer EinzelteilLegoset und neues Legoset wurde erfolgreich hinzugefügt"
-            else:
-                session.add(entities.EinzelteilLegoset(set_id=entität.set.set_id, anzahl=entität.anzahl,
-                                               einzelteile=entität.einzelteile))
-                result = "Neuer EinzelteilLegoset und neues Einzelteil wurde erfolgreich hinzugefügt"
-        else:
-            session.add(entität)
-            result = "Neuer EinzelteilLegoset, neues Einzelteil und neues Legoset wurde erfolgreich hinzugefügt"
-    if isinstance(entität,entities.Anbieter):
-        if not session.query(entität.__class__).filter(entities.Anbieter.url == entität.url).all():
-            session.add(entität)
-    session.commit()
-    session.close()
-    return result
+    """Das übergebene Objekt wird kontrolliert, ob es ein EinzelteilMarktpreis ist und ob der EinzelteilMarktpreis schon
+     in der Datenbank vorhanden ist, falls alles passt, dann wird der neue EinzelteilMarktpreis hinzugefügt. Es wird je 
+     nach Fall eine dementsprechende Meldung geprintet"""
+    def fuge_einzelteil_marktpreis_hinzu(self, einzelteil_marktpreis):
+        with self.Session() as session:
+            with session.begin():
+                result = "Das übergebene Objekt ist kein EinzelteilMarktpreis"
+                if isinstance(einzelteil_marktpreis, entities.EinzelteilMarktpreis):
+                    """Hier wird kontrolliert, ob der zusammengesetzter Schlüssel vom EinzelteilMarktpreis schon in der
+                                        Datenbank vorhanden ist"""
+                    if not session.query(einzelteil_marktpreis.__class__) \
+                            .filter(
+                        entities.EinzelteilMarktpreis.einzelteil_id == einzelteil_marktpreis.einzelteile.einzelteil_id)\
+                            .filter(
+                            entities.EinzelteilMarktpreis.anbieter_url == einzelteil_marktpreis.anbieter.url).all():
+                        session.merge(einzelteil_marktpreis)
+                        result = "Neues EinzelteilMarktpreis wurde hinzugefügt"
+                    else:
+                        result = "EinzelteilMarktpreis ist schon vorhanden"
+                print(result)
+                session.commit()
+            session.close()
 
-def marktpreis_hinzufuegen(marktpreis):
+    """Das übergebene Objekt wird kontrolliert, ob es ein SetMarktpreis ist und ob der SetMarktpreis schon in der
+     Datenbank vorhanden ist, falls alles passt, dann wird der neue SetMarktpreis hinzugefügt. Es wird je nach Fall eine
+     dementsprechende Meldung geprintet"""
+    def fuge_set_marktpreis_hinzu(self, set_marktpreis):
+        with self.Session() as session:
+            with session.begin():
+                result = "Das übergebene Objekt ist kein SetMarktpreis"
+                if isinstance(set_marktpreis, entities.SetMarktpreis):
+                    """Hier wird kontrolliert, ob der zusammengesetzter Schlüssel vom SetMarktpreis schon in der
+                                        Datenbank vorhanden ist"""
+                    if not session.query(set_marktpreis.__class__) \
+                            .filter(entities.SetMarktpreis.set_id == set_marktpreis.set.set_id) \
+                            .filter(entities.SetMarktpreis.anbieter_url == set_marktpreis.anbieter.url).all():
+                        session.merge(set_marktpreis)
+                        result = "Neues SetMarktpreis wurde hinzugefügt"
+                    else:
+                        result = "SetMarktpreis ist schon vorhanden"
+                print(result)
+                session.commit()
+            session.close()
 
-    with Session() as session:
+    """Das übergebene Objekt wird kontrolliert, ob es ein EinzelteilLegoset ist und ob der EinzelteilLegoset schon in 
+     der Datenbank vorhanden ist, falls alles passt, dann wird der neue EinzelteilLegoset hinzugefügt. Es wird je nach
+     Fall eine dementsprechende Meldung geprintet"""
+    def fuge_einzelteil_legoset_hinzu(self, einzelteil_legoset):
+        with self.Session() as session:
+            with session.begin():
+                result = "Das übergebene Objekt ist kein EinzelteilLegoset"
+                if isinstance(einzelteil_legoset, entities.EinzelteilLegoset):
+                    """Hier wird kontrolliert, ob der zusammengesetzter Schlüssel vom EinzelteilLegoset schon in der
+                                        Datenbank vorhanden ist"""
+                    if not session.query(einzelteil_legoset.__class__) \
+                            .filter(
+                        entities.EinzelteilLegoset.einzelteil_id == einzelteil_legoset.einzelteile.einzelteil_id) \
+                            .filter(entities.EinzelteilLegoset.set_id == einzelteil_legoset.set.set_id).all():
+                        session.merge(einzelteil_legoset)
+                        result = "Neues EinzelteilLegoset wurde hinzugefügt"
+                    else:
+                        result = "EinzelteilLegoset ist schon vorhanden"
+                print(result)
+                session.commit()
+            session.close()
 
-        if not session.query(marktpreis.__class__) \
-                .filter(entities.EinzelteilMarktpreis.einzelteil_id == marktpreis.einzelteile.einzelteil_id) \
-                .filter(entities.EinzelteilMarktpreis.anbieter_url == marktpreis.anbieter.url).all():
-            einzelteil = session.query(entities.Einzelteil).filter(entities.Einzelteil.einzelteil_id == marktpreis.einzelteile.einzelteil_id).first()
-            if einzelteil is None:
-                einzelteil = marktpreis.einzelteile
-            anbieter = session.query(entities.Anbieter).filter(entities.Anbieter.url == marktpreis.anbieter.url).first()
-            if anbieter is None:
-                anbieter = marktpreis.anbieter
-            print(einzelteil)
-            print(anbieter)
-            print(anbieter in session)
-            session.add(entities.EinzelteilMarktpreis(preis=marktpreis.preis,url=marktpreis.url,einzelteile=einzelteil,anbieter=anbieter))
-            #session.add(marktpreis)
-            session.commit()
+    """Das übergebene Objekt wird kontrolliert, ob es ein Anbieter ist und ob der Anbieter schon in der Datenbank 
+     vorhanden ist, falls alles passt, dann wird der neue Anbieter hinzugefügt. Es wird je nach Fall eine 
+     dementsprechende Meldung geprintet"""
+    def fuge_anbieter_hinzu(self, anbieter):
+        with self.Session() as session:
+            with session.begin():
+                result = "Das übergebene Objekt ist kein Anbieter"
+                if isinstance(anbieter, entities.Anbieter):
+                    if not session.query(anbieter.__class__).filter(entities.Anbieter.url == anbieter.url).all():
+                        session.merge(anbieter)
+                        result = "Neuer Anbieter wurde hinzugefügt"
+                    else:
+                        result = "Anbieter ist schon vorhanden"
+                print(result)
+                session.commit()
             session.close()

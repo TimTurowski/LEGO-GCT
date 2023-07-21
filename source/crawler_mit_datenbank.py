@@ -4,7 +4,7 @@ from multiprocessing import Process
 
 from source.Entity.entities import Einzelteil
 from source.crawler import LegoCrawler
-from source.datenbanklogik.datenzugriffsobjekt import marktpreis_hinzufuegen
+from source.datenbanklogik.datenzugriffsobjekt import Datenzugriffsobjekt
 
 
 def execute_crawling(einzelteile, teile_crawler, conn2):
@@ -13,11 +13,11 @@ def execute_crawling(einzelteile, teile_crawler, conn2):
     conn2.send(result)
 
 if __name__ == '__main__':
-    sample_einzelteile = [Einzelteil(einzelteil_id="6432033"),
-                          Einzelteil(einzelteil_id="6416525"),
-                          Einzelteil(einzelteil_id="6411329"),
-                          Einzelteil(einzelteil_id="6439666"),
-                          Einzelteil(einzelteil_id="6337627")]
+    sample_einzelteile = [Einzelteil(einzelteil_id="370023"),
+                          Einzelteil(einzelteil_id="4633914"),
+                          Einzelteil(einzelteil_id="6022005"),
+                          Einzelteil(einzelteil_id="6073026"),
+                          Einzelteil(einzelteil_id="6013530")]
     conn1, conn2 = multiprocessing.Pipe()
     """erstellt Prozess in welchem der Crawl vorgang gestartet wird dies ermöglicht mehrere Crawl vorgänge"""
     p = Process(target=execute_crawling, args=(sample_einzelteile, LegoCrawler(), conn2))
@@ -25,7 +25,6 @@ if __name__ == '__main__':
     p.join()
     lego_crawl_result = conn1.recv()
     einzelteil_marktpreise = lego_crawl_result.einzelteil_marktpreise
-    print(einzelteil_marktpreise)
+    dao = Datenzugriffsobjekt()
     for i in einzelteil_marktpreise:
-        print(i)
-        marktpreis_hinzufuegen(i)
+        dao.fuge_einzelteil_marktpreis_hinzu(i)
