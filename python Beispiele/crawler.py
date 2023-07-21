@@ -10,7 +10,7 @@ class LegoShopSpider(scrapy.Spider):
 
     def __init__(self, shop_url, element_id, result):
         # self.search_url = shop_url +"?query=" + element_id
-        self.search_url = "https://www.steinelager.de/de/set/21058-1"
+        self.search_url = "https://brickset.com/parts/6435930"
         self.result = result
 
     def start_requests(self):
@@ -22,12 +22,12 @@ class LegoShopSpider(scrapy.Spider):
     def parse(self, response):
 
 
-        print(response.xpath("/html/body/div/div[2]/div/div/div[2]/div/div[2]/div[5]/div/div[2]/div/div/div[1]/div/div[3]/div/div/a").attrib["href"])
-        # path = response.url.split('/')[-1] +".html"
-        # self.logger.info('Saving HTML %s', path)
-        #
-        # with open(path, 'w') as f:
-        #     f.write(response.text)
+        print(response.css("aside").css("dd").css("a::text").getall())
+        yield  scrapy.Request(url="https://store.bricklink.com",
+                              callback=self.parse_bricklink)
+    def parse_bricklink(self, response):
+        print(response.text)
+
 
 
 process = CrawlerProcess(
@@ -56,7 +56,7 @@ def execute_crawling():
 
 if __name__ == '__main__':
 
-    for k in range(0,3):
+    for k in range(0,1):
         p = Process(target=execute_crawling)
         p.start()
         p.join()
