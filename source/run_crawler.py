@@ -43,7 +43,7 @@ if __name__ == '__main__':
     p.join()
     toypro_crawl_result = conn1.recv()
     """stellt die marktpreise der Crawl vorgänge tabellarisch dar"""
-    show_marktpreis_comparision(lego_crawl_result.einzelteil_marktpreise, toypro_crawl_result.einzelteil_marktpreise)
+    # show_marktpreis_comparision(lego_crawl_result.einzelteil_marktpreise, toypro_crawl_result.einzelteil_marktpreise)
 
 """Eine weitere Idee um das Problem das nur ein Crawl vorgang gestartet werden kann ist für jeden Vorgang ein Python 
 Script zu starten. Das Problem ist darauf zurück zuführen, dass der reactor für die Internet verbindung während des

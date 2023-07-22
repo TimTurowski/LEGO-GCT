@@ -56,7 +56,7 @@ class EinzelteilLegoset(Base):
 
     def __str__(self):
         return "Einzelteil: " + self.einzelteil_id \
-            + " Legoset: " + self.set_id \
+            + " Legoset: " + self.set.set_id \
             + " Anzahl des Einzelteil im Legoset: " + str(self.anzahl)
 
     def __repr__(self):
@@ -74,8 +74,8 @@ class EinzelteilMarktpreis(Base):
     anbieter = relationship("Anbieter", backref="einzelteile_preise")
 
     def __str__(self):
-        return "Einzelteil: " + self.einzelteil_id \
-            + " Anbieter: " + self.anbieter_url \
+        return "Einzelteil: " + self.einzelteile.einzelteil_id \
+            + " Anbieter: " + self.anbieter.url \
             + " Preis: " + "{:4.2f}".format(self.preis) + " €" \
             + " Url: " + self.url
 
@@ -94,8 +94,8 @@ class SetMarktpreis(Base):
     anbieter = relationship("Anbieter", backref="set_preise")
 
     def __str__(self):
-        return "Einzelteil: " + self.set_id \
-            + " Anbieter: " + self.anbieter_url \
+        return "Einzelteil: " + self.set.set_id \
+            + " Anbieter: " + self.anbieter.url \
             + " Preis: " + "{:4.2f}".format(self.preis) + " €"  \
             + " Url: " + self.url
 
