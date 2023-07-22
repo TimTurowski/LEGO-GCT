@@ -32,5 +32,8 @@ def clean_setname(rawname):
         result = result + i + " "
     return result.strip()
 
+def clean_set_id(raw_set_id):
+    return raw_set_id.split("-")[0]
+
 
 

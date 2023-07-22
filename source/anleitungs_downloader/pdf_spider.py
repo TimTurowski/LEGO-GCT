@@ -3,10 +3,14 @@ from scrapy.crawler import CrawlerProcess
 from source.utility import set_id_von_url
 from source.utility import clean_setname
 
-
+"""Direkter Link zur Seite ,welche über Ajax geladen wird 
+https://www.steinelager.de/de/buildinstructions/10305-1?additionalManuals=0"""
 class PdfSpider(scrapy.Spider):
     name = "pdfSpider"
     url_base = "https://www.steinelager.de/de/set/"
+    # custom_settings = {
+    #     "DOWNLOAD_DELAY": 3,
+    # }
 
     def __init__(self, set_ids, result, path_base):
         self.set_ids = set_ids
@@ -34,7 +38,7 @@ class PdfSpider(scrapy.Spider):
             download_urls = list(set(response.xpath(download_xpath).css("a::attr(href)").getall()))
             """als Result wird ein dict übergeben, welches  den Namen des Sets beinhaltet und ob das Set eine Anleitung hat"""
             self.result[set_id_von_url(response.url)] = (clean_setname(setname), len(download_urls) > 0)
-
+            print(response.text)
             for i in download_urls:
                 yield scrapy.Request(url=i, callback=self.savePdf)
 

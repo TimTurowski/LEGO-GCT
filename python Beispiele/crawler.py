@@ -23,7 +23,7 @@ class LegoShopSpider(scrapy.Spider):
 
 
         print(response.css("aside").css("dd").css("a::text").getall())
-        yield  scrapy.Request(url="https://store.bricklink.com",
+        yield  scrapy.Request(url="https://www.steinelager.de/de/buildinstructions/21335-1?additionalManuals=0",
                               callback=self.parse_bricklink)
     def parse_bricklink(self, response):
         print(response.text)

@@ -15,6 +15,12 @@ def is_correct_toypro_element(element_id, toypro_string):
     match = re.search(regex, toypro_string)
     return match is not None and element_id == toypro_string[match.regs[0][0]:match.regs[0][1]]
 
+def set_id_filter(set_id):
+
+    return len(set_id) == 4 or len(set_id) == 5
+
+
+
 
 
 
