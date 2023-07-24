@@ -18,7 +18,7 @@ class PDFParser:
             line = lines[i].strip()
             if line.endswith('x') and i + 1 < num_lines:
                 next_line = lines[i + 1].strip()
-                if len(next_line) == 7 and next_line.isdigit():
+                if (len(next_line) == 7 or len(next_line) == 6) and next_line.isdigit():
                     anzahl = (line[:-1])
                     einzelteil_id = next_line
                     stueckliste.add_to_stueckliste(anzahl, einzelteil_id)
