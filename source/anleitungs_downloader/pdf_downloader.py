@@ -16,12 +16,12 @@ class PdfDownloader():
         failed_sets = []
 
         for key in result:
-            if result[key] is None:
+            if not result[key]:
                 failed_sets.append(key)
-            elif not result[key][1]:
+            elif not result[key] or result[key] is None:
                 failed_sets.append(key)
             else:
-                succesfull_sets.append(key + " " + result[key][0])
+                succesfull_sets.append(key + " " + str(result[key]))
 
         download_result = DownloadResult(succesfull_sets, failed_sets)
         return download_result

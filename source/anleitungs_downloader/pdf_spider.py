@@ -4,18 +4,16 @@ from source.utility import set_id_von_url
 from source.utility import clean_setname
 
 """Direkter Link zur Seite ,welche über Ajax geladen wird 
-https://www.steinelager.de/de/buildinstructions/10305-1?additionalManuals=0"""
+https://www.steinelager.de/de/buildinstructions/SETID-1?additionalManuals=0"""
 class PdfSpider(scrapy.Spider):
     name = "pdfSpider"
-    url_base = "https://www.steinelager.de/de/set/"
-    # custom_settings = {
-    #     "DOWNLOAD_DELAY": 3,
-    # }
+    url_base = "https://www.steinelager.de/de/buildinstructions/"
+
 
     def __init__(self, set_ids, result, path_base):
         self.set_ids = set_ids
         self.result = result
-        self.start_urls = list(map(lambda a: self.url_base + a + "-1", set_ids))
+        self.start_urls = list(map(lambda a: self.url_base + a + "-1?additionalManuals=0", set_ids))
         self.path_base = path_base
 
     def start_requests(self):
@@ -25,22 +23,19 @@ class PdfSpider(scrapy.Spider):
             yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
-        download_xpath = "/html/body/div/div[2]/div/div/div[2]/div/div[2]/div[5]/div/div[2]/div/div/div[1]/div/div[3]"
-        """soll alle Download Links auslesen und Pdf herunterladen"""
-        setname = response.css("h1::text").get(default=None)
+        # download_xpath = "/html/body/div/div[2]/div/div/div[2]/div/div[2]/div[5]/div/div[2]/div/div/div[1]/div/div[3]"
+        # """soll alle Download Links auslesen und Pdf herunterladen"""
 
-        if setname is None:
-            self.result[set_id_von_url(response.url)] = None
 
-        else:
+        """nimmt alle Download urls aus dem Download bereich und entfernt Duplikate"""
 
-            """nimmt alle Download urls aus dem Download bereich und entfernt Duplikate"""
-            download_urls = list(set(response.xpath(download_xpath).css("a::attr(href)").getall()))
-            """als Result wird ein dict übergeben, welches  den Namen des Sets beinhaltet und ob das Set eine Anleitung hat"""
-            self.result[set_id_von_url(response.url)] = (clean_setname(setname), len(download_urls) > 0)
-            print(response.text)
-            for i in download_urls:
-                yield scrapy.Request(url=i, callback=self.savePdf)
+        download_urls = list(set(response.css("a::attr(href)").getall()))
+        print(download_urls)
+        """als Result wird ein dict übergeben, welches  den Namen des Sets beinhaltet und ob das Set eine Anleitung hat"""
+
+        self.result[set_id_von_url(response.url)] = len(download_urls) > 0
+        for i in download_urls:
+            yield scrapy.Request(url=i, callback=self.savePdf)
 
     def savePdf(self, response):
 
