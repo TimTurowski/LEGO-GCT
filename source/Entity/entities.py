@@ -76,7 +76,7 @@ class EinzelteilLegoset(Base):
     set = relationship("Legoset", backref="set")
 
     def __str__(self):
-        return "Einzelteil: " + self.einzelteil_id \
+        return "Einzelteil: " + self.einzelteile.einzelteil_id \
             + " Legoset: " + self.set.set_id \
             + " Anzahl des Einzelteil im Legoset: " + str(self.anzahl)
 

@@ -13,15 +13,14 @@ class SetCrawler:
         process.start()
 
 
-
+        """Gecrawlte Sets werden als SetId mit Namen in eine CSV Datei geschrieben"""
         with open("../setIds/"+year+".csv", 'w', newline='') as file:
             writer = csv.writer(file)
-
             for i in result:
                 try:
                     writer.writerow([i[0], i[1]])
                 except:
                     """einige wenige Tupel können nicht geschrieben werden"""
                     print("skipline", i)
-sc = SetCrawler()
-sc.crawl_set_ids("2011")
+# sc = SetCrawler()
+# sc.crawl_set_ids("2011")
