@@ -10,4 +10,6 @@ class Stueckliste:
 
     def print_stueckliste(self):
         for eintrag in self.stueckliste:
-            print(f"{eintrag.print_eintrag()}")
+            eintrag.print_eintrag()
+
+

@@ -3,7 +3,7 @@ import csv
 
 from source.crawler.set_spider import SetSpider
 
-
+"""Der SetCrawler kann zu einen als Parameter übergebenen Jahr alle Setids aus dem Jahr finden"""
 class SetCrawler:
 
     def crawl_set_ids(self, year):
@@ -16,10 +16,12 @@ class SetCrawler:
 
         with open("../setIds/"+year+".csv", 'w', newline='') as file:
             writer = csv.writer(file)
+
             for i in result:
                 try:
                     writer.writerow([i[0], i[1]])
                 except:
+                    """einige wenige Tupel können nicht geschrieben werden"""
                     print("skipline", i)
 sc = SetCrawler()
-sc.crawl_set_ids("2022")
+sc.crawl_set_ids("2011")
