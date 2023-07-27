@@ -34,20 +34,21 @@ class Datenzugriffsobjekt:
     def fuge_einzelteil_marktpreis_hinzu(self, einzelteil_marktpreis):
         with self.Session() as session:
             with session.begin():
-                result = "Das übergebene Objekt ist kein EinzelteilMarktpreis"
-                if isinstance(einzelteil_marktpreis, entities.EinzelteilMarktpreis):
-                    """Hier wird kontrolliert, ob der zusammengesetzter Schlüssel vom EinzelteilMarktpreis schon in der
-                                        Datenbank vorhanden ist"""
-                    if not session.query(einzelteil_marktpreis.__class__) \
-                            .filter(
-                        entities.EinzelteilMarktpreis.einzelteil_id == einzelteil_marktpreis.einzelteile.einzelteil_id)\
-                            .filter(
-                            entities.EinzelteilMarktpreis.anbieter_url == einzelteil_marktpreis.anbieter.url).all():
-                        session.merge(einzelteil_marktpreis)
-                        result = "Neues EinzelteilMarktpreis wurde hinzugefügt"
-                    else:
-                        result = "EinzelteilMarktpreis ist schon vorhanden"
-                print(result)
+                for i in einzelteil_marktpreis:
+                    result = "Das übergebene Objekt ist kein EinzelteilMarktpreis"
+                    if isinstance(i, entities.EinzelteilMarktpreis):
+                        """Hier wird kontrolliert, ob der zusammengesetzter Schlüssel vom EinzelteilMarktpreis schon in der
+                                            Datenbank vorhanden ist"""
+                        if not session.query(i.__class__) \
+                                .filter(
+                            entities.EinzelteilMarktpreis.einzelteil_id == i.einzelteile.einzelteil_id)\
+                                .filter(
+                                entities.EinzelteilMarktpreis.anbieter_url == i.anbieter.url).all():
+                            session.merge(i)
+                            result = "Neues EinzelteilMarktpreis wurde hinzugefügt"
+                        else:
+                            result = "EinzelteilMarktpreis ist schon vorhanden"
+                    print(result)
                 session.commit()
             session.close()
 
@@ -57,18 +58,19 @@ class Datenzugriffsobjekt:
     def fuge_set_marktpreis_hinzu(self, set_marktpreis):
         with self.Session() as session:
             with session.begin():
-                result = "Das übergebene Objekt ist kein SetMarktpreis"
-                if isinstance(set_marktpreis, entities.SetMarktpreis):
-                    """Hier wird kontrolliert, ob der zusammengesetzter Schlüssel vom SetMarktpreis schon in der
-                                        Datenbank vorhanden ist"""
-                    if not session.query(set_marktpreis.__class__) \
-                            .filter(entities.SetMarktpreis.set_id == set_marktpreis.set.set_id) \
-                            .filter(entities.SetMarktpreis.anbieter_url == set_marktpreis.anbieter.url).all():
-                        session.merge(set_marktpreis)
-                        result = "Neues SetMarktpreis wurde hinzugefügt"
-                    else:
-                        result = "SetMarktpreis ist schon vorhanden"
-                print(result)
+                for i in set_marktpreis:
+                    result = "Das übergebene Objekt ist kein SetMarktpreis"
+                    if isinstance(i, entities.SetMarktpreis):
+                        """Hier wird kontrolliert, ob der zusammengesetzter Schlüssel vom SetMarktpreis schon in der
+                                            Datenbank vorhanden ist"""
+                        if not session.query(i.__class__) \
+                                .filter(entities.SetMarktpreis.set_id == i.set.set_id) \
+                                .filter(entities.SetMarktpreis.anbieter_url == i.anbieter.url).all():
+                            session.merge(i)
+                            result = "Neues SetMarktpreis wurde hinzugefügt"
+                        else:
+                            result = "SetMarktpreis ist schon vorhanden"
+                    print(result)
                 session.commit()
             session.close()
 
@@ -78,19 +80,20 @@ class Datenzugriffsobjekt:
     def fuge_einzelteil_legoset_hinzu(self, einzelteil_legoset):
         with self.Session() as session:
             with session.begin():
-                result = "Das übergebene Objekt ist kein EinzelteilLegoset"
-                if isinstance(einzelteil_legoset, entities.EinzelteilLegoset):
-                    """Hier wird kontrolliert, ob der zusammengesetzter Schlüssel vom EinzelteilLegoset schon in der
-                                        Datenbank vorhanden ist"""
-                    if not session.query(einzelteil_legoset.__class__) \
-                            .filter(
-                        entities.EinzelteilLegoset.einzelteil_id == einzelteil_legoset.einzelteile.einzelteil_id) \
-                            .filter(entities.EinzelteilLegoset.set_id == einzelteil_legoset.set.set_id).all():
-                        session.merge(einzelteil_legoset)
-                        result = "Neues EinzelteilLegoset wurde hinzugefügt"
-                    else:
-                        result = "EinzelteilLegoset ist schon vorhanden"
-                print(result)
+                for i in einzelteil_legoset:
+                    result = "Das übergebene Objekt ist kein EinzelteilLegoset"
+                    if isinstance(i, entities.EinzelteilLegoset):
+                        """Hier wird kontrolliert, ob der zusammengesetzter Schlüssel vom EinzelteilLegoset schon in der
+                                            Datenbank vorhanden ist"""
+                        if not session.query(i.__class__) \
+                                .filter(
+                            entities.EinzelteilLegoset.einzelteil_id == i.einzelteile.einzelteil_id) \
+                                .filter(entities.EinzelteilLegoset.set_id == i.set.set_id).all():
+                            session.merge(i)
+                            result = "Neues EinzelteilLegoset wurde hinzugefügt"
+                        else:
+                            result = "EinzelteilLegoset ist schon vorhanden"
+                    print(result)
                 session.commit()
             session.close()
 
