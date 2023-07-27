@@ -1,4 +1,3 @@
-from eintrag import Eintrag
 from source.Entity.entities import EinzelteilLegoset, Einzelteil, Legoset
 
 # Klasse um die Stückliste darzustellen. Inhalt sind die Einträge, welche in Tupel der Form( Tupel(Anzahl, Eintelteil-ID) ) gesetzt werden.
@@ -9,7 +8,7 @@ class Stueckliste:
     def add_to_stueckliste(self, anzahl, einzelteil_id):
         # eintrag = Eintrag(anzahl, einzelteil_id)
         """Anpassen auf Entitäten für die Datenbank"""
-        eintrag = EinzelteilLegoset(set=Legoset(set_id="12345", name="Set"),
+        eintrag = EinzelteilLegoset(set=Legoset(set_id="76155", name="Marvel The Eternals: In Arishems Schatten"),
                                     einzelteile=Einzelteil(einzelteil_id=einzelteil_id),
                                     anzahl=anzahl)
         self.stueckliste.append(eintrag)

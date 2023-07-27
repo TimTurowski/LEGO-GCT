@@ -1,5 +1,5 @@
 import re
-from stueckliste import Stueckliste
+from source.parser.stueckliste import Stueckliste
 from pdfminer.high_level import extract_pages, extract_text
 
 
