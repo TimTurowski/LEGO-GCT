@@ -13,7 +13,11 @@ def execute_crawling(einzelteile, teile_crawler, conn2):
     conn2.send(result)
 
 if __name__ == '__main__':
-    sample_einzelteile = [Einzelteil(einzelteil_id="371026")]
+    sample_einzelteile = [Einzelteil(einzelteil_id="370023"),
+                          Einzelteil(einzelteil_id="4633914"),
+                          Einzelteil(einzelteil_id="6022005"),
+                          Einzelteil(einzelteil_id="6073026"),
+                          Einzelteil(einzelteil_id="6013530")]
     conn1, conn2 = multiprocessing.Pipe()
     """erstellt Prozess in welchem der Crawl vorgang gestartet wird dies ermöglicht mehrere Crawl vorgänge"""
     p = Process(target=execute_crawling, args=(sample_einzelteile, LegoCrawler(), conn2))

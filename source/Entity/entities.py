@@ -72,8 +72,8 @@ class EinzelteilLegoset(Base):
     Diese Attribute dienen zur Deklarierung von der Beziehung und dienen als Ablage von den jeweiligen Objekten zum
     einfügen in die Datenbank. Diese werde nicht in der Datenbank angezeigt ist jedoch in Pythoncode zugreifbar.
     """
-    einzelteile = relationship("Einzelteil", backref="einzelteile")
-    set = relationship("Legoset", backref="set")
+    einzelteile = relationship("Einzelteil", backref="einzelteile", lazy="joined")
+    set = relationship("Legoset", backref="set", lazy="joined")
 
     def __str__(self):
         return "Einzelteil: " + self.einzelteile.einzelteil_id \
@@ -102,8 +102,8 @@ class EinzelteilMarktpreis(Base):
     Diese Attribute dienen zur Deklarierung von der Beziehung und dienen als Ablage von den jeweiligen Objekten zum
     einfügen in die Datenbank. Diese werde nicht in der Datenbank angezeigt ist jedoch in Pythoncode zugreifbar.
     """
-    einzelteile = relationship("Einzelteil", backref="anbieter_marktpreise")
-    anbieter = relationship("Anbieter", backref="einzelteile_preise")
+    einzelteile = relationship("Einzelteil", backref="anbieter_marktpreise", lazy="joined")
+    anbieter = relationship("Anbieter", backref="einzelteile_preise", lazy="joined")
 
     def __str__(self):
         return "Einzelteil: " + self.einzelteile.einzelteil_id \
@@ -133,8 +133,8 @@ class SetMarktpreis(Base):
     Diese Attribute dienen zur Deklarierung von der Beziehung und dienen als Ablage von den jeweiligen Objekten zum
     einfügen in die Datenbank. Diese werde nicht in der Datenbank angezeigt ist jedoch in Pythoncode zugreifbar.
     """
-    set = relationship("Legoset", backref="anbieter_marktpreise")
-    anbieter = relationship("Anbieter", backref="set_preise")
+    set = relationship("Legoset", backref="anbieter_marktpreise", lazy="joined")
+    anbieter = relationship("Anbieter", backref="set_preise", lazy="joined")
 
     def __str__(self):
         return "Einzelteil: " + self.set.set_id \
