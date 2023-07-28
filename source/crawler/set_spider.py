@@ -13,6 +13,7 @@ class SetSpider(scrapy.Spider):
         """Seite hat informationen über Lego sets und verweist auf Lego set anleitungen"""
         url = self.start_url
         yield scrapy.Request(url=url, callback=self.parse)
+
     def parse(self, response):
         elemente = response.css("[data-key]")
         for element in elemente:
