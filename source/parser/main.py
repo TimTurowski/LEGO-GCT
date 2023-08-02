@@ -12,7 +12,7 @@ def main():
     pdfparser = PDFParser()
     stueckliste = Stueckliste()
     URL = extract_text(r"../anleitungen/6490652-1.pdf")
-    stueckliste = PDFParser.parse_text(pdfparser, URL)
+    stueckliste = PDFParser.parse_text(pdfparser, URL, 111111, "Beispielname")
     print((datetime.datetime.now() - start_time).total_seconds())
     print(stueckliste)
 
