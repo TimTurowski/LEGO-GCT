@@ -35,7 +35,8 @@ class PdfSpider(scrapy.Spider):
 
         self.result[set_id_von_url(response.url)] = len(download_urls) > 0
         for i in download_urls:
-            yield scrapy.Request(url=i, callback=self.savePdf)
+            if i.find("Translate") == -1:
+                yield scrapy.Request(url=i, callback=self.savePdf)
 
     def savePdf(self, response):
 
