@@ -1,7 +1,8 @@
+import os
+
+from pikepdf import Pdf
 from scrapy.crawler import CrawlerProcess
-
 from source.anleitungs_downloader.pdf_spider import PdfSpider
-
 from source.datastructures import DownloadResult
 
 class PdfDownloader():
@@ -25,3 +26,32 @@ class PdfDownloader():
 
         download_result = DownloadResult(succesfull_sets, failed_sets)
         return download_result
+
+    def cut_anleitungen(self, source_path, destination_path):
+
+        files = os.listdir(source_path)
+        for file in files:
+            pdf = Pdf.open(source_path+file)
+            page_number = 10
+            file2pages = {
+                0: [0, max(0, len(pdf.pages) - page_number)],
+                1: [max(0, len(pdf.pages) - page_number), len(pdf.pages)],
+            }
+            new_pdf_files = [Pdf.new() for i in file2pages]
+            """Index für die Numerierung der PDF Teile"""
+            new_pdf_index = 0
+
+            for n, page in enumerate(pdf.pages):
+                if n in list(range(*file2pages[new_pdf_index])):
+                    new_pdf_files[new_pdf_index].pages.append(page)
+
+                else:
+                    """nächste datei"""
+                    new_pdf_index += 1
+                    new_pdf_files[new_pdf_index].pages.append(page)
+
+            # save the last PDF file
+            name, ext = os.path.splitext(destination_path+file)
+            output_filename = f"{name}-cut.pdf"
+            new_pdf_files[new_pdf_index].save(output_filename)
+            print(f"[+] File: {output_filename} saved.")
