@@ -10,7 +10,7 @@ class LegoShopSpider(scrapy.Spider):
 
     def __init__(self, shop_url, element_id, result):
         # self.search_url = shop_url +"?query=" + element_id
-        self.search_url = "https://www.steinelager.de/de/sets?availability=1"
+        self.search_url = "https://brickset.com/minifigs/in-76144-1"
         self.result = result
 
     def start_requests(self):
@@ -22,7 +22,12 @@ class LegoShopSpider(scrapy.Spider):
     def parse(self, response):
 
 
-        print(response.text)
+        print(response.css('[class = "set"]').css("a::text").getall())
+
+        for i in response.css('[class = "set"]').css("a > span::text").getall():
+            print(i.lower())
+
+
 
 
 
