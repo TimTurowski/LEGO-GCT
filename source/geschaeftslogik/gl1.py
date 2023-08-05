@@ -9,7 +9,7 @@ from source.parser.stueckliste import Stueckliste
 
 def execute_download():
     p = PdfDownloader()
-    print(p.download_anleitung(set_ids=["76155"], save_path="./temp_downloader/"))
+    print(p.download_anleitung(set_ids=["21058"], save_path="./temp_downloader/"))
 
 if __name__ == "__main__":
     """PDF Download"""
@@ -23,13 +23,13 @@ if __name__ == "__main__":
     files = os.listdir("./temp_downloader/")
     dao = Datenzugriffsobjekt()
     for file in files:
-        URL = extract_text(r"./temp_downloader/" + str(file))
-        stueckliste = PDFParser.parse_text(pdfparser, URL)
+        URL = extract_text(r"../geschaeftslogik/temp_downloader/" + str(file))
+        stueckliste = PDFParser.parse_text(pdfparser, URL,"21058","Architecture Cheops-Pyramide")
 
         print(file)
         print(stueckliste)
 
-    dao.fuge_einzelteil_legoset_hinzu(stueckliste.stueckliste)
+    # dao.fuge_einzelteil_legoset_hinzu(stueckliste.stueckliste)
 
 
 
