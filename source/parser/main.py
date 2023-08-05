@@ -11,7 +11,7 @@ def main():
     start_time = datetime.datetime.now()
     pdfparser = PDFParser()
     stueckliste = Stueckliste()
-    URL = extract_text(r"../anleitungen/6490652-1.pdf")
+    URL = extract_text(r"C:\Users\denni\Desktop\lego_url.pdf")
     stueckliste = PDFParser.parse_text(pdfparser, URL, 111111, "Beispielname")
     print((datetime.datetime.now() - start_time).total_seconds())
     print(stueckliste)

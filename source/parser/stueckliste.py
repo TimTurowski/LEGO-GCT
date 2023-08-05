@@ -3,7 +3,7 @@ from source.Entity.entities import EinzelteilLegoset, Einzelteil, Legoset
 # Klasse um die Stückliste darzustellen. Inhalt sind die Einträge, welche in Tupel der Form( Tupel(Anzahl, Eintelteil-ID) ) gesetzt werden.
 class Stueckliste:
     def __init__(self):
-        self.set_id = 0
+        self.set_id = ""
         self.name = ""
         self.stueckliste = []
     
