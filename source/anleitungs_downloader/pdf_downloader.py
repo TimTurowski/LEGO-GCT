@@ -27,15 +27,14 @@ class PdfDownloader():
         download_result = DownloadResult(succesfull_sets, failed_sets)
         return download_result
 
-    def cut_anleitungen(self, source_path, destination_path):
+    def cut_anleitungen(self, source_path, destination_path, cut_pages=10):
 
         files = os.listdir(source_path)
         for file in files:
-            pdf = Pdf.open(source_path+file)
-            page_number = 10
+            pdf = Pdf.open(source_path + file)
             file2pages = {
-                0: [0, max(0, len(pdf.pages) - page_number)],
-                1: [max(0, len(pdf.pages) - page_number), len(pdf.pages)],
+                0: [0, max(0, len(pdf.pages) - cut_pages)],
+                1: [max(0, len(pdf.pages) - cut_pages), len(pdf.pages)],
             }
             new_pdf_files = [Pdf.new() for i in file2pages]
             """Index für die Numerierung der PDF Teile"""
@@ -55,3 +54,6 @@ class PdfDownloader():
             output_filename = f"{name}-cut.pdf"
             new_pdf_files[new_pdf_index].save(output_filename)
             print(f"[+] File: {output_filename} saved.")
+
+
+

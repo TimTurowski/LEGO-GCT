@@ -42,4 +42,4 @@ class SetCrawler:
                     print("skipline", i)
 
 sc = SetCrawler()
-sc.crawl_unreleased_sets()
+sc.crawl_set_ids("2006")
