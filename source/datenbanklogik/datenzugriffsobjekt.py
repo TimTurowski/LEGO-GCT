@@ -3,7 +3,6 @@ from sqlalchemy import create_engine
 from source.Entity import entities
 
 
-
 class Datenzugriffsobjekt:
 
     def __init__(self):
@@ -11,18 +10,21 @@ class Datenzugriffsobjekt:
         self.Session = sessionmaker(engine)
 
     """Eine Liste von allen Einzelteilen wird übergeben"""
+
     def einzelteil_liste(self):
         session = self.Session()
         result = session.query(entities.Einzelteil).all()
         return result
 
     """Eine Liste von allen Legosets wird übergeben"""
+
     def lego_set_liste(self):
         session = self.Session()
         result = session.query(entities.Legoset).all()
         return result
 
     """Eine Liste von allen Anbietern wird übergeben"""
+
     def anbieter_liste(self):
         session = self.Session()
         result = session.query(entities.Anbieter).all()
@@ -31,17 +33,18 @@ class Datenzugriffsobjekt:
     """Das übergebene Objekt wird kontrolliert, ob es ein EinzelteilMarktpreis ist und ob der EinzelteilMarktpreis schon
      in der Datenbank vorhanden ist, falls alles passt, dann wird der neue EinzelteilMarktpreis hinzugefügt. Es wird je 
      nach Fall eine dementsprechende Meldung geprintet"""
+
     def fuge_einzelteil_marktpreis_hinzu(self, einzelteil_marktpreis):
         with self.Session() as session:
             with session.begin():
                 for i in einzelteil_marktpreis:
                     result = "Das übergebene Objekt ist kein EinzelteilMarktpreis"
                     if isinstance(i, entities.EinzelteilMarktpreis):
-                        """Hier wird kontrolliert, ob der zusammengesetzter Schlüssel vom EinzelteilMarktpreis schon in der
-                                            Datenbank vorhanden ist"""
+                        """Hier wird kontrolliert, ob der zusammengesetzter Schlüssel vom EinzelteilMarktpreis schon in 
+                                            der Datenbank vorhanden ist"""
                         if not session.query(i.__class__) \
                                 .filter(
-                            entities.EinzelteilMarktpreis.einzelteil_id == i.einzelteile.einzelteil_id)\
+                            entities.EinzelteilMarktpreis.einzelteil_id == i.einzelteile.einzelteil_id) \
                                 .filter(
                                 entities.EinzelteilMarktpreis.anbieter_url == i.anbieter.url).all():
                             session.merge(i)
@@ -55,6 +58,7 @@ class Datenzugriffsobjekt:
     """Das übergebene Objekt wird kontrolliert, ob es ein SetMarktpreis ist und ob der SetMarktpreis schon in der
      Datenbank vorhanden ist, falls alles passt, dann wird der neue SetMarktpreis hinzugefügt. Es wird je nach Fall eine
      dementsprechende Meldung geprintet"""
+
     def fuge_set_marktpreis_hinzu(self, set_marktpreis):
         with self.Session() as session:
             with session.begin():
@@ -77,6 +81,7 @@ class Datenzugriffsobjekt:
     """Das übergebene Objekt wird kontrolliert, ob es ein EinzelteilLegoset ist und ob der EinzelteilLegoset schon in 
      der Datenbank vorhanden ist, falls alles passt, dann wird der neue EinzelteilLegoset hinzugefügt. Es wird je nach
      Fall eine dementsprechende Meldung geprintet"""
+
     def fuge_einzelteil_legoset_hinzu(self, einzelteil_legoset):
         with self.Session() as session:
             with session.begin():
@@ -100,6 +105,7 @@ class Datenzugriffsobjekt:
     """Das übergebene Objekt wird kontrolliert, ob es ein Anbieter ist und ob der Anbieter schon in der Datenbank 
      vorhanden ist, falls alles passt, dann wird der neue Anbieter hinzugefügt. Es wird je nach Fall eine 
      dementsprechende Meldung geprintet"""
+
     def fuge_anbieter_hinzu(self, anbieter):
         with self.Session() as session:
             with session.begin():
@@ -111,5 +117,13 @@ class Datenzugriffsobjekt:
                     else:
                         result = "Anbieter ist schon vorhanden"
                 print(result)
+                session.commit()
+            session.close()
+
+    def loesche_sets(self, sets):
+        with self.Session() as session:
+            with session.begin():
+                for i in sets:
+                    session.delete(i)
                 session.commit()
             session.close()
