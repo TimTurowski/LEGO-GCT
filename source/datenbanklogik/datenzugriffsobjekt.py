@@ -127,3 +127,5 @@ class Datenzugriffsobjekt:
                     session.delete(i)
                 session.commit()
             session.close()
+
+
