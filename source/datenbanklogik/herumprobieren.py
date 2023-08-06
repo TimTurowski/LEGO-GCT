@@ -34,13 +34,14 @@ with dao.Session() as session:
         """session.add(entities.Anbieter(url="www.c.de",name="c"))
         session.add(entities.Einzelteil(einzelteil_id="3"))
         session.add(entities.EinzelteilMarktpreis(anbieter_url="https://www.lego.com/de-de/pick-and-build/pick-a-brick",preis=4.99,url="www.c.de/3",einzelteile=entities.Einzelteil(einzelteil_id="5")))"""
-        e1 = session.query(entities.Einzelteil).options(joinedload(entities.Einzelteil.anbieter_marktpreise)).filter(entities.EinzelteilMarktpreis.anbieter_url == "https://www.lego.com/de-de/pick-and-build/pick-a-brick").all()
+        """e1 = session.query(entities.Einzelteil).options(joinedload(entities.Einzelteil.anbieter_marktpreise)).filter(entities.EinzelteilMarktpreis.anbieter_url == "https://www.lego.com/de-de/pick-and-build/pick-a-brick").all()"""
+        a = session.query(entities.Legoset).filter(entities.Legoset.set_id == "21058").all()
         session.commit()
     session.close()
-
+dao.loesche_sets(a)
 """for i in einzelteilliste():
     print(i)"""
 """for i in legosetpreise(l1):
     print(i)"""
-for i in e1:
-    print(i)
+"""for i in e1:
+    print(i)"""
