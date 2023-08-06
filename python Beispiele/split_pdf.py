@@ -6,10 +6,10 @@ start_time = datetime.datetime.now()
 
 file2pages = {
     0: [0, 0], # 1st splitted PDF file will contain the pages from 0 to 9 (9 is not included)
-    1: [0, 130], # 2nd splitted PDF file will contain the pages from 9 (9 is included) to 11
+    1: [0, 10], # 2nd splitted PDF file will contain the pages from 9 (9 is included) to 11
 }
 
-filename = "6490652.pdf"
+filename = "6010741-cut.pdf"
 
 pdf = Pdf.open(filename)
 

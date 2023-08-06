@@ -54,7 +54,4 @@ class SetLogger:
 
 
 
-a = SetLogger()
 
-a.add_succesful_set("10224","Rathaus", "2012")
-print(a.missing_set_log("2012"))

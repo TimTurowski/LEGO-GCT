@@ -1,10 +1,12 @@
 import re
 import source
-from stueckliste import Stueckliste
+from source.parser.stueckliste import Stueckliste
 from pdfminer.high_level import extract_pages, extract_text
 import PyPDF2
 
-stueckliste = Stueckliste()
+from source.utility.converter import clean_line
+
+
 # Klasse des PDFParsers
 class PDFParser:
     def __init__(self):
@@ -28,6 +30,7 @@ class PDFParser:
         
     # Parst die PDF "URL" nach den Einzelteil-Ids und der Häufigkeit und speichert die Informationen in die Stücklist
     def parse_text(self, URL, set_id, name):
+        stueckliste = Stueckliste()
         ##stueckliste_pdf = PDFParser.cut_pdf(URL)
         lines = URL.split('\n')
         num_lines = len(lines)
@@ -38,7 +41,9 @@ class PDFParser:
             if line.endswith('x') and i + 1 < num_lines:
                 next_line = lines[i + 1].strip()
                 if (len(next_line) == 7 or len(next_line) == 6) and next_line.isdigit():
+
                     anzahl = (line[:-1])
+                    anzahl = clean_line(anzahl)
                     einzelteil_id = next_line
                     stueckliste.add_to_stueckliste(anzahl, str(einzelteil_id), set_id, name)
                     i += 1  # Skip the next line since it has been processed

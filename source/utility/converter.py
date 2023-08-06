@@ -35,5 +35,18 @@ def clean_setname(rawname):
 def clean_set_id(raw_set_id):
     return raw_set_id.split("-")[0]
 
+def clean_line(line):
+    regex = re.compile("x[0-9]+")
+    match = re.search(regex, line)
+    if match is not None:
+        return line[0: match.regs[0][0]]
+        # return line[match.regs[0][0]:match.regs[0][1]]
+    else:
+        return line
+
+
+
+
+
 
 
