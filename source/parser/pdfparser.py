@@ -28,8 +28,8 @@ class PDFParser:
         
     # Parst die PDF "URL" nach den Einzelteil-Ids und der Häufigkeit und speichert die Informationen in die Stücklist
     def parse_text(self, URL, set_id, name):
-        stueckliste_pdf = PDFParser.cut_pdf(URL)
-        lines = stueckliste_pdf.split('\n')
+        ##stueckliste_pdf = PDFParser.cut_pdf(URL)
+        lines = URL.split('\n')
         num_lines = len(lines)
 
         i = 0
@@ -40,7 +40,7 @@ class PDFParser:
                 if (len(next_line) == 7 or len(next_line) == 6) and next_line.isdigit():
                     anzahl = (line[:-1])
                     einzelteil_id = next_line
-                    stueckliste.add_to_stueckliste(anzahl, einzelteil_id, set_id, name)
+                    stueckliste.add_to_stueckliste(anzahl, str(einzelteil_id), set_id, name)
                     i += 1  # Skip the next line since it has been processed
             i += 1
         return stueckliste
