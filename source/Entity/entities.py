@@ -15,6 +15,9 @@ class Legoset(Base):
     set_id = Column(String, primary_key=True)
     name = Column(String)
 
+    einzelteile = relationship("EinzelteilLegoset", back_populates="set", cascade="all, delete-orphan")
+    anbieter = relationship("SetMarktpreis", back_populates="set", cascade="all, delete-orphan")
+
     def __str__(self):
         return "Legoset ID: " + self.set_id \
             + " Name: " + self.name
@@ -31,6 +34,9 @@ class Einzelteil(Base):
     """Dieses Attribut wird in der Datenbank als Spalte angezeigt."""
     einzelteil_id = Column(String, primary_key=True)
 
+    sets = relationship("EinzelteilLegoset", back_populates="einzelteile", cascade="all, delete-orphan")
+    anbieter = relationship("EinzelteilMarktpreis", back_populates="einzelteile", cascade="all, delete-orphan")
+
     def __str__(self):
         return "ElementId: " + self.einzelteil_id
 
@@ -46,6 +52,9 @@ class Anbieter(Base):
     """Diese Attribute werden in der Datenbank als Spalten angezeigt."""
     url = Column(String, primary_key=True)
     name = Column(String)
+
+    sets = relationship("SetMarktpreis", back_populates="anbieter", cascade="all, delete-orphan")
+    einzelteile = relationship("EinzelteilMarktpreis", back_populates="anbieter", cascade="all, delete-orphan")
 
     def __str__(self):
         return "Anbieter URL: " + self.url \
@@ -65,15 +74,15 @@ class EinzelteilLegoset(Base):
     """In der Datenbank anzuzeigender Name so wie Ansprechmöglichkeit in Befehlen."""
     __tablename__ = "Einzelteil_legoset"
     """Diese Attribute werden in der Datenbank als Spalten angezeigt."""
-    einzelteil_id = Column(String, ForeignKey("Einzelteil.einzelteil_id"), primary_key=True)
-    set_id = Column(String, ForeignKey("Legoset.set_id"), primary_key=True)
+    einzelteil_id = Column(String, ForeignKey("Einzelteil.einzelteil_id", ondelete="CASCADE"), primary_key=True)
+    set_id = Column(String, ForeignKey("Legoset.set_id", ondelete="CASCADE"), primary_key=True)
     anzahl = Column(Integer)
     """
     Diese Attribute dienen zur Deklarierung von der Beziehung und dienen als Ablage von den jeweiligen Objekten zum
     einfügen in die Datenbank. Diese werde nicht in der Datenbank angezeigt ist jedoch in Pythoncode zugreifbar.
     """
-    einzelteile = relationship("Einzelteil", backref="einzelteile", lazy="joined")
-    set = relationship("Legoset", backref="set", lazy="joined")
+    einzelteile = relationship("Einzelteil", back_populates="sets")
+    set = relationship("Legoset", back_populates="einzelteile")
 
     def __str__(self):
         return "Einzelteil: " + self.einzelteile.einzelteil_id \
@@ -94,16 +103,16 @@ class EinzelteilMarktpreis(Base):
     """In der Datenbank anzuzeigender Name so wie Ansprechmöglichkeit in Befehlen."""
     __tablename__ = "EinzelteilMarktpreis"
     """Diese Attribute werden in der Datenbank als Spalten angezeigt."""
-    einzelteil_id = Column(String, ForeignKey("Einzelteil.einzelteil_id"), primary_key=True)
-    anbieter_url = Column(String, ForeignKey("Anbieter.url"), primary_key=True)
+    einzelteil_id = Column(String, ForeignKey("Einzelteil.einzelteil_id" ,ondelete="CASCADE"), primary_key=True)
+    anbieter_url = Column(String, ForeignKey("Anbieter.url", ondelete="CASCADE"), primary_key=True)
     preis = Column(FLOAT(precision=10, asdecimal=True, decimal_return_scale=2))
     url = Column(String)
     """
     Diese Attribute dienen zur Deklarierung von der Beziehung und dienen als Ablage von den jeweiligen Objekten zum
     einfügen in die Datenbank. Diese werde nicht in der Datenbank angezeigt ist jedoch in Pythoncode zugreifbar.
     """
-    einzelteile = relationship("Einzelteil", backref="anbieter_marktpreise", lazy="joined")
-    anbieter = relationship("Anbieter", backref="einzelteile_preise", lazy="joined")
+    einzelteile = relationship("Einzelteil", back_populates="anbieter")
+    anbieter = relationship("Anbieter", back_populates="einzelteile")
 
     def __str__(self):
         return "Einzelteil: " + self.einzelteile.einzelteil_id \
@@ -125,16 +134,16 @@ class SetMarktpreis(Base):
     """In der Datenbank anzuzeigender Name so wie Ansprechmöglichkeit in Befehlen."""
     __tablename__ = "SetMarktpreis"
     """Diese Attribute werden in der Datenbank als Spalten angezeigt"""
-    set_id = Column(String, ForeignKey("Legoset.set_id"), primary_key=True)
-    anbieter_url = Column(String, ForeignKey("Anbieter.url"), primary_key=True)
+    set_id = Column(String, ForeignKey("Legoset.set_id", ondelete="CASCADE"), primary_key=True)
+    anbieter_url = Column(String, ForeignKey("Anbieter.url", ondelete="CASCADE"), primary_key=True)
     preis = Column(FLOAT(precision=10, asdecimal=True, decimal_return_scale=2))
     url = Column(String)
     """
     Diese Attribute dienen zur Deklarierung von der Beziehung und dienen als Ablage von den jeweiligen Objekten zum
     einfügen in die Datenbank. Diese werde nicht in der Datenbank angezeigt ist jedoch in Pythoncode zugreifbar.
     """
-    set = relationship("Legoset", backref="anbieter_marktpreise", lazy="joined")
-    anbieter = relationship("Anbieter", backref="set_preise", lazy="joined")
+    set = relationship("Legoset", back_populates="anbieter")
+    anbieter = relationship("Anbieter", back_populates="sets")
 
     def __str__(self):
         return "Einzelteil: " + self.set.set_id \
