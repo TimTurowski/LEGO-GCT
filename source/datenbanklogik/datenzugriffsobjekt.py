@@ -1,7 +1,7 @@
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 from source.Entity import entities
-
+from  sqlalchemy import select
 
 class Datenzugriffsobjekt:
 
@@ -127,5 +127,11 @@ class Datenzugriffsobjekt:
                     session.delete(i)
                 session.commit()
             session.close()
+
+    def einzelteil_ohne_marktpreis(self, limit):
+        session = self.Session()
+        result = session.query(entities.Einzelteil).outerjoin(entities.Einzelteil.anbieter).filter(entities.EinzelteilMarktpreis.preis.is_(None)).limit(limit).all()
+        return result
+
 
 
