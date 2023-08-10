@@ -19,7 +19,6 @@ def remove_pdfs(path):
         if not os.path.isdir(path):
             raise ValueError("Der angegebene Pfad ist kein Verzeichnis.")
         for file in os.listdir(path):
-            print(file)
             os.remove(path + file)
         print(f"Der Ordner '{path}' wurde erfolgreich geleert.")
     except Exception as e:
@@ -29,8 +28,10 @@ if __name__ == "__main__":
     """PDF Download"""
     sl = SetLogger()
     starttime = datetime.datetime.now()
-    year = "2013"
-    for set in sl.missing_set_log(year=year, set_ids_path="../setIds/"):
+    year = "2010"
+    remaining_sets = sl.missing_set_log(year=year, set_ids_path="../setIds/")
+    setcount = 0
+    for set in remaining_sets:
         remove_pdfs("./temp_downloader/")
 
         """nächstes verfügbare Set"""
@@ -63,7 +64,6 @@ if __name__ == "__main__":
                     URL = extract_text(r"../geschaeftslogik/temp_downloader/" + str(file))
                     stueckliste = PDFParser.parse_text(pdfparser, URL, set[0], set[1])
                     print(file)
-                    print(stueckliste)
                     if len(stueckliste.stueckliste) > 0:
                         sl.add_succesful_set(set[0], set[1], year)
                         break
@@ -75,6 +75,9 @@ if __name__ == "__main__":
             dao.fuge_einzelteil_legoset_hinzu(stueckliste.stueckliste)
         else:
             sl.add_failed_set(set[0], set[1], year)
+        setcount = setcount + 1
+        print(f"{setcount}/{len(remaining_sets)}  {setcount * 100/len(remaining_sets)}%")
+
 
 
 
