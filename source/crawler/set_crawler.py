@@ -25,8 +25,8 @@ class SetCrawler:
 
         """CSV Datei wird im Fromat DDMMYY gespeichert"""
         date = datetime.datetime.now()
-        self.save_as_csv(result, date.strftime("%d") + date.strftime("%m") + date.strftime("%y"))
-
+        # self.save_as_csv(result, date.strftime("%d") + date.strftime("%m") + date.strftime("%y"))
+        return result
 
     """speichert das Result als eine CSV Datei"""
     def save_as_csv(self, result, name):
@@ -42,4 +42,4 @@ class SetCrawler:
                     print("skipline", i)
 
 sc = SetCrawler()
-sc.crawl_set_ids("2006")
+print(sc.crawl_unreleased_sets())
