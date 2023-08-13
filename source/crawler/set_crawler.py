@@ -41,5 +41,5 @@ class SetCrawler:
                     """einige wenige Tupel können nicht geschrieben werden"""
                     print("skipline", i)
 
-sc = SetCrawler()
-print(sc.crawl_unreleased_sets())
+# sc = SetCrawler()
+# print(sc.crawl_unreleased_sets())
