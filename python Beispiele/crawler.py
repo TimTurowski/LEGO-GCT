@@ -7,10 +7,13 @@ from multiprocessing import Process
 
 class LegoShopSpider(scrapy.Spider):
     name = "quotes"
+    custom_settings = {
+        "USER_AGENT": 'Mozilla/5.0 (iPad; CPU OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148',
+    }
 
     def __init__(self, shop_url, element_id, result):
         # self.search_url = shop_url +"?query=" + element_id
-        self.search_url = "https://brickset.com/minifigs/in-76144-1"
+        self.search_url = "https://brickset.com/parts/category-Figure-Wigs"
         self.result = result
 
     def start_requests(self):
@@ -21,11 +24,11 @@ class LegoShopSpider(scrapy.Spider):
 
     def parse(self, response):
 
+        print(response.text)
+        # print(response.css('[class = "set"]').css("a::text").getall())
 
-        print(response.css('[class = "set"]').css("a::text").getall())
-
-        for i in response.css('[class = "set"]').css("a > span::text").getall():
-            print(i.lower())
+        # for i in response.css('[class = "set"]').css("a > span::text").getall():
+        #     print(i.lower())
 
 
 
