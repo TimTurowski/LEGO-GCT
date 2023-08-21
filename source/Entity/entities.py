@@ -90,7 +90,7 @@ class EinzelteilLegoset(Base):
             + " Anzahl des Einzelteil im Legoset: " + str(self.anzahl)
 
     def __repr__(self):
-        return f"({self.einzelteil_id} {self.set_id}) {self.anzahl}"
+        return f"({self.einzelteile.einzelteil_id} {self.set.set_id}) {self.anzahl}"
 
 
 class EinzelteilMarktpreis(Base):

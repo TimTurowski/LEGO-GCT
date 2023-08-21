@@ -1,373 +1,266 @@
-10155,Maersk Line City,False
-10210,Imperial Flagship,False
-10211,Großes Kaufhaus,False
-10212,Imperial Shuttle Star Wars,False
+10155,Maersk Line City,True
+10210,Imperial Flagship,True
+10211,Großes Kaufhaus,True
+10212,Imperial Shuttle Star Wars,True
 10213,Shuttle Adventure,True
 10214,Tower Bridge,True
-10215,Star Wars Obi-Wan's Jedi Starfighter,False
+10215,Star Wars Obi-Wan's Jedi Starfighter,True
 10216,Weihnachtsbäckerei,True
-20013,63-tlg. Neptune Carrier,False
-20014,4 x 4 Dynamo,False
-20015,89-tlg,False
-20016,Imperial Shuttle - Mini,False
-20017,Dagger Trap,False
-20018,AT-AT Walker - Mini,False
+20013,63-tlg. Neptune Carrier,True
+20014,4 x 4 Dynamo,True
+20015,89-tlg,True
+20016,Imperial Shuttle - Mini,True
+20017,Dagger Trap,True
+20018,AT-AT Walker - Mini,True
 2010,Happy Holidays - The Christmas Game,False
 21006,Das Weiße Haus,True
 21007,Rockefeller Plaza,True
-2824,Advent Calendar 2010 City,False
-2824,Advent Calendar 2010 City (Day 9) Toy Airplane,False
-2824,Advent Calendar 2010 City (Day 10) Man with Suitcase,False
-2824,Advent Calendar 2010 City (Day 11) Fireplace,False
-2824,Advent Calendar 2010 City (Day 12) Sled with Wood and Axe,False
-2824,Advent Calendar 2010 City (Day 13) Toy Fire Truck,False
-2824,Advent Calendar 2010 City (Day 14) Woman with Bread,False
-2824,Advent Calendar 2010 City (Day 15) Table with Chairs and Lamp,False
-2824,Advent Calendar 2010 City (Day 16) Couch / Sofa,False
-2824,Advent Calendar 2010 City (Day 17) Shower Stall,False
-2824,Advent Calendar 2010 City (Day 18) Santa Claus (almost Naked) wi,False
-2824,Advent Calendar 2010 City (Day 1) Snowman with Broom,False
-2824,Advent Calendar 2010 City (Day 19) Toy Train Car Red,False
-2824,Advent Calendar 2010 City (Day 20) Toy Bulldozer,False
-2824,Advent Calendar 2010 City (Day 21) Toy Train Car Yellow,False
-2824,Advent Calendar 2010 City (Day 22) Toy Helicopter,False
-2824,Advent Calendar 2010 City (Day 23) Christmas Tree,False
-2824,Adventskalender,False
-2824,Advent Calendar 2010 City (Day 2) Boy with Sword,False
-2824,Advent Calendar 2010 City (Day 3) Skateboard with Ramp and Raili,False
-2824,Advent Calendar 2010 City (Day 4) Toy Crane,False
-2824,Advent Calendar 2010 City (Day 5) Drum Set,False
-2824,Advent Calendar 2010 City (Day 6) Girl with Cat,False
-2824,Advent Calendar 2010 City (Day 7) Piano / Organ,False
-2824,Advent Calendar 2010 City (Day 8) Dog with Bowl and Sausage,False
-30010,Fire Chief,False
-30011,Police Dinghy,False
-30012,Mini Flugzeug,False
-30013,Police Quad,False
-30020,Jet,False
-30021,Papagei,False
-30030,Rennauto,False
-30031,World Race Powerboat,False
-30032,World Race Buggy,False
-30033,Racing Truck,False
-30034,Racing Tow Truck,False
-30035,Racing Car,False
-30040,Krake 42 teiliges Spielset,False
-30041,Piranha,False
-30042,Mini Sub,False
-30050,Republic Attack Shuttle - Mini,False
-30051,X-wing Fighter - Mini,False
-30061,Attack Wagon,False
-30062,Target Practice,False
-30070,Alien Space Ship,False
-30071,Army Jeep,False
-30072,Woody's Camp Out,False
-30073,Buzz's Mini Ship,False
-3177,Stadtflitzer,False
+2824,Advent Calendar 2010 City,True
+30010,Fire Chief,True
+30011,Police Dinghy,True
+30012,Mini Flugzeug,True
+30013,Police Quad,True
+30020,Jet,True
+30021,Papagei,True
+30030,Rennauto,True
+30031,World Race Powerboat,True
+30032,World Race Buggy,True
+30033,Racing Truck,True
+30034,Racing Tow Truck,True
+30035,Racing Car,True
+30040,Krake 42 teiliges Spielset,True
+30041,Piranha,True
+30042,Mini Sub,True
+30050,Republic Attack Shuttle - Mini,True
+30051,X-wing Fighter - Mini,True
+30061,Attack Wagon,True
+30062,Target Practice,True
+30070,Alien Space Ship,True
+30071,Army Jeep,True
+30072,Woody's Camp Out,True
+30073,Buzz's Mini Ship,True
+3177,Stadtflitzer,True
 3178,Wasserflugzeug,True
-3179,Reparaturwagen,False
-3180,Tanklaster,False
-3181,Passenger Plane,False
-3181,Passagierflugzeug,False
-3182,Großer Flughafen,False
-3221,LKW,False
-3222,Hubschrauber und Limousine,False
-3845,Shave a Sheep,False
-3846,U.F.O. Attack,False
-3847,Magma Monster,False
-3848,Pirate Plank,False
-3849,Orient Bazaar,False
-3850,Meteor Strike,False
-3851,Atlantis Treasure,False
-3862,LEGO® Harry Potter™ Hogwarts™,False
-40004,Heart 2010,False
-40005,Bunny,False
-40008,Snowman Building Set,False
-40009,Holiday Building Set,False
-40010,Santa with Sleigh Building Set,False
-40011,Thanksgiving Turkey,False
-40012,Halloween Pumpkin,False
-40013,Halloween Ghost,False
-40014,Halloween Bat,False
+3179,Reparaturwagen,True
+3180,Tanklaster,True
+3181,Passenger Plane,True
+3181,Passagierflugzeug,True
+3182,Großer Flughafen,True
+3221,LKW,True
+3222,Hubschrauber und Limousine,True
+3845,Shave a Sheep,True
+3846,U.F.O. Attack,True
+3847,Magma Monster,True
+3848,Pirate Plank,True
+3849,Orient Bazaar,True
+3850,Meteor Strike,True
+3851,Atlantis Treasure,True
+3862,LEGO® Harry Potter™ Hogwarts™,True
+40004,Heart 2010,True
+40005,Bunny,True
+40008,Snowman Building Set,True
+40009,Holiday Building Set,True
+40010,Santa with Sleigh Building Set,True
+40011,Thanksgiving Turkey,True
+40012,Halloween Pumpkin,True
+40013,Halloween Ghost,True
+40014,Halloween Bat,True
 4736,Dobbys Befreiung,True
 4737,Quidditch-Turnier,True
 4738,Hagrids Hütte,True
 4840,"""The Burrow",True
 4841,Hogwarts-Express,True
 4842,Schloss Hogwarts,True
-5497,Zahlen-Lernspiel,False
-55001,LEGO Universe Rocket,False
-5506,Große Steinebox,False
-5507,Deluxe Steinebox,False
-5508,Deluxe Steinebox,False
-5509,Duplo Basic Bricks,False
-5512,XXL Box 1600 Teile,False
-5529,LEGO Basic Bricks,False
-5529,"""LEGO Basic Bricks",False
-5549,LEGO® Building Fun,False
-5622,Grundbausteine 60xSteine,False
-5623,Basic Bricks - Large,False
-5643,Kleines Ferkel,False
-5644,Hühnerstall,False
-5645,Gelände-Quad für den Bauernhof,False
-5646,Tierbabys auf dem Bauernhof,False
-5647,Großer Traktor,False
-5649,Großer Bauernhof,False
-5650,Frontlader,False
-5657,Jessies Wache,False
-5658,Pizza Planet-Lastwagen,False
-5659,Die große Eisenbahnjagd,False
-5813,Lightning McQueen,False
-5814,Hooks Schrottplatz,False
-5864,Mini Helikopter,False
-5865,Mini Laster,False
-5866,Rettungshelikopter,False
-5867,Roter Sportwagen,False
-5868,Krokodil,False
+5497,Zahlen-Lernspiel,True
+55001,LEGO Universe Rocket,True
+5506,Große Steinebox,True
+5507,Deluxe Steinebox,True
+5508,Deluxe Steinebox,True
+5509,Duplo Basic Bricks,True
+5512,XXL Box 1600 Teile,True
+5529,LEGO Basic Bricks,True
+5529,"""LEGO Basic Bricks",True
+5549,LEGO® Building Fun,True
+5622,Grundbausteine 60xSteine,True
+5623,Basic Bricks - Large,True
+5643,Kleines Ferkel,True
+5644,Hühnerstall,True
+5645,Gelände-Quad für den Bauernhof,True
+5646,Tierbabys auf dem Bauernhof,True
+5647,Großer Traktor,True
+5649,Großer Bauernhof,True
+5650,Frontlader,True
+5657,Jessies Wache,True
+5658,Pizza Planet-Lastwagen,True
+5659,Die große Eisenbahnjagd,True
+5813,Lightning McQueen,True
+5814,Hooks Schrottplatz,True
+5864,Mini Helikopter,True
+5865,Mini Laster,True
+5866,Rettungshelikopter,True
+5867,Roter Sportwagen,True
+5868,Krokodil,True
 5891,Haus mit Garage,True
 5892,Jet,True
 5893,Geländewagen mit Quad,True
-5898,Bausteine Autos,False
-5899,Bausteine Haus,False
-5981,Raid VPR,False
-5982,Bankraub,False
-5983,SP-Raumgleiter,False
-5984,Mond-Limousine,False
-5985,Space Police-Zentrale,False
+5898,Bausteine Autos,True
+5899,Bausteine Haus,True
+5981,Raid VPR,True
+5982,Bankraub,True
+5983,SP-Raumgleiter,True
+5984,Mond-Limousine,True
+5985,Space Police-Zentrale,True
 60203,Ski Resort,True
 66311,LEGO Creative Value Pack (TRU Exclusive),False
-66341,Star Wars Super Pack 3 in 1 (8014 8015 8091),False
-66342,City Super Pack 3 in 1 (7213 7241 7942),False
-66345,City Super Pack 4 in 1 (3177 7241 7634 7638),False
-66357,"""Feuerwehr 4 in 1 Superpack",True
-66358,City Super Pack 3 in 1 (7634 7635 7684),True
-66359,Technic Super Pack 4 in 1 (8049 8259 8260 8293),False
-66360,"""Feuerwehr Super Pack 4 in 1",False
-66362,City Super Pack 4 in 1 (3177 3179 8401 8402),False
-66363,"""Polizei 7235",True
-66364,Star Wars Super Pack 3 in 1,False
-66365,Atlantis Superpack 4in1,True
-66366,Star Wars Super Pack  3 in 1 (8089 8083 7749),False
-66368,Super Pack 3 in 1,False
 66373,Fun Favor Pack,False
-66374,City Super Pack 4 in 1 (7895 7896 7937 7939),True
-66405,City Super Pack 4 in 1 (7939 7937 7499 7895),True
-7116,Tahu,False
-7117,Gresh,False
-7135,Takanuva,False
-7136,Skrall,False
-7137,Piraka,False
-7138,Rakhshi,False
-7145,Von Nebula,False
-7147,XPlode,False
-7148,Meltdown,False
-7156,Corroder,False
-7157,Thunder,False
-7158,Furno Bike,False
-7160,Drop Ship,False
-7162,Rotor,False
-7164,Preston Stormer,False
-7165,Natalie Breez,False
-7167,William Furno,False
-7168,Duncan Bulk,False
-7169,Mark Surge,False
+7116,Tahu,True
+7117,Gresh,True
+7135,Takanuva,True
+7136,Skrall,True
+7137,Piraka,True
+7138,Rakhshi,True
+7145,Von Nebula,True
+7147,XPlode,True
+7148,Meltdown,True
+7156,Corroder,True
+7157,Thunder,True
+7158,Furno Bike,True
+7160,Drop Ship,True
+7162,Rotor,True
+7164,Preston Stormer,True
+7165,Natalie Breez,True
+7167,William Furno,True
+7168,Duncan Bulk,True
+7169,Mark Surge,True
 7170,Jimi Stringer,False
-7179,Dunkan Bulk and Vapor,False
-7206,Feuerwehr-Helikopter,False
-7207,Feuerwehrschiff,False
-7208,Große Feuerwehr-Station,False
-7213,Feuerwehr-Truck mit Löschboot,False
-7566,Landwirt,False
-7567,"""Tourist",False
-7569,Wüstenversteck,False
-7570,Vogel Strauß-Rennen,False
+7179,Dunkan Bulk and Vapor,True
+7206,Feuerwehr-Helikopter,True
+7207,Feuerwehrschiff,True
+7208,Große Feuerwehr-Station,True
+7213,Feuerwehr-Truck mit Löschboot,True
+7566,Landwirt,True
+7567,"""Tourist",True
+7569,Wüstenversteck,True
+7570,Vogel Strauß-Rennen,True
 7571,Kampf um den Dolch,True
-7572,Kampf gegen die Zeit,False
-7573,Schlacht um Alamut,False
-7590,Rettung von Woody und Buzz,False
-7591,Construct-a-Zurg,False
-7592,Buzz,False
-7593,Buzz' Star Command-Raumschiff,False
+7572,Kampf gegen die Zeit,True
+7573,Schlacht um Alamut,True
+7590,Rettung von Woody und Buzz,True
+7591,Construct-a-Zurg,True
+7592,Buzz,True
+7593,Buzz' Star Command-Raumschiff,True
 75938,T. rex vs. Dino-Mech,True
-7594,Woody's Round-up,False
-7595,Grüne Plastiksoldaten,False
-7596,Flucht aus der Müllpresse,False
+7594,Woody's Round-up,True
+7595,Grüne Plastiksoldaten,True
+7596,Flucht aus der Müllpresse,True
 7597,Eisenbahnjagd im Wilden Westen,True
 7598,Pizza Planet Lastwagen,True
 7599,Toy Story Flucht aus dem Müllauto limited edition,True
-7684,Ferkel-Gehege mit Traktor,False
-7688,Sports Plane,False
+7684,Ferkel-Gehege mit Traktor,True
+7688,Sports Plane,True
 7789,Lotsos Kipplaster,True
-7848,Toys 'R' Us Truck,False
-7936,Bahnübergang,False
+7848,Toys 'R' Us Truck,True
+7936,Bahnübergang,True
 7937,Bahnhof,True
-7938,Passagierzug,False
+7938,Passagierzug,True
 7939,Güterzug,True
-7946,Große Königsburg,False
-7947,Drachenfestung,False
-7948,Angriff auf den Außenposten,False
-7949,Befreiung aus der Gefängniskutsche,False
-7950,Duell der Ritter,False
-7952,Advent Calendar 2010 Kingdoms,False
-7952,Advent Calendar 2010 Kingdoms (Day  9) - Chest with Jewels,False
-7952,Advent Calendar 2010 Kingdoms (Day 10) - Skeleton,False
-7952,Advent Calendar 2010 Kingdoms (Day 11) - Dungeon Cell Window wit,False
-7952,Advent Calendar 2010 Kingdoms (Day 12) - Pig with Apple,False
-7952,Advent Calendar 2010 Kingdoms (Day 13) - Prince with Sword,False
-7952,Advent Calendar 2010 Kingdoms (Day 14) - Sword in the Stone,False
-7952,Advent Calendar 2010 Kingdoms (Day 15) - Jousting Dummy with Hel,False
-7952,Advent Calendar 2010 Kingdoms (Day 16) - Barmaid,False
-7952,Advent Calendar 2010 Kingdoms (Day 17) - Keg with Tap,False
-7952,Advent Calendar 2010 Kingdoms (Day 18) - Cauldron,False
-7952,Advent Calendar 2010 Kingdoms (Day  1) - Blacksmith with Hammer,False
-7952,Advent Calendar 2010 Kingdoms (Day 19) - Lion Knight with Spear,False
-7952,Advent Calendar 2010 Kingdoms (Day 20) - Catapult,False
-7952,Advent Calendar 2010 Kingdoms (Day 21) - Lion Knight Scale Mail,False
-7952,Advent Calendar 2010 Kingdoms (Day 22) - Owl in Tree,False
-7952,Advent Calendar 2010 Kingdoms (Day 23) - Cooking Table with Fryi,False
-7952,Adventskalender,False
-7952,Advent Calendar 2010 Kingdoms (Day  2) - Anvil and Forge with Sw,False
-7952,Advent Calendar 2010 Kingdoms (Day  3) - Weapons Rack,False
-7952,Advent Calendar 2010 Kingdoms (Day  4) - Dragon Knight with Flai,False
-7952,Advent Calendar 2010 Kingdoms (Day  5) - Weapons Cart with Spear,False
-7952,Advent Calendar 2010 Kingdoms (Day  6) - Armor Rack with Plate A,False
-7952,Advent Calendar 2010 Kingdoms (Day  7) - Queen with Frog,False
-7952,Advent Calendar 2010 Kingdoms (Day  8) - Throne,False
-7953,Gaukler,False
-7955,Zauberer,False
+7946,Große Königsburg,True
+7947,Drachenfestung,True
+7948,Angriff auf den Außenposten,True
+7949,Befreiung aus der Gefängniskutsche,True
+7950,Duell der Ritter,True
+7952,Advent Calendar 2010 Kingdoms,True
+7953,Gaukler,True
+7955,Zauberer,True
 7967,Fast,True
 7968,Strong,True
 7970,Hero,True
 7971,Bad,True
-8041,Technic Race Truck (608pcs),False
-8043,Motorisierter Raupenbagger,False
-8045,Mini-Teleskoplader,False
-8046,Hubschrauber,False
-8047,Kompaktbagger,False
-8048,Buggy,False
-8049,Traktor mit Forstkran,False
+8041,Technic Race Truck (608pcs),True
+8043,Motorisierter Raupenbagger,True
+8045,Mini-Teleskoplader,True
+8046,Hubschrauber,True
+8047,Kompaktbagger,True
+8048,Buggy,True
+8049,Traktor mit Forstkran,True
 8051,Motorrad,True
-8052,Container-Truck,False
-8053,Mobiler Kran,False
-8056,Begegnung mit der Monsterkrabbe,False
-8057,Unterwasserscooter,False
-8058,Riesenhai,False
-8059,Sandfräser,False
-8060,Turbojet,False
-8061,Tintenfischtor,False
-8072,"""Unterwasserflitzer",False
-8073,Teufelsrochen,False
-8075,Neptuns U-Boot,False
-8076,Gigantischer Tiefseeskorpion,False
-8077,Unterwasser-Hauptquartier,False
-8078,Große Haifestung,False
-8079,Atlantis Schattenschnapper Limited Edition,False
+8052,Container-Truck,True
+8053,Mobiler Kran,True
+8056,Begegnung mit der Monsterkrabbe,True
+8057,Unterwasserscooter,True
+8058,Riesenhai,True
+8059,Sandfräser,True
+8060,Turbojet,True
+8061,Tintenfischtor,True
+8072,"""Unterwasserflitzer",True
+8073,Teufelsrochen,True
+8075,Neptuns U-Boot,True
+8076,Gigantischer Tiefseeskorpion,True
+8077,Unterwasser-Hauptquartier,True
+8078,Große Haifestung,True
+8079,Atlantis Schattenschnapper Limited Edition,True
 8080,Undersea Explorer,True
-8083,Rebel Trooper Battle Pack,False
-8084,Snowtrooper Battle Pack,False
-8085,Freeco Speeder,False
-8086,Droid Tri-Fighter,False
-8087,TIE Defender,False
-8088,ARC-170 Starfighter,False
-8089,Hoth Wampa Cave,False
-8091,Republic Swamp Speeder,False
-8092,Luke's Landspeeder,False
+8083,Rebel Trooper Battle Pack,True
+8084,Snowtrooper Battle Pack,True
+8085,Freeco Speeder,True
+8086,Droid Tri-Fighter,True
+8087,TIE Defender,True
+8088,ARC-170 Starfighter,True
+8089,Hoth Wampa Cave,True
+8091,Republic Swamp Speeder,True
+8092,Luke's Landspeeder,True
 8093,Plo Koon's Starfighter,True
-8095,General Grievous' Starfighter,False
-8096,Emperor Palpatine's Shuttle,False
+8095,General Grievous' Starfighter,True
+8096,Emperor Palpatine's Shuttle,True
 8097,Slave I,True
-8098,Clone Turbo Tank,False
-8099,Midi-Scale Imperial Star Destroyer,False
-8128,Cad Bane's Speeder,False
-8129,AT AT Walker Limited Edition,False
-8188,Fire Blaster,False
-8189,Magmaläufer,False
-8190,Mini-Monstergreifer,False
-8191,Monster-Gefängnis,False
-8192,Lime Racer,False
-8193,Blue Bullet,False
-8194,NitrO Racers Muscle,False
-8195,TurbO Racers Tow,False
-8196,Chopper Jump,False
+8098,Clone Turbo Tank,True
+8099,Midi-Scale Imperial Star Destroyer,True
+8128,Cad Bane's Speeder,True
+8129,AT AT Walker Limited Edition,True
+8188,Fire Blaster,True
+8189,Magmaläufer,True
+8190,Mini-Monstergreifer,True
+8191,Monster-Gefängnis,True
+8192,Lime Racer,True
+8193,Blue Bullet,True
+8194,NitrO Racers Muscle,True
+8195,TurbO Racers Tow,True
+8196,Chopper Jump,True
 8197,Highway Chaos,True
-8198,Ramp Crash,False
-8199,Security Smash,False
-8211,Racers Brick Street Getaway,False
-8214,Gallardo LP 560-4 Polizia,False
-8403,Stadthaus,False
-8404,City Bus und Tramstation,False
-8409,Spidermonkey,False
-8410,Schlammfeuer,False
-8411,Chromastein,False
-8517,Gigantosaurus,False
-8518,Turbomanta,False
-8519,Froster,False
-8683,Minifigure Series 1,False
-8683,Tribal Hunter - Complete Set,False
-8683,Super Wrestler - Complete Set,False
-8683,Nurse - Complete Set,False
-8683,Ninja - Complete Set,False
-8683,Spaceman - Complete Set,False
-8683,Forestman - Complete Set,False
-8683,Deep Sea Diver - Complete Set,False
-8683,Cowboy - Complete Set,False
-8683,Collectable Minifigures - LEGO Minifigures Series 1 - Complete,False
-8683,Minifigure Series 1 (Box of 60),False
-8683,Cheerleader - Complete Set,False
-8683,Caveman - Complete Set,False
-8683,Circus Clown - Complete Set,False
-8683,Zombie - Complete Set,False
-8683,Skater - Complete Set,False
-8683,Robot - Complete Set,False
-8683,Demolition Dummy - Complete Set,False
-8683,Magician - Complete Set,False
-8684,Minifigure Series 2,False
-8684,Mariachi / Maraca Man - Complete Set,False
-8684,Weightlifter - Complete Set,False
-8684,Pop Star - Complete Set,False
-8684,Skier - Complete Set,False
-8684,Disco Dude - Complete Set,False
-8684,Karate Master - Complete Set,False
-8684,Surfer - Complete Set,False
-8684,Pharaoh - Complete Set,False
-8684,Collectable Minifigures - LEGO Minifigures Series 2 - Complete,False
-8684,1 Minifigur aus der Sammelfiguren-Serie 2,False
-8684,Spartan Warrior - Complete Set,False
-8684,Circus Ringmaster - Complete Set,False
-8684,Witch - Complete Set,False
-8684,Vampire - Complete Set,False
-8684,Traffic Cop - Complete Set,False
-8684,Explorer - Complete Set,False
-8684,Lifeguard - Complete Set,False
-8684,Mime - Complete Set,False
-8863,Schneesturm in der Antarktis,False
-8864,Finale in der Wüste,False
-8896,Duell in der Schlangen-Schlucht,False
-8897,Entscheidung am Haifisch-Riff,False
+8198,Ramp Crash,True
+8199,Security Smash,True
+8211,Racers Brick Street Getaway,True
+8214,Gallardo LP 560-4 Polizia,True
+8403,Stadthaus,True
+8404,City Bus und Tramstation,True
+8409,Spidermonkey,True
+8410,Schlammfeuer,True
+8411,Chromastein,True
+8517,Gigantosaurus,True
+8518,Turbomanta,True
+8519,Froster,True
+8863,Schneesturm in der Antarktis,True
+8864,Finale in der Wüste,True
+8896,Duell in der Schlangen-Schlucht,True
+8897,Entscheidung am Haifisch-Riff,True
 8898,Rennen auf heißem Asphalt,True
-8899,Gefahr im Krokodil-Sumpf,False
-9091,Playhouse Set,False
-9217,Farm Set,False
-9311,City Buildings Set,False
-9314,Rescue Service Set,False
-9333,Vehicles,False
-9334,Animals,False
-9335,Space & Airport Set,False
-9384,Bricks,False
-9385,Sceneries Set,False
-9386,Doors Windows & Roof Tiles,False
-9667,Solar Panel,False
+8899,Gefahr im Krokodil-Sumpf,True
+9091,Playhouse Set,True
+9217,Farm Set,True
+9311,City Buildings Set,True
+9314,Rescue Service Set,True
+9333,Vehicles,True
+9334,Animals,True
+9335,Space & Airport Set,True
+9384,Bricks,True
+9385,Sceneries Set,True
+9386,Doors Windows & Roof Tiles,True
+9667,Solar Panel,True
 9668,Energy Display,False
-9669,Electric Battery Box 9V 150 mAh (Rechargeable),False
+9669,Electric Battery Box 9V 150 mAh (Rechargeable),True
 9670,E-Motor with Gear Reduction Ratio 9.5 : 1,False
-9688,Renewable Energy Add-On Set,False
-9693,MINDSTORMS® Gleichstrom-Akku,False
-9694,MINDSTORMS® NXT Farbsensor,False
-9695,Mindstorms Education Resource Set,False
-9696,FIRST LEGO League Challenge 2010 - Body Forward v46,False
-lfv1,Le Fleuriste Collector Vase - Rapid Flore Pop Color,False
-lfv2,Le Fleuriste Collector Vase - Happy,False
-lfv3,Le Fleuriste Collector Vase - Monceau Fleurs Blue Chic,False
-lwp03,LEGO World Denmark Puzzle Promo 2010,False
-Miami,"""LEGO Store Grand Opening Exclusive Set",False
-Troy,"""LEGO Store Grand Opening Exclusive Set",False
+9688,Renewable Energy Add-On Set,True
+9693,MINDSTORMS® Gleichstrom-Akku,True
+9694,MINDSTORMS® NXT Farbsensor,True
+9695,Mindstorms Education Resource Set,True
+9696,FIRST LEGO League Challenge 2010 - Body Forward v46,True
