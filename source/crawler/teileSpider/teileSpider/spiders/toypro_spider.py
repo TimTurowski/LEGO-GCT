@@ -8,7 +8,8 @@ class ToyproSpider(scrapy.Spider):
     name = "toypro_spider"
 
     custom_settings = {
-        "LOG_ENABLED": False,
+        "LOG_ENABLED": True,
+        "DOWNLOAD_DELAY": 0.25,
     }
 
     def __init__(self, legoteile, result, shop_url="https://www.toypro.com/en/"):

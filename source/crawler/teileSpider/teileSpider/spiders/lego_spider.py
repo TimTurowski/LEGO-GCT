@@ -8,7 +8,8 @@ from source.utility import element_id_von_url
 class LegoSpider(scrapy.Spider):
     name = "lego_spider"
     custom_settings = {
-        "LOG_ENABLED": False,
+        "LOG_ENABLED": True,
+        "DOWNLOAD_DELAY": 0.5,
     }
 
     """Spider wird mit den elementId der zu crawlenden Einzelteile initiiert. 
