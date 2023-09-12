@@ -68,5 +68,5 @@ class PartCrawler:
                     """einige wenige Tupel können nicht geschrieben werden"""
                     print("skipline", i)
 
-# pc = PartCrawler()
-# print(pc.crawl_set_parts("10155", "Der Einsame Berg"))
+pc = PartCrawler()
+print(pc.crawl_minifigures("75313"))

@@ -29,3 +29,4 @@ class SetPartSpider(scrapy.Spider):
             yield scrapy.Request(url=next_url, callback=self.parse)
 
 
+
