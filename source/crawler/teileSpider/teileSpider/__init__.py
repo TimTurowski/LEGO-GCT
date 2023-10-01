@@ -1,1 +1,1 @@
-from .spiders.lego_spider import LegoSpider
+# from .spiders.lego_spider import LegoSpider
