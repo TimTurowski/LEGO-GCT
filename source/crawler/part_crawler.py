@@ -6,6 +6,7 @@ from unidecode import unidecode
 
 from source.crawler.minifigur_spider import MinifigurSpider
 from source.crawler.minifgur_part_spider import MinifigurPartSpider
+from source.crawler.design_id_spider import DesignIdSpider
 from source.crawler.set_part_spider import SetPartSpider
 from source.parser.stueckliste import Stueckliste
 
@@ -52,6 +53,17 @@ class PartCrawler:
 
         return liste
 
+    def crawl_design_ids(self,values):
+        process = CrawlerProcess()
+        result = []
+        process.crawl(DesignIdSpider,
+                      url="https://brickset.com/parts?",
+                      result=result,
+                      values=values)
+        process.start()
+        print(result)
+
+
     """speichert das Result als eine CSV Datei"""
     def save_as_csv(self, result, name):
 
@@ -68,5 +80,12 @@ class PartCrawler:
                     """einige wenige Tupel können nicht geschrieben werden"""
                     print("skipline", i)
 
+
+prices = {"Black": 0.0975, "Dark Bluish Gray": 0.0675}
+
+
 pc = PartCrawler()
-print(pc.crawl_minifigures("75313"))
+pc.crawl_design_ids([("98302",prices), ("87611",{"Dark Bluish Gray":0.165
+                                                ,"Reddish Brown":0.2925
+                                                ,"White":0.21})])
+# print(pc.crawl_minifigures("75313"))

@@ -1,7 +1,7 @@
 import datetime
 
 from source.crawler.crawler import Crawler
-from source.crawler.teileSpider.teileSpider.spiders import LegoSpider
+from source.crawler.teileSpider.teileSpider.spiders.lego_spider import LegoSpider
 from source.datastructures.crawl_result import CrawlResult
 from scrapy.crawler import CrawlerProcess
 from source.Entity.entities import Einzelteil, EinzelteilMarktpreis, Anbieter
