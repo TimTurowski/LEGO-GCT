@@ -9,6 +9,9 @@ from source.crawler.minifgur_part_spider import MinifigurPartSpider
 from source.crawler.design_id_spider import DesignIdSpider
 from source.crawler.set_part_spider import SetPartSpider
 from source.parser.stueckliste import Stueckliste
+from source.Entity.entities import EinzelteilMarktpreis, Einzelteil, Anbieter
+from source.utility import preis_zu_float
+
 
 class PartCrawler:
 
@@ -28,6 +31,7 @@ class PartCrawler:
         self.save_as_csv(result, "FigureParts")
 
     def crawl_figure_parts_to_set(self, set_id, category):
+        """crawlt die Einzelteile von Minifiguren zu einem Set"""
         process = CrawlerProcess()
         result = []
         process.crawl(MinifigurPartSpider, url="https://brickset.com/parts/in-" + set_id + "-1/category-" + category + "/page-1",
@@ -36,6 +40,7 @@ class PartCrawler:
         self.save_as_csv(result, "FigureParts " + set_id)
 
     def crawl_minifigures(self, set_id):
+        """Crawlt zu einer Set_id alle Minifiguren"""
         process = CrawlerProcess()
         result = []
         process.crawl(MinifigurSpider, url="https://brickset.com/minifigs/in-"+set_id+"-1",
@@ -53,19 +58,37 @@ class PartCrawler:
 
         return liste
 
-    def crawl_design_ids(self,values):
+    def crawl_design_ids(self,bricklink_einzelteile, shop_name, shop_url):
+        """Anfrage mit (BricklinkId, BricklinkFarbname, preis)"""
         process = CrawlerProcess()
+
+        """Result enthält (EinzelteilId, LegoFarbname, preis)"""
+        values = list(map(lambda a: (a.design_id, a.color_dict), bricklink_einzelteile))
         result = []
         process.crawl(DesignIdSpider,
                       url="https://brickset.com/parts?",
                       result=result,
                       values=values)
         process.start()
+
+
+        """markpreise enthällt alle Marktpreise mit der passenden Legoid"""
+        marktpreise = []
+        for i in result:
+            e = EinzelteilMarktpreis(einzelteile=Einzelteil(einzelteil_id=i[0]),
+                                 preis=preis_zu_float(i[2]),
+                                 url=shop_url,
+                                 anbieter=Anbieter(name=shop_name,
+                                                   url=shop_url))
+            marktpreise.append(e)
+
         print(result)
+        print(len(result))
 
 
     """speichert das Result als eine CSV Datei"""
     def save_as_csv(self, result, name):
+        """Speichert ein Result als CSV Datei"""
 
         with open("../setIds/minifigures/" + name + ".csv", 'w', newline='', encoding='utf-8') as file:
             writer = csv.writer(file)
@@ -81,11 +104,11 @@ class PartCrawler:
                     print("skipline", i)
 
 
-prices = {"Black": 0.0975, "Dark Bluish Gray": 0.0675}
-
-
-pc = PartCrawler()
-pc.crawl_design_ids([("98302",prices), ("87611",{"Dark Bluish Gray":0.165
-                                                ,"Reddish Brown":0.2925
-                                                ,"White":0.21})])
+# prices = {"Black": 0.0975, "Dark Bluish Gray": 0.0675}
+#
+#
+# pc = PartCrawler()
+# pc.crawl_design_ids([("98302",prices), ("87611",{"Dark Bluish Gray":0.165
+#                                                 ,"Reddish Brown":0.2925
+#                                                 ,"White":0.21})])
 # print(pc.crawl_minifigures("75313"))

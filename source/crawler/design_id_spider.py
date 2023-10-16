@@ -124,7 +124,10 @@ class DesignIdSpider(scrapy.Spider):
     def parse(self, response, prices, colors):
         regex = ""
         for i in colors:
-            regex = regex + color_dict[i] + "|"
+            try:
+                regex = regex + color_dict[i] + "|"
+            except:
+                regex = regex + i + "|"
 
         regex = regex[:-1]
         for i in response.css(".set"):

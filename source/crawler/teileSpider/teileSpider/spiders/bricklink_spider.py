@@ -1,4 +1,5 @@
 import scrapy
+from scrapy.crawler import CrawlerProcess
 from scrapy_selenium import SeleniumRequest
 import time
 import csv
@@ -19,28 +20,36 @@ class BrickLinkSpider(scrapy.Spider):
         "LOG_ENABLED": False,
         "USER_AGENT": 'Mozilla/5.0 (iPad; CPU OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148',
     }
-
+    def __init__(self, shop_url, shop_name,result, category_limit):
+        self.shop_url = shop_url
+        self.result = result
+        self.category_limit = category_limit
+        self.shop_name = shop_name
     def start_requests(self):
 
-        # url = "http://httpbin.org/ip"
-        url = "https://store.bricklink.com/generationbrick?p=generationbrick#/shop?o={%22itemType%22:%22P%22,%22catID%22:%223%22,%22showHomeItems%22:0}"
+        url = self.shop_url
         yield SeleniumRequest(url=url, callback=self.parse, wait_time=10000)
 
     def parse(self, response):
         chrome_options = Options()
         chrome_options.add_argument('--ignore-certificate-errors')
         chrome_options.add_argument('--ignore-ssl-errors')
+        chrome_options.add_argument('--headless')
+
         driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
         driver.get(
-            "https://store.bricklink.com/generationbrick?p=generationbrick#/shop?o={%22itemType%22:%22P%22,%22catID%22:%223%22,%22showHomeItems%22:0}")
+            self.shop_url)
 
         time.sleep(1)
         categories = driver.find_element(By.XPATH,
                                          "/html/body/div[2]/div[3]/div/aside/div/div/div[2]/section/div/div[2]/div[2]/div/div[1]") \
             .find_elements(By.CSS_SELECTOR, "a")
         parts = []
+        if self.category_limit is None:
+            self.category_limit = len(categories)
+
         """Iterieren über die Kategorien"""
-        for i in categories[0:6]:
+        for i in categories[0:self.category_limit]:
             i.click()
             time.sleep(1)
 
@@ -61,13 +70,15 @@ class BrickLinkSpider(scrapy.Spider):
                     desing_id = article_element.find_element(By.CLASS_NAME, "bl-breadcrumb") \
                         .find_elements(By.CSS_SELECTOR, "a")[-1].text
 
-                    price = float(article_element.find_element(By.CLASS_NAME, "buy") \
-                                  .find_elements(By.CSS_SELECTOR, "strong")[-1].text.replace("EUR ", ""))
-                    # print(price)
-                    parts.append([desing_id, color, price])
+                    price = article_element.find_element(By.CLASS_NAME, "buy") \
+                                  .find_elements(By.CSS_SELECTOR, "strong")[-1].text.replace("EUR ", "€")
+
+                    self.result.append([desing_id, color, price, driver.current_url, self.shop_name])
 
         """schreiben der CSV Datei mit den Einzelteilen"""
         with open("parts.csv", 'w', newline='', encoding='utf-8') as file:
             writer = csv.writer(file)
-            for i in parts:
+            for i in self.result:
                 writer.writerow(i)
+
+
