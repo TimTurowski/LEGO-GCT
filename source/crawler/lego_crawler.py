@@ -43,5 +43,3 @@ class LegoCrawler(Crawler):
 
         crawl_result = CrawlResult(einzelteil_marktpreise,failed_einzelteile,1)
         return crawl_result
-
-
