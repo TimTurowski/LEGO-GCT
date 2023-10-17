@@ -80,8 +80,12 @@ WSGI_APPLICATION = "Djangounchained.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": "testdb",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "LegoGCT",
+        "USER": "postgres",
+        "PASSWORD": "27R569RX",
+        "HOST": "192.168.198.47",
+        "PORT": "5432"
     }
 }
 
