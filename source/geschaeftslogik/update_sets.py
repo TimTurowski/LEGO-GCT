@@ -4,6 +4,8 @@ import datetime
 from multiprocessing import Process
 
 from pdfminer.high_level import extract_text
+
+from source.DiscordBot.dc_message import send_discord_message
 from source.anleitungs_downloader.pdf_downloader import PdfDownloader
 from source.crawler.set_crawler import SetCrawler
 from source.datenbanklogik.datenzugriffsobjekt import Datenzugriffsobjekt
@@ -34,21 +36,25 @@ def remove_pdfs(path):
 
 if __name__ == "__main__":
     """erster Step aktualisieren der Watchlist"""
+
     starttime = datetime.datetime.now()
     conn1, conn2 = multiprocessing.Pipe()
     p = Process(target=search_sets, args=(SetCrawler(), conn2))
     p.start()
     p.join()
+
     set_crawl_result = conn1.recv()
-    update_logger = SetUpdateLogger("watchlist.csv")
+    update_logger = SetUpdateLogger("watchlist.csv", 10)
     update_logger.update_sets(crawl_result=set_crawl_result)
     sets = update_logger.get_sets()
+    print(sets)
 
     setcount = 0
     """2. Step versuchen vom Herunterladen von Sets der Watchlist"""
     for set in sets:
         remove_pdfs("./temp_downloader/")
 
+        """Versuchter Download der PDF"""
         conn1, conn2 = multiprocessing.Pipe()
         p = Process(target=execute_download, args=(set[0],conn2))
         p.start()
@@ -85,7 +91,8 @@ if __name__ == "__main__":
 
         if stueckliste is not None and len(stueckliste.stueckliste) > 0:
             dao.fuge_einzelteil_legoset_hinzu(stueckliste.stueckliste)
-            print(stueckliste)
+
+            send_discord_message(f"```ansi\n[0;32m{set[0]}, {set[1]} wurde erfolgreich der Datenbank hinzugefügt```")
             print(f"{download_result.succesful_sets[0]} wurde erfolgreich in die Datenbank hinzugefügt")
             update_logger.remove_succesful_sets(download_result.succesful_sets[0])
 

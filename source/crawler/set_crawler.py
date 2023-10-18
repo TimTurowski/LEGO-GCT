@@ -5,6 +5,7 @@ import csv
 from unidecode import unidecode
 
 from source.crawler.set_spider import SetSpider
+from source.utility.set_logger import SetLogger
 
 """Der SetCrawler kann zu einen als Parameter übergebenen Jahr alle Setids aus dem Jahr finden"""
 class SetCrawler:
@@ -20,13 +21,28 @@ class SetCrawler:
     def crawl_unreleased_sets(self):
         process = CrawlerProcess()
         result = []
-        process.crawl(SetSpider, url="https://www.steinelager.de/de/sets/p/1?availability=1", result=result)
+        year = str(datetime.datetime.now().year)
+        process.crawl(SetSpider, url="https://www.steinelager.de/de/sets/year/" + year + "/1", result=result)
         process.start()
 
+        sl = SetLogger()
+
+        """oldset hat alle Sets die bereits in der DB sind oder keine Anleitung haben aus dem aktuellen jahr"""
+
+        old_sets = sl.succesful_set_log(year) + sl.failed_set_log(year)
+        old_sets = list(map(lambda a: (a[0], a[1]), old_sets))
+
+
+        result = list(map(lambda a: (a[0], a[1].replace("\xa0", " ").replace("\u200b", "")), result))
+
+        new_sets = list(set(result) - set(old_sets))
+
+
+
         """CSV Datei wird im Fromat DDMMYY gespeichert"""
-        date = datetime.datetime.now()
+        # date = datetime.datetime.now()
         # self.save_as_csv(result, date.strftime("%d") + date.strftime("%m") + date.strftime("%y"))
-        return result
+        return new_sets
 
     """speichert das Result als eine CSV Datei"""
     def save_as_csv(self, result, name):
