@@ -1,7 +1,7 @@
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 from source.Entity import entities
-from  sqlalchemy import select
+
 
 class Datenzugriffsobjekt:
 
@@ -120,6 +120,8 @@ class Datenzugriffsobjekt:
                 session.commit()
             session.close()
 
+    """Die Liste an Sets, die in der Methode übergeben wurde, wird gelöscht."""
+
     def loesche_sets(self, sets):
         with self.Session() as session:
             with session.begin():
@@ -128,9 +130,25 @@ class Datenzugriffsobjekt:
                 session.commit()
             session.close()
 
+    """Hier wird eine Liste übergeben, wo Einzelteile ohne Marktpreise übergeben werden. Hier kann man auch ein Limit
+    setzen, wodurch man die Anzahl an Einzelteile begrenzen kann."""
+
     def einzelteil_ohne_marktpreis(self, limit):
         session = self.Session()
         result = session.query(entities.Einzelteil).outerjoin(entities.Einzelteil.anbieter).filter(entities.EinzelteilMarktpreis.preis.is_(None)).limit(limit).all()
+        return result
+
+    """Zu der übergebenen LegosetID wird eine Liste von all ihren Einzelteilen übergeben"""
+    def einzelteile_zu_legoset(self, set_id):
+        session = self.Session()
+        result = session.query(entities.Einzelteil).join(entities.Einzelteil.sets).filter(entities.EinzelteilLegoset.set_id == set_id).all()
+        return result
+
+    def marktpreise_zu_einzelteile(self, einzelteilliste):
+        session = self.Session()
+        result = []
+        for i in einzelteilliste:
+            result.append(session.query(entities.EinzelteilMarktpreis).join(entities.EinzelteilMarktpreis.einzelteile).filter(entities.EinzelteilMarktpreis.einzelteil_id == i.einzelteil_id).first())
         return result
 
 
