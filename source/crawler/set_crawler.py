@@ -4,6 +4,7 @@ import csv
 
 from unidecode import unidecode
 
+from source.crawler.set_price_spider import SetPriceSpider
 from source.crawler.set_spider import SetSpider
 from source.utility.set_logger import SetLogger
 
@@ -44,6 +45,13 @@ class SetCrawler:
         # self.save_as_csv(result, date.strftime("%d") + date.strftime("%m") + date.strftime("%y"))
         return new_sets
 
+    def crawl_set_prices(self, set_ids):
+        process = CrawlerProcess()
+        results = [];
+        process.crawl(SetPriceSpider, set_ids=set_ids, result=results)
+        process.start()
+        print(results)
+
     """speichert das Result als eine CSV Datei"""
     def save_as_csv(self, result, name):
         """Gecrawlte Sets werden als SetId mit Namen in eine CSV Datei geschrieben"""
@@ -57,3 +65,6 @@ class SetCrawler:
                     """einige wenige Tupel können nicht geschrieben werden"""
                     print("skipline", i)
 
+
+# sc = SetCrawler()
+# sc.crawl_set_prices(["10251", "10270", "10260"])

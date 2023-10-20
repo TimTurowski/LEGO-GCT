@@ -86,6 +86,8 @@ class PartCrawler:
         print(len(result))
 
 
+
+
     """speichert das Result als eine CSV Datei"""
     def save_as_csv(self, result, name):
         """Speichert ein Result als CSV Datei"""
