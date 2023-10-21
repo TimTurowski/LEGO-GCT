@@ -103,7 +103,7 @@ class EinzelteilMarktpreis(Base):
     """In der Datenbank anzuzeigender Name so wie Ansprechmöglichkeit in Befehlen."""
     __tablename__ = "EinzelteilMarktpreis"
     """Diese Attribute werden in der Datenbank als Spalten angezeigt."""
-    einzelteil_id = Column(String, ForeignKey("Einzelteil.einzelteil_id" ,ondelete="CASCADE"), primary_key=True)
+    einzelteil_id = Column(String, ForeignKey("Einzelteil.einzelteil_id", ondelete="CASCADE"), primary_key=True)
     anbieter_url = Column(String, ForeignKey("Anbieter.url", ondelete="CASCADE"), primary_key=True)
     preis = Column(FLOAT(precision=10, asdecimal=True, decimal_return_scale=2))
     url = Column(String)

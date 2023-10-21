@@ -39,7 +39,8 @@ with dao.Session() as session:
         session.commit()
     session.close()
 dao.loesche_sets(a)"""
-for i in dao.marktpreise_zu_einzelteile(dao.einzelteile_zu_legoset('10320')):
+print(len(dao.einzelteile_zu_legoset('31203')))
+for i in dao.einzelteile_zu_legoset('31203'):
     print(i)
 """for i in einzelteilliste():
     print(i)"""
