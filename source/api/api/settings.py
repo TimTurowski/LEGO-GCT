@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "legoGCTApi.apps.LegogctapiConfig",
     "corsheaders",
-    "api",
 ]
 
 MIDDLEWARE = [
