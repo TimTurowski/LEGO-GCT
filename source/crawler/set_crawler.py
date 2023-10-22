@@ -50,7 +50,7 @@ class SetCrawler:
         results = [];
         process.crawl(SetPriceSpider, set_ids=set_ids, result=results)
         process.start()
-        print(results)
+        return results
 
     """speichert das Result als eine CSV Datei"""
     def save_as_csv(self, result, name):

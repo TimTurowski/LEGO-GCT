@@ -152,4 +152,4 @@ class SetMarktpreis(Base):
             + " Url: " + self.url
 
     def __repr__(self):
-        return f"({self.set_id} {self.anbieter_url}) {self.preis} {self.url}"
+        return f"({self.set.set_id} {self.anbieter}) {self.preis} {self.url}"

@@ -1,27 +1,44 @@
 import csv
+import multiprocessing
+from multiprocessing import Process
 
+from source.Entity.entities import SetMarktpreis, Anbieter
+from source.crawler.set_crawler import SetCrawler
 from source.datenbanklogik.datenzugriffsobjekt import Datenzugriffsobjekt
 
-def get_added_sets():
-    existing_set_prices = set()
-    with open("sets.csv", newline="", encoding='utf-8') as csvfile:
 
-        file_reader = csv.reader(csvfile, delimiter=',', quotechar='|')
-        for row in file_reader:
-            existing_set_prices.add(row[0])
-
-    return existing_set_prices
+def excute_crawl_setpreise(crawler, ids, conn2):
+    prices = crawler.crawl_set_prices(ids)
+    conn2.send(prices)
+    pass
 
 
 
 if __name__ == "__main__":
     dao = Datenzugriffsobjekt()
-    ids = set(map(lambda a:a.set_id, dao.lego_set_liste()))
-    added_sets = get_added_sets()
-    with open("sets.csv", 'a', newline='', encoding='utf-8') as file:
-        writer = csv.writer(file)
-        for i in ids:
-            writer.writerow([i, True])
+    """Nimmt ein Intervall von SetIDs aus der Datenbank"""
+    ids = list(map(lambda a:a.set_id, dao.lego_set_liste()))[20:40]
 
-    print(ids - added_sets)
+    """startet Prozess für das Crawlen von Setpreisen"""
+    conn1, conn2 = multiprocessing.Pipe()
+    sc = SetCrawler()
+    p = Process(target=excute_crawl_setpreise, args=[sc, ids, conn2])
+    p.start()
+    p.join()
+    """holt Setpreise aus dem Prozess"""
+    set_prices = conn1.recv()
+
+
+    """Liste welche alle fertigen Entities enthalten soll."""
+    marktpreis_entities = []
+    for i in set_prices:
+        set_price = SetMarktpreis(set= list(filter(lambda a:a.set_id == i[0],dao.lego_set_liste()))[0],
+                                preis= i[1],
+                                anbieter=Anbieter(name="Steinlager", url="https://www.steinelager.de/de"),
+                                url= i[2])
+        print(set_price)
+        if set_price.preis > 0:
+            marktpreis_entities.append(set_price)
+    dao.fuge_set_marktpreis_hinzu(marktpreis_entities)
+
 
