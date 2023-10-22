@@ -19,5 +19,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include('tutorials.urls')),
+    path("", include('legoGCTApi.urls')),
 ]

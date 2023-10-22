@@ -39,8 +39,10 @@ with dao.Session() as session:
         session.commit()
     session.close()
 dao.loesche_sets(a)"""
-print(len(dao.einzelteile_zu_legoset('31203')))
+"""print(len(dao.einzelteile_zu_legoset('31203')))
 for i in dao.einzelteile_zu_legoset('31203'):
+    print(i)"""
+for i in dao.legosets_zu_name("Star Wars"):
     print(i)
 """for i in einzelteilliste():
     print(i)"""
