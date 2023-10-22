@@ -151,5 +151,9 @@ class Datenzugriffsobjekt:
             result.append(session.query(entities.EinzelteilMarktpreis).join(entities.EinzelteilMarktpreis.einzelteile).filter(entities.EinzelteilMarktpreis.einzelteil_id == i.einzelteil_id).first())
         return result
 
+    def legosets_zu_name(self, name):
+        session = self.Session()
+        result = session.query(entities.Legoset).filter(entities.Legoset.name.like("%{}%".format(name))).all()
+        return result
 
 
