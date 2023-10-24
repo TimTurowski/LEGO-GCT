@@ -42,8 +42,8 @@ dao.loesche_sets(a)"""
 """print(len(dao.einzelteile_zu_legoset('31203')))
 for i in dao.einzelteile_zu_legoset('31203'):
     print(i)"""
-for i in dao.legosets_zu_name("Star Wars"):
-    print(i)
+print(dao.einzelteile_zu_legoset(10320))
+print(dao.marktpreise_zu_einzelteile([]))
 """for i in einzelteilliste():
     print(i)"""
 """for i in legosetpreise(l1):

@@ -30,8 +30,7 @@ class LegosetSerializer(serializers.ModelSerializer):
 class EinzelteilmarktpreisSerializer(serializers.ModelSerializer):
     class Meta:
         model = Einzelteilmarktpreis
-        fields = ('einzelteil',
-                  'anbieter_url',
+        fields = ('anbieter_url',
                   'preis',
                   'url')
 
@@ -39,8 +38,7 @@ class EinzelteilmarktpreisSerializer(serializers.ModelSerializer):
 class SetmarktpreisSerializer(serializers.ModelSerializer):
     class Meta:
         model = Setmarktpreis
-        fields = ('set',
-                  'anbieter_url',
+        fields = ('anbieter_url',
                   'preis',
                   'url')
 
@@ -49,7 +47,6 @@ class EinzelteilLegosetSerializer(serializers.ModelSerializer):
     class Meta:
         model = EinzelteilLegoset
         fields = ('einzelteil',
-                  'legoset',
                   'anzahl')
 
 
