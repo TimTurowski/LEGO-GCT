@@ -7,26 +7,38 @@ from source.crawler.set_crawler import SetCrawler
 from source.datenbanklogik.datenzugriffsobjekt import Datenzugriffsobjekt
 
 
-def excute_crawl_setpreise(crawler, ids, conn2):
+def excute_crawl_setpreise(crawler, ids, mp_queue):
     prices = crawler.crawl_set_prices(ids)
-    conn2.send(prices)
-    pass
+
+    for i in prices:
+        mp_queue.put(i)
+    mp_queue.put(None)
 
 
 
 if __name__ == "__main__":
     dao = Datenzugriffsobjekt()
     """Nimmt ein Intervall von SetIDs aus der Datenbank"""
-    ids = list(map(lambda a:a.set_id, dao.lego_set_liste()))[20:40]
+    ids = list(map(lambda a:a.set_id, dao.lego_set_liste()))[4000:]
 
     """startet Prozess für das Crawlen von Setpreisen"""
-    conn1, conn2 = multiprocessing.Pipe()
+
+    mp_queue = multiprocessing.JoinableQueue()
+
     sc = SetCrawler()
-    p = Process(target=excute_crawl_setpreise, args=[sc, ids, conn2])
+    p = Process(target=excute_crawl_setpreise, args=[sc, ids, mp_queue])
     p.start()
+
+    set_prices = []
+
+    while True:
+        queue_value = mp_queue.get()
+        if queue_value is None:
+            break
+        else:
+            set_prices.append(queue_value)
     p.join()
     """holt Setpreise aus dem Prozess"""
-    set_prices = conn1.recv()
 
 
     """Liste welche alle fertigen Entities enthalten soll."""

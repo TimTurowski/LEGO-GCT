@@ -101,6 +101,7 @@ color_dict = {"Aqua": "Light Bluish Green",
               "Violet": "Bright Bluish Violet",
               "White": "White",
               "Yellow": "Bright Yellow",
+              "Medium Lavender": "Medium Lavender"
               }
 reversed_color_dict = dict((v, k) for k, v in color_dict.items());
 
@@ -108,8 +109,10 @@ reversed_color_dict = dict((v, k) for k, v in color_dict.items());
 class DesignIdSpider(scrapy.Spider):
     name = "Design Id Spider"
 
-    def __init__(self, url, result, values):
-        self.start_url = url
+    def __init__(self, brickset_url, toypro_url, result, values):
+        self.brickset_url = brickset_url
+        self.toypro_url = toypro_url
+
         self.result = result
         # self.element_id = values[0];
         self.values = values;
@@ -118,10 +121,18 @@ class DesignIdSpider(scrapy.Spider):
     def start_requests(self):
         """Seite hat informationen über Lego sets und verweist auf Lego set anleitungen"""
         for i in self.values:
-            url = self.start_url + "query=" + i[0]
-            yield scrapy.Request(url=url, callback=self.parse, cb_kwargs={"prices": i[1], "colors": list(i[1].keys())})
 
-    def parse(self, response, prices, colors):
+            if i[0].isdigit():
+                url = self.brickset_url + "query=" + i[0]
+                yield scrapy.Request(url=url, callback=self.parse_brickset, cb_kwargs={"prices": i[1], "colors": list(i[1].keys())})
+            else:
+                url = self.toypro_url + "search=" + i[0]
+                yield scrapy.Request(url=url, callback=self.parse_toypro,
+                                     cb_kwargs={"prices": i[1], "bricklink_id": i[0]})
+
+    def parse_brickset(self, response, prices, colors):
+        """parst eine Brickset Seite auswertung von Numerischer ID mit Farbcode
+        über die Seite von Brickset"""
         regex = ""
         for i in colors:
             try:
@@ -137,4 +148,26 @@ class DesignIdSpider(scrapy.Spider):
                 price = prices[reversed_color_dict[color]]
                 element_id = i.css(".tags").css("a::text").get()
                 self.result.append((element_id, color, price))
-                # print(i.css(".tags").css("a::text").get()+" "+ color +" " + str(prices[reversed_color_dict[color]]));
+
+    def parse_toypro(self, response, prices, bricklink_id):
+        """wenn die Id nicht ausschließlich aus Zahlen besteht, dann wird über toypro
+        versucht die Id in eine Lego Element Id umzusetzen"""
+        item_page = response.xpath("/html/body/main/div[4]/div[1]/div/a").css("a::attr(href)").get()
+        yield scrapy.Request(url="https://www.toypro.com" + item_page,
+                             callback=self.parse_toypro_item_page,
+                             cb_kwargs={"prices": prices, "bricklink_id": bricklink_id})
+
+    def parse_toypro_item_page(self, response, prices, bricklink_id):
+        """Liest eine Shop Seite aus und überprüft die Elementid des Teils auf richtigkeit"""
+
+        """holt die Bricklink id von der Toypro seite (HTML Tags und Bezeichnung werden abgeschnitten)"""
+        try:
+            parsed_bricklink_id = response.xpath("/html/body/main/div[2]/div/div/div/div[2]/div[1]/div[1]/div/ul")\
+                .re("LEGO® Design ID: .*")[0][17:-5]
+            element_id = response.xpath("/html/body/main/div[2]/div/div/div/div[2]/div[1]/div[1]/div/ul")\
+                .re("LEGO® Element ID: .*")[0][18:-5]
+
+            if parsed_bricklink_id == bricklink_id:
+                self.result.append((element_id, None, list(prices.values())[0]))
+        except:
+            print("Keine Element Id zur gegebenen Design Id vorhanden")

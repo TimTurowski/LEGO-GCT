@@ -66,7 +66,8 @@ class PartCrawler:
         values = list(map(lambda a: (a.design_id, a.color_dict), bricklink_einzelteile))
         result = []
         process.crawl(DesignIdSpider,
-                      url="https://brickset.com/parts?",
+                      brickset_url="https://brickset.com/parts?",
+                      toypro_url="https://www.toypro.com/de/search?",
                       result=result,
                       values=values)
         process.start()

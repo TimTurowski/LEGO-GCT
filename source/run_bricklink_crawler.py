@@ -3,7 +3,7 @@ from multiprocessing import Process
 
 from source.crawler.part_crawler import PartCrawler
 from source.datastructures.bricklink_einzelteil import BricklinkEinzelteil
-from source.geschaeftslogik.bricklink_crawler import BricklinkCrawler
+from source.crawler.bricklink_crawler import BricklinkCrawler
 
 
 def execute_bricklink_crawling(mp_queue, shop_url, shop_name):
