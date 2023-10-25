@@ -135,20 +135,18 @@ class Datenzugriffsobjekt:
 
     def einzelteil_ohne_marktpreis(self, limit):
         session = self.Session()
-        result = session.query(entities.Einzelteil).outerjoin(entities.Einzelteil.anbieter).filter(entities.EinzelteilMarktpreis.preis.is_(None)).limit(limit).all()
+        result = session.query(entities.Einzelteil).outerjoin(entities.Einzelteil.anbieter).filter(entities.EinzelteilMarktpreis.preis.is_(None)).limit(limit)
         return result
 
     """Zu der übergebenen LegosetID wird eine Liste von all ihren Einzelteilen übergeben"""
     def einzelteile_zu_legoset(self, set_id):
         session = self.Session()
-        result = session.query(entities.Einzelteil).join(entities.Einzelteil.sets).filter(entities.EinzelteilLegoset.set_id == set_id).all()
+        result = session.query(entities.Einzelteil).join(entities.Einzelteil.sets).filter(entities.EinzelteilLegoset.set_id == set_id)
         return result
 
     def marktpreise_zu_einzelteile(self, einzelteilliste):
         session = self.Session()
-        result = []
-        for i in einzelteilliste:
-            result.append(session.query(entities.EinzelteilMarktpreis).join(entities.EinzelteilMarktpreis.einzelteile).filter(entities.EinzelteilMarktpreis.einzelteil_id == i.einzelteil_id).first())
+        result = session.query(entities.EinzelteilMarktpreis).join(entities.EinzelteilMarktpreis.einzelteile).filter(entities.EinzelteilMarktpreis.einzelteil_id == i.einzelteil_id)
         return result
 
     def legosets_zu_name(self, name):

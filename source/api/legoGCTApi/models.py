@@ -21,7 +21,7 @@ class Einzelteil(models.Model):
         db_table = 'Einzelteil'
 
     def __str__(self):
-        return self.einzelteil_id
+        return str(self.einzelteil_id)
 
 
 class Legoset(models.Model):
@@ -33,7 +33,7 @@ class Legoset(models.Model):
         db_table = 'Legoset'
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
 class Einzelteilmarktpreis(models.Model):
@@ -48,7 +48,7 @@ class Einzelteilmarktpreis(models.Model):
         unique_together = (('einzelteil', 'anbieter_url'),)
 
     def __str__(self):
-        return self.einzelteil + ' ' + self.anbieter_url
+        return str(self.einzelteil) + ' ' + str(self.anbieter_url)
 
 
 class EinzelteilLegoset(models.Model):
@@ -62,7 +62,7 @@ class EinzelteilLegoset(models.Model):
         unique_together = (('einzelteil', 'set'),)
 
     def __str__(self):
-        return self.einzelteil + ' ' + self.set
+        return str(self.einzelteil) + ' ' + str(self.set) + ' ' + str(self.anzahl)
 
 
 class Setmarktpreis(models.Model):
@@ -77,4 +77,4 @@ class Setmarktpreis(models.Model):
         unique_together = (('set', 'anbieter_url'),)
 
     def __str__(self):
-        return self.anbieter_url + ' ' + self.set
+        return str(self.anbieter_url) + ' ' + str(self.set)
