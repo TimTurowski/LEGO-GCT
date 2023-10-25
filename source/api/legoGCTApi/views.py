@@ -2,17 +2,8 @@ from django.http.response import JsonResponse
 from rest_framework import status
 from rest_framework.decorators import api_view
 from django.db import connection
-from .models import Legoset
+from .models import Legoset, Setmarktpreis
 from .serializers import LegosetSerializer
-from .models import Einzelteil
-from .serializers import EinzelteilSerializer
-from .models import EinzelteilLegoset
-from .serializers import EinzelteilLegosetSerializer
-from .models import Setmarktpreis
-from .serializers import SetmarktpreisSerializer
-from .models import Einzelteilmarktpreis
-from .serializers import EinzelteilmarktpreisSerializer
-from collections import namedtuple
 
 def result(set):
     result_dict = {}
