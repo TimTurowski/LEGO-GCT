@@ -83,9 +83,7 @@ class PartCrawler:
                                                    url=shop_url))
             marktpreise.append(e)
 
-        print(result)
-        print(len(result))
-
+        return marktpreise
 
 
 
@@ -107,11 +105,3 @@ class PartCrawler:
                     print("skipline", i)
 
 
-# prices = {"Black": 0.0975, "Dark Bluish Gray": 0.0675}
-#
-#
-# pc = PartCrawler()
-# pc.crawl_design_ids([("98302",prices), ("87611",{"Dark Bluish Gray":0.165
-#                                                 ,"Reddish Brown":0.2925
-#                                                 ,"White":0.21})])
-# print(pc.crawl_minifigures("75313"))

@@ -1,5 +1,7 @@
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
+
+from source.DiscordBot.dc_message import send_discord_message
 from source.Entity import entities
 
 
@@ -22,6 +24,47 @@ class Datenzugriffsobjekt:
         session = self.Session()
         result = session.query(entities.Legoset).all()
         return result
+
+    """Eine Liste von allen Einzelteilpreisen wird ausgegeben"""
+
+    def einzelteil_marktpreis_liste(self, anbieter):
+        session = self.Session()
+        result = session.query(entities.EinzelteilMarktpreis.einzelteil_id)\
+            .filter(entities.EinzelteilMarktpreis.anbieter_url == anbieter).all()
+        return result
+
+    """Methode um eine Liste von Marktpreisen zu aktualisieren"""
+    def update_einzelteil_marktpreise(self, new_marktpreise):
+        session = self.Session()
+        update_count = 0
+
+        for i in new_marktpreise:
+            print("Neuer Preis:",i)
+
+            """aktuelles Preis Objekt von der Datenbank holen"""
+            marktpreis_entity = session.query(entities.EinzelteilMarktpreis)\
+                .filter(entities.EinzelteilMarktpreis.einzelteil_id == i.einzelteile.einzelteil_id)\
+                .filter(entities.EinzelteilMarktpreis.anbieter_url == i.anbieter.url).first()
+            print("Alter Preis:",marktpreis_entity)
+
+            """preis aktualisieren und mitzählen für die Discord ausgabe"""
+            if float(marktpreis_entity.preis) != float(i.preis):
+                update_count += 1
+                marktpreis_entity.preis = i.preis
+        send_discord_message(f"```ansi\n[0;36m{update_count} Einzelteile von {len(new_marktpreise)} haben einen neuen Preis```")
+        session.commit()
+    """Methode zum entfernen eines einzelteil marktpreises"""
+    def remove_einzelteil_marktpreise(self, einzelteile, shop_url):
+        session = self.Session()
+        for i in einzelteile:
+            """suchen des marktpreisobjekt zur ID"""
+            marktpreis_entity = session.query(entities.EinzelteilMarktpreis)\
+                .filter(entities.EinzelteilMarktpreis.einzelteile == i)\
+                .filter(entities.EinzelteilMarktpreis.anbieter_url == shop_url).first()
+            print(marktpreis_entity)
+            session.delete(marktpreis_entity)
+        session.commit()
+
 
     """Eine Liste von allen Anbietern wird übergeben"""
 

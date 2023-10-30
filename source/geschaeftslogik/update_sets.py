@@ -1,6 +1,7 @@
 import multiprocessing
 import os
 import datetime
+import sys
 from multiprocessing import Process
 
 from pdfminer.high_level import extract_text

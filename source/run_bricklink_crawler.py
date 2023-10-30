@@ -7,7 +7,6 @@ from source.crawler.bricklink_crawler import BricklinkCrawler
 
 
 def execute_bricklink_crawling(mp_queue, shop_url, shop_name):
-    print(mp_queue)
     bricklink_crawler = BricklinkCrawler()
     result = bricklink_crawler.crawl(
         shop_url,
@@ -21,7 +20,7 @@ def execute_bricklink_crawling(mp_queue, shop_url, shop_name):
 def execute_id_translation(crawl_result, shop_url, shop_name):
     part_crawler = PartCrawler()
     result = part_crawler.crawl_design_ids(crawl_result, shop_url, shop_name)
-    print(result)
+    print(len(result))
 
 if __name__ == '__main__':
 
@@ -43,9 +42,7 @@ if __name__ == '__main__':
         else:
             raw_results.append(queue_value)
             print(queue_value)
-    # raw_results = [('38547', 'Bright Light Orange ', 0.3675),
-    #                ('38547', 'Orange ', 0.81),
-    #                ('38598', 'Bright Light Orange ', 0.3675)]
+
     results = []
 
     for i in raw_results:
@@ -60,7 +57,10 @@ if __name__ == '__main__':
 
     p = Process(target=execute_id_translation, args=[results, shop_url, shop_name])
     p.start()
-    print(len(raw_results))
+    a = 0
+
+
+    print("raw result :",a)
 
 
 
