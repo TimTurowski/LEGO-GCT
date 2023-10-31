@@ -17,21 +17,23 @@ def execute_crawling(einzelteile, teile_crawler):
 
     """löscht alle Marktpreise aus der DB, welche nicht mehr verfügbar sind"""
     print(result.failed_lego_teile)
-    dao.remove_einzelteil_marktpreise(result.failed_lego_teile, "https://www.lego.com/de-de/pick-and-build/pick-a-brick")
+    dao.remove_einzelteil_marktpreise(result.failed_lego_teile, "https://www.toypro.com")
 
 
 if __name__ == "__main__":
     dao = Datenzugriffsobjekt()
 
+    print(len(dao.einzelteil_ohne_marktpreis("https://www.toypro.com")))
 
 
 
-    marktpreise = dao.einzelteil_marktpreis_liste("https://www.lego.com/de-de/pick-and-build/pick-a-brick")[0:1000]
+
+    marktpreise = dao.einzelteil_marktpreis_liste("https://www.toypro.com")[0:10]
 
     einzelteile = list(map(lambda a: Einzelteil(einzelteil_id=a[0]), marktpreise))
 
     print(len(einzelteile))
-    p = Process(target=execute_crawling, args=(einzelteile, LegoCrawler()))
+    p = Process(target=execute_crawling, args=(einzelteile, ToyproCrawler()))
     # # 6437883 0.86
     p.start()
 

@@ -33,19 +33,18 @@ class Datenzugriffsobjekt:
             .filter(entities.EinzelteilMarktpreis.anbieter_url == anbieter).all()
         return result
 
+
     """Methode um eine Liste von Marktpreisen zu aktualisieren"""
     def update_einzelteil_marktpreise(self, new_marktpreise):
         session = self.Session()
         update_count = 0
 
         for i in new_marktpreise:
-            print("Neuer Preis:",i)
 
             """aktuelles Preis Objekt von der Datenbank holen"""
             marktpreis_entity = session.query(entities.EinzelteilMarktpreis)\
                 .filter(entities.EinzelteilMarktpreis.einzelteil_id == i.einzelteile.einzelteil_id)\
                 .filter(entities.EinzelteilMarktpreis.anbieter_url == i.anbieter.url).first()
-            print("Alter Preis:",marktpreis_entity)
 
             """preis aktualisieren und mitzählen für die Discord ausgabe"""
             if float(marktpreis_entity.preis) != float(i.preis):
@@ -176,10 +175,13 @@ class Datenzugriffsobjekt:
     """Hier wird eine Liste übergeben, wo Einzelteile ohne Marktpreise übergeben werden. Hier kann man auch ein Limit
     setzen, wodurch man die Anzahl an Einzelteile begrenzen kann."""
 
-    def einzelteil_ohne_marktpreis(self, limit):
+    def einzelteil_ohne_marktpreis(self, anbieter):
         session = self.Session()
-        result = session.query(entities.Einzelteil).outerjoin(entities.Einzelteil.anbieter).filter(entities.EinzelteilMarktpreis.preis.is_(None)).limit(limit)
-        return result
+        all_parts = session.query(entities.Einzelteil.einzelteil_id).all()
+        print(all_parts)
+        result = session.query(entities.EinzelteilMarktpreis.einzelteil_id) \
+            .filter(entities.EinzelteilMarktpreis.anbieter_url == anbieter).all()
+        return list(set(all_parts) - set(result))
 
     """Zu der übergebenen LegosetID wird eine Liste von all ihren Einzelteilen übergeben"""
     def einzelteile_zu_legoset(self, set_id):

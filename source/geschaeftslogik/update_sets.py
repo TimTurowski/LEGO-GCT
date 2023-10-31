@@ -5,7 +5,7 @@ import sys
 from multiprocessing import Process
 
 from pdfminer.high_level import extract_text
-
+# sys.path.append("..")
 from source.DiscordBot.dc_message import send_discord_message
 from source.anleitungs_downloader.pdf_downloader import PdfDownloader
 from source.crawler.set_crawler import SetCrawler
@@ -13,6 +13,8 @@ from source.datenbanklogik.datenzugriffsobjekt import Datenzugriffsobjekt
 from source.parser.pdfparser import PDFParser
 from source.utility.set_update_logger import SetUpdateLogger
 
+DOWNLOAD_PATH = "./temp_downloader/"
+WATCHLIST_PATH = "watchlist.csv"
 
 def search_sets(set_crawler, conn2):
     result = set_crawler.crawl_unreleased_sets()
@@ -20,9 +22,9 @@ def search_sets(set_crawler, conn2):
 
 def execute_download(set_id, conn2):
     p = PdfDownloader()
-    download_result = p.download_anleitung(set_ids=[set_id], save_path="./temp_downloader/")
+    download_result = p.download_anleitung(set_ids=[set_id], save_path=DOWNLOAD_PATH)
     conn2.send(download_result)
-    p.cut_anleitungen(source_path="./temp_downloader/", destination_path="./temp_downloader/", cut_pages=15)
+    p.cut_anleitungen(source_path=DOWNLOAD_PATH, destination_path=DOWNLOAD_PATH, cut_pages=15)
 
 def remove_pdfs(path):
     try:
@@ -45,7 +47,7 @@ if __name__ == "__main__":
     p.join()
 
     set_crawl_result = conn1.recv()
-    update_logger = SetUpdateLogger("watchlist.csv", 10)
+    update_logger = SetUpdateLogger(WATCHLIST_PATH, 10)
     update_logger.update_sets(crawl_result=set_crawl_result)
     sets = update_logger.get_sets()
     print(sets)
@@ -53,7 +55,7 @@ if __name__ == "__main__":
     setcount = 0
     """2. Step versuchen vom Herunterladen von Sets der Watchlist"""
     for set in sets:
-        remove_pdfs("./temp_downloader/")
+        remove_pdfs(DOWNLOAD_PATH)
 
         """Versuchter Download der PDF"""
         conn1, conn2 = multiprocessing.Pipe()
@@ -67,12 +69,12 @@ if __name__ == "__main__":
         pdfparser = PDFParser()
         stueckliste = None
 
-        files = os.listdir("./temp_downloader/")
+        files = os.listdir(DOWNLOAD_PATH)
         dao = Datenzugriffsobjekt()
         for file in files:
 
             if file.endswith("-cut.pdf"):
-                URL = extract_text(r"../geschaeftslogik/temp_downloader/" + str(file))
+                URL = extract_text(r"" + DOWNLOAD_PATH + str(file))
                 stueckliste = PDFParser.parse_text(pdfparser, URL, set[0], set[1])
                 print(file)
                 if len(stueckliste.stueckliste) > 0:
@@ -82,7 +84,7 @@ if __name__ == "__main__":
             for file in files:
 
                 if not file.endswith("-cut.pdf"):
-                    URL = extract_text(r"../geschaeftslogik/temp_downloader/" + str(file))
+                    URL = extract_text(r"" + DOWNLOAD_PATH + str(file))
                     stueckliste = PDFParser.parse_text(pdfparser, URL, set[0], set[1])
                     print(file)
                     if len(stueckliste.stueckliste) > 0:
