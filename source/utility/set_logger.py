@@ -1,20 +1,22 @@
 import csv
 
+LOGS_PATH = "../setIds/logs/"
+SET_IDS = "../setIds/"
 
 class SetLogger:
 
-    def add_succesful_set(self, id, name, year, log_path="../setIds/logs/"):
+    def add_succesful_set(self, id, name, year, log_path=LOGS_PATH):
 
         with open(log_path + year + "_log.csv", 'a', newline='', encoding='utf-8') as file:
             writer = csv.writer(file)
             writer.writerow([id, name.replace("\xa0", " ").replace("\u200b", ""), True])
 
-    def add_failed_set(self, id, name, year, log_path="../setIds/logs/"):
+    def add_failed_set(self, id, name, year, log_path=LOGS_PATH):
         with open(log_path + year + "_log.csv", 'a', newline='', encoding='utf-8') as file:
             writer = csv.writer(file)
             writer.writerow([id, name.replace("\xa0", " ").replace("\u200b", ""), False])
 
-    def succesful_set_log(self, year, log_path="../setIds/logs/"):
+    def succesful_set_log(self, year, log_path=LOGS_PATH):
         result = []
         with open(log_path + year + "_log.csv", newline="", encoding='utf-8') as csvfile:
 
@@ -25,7 +27,7 @@ class SetLogger:
                     result.append(row)
         return result
 
-    def failed_set_log(self, year, log_path="../setIds/logs/"):
+    def failed_set_log(self, year, log_path=LOGS_PATH):
         result = []
         with open(log_path + year + "_log.csv", newline="", encoding='utf-8') as csvfile:
 
@@ -35,7 +37,7 @@ class SetLogger:
                 if row[2] == "False":
                     result.append(row)
         return result
-    def missing_set_log(self, year, set_ids_path="../setIds/"):
+    def missing_set_log(self, year, set_ids_path=SET_IDS):
         available_sets = set()
         with open(set_ids_path+"/logs/" + year + "_log.csv", newline="", encoding='utf-8') as csvfile:
 
