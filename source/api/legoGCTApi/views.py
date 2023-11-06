@@ -31,6 +31,8 @@ def result(set):
                        '"EinzelteilMarktpreis".einzelteil_id = El.einzelteil_id WHERE EL.set_id = %s'
                        'GROUP BY EL.einzelteil_id, anzahl, anbieter_url, preis, url', [set["set_id"]])
         result_dict = structured_fetchall(cursor)
+        cursor.execute('SELECT set_bild FROM "SetBild" WHERE set = %s', [set["set_id"]])
+        set_bild = cursor.fetchall()[0]
 
         """ändern der JSON Struktur zur einfacheren interpretation im Frontend"""
         lego_dict = {"shop_name":"Lego", "shop_url":"https://www.lego.com/de-de/pick-and-build/pick-a-brick", "parts":[]}
@@ -60,6 +62,7 @@ def result(set):
         result_list_shop_structure.append(lego_dict)
         result_list_shop_structure.append(toypro_dict)
         result_list_shop_structure.append(bricklink_dict)
+        result_list_shop_structure.append(set_bild)
 
         # with open("source/api/legoGCTApi/10312-1_0-lg.jpg", "rb") as f:
         #     encoded_image = base64.b64encode(f.read())
