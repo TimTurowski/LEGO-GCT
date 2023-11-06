@@ -32,7 +32,11 @@ def result(set):
                        'GROUP BY EL.einzelteil_id, anzahl, anbieter_url, preis, url', [set["set_id"]])
         result_dict = structured_fetchall(cursor)
         cursor.execute('SELECT set_bild FROM "SetBild" WHERE set = %s', [set["set_id"]])
-        set_bild = cursor.fetchall()[0]
+        result = cursor.fetchall()
+        if result:
+            set_bild = result[0]
+        else:
+            set_bild = " "
 
         """ändern der JSON Struktur zur einfacheren interpretation im Frontend"""
         lego_dict = {"shop_name":"Lego", "shop_url":"https://www.lego.com/de-de/pick-and-build/pick-a-brick", "parts":[]}
