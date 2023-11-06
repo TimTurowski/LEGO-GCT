@@ -64,6 +64,20 @@ class Anbieter(Base):
         return f"{self.url} {self.name}"
 
 
+class SetBild(Base):
+
+    __tablename__ = "SetBild"
+
+    set = Column(String, ForeignKey("Legoset.set_id", ondelete="CASCADE"), primary_key=True)
+    set_bild = Column(String)
+
+    def __str__(self):
+        return "Legoset ID: " + self.set_id
+
+    def __repr__(self):
+        return f"{self.set_id}"
+
+
 class EinzelteilLegoset(Base):
     """
     Eine Klasse EinzelteilLegoset wird erstellt, die später so ins Datenbankschema überführt wird. Dies dient zur

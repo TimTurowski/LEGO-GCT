@@ -199,4 +199,11 @@ class Datenzugriffsobjekt:
         result = session.query(entities.Legoset).filter(entities.Legoset.name.like("%{}%".format(name))).all()
         return result
 
+    def fuge_set_bild_hinzu(self, id, bild):
+        session = self.Session()
+        set_bild = entities.SetBild(set=id,set_bild=bild)
+        session.merge(set_bild)
+        session.commit()
+        session.close()
+
 

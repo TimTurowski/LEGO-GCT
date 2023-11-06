@@ -42,11 +42,13 @@ dao.loesche_sets(a)"""
 """print(len(dao.einzelteile_zu_legoset('31203')))
 for i in dao.einzelteile_zu_legoset('31203'):
     print(i)"""
-print(dao.einzelteile_zu_legoset(10320))
-print(dao.marktpreise_zu_einzelteile([]))
+"""print(dao.einzelteile_zu_legoset(10320))
+print(dao.marktpreise_zu_einzelteile([]))"""
 """for i in einzelteilliste():
     print(i)"""
 """for i in legosetpreise(l1):
     print(i)"""
 """for i in e1:
     print(i)"""
+
+dao.fuge_set_bild_hinzu("10320","hey")
