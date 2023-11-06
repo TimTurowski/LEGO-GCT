@@ -4,6 +4,7 @@ import csv
 
 from unidecode import unidecode
 
+from source.crawler.image_spider import SetImageSpider
 from source.crawler.set_price_spider import SetPriceSpider
 from source.crawler.set_spider import SetSpider
 from source.utility.set_logger import SetLogger
@@ -49,6 +50,13 @@ class SetCrawler:
         process = CrawlerProcess()
         results = [];
         process.crawl(SetPriceSpider, set_ids=set_ids, result=results)
+        process.start()
+        return results
+
+    def crawl_set_image(self, set_ids):
+        process = CrawlerProcess()
+        results = [];
+        process.crawl(SetImageSpider, set_ids=set_ids, result=results)
         process.start()
         return results
 
