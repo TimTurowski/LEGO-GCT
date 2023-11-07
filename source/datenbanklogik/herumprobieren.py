@@ -50,5 +50,10 @@ print(dao.marktpreise_zu_einzelteile([]))"""
     print(i)"""
 """for i in e1:
     print(i)"""
+a = dao.lego_set_liste_ohne_bilder()
+b = 0
+for i in a:
+    b += 1
+    print(i.set_id)
+print(b)
 
-dao.fuge_set_bild_hinzu("10320","hey")
