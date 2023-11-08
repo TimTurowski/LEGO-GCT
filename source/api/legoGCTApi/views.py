@@ -3,8 +3,6 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from django.db import connection
 from .models import Legoset, Setmarktpreis
-from .serializers import LegosetSerializer
-import base64
 
 
 def result(set):
