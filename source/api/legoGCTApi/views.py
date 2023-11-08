@@ -107,8 +107,8 @@ def eingabe(request):
             setpreis = Setmarktpreis.objects.filter(set=set.set_id)
             set_dict = {"set_id": set.set_id, "set_name": set.name, "preis": setpreis[0].preis,
                         "anbieter_url": setpreis[0].anbieter_url.url, "set_url": setpreis[0].url}
-        except Legoset.DoesNotExist:
-            sets = Legoset.objects.filter(name__icontains=name)
+        except (Legoset.DoesNotExist, Legoset.MultipleObjectsReturned):
+            sets = Legoset.objects.filter(name__icontains=name)[:5]
             if not sets:
                 return JsonResponse({'message': 'Der eingegebene Name ähnelt keinem Legoset in unserer Datenbank'},
                                     status=status.HTTP_404_NOT_FOUND)
