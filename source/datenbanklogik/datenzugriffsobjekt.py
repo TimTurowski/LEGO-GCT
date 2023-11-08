@@ -25,6 +25,12 @@ class Datenzugriffsobjekt:
         result = session.query(entities.Legoset).all()
         return result
 
+    def lego_set_liste_ohne_bilder(self):
+        session = self.Session()
+        subquery = session.query(entities.SetBild.set)
+        result = session.query(entities.Legoset).filter(entities.Legoset.set_id.not_in(subquery))
+        return result
+
     """Eine Liste von allen Einzelteilpreisen wird ausgegeben"""
 
     def einzelteil_marktpreis_liste(self, anbieter):
