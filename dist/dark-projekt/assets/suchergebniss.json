@@ -1,0 +1,32 @@
+[
+	{
+		"set_id": "75192",
+		"set_name": "Millennium Falcon™",
+		"preis": 735.06,
+		"anbieter_url": "https://www.steinelager.de/de",
+		"set_url": "https://www.steinelager.de/de/set/75192-1/millennium-falcon"
+	},
+	{
+		"einzelteil_id":"300501",
+		"anzahl":2,
+		"preise": [
+			{
+				"preis": 0.49,
+				"anbieter_url":"https://www.lego.com/de-de/pick-and-build/pick-a-brick",
+				"url": "https://www.lego.com/de-de/pick-and-build/pick-a-brick?query=4107050"
+			},
+			{
+				"preis": 0.43,
+				"anbieter_url":"https://www.toypro.com",
+				"url": "https://www.toypro.com/en/search?search=6303214"
+			}
+		]
+	},
+	{
+		"einzelteil_id":"390501",
+		"anzahl":2,
+		"preise": null
+	}
+	
+
+]
