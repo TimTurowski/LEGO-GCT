@@ -3,6 +3,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from django.db import connection
 from .models import Legoset, Setmarktpreis
+from rest_framework.authtoken.models import Token
 
 
 def result(set):
@@ -67,6 +68,7 @@ def result(set):
         #
         return result_list_shop_structure
 
+
 def sets_result(legosets):
     legosets_dict = []
     with connection.cursor() as cursor:
@@ -80,6 +82,18 @@ def sets_result(legosets):
             result_dict = {"set_id": legoset.set_id, "set_name": legoset.name, "set_bild": set_bild}
             legosets_dict.append(result_dict)
     return legosets_dict
+
+def verlauf_result(user_id):
+    with connection.cursor() as cursor:
+        cursor.execute('SELECT set_id, datum '
+                       'FROM "UserSuchliste" '
+                       'WHERE "user" = %s '
+                       'ORDER BY datum DESC', [user_id])
+        result = []
+        for i in cursor.fetchall():
+            dict = {"set_id": i[0], "date": i[1]}
+            result.append(dict)
+    return result
 
 
 @api_view(['GET'])
@@ -115,3 +129,8 @@ def eingabe(request):
         return JsonResponse(result(set_dict), safe=False)
     return JsonResponse({'message': 'Es wurde keine Eingabe getätigt, bitte geben Sie entweder eine ID oder einen '
                                     'Namen in die Suchleiste ein'}, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET'])
+def verlauf(request):
+    user = Token.objects.get(key=request.COOKIES.get('mr-token')).user
+    return JsonResponse(verlauf_result(user.id), safe=False)

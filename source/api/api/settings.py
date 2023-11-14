@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "legoGCTApi.apps.LegogctapiConfig",
     "corsheaders",
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
