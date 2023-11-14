@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 
 class Anbieter(models.Model):
@@ -34,6 +35,19 @@ class Legoset(models.Model):
 
     def __str__(self):
         return str(self.name)
+
+
+class UserSuchliste(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, models.CASCADE, db_column='user')
+    set = models.ForeignKey(Legoset, models.CASCADE, db_column='set_id')
+    datum = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        managed = True
+        db_table = 'UserSuchliste'
+
+    def __str__(self):
+        return str(self.user.id) + ' ' + str(self.set.name)
 
 
 class Einzelteilmarktpreis(models.Model):

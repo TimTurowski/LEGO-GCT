@@ -68,7 +68,6 @@ def result(set):
         return result_list_shop_structure
 
 def sets_result(legosets):
-    result_dict = {}
     legosets_dict = []
     with connection.cursor() as cursor:
         for legoset in legosets:
