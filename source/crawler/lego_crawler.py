@@ -1,11 +1,19 @@
 import datetime
-
-from source.crawler.crawler import Crawler
-from source.crawler.teileSpider.teileSpider.spiders.lego_spider import LegoSpider
-from source.datastructures.crawl_result import CrawlResult
 from scrapy.crawler import CrawlerProcess
-from source.Entity.entities import Einzelteil, EinzelteilMarktpreis, Anbieter
-from source.utility.converter import preis_zu_float
+import os
+
+if(os.name == 'posix'):
+    from crawler.crawler import Crawler
+    from crawler.teileSpider.teileSpider.spiders.lego_spider import LegoSpider
+    from datastructures.crawl_result import CrawlResult
+    from Entity.entities import Einzelteil, EinzelteilMarktpreis, Anbieter
+    from utility.converter import preis_zu_float
+else:
+    from source.crawler.crawler import Crawler
+    from source.crawler.teileSpider.teileSpider.spiders.lego_spider import LegoSpider
+    from source.datastructures.crawl_result import CrawlResult
+    from source.Entity.entities import Einzelteil, EinzelteilMarktpreis, Anbieter
+    from source.utility.converter import preis_zu_float
 
 """API für die Lego.com Spider"""
 class LegoCrawler(Crawler):

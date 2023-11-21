@@ -1,4 +1,11 @@
-from source.Entity.entities import EinzelteilLegoset, Einzelteil, Legoset
+import os
+
+if(os.name == 'posix'):
+    from Entity.entities import EinzelteilLegoset, Einzelteil, Legoset
+else:
+    from source.Entity.entities import EinzelteilLegoset, Einzelteil, Legoset
+
+
 
 # Klasse um die Stückliste darzustellen. Inhalt sind die Einträge, welche in Tupel der Form( Tupel(Anzahl, Eintelteil-ID) ) gesetzt werden.
 class Stueckliste:

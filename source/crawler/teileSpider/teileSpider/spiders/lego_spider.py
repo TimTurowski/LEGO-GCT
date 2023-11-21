@@ -1,6 +1,10 @@
 import scrapy
+import os
 
-from source.utility import element_id_von_url
+if(os.name == 'posix'):
+    from utility import element_id_von_url
+else:
+    from source.utility import element_id_von_url
 """Die Klasse Lego Spider ist eine Scrapy Spider, welcher die einzelteilpreise Crawlen kann"""
 
 

@@ -1,13 +1,19 @@
 import datetime
 from scrapy.crawler import CrawlerProcess
 import csv
+import os
 
 from unidecode import unidecode
-
-from source.crawler.image_spider import SetImageSpider
-from source.crawler.set_price_spider import SetPriceSpider
-from source.crawler.set_spider import SetSpider
-from source.utility.set_logger import SetLogger
+if(os.name == 'posix'):
+    from crawler.image_spider import SetImageSpider
+    from crawler.set_price_spider import SetPriceSpider
+    from crawler.set_spider import SetSpider
+    from utility.set_logger import SetLogger
+else:
+    from source.crawler.image_spider import SetImageSpider
+    from source.crawler.set_price_spider import SetPriceSpider
+    from source.crawler.set_spider import SetSpider
+    from source.utility.set_logger import SetLogger
 
 """Der SetCrawler kann zu einen als Parameter übergebenen Jahr alle Setids aus dem Jahr finden"""
 class SetCrawler:

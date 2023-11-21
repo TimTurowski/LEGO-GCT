@@ -17,8 +17,7 @@ if(os.name == 'posix'):
 
     DOWNLOAD_PATH = "/home/student/LEGO-GCT/source/geschaeftslogik/temp_downloader/"
     WATCHLIST_PATH = "/home/student/LEGO-GCT/source/geschaeftslogik/watchlist.csv"
-
-if(os.name == 'nt'):
+else:
     from source.DiscordBot.dc_message import send_discord_message
     from source.anleitungs_downloader.pdf_downloader import PdfDownloader
     from source.crawler.set_crawler import SetCrawler

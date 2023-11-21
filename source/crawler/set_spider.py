@@ -1,7 +1,12 @@
 import scrapy
 from scrapy.crawler import CrawlerProcess
-from source.utility.converter import clean_set_id
-from source.utility.validator import set_id_filter
+import os
+if(os.name == 'posix'):
+    from utility.converter import clean_set_id
+    from utility.validator import set_id_filter
+else:
+    from source.utility.converter import clean_set_id
+    from source.utility.validator import set_id_filter
 
 class SetSpider(scrapy.Spider):
     name = "Set Spider"

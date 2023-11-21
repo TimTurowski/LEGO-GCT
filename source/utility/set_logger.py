@@ -1,7 +1,11 @@
 import csv
-
-LOGS_PATH = "../setIds/logs/"
-SET_IDS = "../setIds/"
+import os
+if(os.name == 'posix'):
+    LOGS_PATH = "/home/student/LEGO-GCT/source/setIds/logs/"
+    SET_IDS = "/home/student/LEGO-GCT/source/setIds/"
+else:
+    LOGS_PATH = "../setIds/logs/"
+    SET_IDS = "../setIds/"
 
 class SetLogger:
 
