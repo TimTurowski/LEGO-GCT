@@ -5,16 +5,29 @@ import sys
 from multiprocessing import Process
 
 from pdfminer.high_level import extract_text
-# sys.path.append("..")
-from source.DiscordBot.dc_message import send_discord_message
-from source.anleitungs_downloader.pdf_downloader import PdfDownloader
-from source.crawler.set_crawler import SetCrawler
-from source.datenbanklogik.datenzugriffsobjekt import Datenzugriffsobjekt
-from source.parser.pdfparser import PDFParser
-from source.utility.set_update_logger import SetUpdateLogger
 
-DOWNLOAD_PATH = "./temp_downloader/"
-WATCHLIST_PATH = "watchlist.csv"
+if(os.name == 'posix'):
+    sys.path.append("..")
+    from DiscordBot.dc_message import send_discord_message
+    from anleitungs_downloader.pdf_downloader import PdfDownloader
+    from crawler.set_crawler import SetCrawler
+    from datenbanklogik.datenzugriffsobjekt import Datenzugriffsobjekt
+    from parser.pdfparser import PDFParser
+    from utility.set_update_logger import SetUpdateLogger
+
+    DOWNLOAD_PATH = "/home/student/LEGO-GCT/source/geschaeftslogik/temp_downloader/"
+    WATCHLIST_PATH = "/home/student/LEGO-GCT/source/geschaeftslogik/watchlist.csv"
+
+if(os.name == 'nt'):
+    from source.DiscordBot.dc_message import send_discord_message
+    from source.anleitungs_downloader.pdf_downloader import PdfDownloader
+    from source.crawler.set_crawler import SetCrawler
+    from source.datenbanklogik.datenzugriffsobjekt import Datenzugriffsobjekt
+    from source.parser.pdfparser import PDFParser
+    from source.utility.set_update_logger import SetUpdateLogger
+
+    DOWNLOAD_PATH = "./temp_downloader/"
+    WATCHLIST_PATH = "watchlist.csv"
 
 def search_sets(set_crawler, conn2):
     result = set_crawler.crawl_unreleased_sets()
