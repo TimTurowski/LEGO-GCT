@@ -30,6 +30,7 @@ def result(set):
                        '"EinzelteilMarktpreis".einzelteil_id = El.einzelteil_id WHERE EL.set_id = %s'
                        'GROUP BY EL.einzelteil_id, anzahl, anbieter_url, preis, url', [set["set_id"]])
         result_dict = structured_fetchall(cursor)
+        print(result_dict)
         cursor.execute('SELECT set_bild FROM "SetBild" WHERE set = %s', [set["set_id"]])
         result = cursor.fetchall()
         if result:
@@ -39,7 +40,7 @@ def result(set):
         """ändern der JSON Struktur zur einfacheren interpretation im Frontend"""
         lego_dict = {"shop_name":"Lego", "shop_url":"https://www.lego.com/de-de/pick-and-build/pick-a-brick", "parts":[]}
         toypro_dict = {"shop_name":"Toypro", "shop_url":"https://www.toypro.com", "parts":[]}
-        bricklink_dict = {"shop_name":"Bricklink", "shop_url":"https://www.bricklink.com/v2/main.page", "parts":[]}
+        bricklink_dict = {"shop_name":"Bricklink(Lucky-Bricks)", "shop_url":"https://store.bricklink.com/anguray#/shop?o={%22itemType%22:%22P%22,%22catID%22:%2293%22,%22invNew%22:%22N%22,%22showHomeItems%22:0}", "parts":[]}
         result_list_shop_structure = [set]
         for i in result_dict:
             lego_einzelteil = {"einzelteil_id": i["einzelteil_id"], "anzahl":i["anzahl"], "preis":None, "url":None}
@@ -53,7 +54,7 @@ def result(set):
                     if j["anbieter_url"] == "https://www.toypro.com":
                         toypro_einzelteil["preis"] = j["preis"]
                         toypro_einzelteil["url"] = j["url"]
-                    if j["anbieter_url"] == "https://www.bricklink.com/v2/main.page":
+                    if j["anbieter_url"] == "https://store.bricklink.com/anguray#/shop?o={%22itemType%22:%22P%22,%22catID%22:%2293%22,%22invNew%22:%22N%22,%22showHomeItems%22:0}":
                         bricklink_einzelteil["preis"] = j["preis"]
                         bricklink_einzelteil["url"] = j["url"]
             lego_dict["parts"].append(lego_einzelteil)

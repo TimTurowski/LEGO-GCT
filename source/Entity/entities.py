@@ -64,6 +64,14 @@ class Anbieter(Base):
         return f"{self.url} {self.name}"
 
 
+class Sonderteile(Base):
+
+    __tablename__ = "Sonderteile"
+
+    sonderteil_id = Column(String, ForeignKey("Einzelteil.einzelteil_id", ondelete="CASCADE"), primary_key=True)
+    Beschreibung = Column(String)
+
+
 class SetBild(Base):
 
     __tablename__ = "SetBild"

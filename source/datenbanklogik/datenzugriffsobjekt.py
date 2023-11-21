@@ -39,6 +39,9 @@ class Datenzugriffsobjekt:
             .filter(entities.EinzelteilMarktpreis.anbieter_url == anbieter).all()
         return result
 
+    def sonderteil_liste(self):
+        session = self.Session()
+        return session.query(entities.Sonderteile).all()
 
     """Methode um eine Liste von Marktpreisen zu aktualisieren"""
     def update_einzelteil_marktpreise(self, new_marktpreise):
