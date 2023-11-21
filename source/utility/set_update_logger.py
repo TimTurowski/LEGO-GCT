@@ -1,8 +1,12 @@
 import csv
 from datetime import datetime
-
-from source.DiscordBot.dc_message import send_discord_message
-from source.utility.set_logger import SetLogger
+import os
+if(os.name == 'posix'):
+    from DiscordBot.dc_message import send_discord_message
+    from utility.set_logger import SetLogger
+else:
+    from source.DiscordBot.dc_message import send_discord_message
+    from source.utility.set_logger import SetLogger
 
 
 class SetUpdateLogger:

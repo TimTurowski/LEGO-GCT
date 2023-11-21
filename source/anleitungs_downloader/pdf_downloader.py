@@ -2,8 +2,12 @@ import os
 
 from pikepdf import Pdf
 from scrapy.crawler import CrawlerProcess
-from source.anleitungs_downloader.pdf_spider import PdfSpider
-from source.datastructures import DownloadResult
+if(os.name == 'posix'):
+    from anleitungs_downloader.pdf_spider import PdfSpider
+    from datastructures import DownloadResult
+else:
+    from source.anleitungs_downloader.pdf_spider import PdfSpider
+    from source.datastructures import DownloadResult
 
 class PdfDownloader():
     def download_anleitung(self,set_ids, save_path="./anleitungen/"):

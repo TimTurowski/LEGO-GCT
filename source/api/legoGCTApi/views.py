@@ -67,9 +67,6 @@ def result(set):
         result_list_shop_structure.append(toypro_dict)
         result_list_shop_structure.append(bricklink_dict)
         result_list_shop_structure.append(set_bild)
-        # with open("source/api/legoGCTApi/10312-1_0-lg.jpg", "rb") as f:
-        #     encoded_image = base64.b64encode(f.read())
-        #
         return result_list_shop_structure
 
 

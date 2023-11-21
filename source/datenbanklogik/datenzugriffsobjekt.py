@@ -1,8 +1,13 @@
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
+import os
 
-from source.DiscordBot.dc_message import send_discord_message
-from source.Entity import entities
+if(os.name == 'posix'):
+    from DiscordBot.dc_message import send_discord_message
+    from Entity import entities
+else:
+    from source.DiscordBot.dc_message import send_discord_message
+    from source.Entity import entities
 
 
 class Datenzugriffsobjekt:

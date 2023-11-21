@@ -1,7 +1,13 @@
 import scrapy
 from scrapy.crawler import CrawlerProcess
-from source.utility import set_id_von_url
-from source.utility import clean_setname
+import os
+
+if(os.name == 'posix'):
+    from utility import set_id_von_url
+    from utility import clean_setname
+else:
+    from source.utility import set_id_von_url
+    from source.utility import clean_setname
 
 """Direkter Link zur Seite ,welche über Ajax geladen wird 
 https://www.steinelager.de/de/buildinstructions/SETID-1?additionalManuals=0"""

@@ -1,10 +1,14 @@
 import re
-import source
-from source.parser.stueckliste import Stueckliste
+import os
 from pdfminer.high_level import extract_pages, extract_text
 import PyPDF2
 
-from source.utility.converter import clean_line
+if(os.name == 'posix'):
+    from parser.stueckliste import Stueckliste
+    from utility.converter import clean_line
+else:
+    from source.parser.stueckliste import Stueckliste
+    from source.utility.converter import clean_line
 
 
 # Klasse des PDFParsers
