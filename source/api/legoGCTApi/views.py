@@ -7,6 +7,9 @@ from rest_framework.authtoken.models import Token
 
 
 def result(set):
+
+
+
     result_dict = {}
     with connection.cursor() as cursor:
 
@@ -30,7 +33,7 @@ def result(set):
                        '"EinzelteilMarktpreis".einzelteil_id = El.einzelteil_id WHERE EL.set_id = %s'
                        'GROUP BY EL.einzelteil_id, anzahl, anbieter_url, preis, url', [set["set_id"]])
         result_dict = structured_fetchall(cursor)
-        print(result_dict)
+
         cursor.execute('SELECT set_bild FROM "SetBild" WHERE set = %s', [set["set_id"]])
         result = cursor.fetchall()
         if result:
@@ -99,6 +102,8 @@ def verlauf_result(user_id):
 
 @api_view(['GET'])
 def eingabe(request):
+    user = Token.objects.get(key=request.META.get('HTTP_AUTHORIZATION')).user
+    print(user)
     id = request.GET.get('id', None)
     if id is not None:
         try:
@@ -133,5 +138,8 @@ def eingabe(request):
 
 @api_view(['GET'])
 def verlauf(request):
-    user = Token.objects.get(key=request.COOKIES.get('mr-token')).user
-    return JsonResponse(verlauf_result(user.id), safe=False)
+    print(request.META.get('HTTP_AUTHORIZATION'))
+    user = Token.objects.get(key=request.META.get('HTTP_AUTHORIZATION')).user.id
+    print(user)
+    return JsonResponse(verlauf_result(user), status=status.HTTP_200_OK)
+
