@@ -2,7 +2,7 @@ from django.http.response import JsonResponse
 from rest_framework import status
 from rest_framework.decorators import api_view
 from django.db import connection
-from .models import Legoset, Setmarktpreis
+from .models import Legoset, Setmarktpreis, UserSuchliste
 from rest_framework.authtoken.models import Token
 
 
@@ -99,9 +99,24 @@ def verlauf_result(user_id):
 
 @api_view(['GET'])
 def eingabe(request):
-    user = Token.objects.get(key=request.META.get('HTTP_AUTHORIZATION')).user
-    print(user)
     id = request.GET.get('id', None)
+    name = request.GET.get('name', None)
+    if request.META.get('HTTP_AUTHORIZATION'):
+        user = Token.objects.get(key=request.META.get('HTTP_AUTHORIZATION')).user
+        if id is not None:
+            try:
+                set = Legoset.objects.get(set_id=id)
+                u = UserSuchliste(set=set.set_id, user=user.user_id)
+                u.save(force_insert=True)
+            except Legoset.DoesNotExist:
+                pass
+        if name is not None:
+            try:
+                set = Legoset.objects.get(name=name)
+                u = UserSuchliste(set=set.set_id, user=user.user_id)
+                u.save(force_insert=True)
+            except (Legoset.DoesNotExist, Legoset.MultipleObjectsReturned):
+                pass
     if id is not None:
         try:
             set = Legoset.objects.get(set_id=id)
@@ -116,7 +131,6 @@ def eingabe(request):
             return JsonResponse({'message': 'Die eingegebene ID entspricht keinem Legoset in unserer Datenbank'},
                                 status=status.HTTP_404_NOT_FOUND)
         return JsonResponse(result(set_dict), safe=False)
-    name = request.GET.get('name', None)
     if name is not None:
         try:
             set = Legoset.objects.get(name=name)
