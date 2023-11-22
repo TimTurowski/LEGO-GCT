@@ -1,12 +1,19 @@
 import datetime
-
+import os
 from scrapy.crawler import CrawlerProcess
 
-from source.crawler.crawler import Crawler
-from source.crawler.teileSpider.teileSpider.spiders.toypro_spider import ToyproSpider
-from source.datastructures import CrawlResult
-from source.Entity.entities import Einzelteil, EinzelteilMarktpreis, Anbieter
-from source.utility import preis_zu_float
+if(os.name == 'posix'):
+    from crawler.crawler import Crawler
+    from crawler.teileSpider.teileSpider.spiders.toypro_spider import ToyproSpider
+    from datastructures import CrawlResult
+    from Entity.entities import Einzelteil, EinzelteilMarktpreis, Anbieter
+    from utility import preis_zu_float
+else:
+    from source.crawler.crawler import Crawler
+    from source.crawler.teileSpider.teileSpider.spiders.toypro_spider import ToyproSpider
+    from source.datastructures import CrawlResult
+    from source.Entity.entities import Einzelteil, EinzelteilMarktpreis, Anbieter
+    from source.utility import preis_zu_float
 
 
 class ToyproCrawler(Crawler):
