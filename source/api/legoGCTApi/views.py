@@ -86,13 +86,13 @@ def sets_result(legosets):
 
 def verlauf_result(user_id):
     with connection.cursor() as cursor:
-        cursor.execute('SELECT set_id, datum '
-                       'FROM "UserSuchliste" '
+        cursor.execute('SELECT "Legoset".set_id, name,"UserSuchliste".id, datum '
+                       'FROM "UserSuchliste" join "Legoset" on ("Legoset".set_id = "UserSuchliste".set_id) '
                        'WHERE "user" = %s '
                        'ORDER BY datum DESC', [user_id])
         result = []
         for i in cursor.fetchall():
-            dict = {"set_id": i[0], "date": i[1]}
+            dict = {"set_id": i[0],"set_name": i[1],"such_id": i[2],"date": i[3]}
             result.append(dict)
     return result
 
@@ -106,14 +106,14 @@ def eingabe(request):
         if id is not None:
             try:
                 set = Legoset.objects.get(set_id=id)
-                u = UserSuchliste(set=set.set_id, user=user.user_id)
+                u = UserSuchliste(set=set, user=user)
                 u.save(force_insert=True)
             except Legoset.DoesNotExist:
                 pass
         if name is not None:
             try:
                 set = Legoset.objects.get(name=name)
-                u = UserSuchliste(set=set.set_id, user=user.user_id)
+                u = UserSuchliste(set=set, user=user)
                 u.save(force_insert=True)
             except (Legoset.DoesNotExist, Legoset.MultipleObjectsReturned):
                 pass
@@ -149,8 +149,20 @@ def eingabe(request):
 
 @api_view(['GET'])
 def verlauf(request):
-    print(request.META.get('HTTP_AUTHORIZATION'))
     user = Token.objects.get(key=request.META.get('HTTP_AUTHORIZATION')).user.id
-    print(user)
-    return JsonResponse(verlauf_result(user), status=status.HTTP_200_OK)
+
+    return JsonResponse(verlauf_result(user), safe=False)
+
+@api_view(['GET'])
+def delete_set_entry(request):
+    #id die des zu löschenden Eintrags
+    id = request.GET.get('id', None)
+
+    with connection.cursor() as cursor:
+        cursor.execute('DELETE FROM "UserSuchliste"'
+                     'WHERE "UserSuchliste".id = %s', [id])
+
+    return JsonResponse({}, safe=False)
+
+
 
