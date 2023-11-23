@@ -1,7 +1,12 @@
 import scrapy
+import os
 
-from source.utility.validator import is_correct_toypro_element
-from source.utility.converter import element_id_von_url
+if(os.name == 'posix'):
+    from utility.validator import is_correct_toypro_element
+    from utility.converter import element_id_von_url
+else:
+    from source.utility.validator import is_correct_toypro_element
+    from source.utility.converter import element_id_von_url
 
 
 class ToyproSpider(scrapy.Spider):
