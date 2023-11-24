@@ -70,6 +70,7 @@ class Sonderteile(Base):
 
     sonderteil_id = Column(String, ForeignKey("Einzelteil.einzelteil_id", ondelete="CASCADE"), primary_key=True)
     Beschreibung = Column(String)
+    Kategorie = Column(String)
 
 
 class SetBild(Base):
