@@ -220,4 +220,28 @@ class Datenzugriffsobjekt:
         session.commit()
         session.close()
 
+    def fuge_kategorie_hinzu(self, kategorie):
+        session = self.Session()
+        session.merge(kategorie)
+        session.commit()
+        session.close()
+
+    def fuge_einzelteildetails_hinzu(self, einzelteildetail):
+        with (self.Session() as session):
+            with session.begin():
+                for i in einzelteildetail:
+                    result = "Das übergebene Objekt ist kein Einzelteildetails"
+                    if isinstance(i, entities.Einzelteildetails):
+                        """Hier wird kontrolliert, ob der Fremdschlüssel von Einzelteildetails schon in der
+                                            Datenbank vorhanden ist"""
+                        if not session.query(i.__class__) \
+                                .filter(entities.Einzelteildetails.sonderteil_id == i.sonderteil_id).all():
+                            session.merge(i)
+                            result = "Neues Einzelteildetails wurde hinzugefügt"
+                        else:
+                            result = "Einzelteildetails ist schon vorhanden"
+                    print(result)
+                session.commit()
+            session.close()
+
 

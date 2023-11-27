@@ -147,11 +147,13 @@ def eingabe(request):
     return JsonResponse({'message': 'Es wurde keine Eingabe getätigt, bitte geben Sie entweder eine ID oder einen '
                                     'Namen in die Suchleiste ein'}, status=status.HTTP_400_BAD_REQUEST)
 
+
 @api_view(['GET'])
 def verlauf(request):
     user = Token.objects.get(key=request.META.get('HTTP_AUTHORIZATION')).user.id
 
     return JsonResponse(verlauf_result(user), safe=False)
+
 
 @api_view(['GET'])
 def delete_set_entry(request):
@@ -165,4 +167,16 @@ def delete_set_entry(request):
     return JsonResponse({}, safe=False)
 
 
-
+@api_view(['GET'])
+def bilder_wiedergabe(request):
+    id = request.GET.get('id', None)
+    with connection.cursor() as cursor:
+        cursor.execute('SELECT set_bild FROM "SetBild"'
+                       'WHERE set = %s', [id])
+        result = cursor.fetchall()
+        if result:
+            set_bild = result[0]
+        else:
+            set_bild = " "
+        result_dict = {"set_bild": set_bild}
+    return JsonResponse(result_dict)

@@ -64,13 +64,21 @@ class Anbieter(Base):
         return f"{self.url} {self.name}"
 
 
-class Sonderteile(Base):
+class Einzelteildetails(Base):
 
-    __tablename__ = "Sonderteile"
+    __tablename__ = "Einzelteildetails"
 
     sonderteil_id = Column(String, ForeignKey("Einzelteil.einzelteil_id", ondelete="CASCADE"), primary_key=True)
-    Beschreibung = Column(String)
-    Kategorie = Column(String)
+    beschreibung = Column(String)
+    kategorie = Column(Integer, ForeignKey("Kategorie.kategorie_id", ondelete="CASCADE"))
+
+
+class Kategorie(Base):
+
+    __tablename__ = "Kategorie"
+
+    kategorie_id = Column(Integer, autoincrement=True, primary_key=True)
+    kategorie = Column(String)
 
 
 class SetBild(Base):

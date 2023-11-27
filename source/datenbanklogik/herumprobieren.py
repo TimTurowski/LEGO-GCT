@@ -50,10 +50,12 @@ print(dao.marktpreise_zu_einzelteile([]))"""
     print(i)"""
 """for i in e1:
     print(i)"""
-a = dao.lego_set_liste_ohne_bilder()
+"""a = dao.lego_set_liste_ohne_bilder()
 b = 0
 for i in a:
     b += 1
     print(i.set_id)
-print(b)
+print(b)"""
+a = entities.Kategorie(kategorie_id=69,kategorie="Schräge")
+dao.fuge_kategorie_hinzu(a)
 

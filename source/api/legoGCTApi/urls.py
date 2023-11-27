@@ -7,5 +7,6 @@ urlpatterns = [
     path('eingabe/', views.eingabe),
     path('auth/', obtain_auth_token),
     path('verlauf/', views.verlauf),
-    path('delete/', views.delete_set_entry)
+    path('delete/', views.delete_set_entry),
+    path('bild/', views.bilder_wiedergabe),
 ]
