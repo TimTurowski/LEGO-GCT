@@ -9,4 +9,5 @@ urlpatterns = [
     path('verlauf/', views.verlauf),
     path('delete/', views.delete_set_entry),
     path('bild/', views.bilder_wiedergabe),
+    path('register/', views.register),
 ]

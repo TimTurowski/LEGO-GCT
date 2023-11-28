@@ -70,6 +70,7 @@ class Einzelteildetails(Base):
 
     sonderteil_id = Column(String, ForeignKey("Einzelteil.einzelteil_id", ondelete="CASCADE"), primary_key=True)
     beschreibung = Column(String)
+    farbe = Column(String)
     kategorie = Column(Integer, ForeignKey("Kategorie.kategorie_id", ondelete="CASCADE"))
 
 

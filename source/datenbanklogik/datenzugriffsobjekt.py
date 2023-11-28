@@ -144,8 +144,8 @@ class Datenzugriffsobjekt:
                 for i in einzelteil_legoset:
                     result = "Das übergebene Objekt ist kein EinzelteilLegoset"
                     if isinstance(i, entities.EinzelteilLegoset):
-                        """Hier wird kontrolliert, ob der zusammengesetzter Schlüssel vom EinzelteilLegoset schon in der
-                                            Datenbank vorhanden ist"""
+                        # Hier wird kontrolliert, ob der zusammengesetzter Schlüssel vom EinzelteilLegoset schon
+                        # in der Datenbank vorhanden ist
                         if not session.query(i.__class__) \
                                 .filter(
                             entities.EinzelteilLegoset.einzelteil_id == i.einzelteile.einzelteil_id) \

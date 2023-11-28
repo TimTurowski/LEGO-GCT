@@ -1,9 +1,13 @@
+import json
+
 from django.http.response import JsonResponse
 from rest_framework import status
 from rest_framework.decorators import api_view
 from django.db import connection
 from .models import Legoset, Setmarktpreis, UserSuchliste
 from rest_framework.authtoken.models import Token
+from django.contrib.auth.models import User
+from django.contrib.auth.hashers import make_password
 
 
 def result(set):
@@ -180,3 +184,13 @@ def bilder_wiedergabe(request):
             set_bild = " "
         result_dict = {"set_bild": set_bild}
     return JsonResponse(result_dict)
+
+
+@api_view(['POST'])
+def register(request):
+    json_data = json.loads(request.body)
+    passwort = json_data['password']
+    user = json_data['username']
+    u = User.objects.create_user(user,password=passwort)
+    u.save()
+    return JsonResponse({"user": user})
