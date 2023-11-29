@@ -71,15 +71,14 @@ class Einzelteildetails(Base):
     sonderteil_id = Column(String, ForeignKey("Einzelteil.einzelteil_id", ondelete="CASCADE"), primary_key=True)
     beschreibung = Column(String)
     farbe = Column(String)
-    kategorie = Column(Integer, ForeignKey("Kategorie.kategorie_id", ondelete="CASCADE"))
+    kategorie = Column(String, ForeignKey("Kategorie.kategorie_id", ondelete="CASCADE"))
 
 
 class Kategorie(Base):
 
     __tablename__ = "Kategorie"
 
-    kategorie_id = Column(Integer, autoincrement=True, primary_key=True)
-    kategorie = Column(String)
+    kategorie_id = Column(String, primary_key=True)
 
 
 class SetBild(Base):
