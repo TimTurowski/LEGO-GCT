@@ -27,11 +27,19 @@ class Legoset(Base):
 
 
 class Einzelteil(Base):
-    """Eine Klasse Einzelteil wird erstellt, die später so ins Datenbankschema überführt wird."""
+    """Eine Klasse, die ein Einzelteil repräsentiert und in das Datenbankschema integriert werden kann.
 
-    """In der Datenbank anzuzeigender Name so wie Ansprechmöglichkeit in Befehlen."""
+        Diese Klasse wird als ORM-Entität für die Tabelle 'Einzelteil' in der Datenbank verwendet.
+        Sie enthält Informationen über ein Einzelteil, einschließlich einer eindeutigen ID.
+
+        Attribute:
+        - einzelteil_id (str): Die eindeutige ID des Einzelteils (Primärschlüssel).
+        - sets (relationship): Beziehung zu EinzelteilLegoset für Sets, die dieses Einzelteil enthalten.
+        - anbieter (relationship): Beziehung zu EinzelteilMarktpreis für Anbieterpreise dieses Einzelteils.
+    """
+    # In der Datenbank anzuzeigender Name so wie Ansprechmöglichkeit in Befehlen.
     __tablename__ = "Einzelteil"
-    """Dieses Attribut wird in der Datenbank als Spalte angezeigt."""
+    # Dieses Attribut wird in der Datenbank als Spalte angezeigt.
     einzelteil_id = Column(String, primary_key=True)
 
     sets = relationship("EinzelteilLegoset", back_populates="einzelteile", cascade="all, delete-orphan")
@@ -71,7 +79,14 @@ class Einzelteildetails(Base):
     sonderteil_id = Column(String, ForeignKey("Einzelteil.einzelteil_id", ondelete="CASCADE"), primary_key=True)
     beschreibung = Column(String)
     farbe = Column(String)
-    kategorie = Column(String, ForeignKey("Kategorie.kategorie_id", ondelete="CASCADE"))
+    kategorie_id = Column(String, ForeignKey("Kategorie.kategorie_id", ondelete="CASCADE"))
+
+    kategorie = relationship("Kategorie")
+    einzelteile = relationship("Einzelteil")
+
+
+    def __repr__(self):
+        return f"{self.sonderteil_id}, {self.beschreibung},{self.farbe}, {self.kategorie_id}"
 
 
 class Kategorie(Base):
