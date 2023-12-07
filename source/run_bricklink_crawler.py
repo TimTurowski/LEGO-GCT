@@ -6,11 +6,17 @@ from source.datastructures.bricklink_einzelteil import BricklinkEinzelteil
 from source.crawler.bricklink_crawler import BricklinkCrawler
 from source.datenbanklogik.datenzugriffsobjekt import Datenzugriffsobjekt
 
-"""Funktion zur Ausführung des Crawlvorgangs wird in einen anderen Prozess gestartet"""
 
 
 def execute_bricklink_crawling(mp_queue, shop_url, shop_name):
-    """Bricklinkcrawler zum crawlen der Bricklink seite"""
+    """Diese Funktion führt einen Crawlvorgang bei Bricklink
+        :param mp_queue: Queue, die Bricklinkergebnisse entgegen nimmt.
+        :type mp_queue: multiprocessing Queue
+        :param shop_url: url des zu crawlenden Shops.
+        :type shop_url: string
+        :param shop_name: name des zu crawlenden Shops.
+        :type shop_url: string"""
+
     bricklink_crawler = BricklinkCrawler()
     result = bricklink_crawler.crawl(
         shop_url,
@@ -18,38 +24,47 @@ def execute_bricklink_crawling(mp_queue, shop_url, shop_name):
         [0,3])
 
     print(result)
-    """Legt alle Objekte in der Queue ab um im Hauptprozess drauf zuzugreifen"""
+    # Legt alle Objekte in der Queue ab um im Hauptprozess drauf zuzugreifen
     for i in result:
         mp_queue.put(i)
     mp_queue.put(None)
 
 
-"""funktion zur übersetzung der Bricklink Id in Lego element Id"""
 
 
 def execute_id_translation(crawl_result, shop_url, shop_name, mp_queue):
+    """funktion zur übersetzung der Bricklink Id in Lego element Id
+        :param crawl_result: liste von Bricklink einzelteilen.
+        :type mp_queue: list of BricklinkEinzelteil
+        :param shop_url: url des zu crawlenden Shops.
+        :type shop_url: string
+        :param shop_name: name des zu crawlenden Shops.
+        :type shop_url: string
+        :param mp_queue: Queue, die Bricklinkergebnisse entgegen nimmt.
+        :type mp_queue: multiprocessing Queue"""
+
     part_crawler = PartCrawler()
     result = part_crawler.crawl_design_ids(crawl_result, shop_url, shop_name)
     print(result)
     print(len(result))
 
-    """Multiprozessing Queue zum übertragen der Marktpreise in den Hauptprozess"""
+    # Multiprozessing Queue zum übertragen der Marktpreise in den Hauptprozess
     for i in result:
         mp_queue.put(i)
     mp_queue.put(None)
 
 
 if __name__ == '__main__':
-
+    # Attribute für den Bricklink shop
     shop_url = "https://store.bricklink.com/anguray#/shop?o={%22itemType%22:%22P%22,%22catID%22:%2293%22,%22invNew%22:%22N%22,%22showHomeItems%22:0}"
     shop_name = "Bricklink(Lucky-Bricks)"
 
-    """Prozess für den Bricklink Crawlvorgang mit Selenium"""
+    # Prozess für den Bricklink Crawlvorgang mit Selenium
     mp_queue = multiprocessing.JoinableQueue()
     p = Process(target=execute_bricklink_crawling, args=[mp_queue, shop_url, shop_name])
     p.start()
 
-    """While Schleife wird abgebrochen wenn alle Objekte aus der Que genommen sind"""
+    # While Schleife wird abgebrochen, wenn alle Objekte aus der Queue genommen sind
     raw_results = []
     while True:
 
@@ -62,22 +77,24 @@ if __name__ == '__main__':
 
     results = []
 
-    """Datenstrucktur zur Verwaltung der Desing Id und Farbcode wird aufgebaut"""
+    # Datenstruktur zur Verwaltung der Desing Id und Farbcode wird aufgebaut
     for i in raw_results:
+        # prüfe, ob die Desing Id bereits in der Liste ist
         filtered = list(filter(lambda a: a.design_id == i[0], results))
         if len(filtered) == 0:
+            # fügt neues BricklinkEinzelteil in die Liste, da zur gegebenen Desing Id noch kein Element vorhanden ist
             results.append(BricklinkEinzelteil(i[0], i[1].rstrip(), i[2]))
         else:
+            # fügt zur existierenden Desing Id eine wieter Farbe mit preis hinzu
             filtered[0].add_color(i[1].rstrip(), i[2])
 
-    """Prozess zum starten der Übersetzung"""
-
+    # Prozess zum starten der Übersetzung
     mp_queue = multiprocessing.JoinableQueue()
     p = Process(target=execute_id_translation, args=[results, shop_name, shop_url, mp_queue])
     p.start()
 
     marktpreise = []
-    """annehmen der Elemente der Queue"""
+    # annehmen der Elemente der Queue
     while True:
         queue_value = mp_queue.get()
         if queue_value is None:
@@ -85,7 +102,7 @@ if __name__ == '__main__':
         else:
             marktpreise.append(queue_value)
 
-    """Marktpreise in die Datenbank ablegen"""
+    # Marktpreise in die Datenbank ablegen
     dao = Datenzugriffsobjekt()
 
     # dao.fuge_einzelteil_marktpreis_hinzu(marktpreise)
