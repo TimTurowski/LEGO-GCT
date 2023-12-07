@@ -132,39 +132,6 @@ def result(set):
         else:
             set_bild = " "
 
-
-
-        """ändern der JSON Struktur zur einfacheren interpretation im Frontend"""
-        # lego_dict = {"shop_name": "Lego", "shop_url": "https://www.lego.com/de-de/pick-and-build/pick-a-brick",
-        #              "parts": []}
-        # toypro_dict = {"shop_name": "Toypro", "shop_url": "https://www.toypro.com", "parts": []}
-        # bricklink_dict = {"shop_name": "Bricklink(Lucky-Bricks)",
-        #                   "shop_url": "https://store.bricklink.com/anguray#/shop?o={%22itemType%22:%22P%22,%22catID%22:%2293%22,%22invNew%22:%22N%22,%22showHomeItems%22:0}",
-        #                   "parts": []}
-        # result_list_shop_structure = [set]
-        # for i in result_dict:
-        #     lego_einzelteil = {"einzelteil_id": i["einzelteil_id"], "anzahl": i["anzahl"], "preis": None, "url": None}
-        #     toypro_einzelteil = {"einzelteil_id": i["einzelteil_id"], "anzahl": i["anzahl"], "preis": None, "url": None}
-        #     bricklink_einzelteil = {"einzelteil_id": i["einzelteil_id"], "anzahl": i["anzahl"], "preis": None,
-        #                             "url": None}
-        #     if i["preise"] is not None:
-        #         for j in i["preise"]:
-        #             if j["anbieter_url"] == "https://www.lego.com/de-de/pick-and-build/pick-a-brick":
-        #                 lego_einzelteil["preis"] = j["preis"]
-        #                 lego_einzelteil["url"] = j["url"]
-        #             if j["anbieter_url"] == "https://www.toypro.com":
-        #                 toypro_einzelteil["preis"] = j["preis"]
-        #                 toypro_einzelteil["url"] = j["url"]
-        #             if j[
-        #                 "anbieter_url"] == "https://store.bricklink.com/anguray#/shop?o={%22itemType%22:%22P%22,%22catID%22:%2293%22,%22invNew%22:%22N%22,%22showHomeItems%22:0}":
-        #                 bricklink_einzelteil["preis"] = j["preis"]
-        #                 bricklink_einzelteil["url"] = j["url"]
-        #     lego_dict["parts"].append(lego_einzelteil)
-        #     toypro_dict["parts"].append(toypro_einzelteil)
-        #     bricklink_dict["parts"].append(bricklink_einzelteil)
-        # result_list_shop_structure.append(lego_dict)
-        # result_list_shop_structure.append(toypro_dict)
-        # result_list_shop_structure.append(bricklink_dict)
         result_dict.append(set_bild)
         return result_dict
 
@@ -173,13 +140,13 @@ def sets_result(legosets):
     legosets_dict = []
     with connection.cursor() as cursor:
         for legoset in legosets:
-            cursor.execute('SELECT set_bild FROM "SetBild" WHERE set = %s', [legoset.set_id])
-            result = cursor.fetchall()
-            if result:
-                set_bild = result[0]
-            else:
-                set_bild = " "
-            result_dict = {"set_id": legoset.set_id, "set_name": legoset.name, "set_bild": set_bild}
+            # cursor.execute('SELECT set_bild FROM "SetBild" WHERE set = %s', [legoset.set_id])
+            # result = cursor.fetchall()
+            # if result:
+            #     set_bild = result[0]
+            # else:
+            #     set_bild = " "
+            result_dict = {"set_id": legoset.set_id, "set_name": legoset.name, "set_bild": ""}
             legosets_dict.append(result_dict)
     return legosets_dict
 
@@ -237,8 +204,9 @@ def eingabe(request):
             setpreis = Setmarktpreis.objects.filter(set=set.set_id)
             set_dict = {"set_id": set.set_id, "set_name": set.name, "preis": setpreis[0].preis,
                         "anbieter_url": setpreis[0].anbieter_url.url, "set_url": setpreis[0].url}
+
         except (Legoset.DoesNotExist, Legoset.MultipleObjectsReturned):
-            sets = Legoset.objects.filter(name__icontains=name)[:5]
+            sets = Legoset.objects.filter(name__icontains=name)[:50]
             if not sets:
                 return JsonResponse({'message': 'Der eingegebene Name ähnelt keinem Legoset in unserer Datenbank'},
                                     status=status.HTTP_404_NOT_FOUND)
