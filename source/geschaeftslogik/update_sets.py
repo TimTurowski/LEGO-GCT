@@ -3,7 +3,6 @@ import os
 import datetime
 import sys
 from multiprocessing import Process
-
 from pdfminer.high_level import extract_text
 
 if(os.name == 'posix'):
@@ -28,6 +27,7 @@ else:
     DOWNLOAD_PATH = "./temp_downloader/"
     WATCHLIST_PATH = "watchlist.csv"
 
+
 def search_sets(set_crawler, conn2):
     result = set_crawler.crawl_unreleased_sets()
     conn2.send(result)
@@ -48,7 +48,9 @@ def remove_pdfs(path):
     except Exception as e:
         print(f"Fehler beim Leeren des Ordners: {str(e)}")
 
-
+"""
+This Script searches for new 
+"""
 if __name__ == "__main__":
     """erster Step aktualisieren der Watchlist"""
 

@@ -48,56 +48,73 @@ class Datenzugriffsobjekt:
         session = self.Session()
         return session.query(entities.Sonderteile).all()
 
-    """Methode um eine Liste von Marktpreisen zu aktualisieren"""
+
     def update_einzelteil_marktpreise(self, new_marktpreise):
+        """Methode um eine Liste von Marktpreisen zu aktualisieren
+        :param new_marktpreise:
+        :type new_marktpreise:
+        """
         session = self.Session()
         update_count = 0
 
         for i in new_marktpreise:
 
-            """aktuelles Preis Objekt von der Datenbank holen"""
+            # aktuelles Preis Objekt von der Datenbank holen
             marktpreis_entity = session.query(entities.EinzelteilMarktpreis)\
                 .filter(entities.EinzelteilMarktpreis.einzelteil_id == i.einzelteile.einzelteil_id)\
                 .filter(entities.EinzelteilMarktpreis.anbieter_url == i.anbieter.url).first()
 
-            """preis aktualisieren und mitzählen für die Discord ausgabe"""
+            # Preis aktualisieren und mitzählen für die Discord Ausgabe
             if float(marktpreis_entity.preis) != float(i.preis):
                 update_count += 1
                 marktpreis_entity.preis = i.preis
         send_discord_message(f"```ansi\n[0;36m{update_count} Einzelteile von {len(new_marktpreise)} haben einen neuen Preis```")
         session.commit()
-    """Methode zum entfernen eines einzelteil marktpreises"""
+
     def remove_einzelteil_marktpreise(self, einzelteile, shop_url):
+        """
+        Methode zum entfernen eines Einzelteil Marktpreises
+        :param einzelteile: Das Einzelteil, von dem der Marktpreis entfernt werden soll
+        :type einzelteile: Ein Objekt vom Typ Einzelteil
+        :param shop_url: die URL zum Anbieter, von welchem der Marktpreis nichtmehr vorhanden ist
+        :type shop_url:
+        """
         session = self.Session()
         for i in einzelteile:
-            """suchen des marktpreisobjekt zur ID"""
+            # Sucht das Marktpreisobjekt zur Einzelteil-ID
             marktpreis_entity = session.query(entities.EinzelteilMarktpreis)\
                 .filter(entities.EinzelteilMarktpreis.einzelteile == i)\
                 .filter(entities.EinzelteilMarktpreis.anbieter_url == shop_url).first()
             print(marktpreis_entity)
+            # Löscht das Markpreis Objekt
             session.delete(marktpreis_entity)
         session.commit()
 
 
-    """Eine Liste von allen Anbietern wird übergeben"""
+
 
     def anbieter_liste(self):
+        """Diese Funktion liefert eine Liste von allen Anbietern
+        """
         session = self.Session()
         result = session.query(entities.Anbieter).all()
         return result
 
-    """Das übergebene Objekt wird kontrolliert, ob es ein EinzelteilMarktpreis ist und ob der EinzelteilMarktpreis schon
-     in der Datenbank vorhanden ist, falls alles passt, dann wird der neue EinzelteilMarktpreis hinzugefügt. Es wird je 
-     nach Fall eine dementsprechende Meldung geprintet"""
 
     def fuge_einzelteil_marktpreis_hinzu(self, einzelteil_marktpreis):
+        """
+        Fügt ein EinzelteilMarktpreis Objekt der Datenbank hinzu
+        :param einzelteil_marktpreis: ein EinzelteilMarktpreis Objekt, welches hinzugefügt werden soll
+        :type einzelteil_marktpreis: EinzelteilMarktpreis Objekt
+        """
         with self.Session() as session:
             with session.begin():
                 for i in einzelteil_marktpreis:
                     result = "Das übergebene Objekt ist kein EinzelteilMarktpreis"
+                    # Überprüfung ob das übergebene Objekt überhaupt ein Einzelteilmarktpreis ist
                     if isinstance(i, entities.EinzelteilMarktpreis):
-                        """Hier wird kontrolliert, ob der zusammengesetzter Schlüssel vom EinzelteilMarktpreis schon in 
-                                            der Datenbank vorhanden ist"""
+                        # Hier wird kontrolliert, ob der zusammengesetzter Schlüssel vom EinzelteilMarktpreis schon in
+                        # der Datenbank vorhanden ist
                         if not session.query(i.__class__) \
                                 .filter(
                             entities.EinzelteilMarktpreis.einzelteil_id == i.einzelteile.einzelteil_id) \
@@ -111,18 +128,22 @@ class Datenzugriffsobjekt:
                 session.commit()
             session.close()
 
-    """Das übergebene Objekt wird kontrolliert, ob es ein SetMarktpreis ist und ob der SetMarktpreis schon in der
-     Datenbank vorhanden ist, falls alles passt, dann wird der neue SetMarktpreis hinzugefügt. Es wird je nach Fall eine
-     dementsprechende Meldung geprintet"""
+
 
     def fuge_set_marktpreis_hinzu(self, set_marktpreis):
+        """
+        Diese Funktion erweitert die Datenbank um ein SetMarktpreis
+        :param set_marktpreis: ein Setmarktpreis Objekt, welches hinzugefügt werden soll
+        :type set_marktpreis: SetMarktpreis Objekt
+        """
         with self.Session() as session:
             with session.begin():
                 for i in set_marktpreis:
                     result = "Das übergebene Objekt ist kein SetMarktpreis"
+                    # Überprüfung ob das übergebene Objekt überhaupt ein SetMarktpreis ist
                     if isinstance(i, entities.SetMarktpreis):
-                        """Hier wird kontrolliert, ob der zusammengesetzter Schlüssel vom SetMarktpreis schon in der
-                                            Datenbank vorhanden ist"""
+                        # Hier wird kontrolliert, ob der zusammengesetzter Schlüssel vom SetMarktpreis schon in der
+                        # Datenbank vorhanden ist
                         if not session.query(i.__class__) \
                                 .filter(entities.SetMarktpreis.set_id == i.set.set_id) \
                                 .filter(entities.SetMarktpreis.anbieter_url == i.anbieter.url).all():
@@ -134,15 +155,18 @@ class Datenzugriffsobjekt:
                 session.commit()
             session.close()
 
-    """Das übergebene Objekt wird kontrolliert, ob es ein EinzelteilLegoset ist und ob der EinzelteilLegoset schon in 
-     der Datenbank vorhanden ist, falls alles passt, dann wird der neue EinzelteilLegoset hinzugefügt. Es wird je nach
-     Fall eine dementsprechende Meldung geprintet"""
 
     def fuge_einzelteil_legoset_hinzu(self, einzelteil_legoset):
+        """
+        Diese Funktion fügt der Datenbank ein EinzelteilLegoset hinzu
+        :param einzelteil_legoset: ein EinzelteilLegoset, welches hinzugefügt werden soll
+        :type einzelteil_legoset: EinzelteilLegoset Objekt
+        """
         with self.Session() as session:
             with session.begin():
                 for i in einzelteil_legoset:
                     result = "Das übergebene Objekt ist kein EinzelteilLegoset"
+                    # Überprüfung ob das übergebene Objekt überhaupt ein EinzelteilLegoset ist
                     if isinstance(i, entities.EinzelteilLegoset):
                         # Hier wird kontrolliert, ob der zusammengesetzter Schlüssel vom EinzelteilLegoset schon
                         # in der Datenbank vorhanden ist
@@ -158,14 +182,17 @@ class Datenzugriffsobjekt:
                 session.commit()
             session.close()
 
-    """Das übergebene Objekt wird kontrolliert, ob es ein Anbieter ist und ob der Anbieter schon in der Datenbank 
-     vorhanden ist, falls alles passt, dann wird der neue Anbieter hinzugefügt. Es wird je nach Fall eine 
-     dementsprechende Meldung geprintet"""
 
     def fuge_anbieter_hinzu(self, anbieter):
+        """
+        Diese Funktion fügt einen neuen Anbieter der Datenbank hinzu
+        :param anbieter: ein Anbieter Objekt, welches hinzugefügt werden soll
+        :type anbieter: Anbieter Objekt
+        """
         with self.Session() as session:
             with session.begin():
                 result = "Das übergebene Objekt ist kein Anbieter"
+                # Überprüfung ob das übergebene Objekt überhaupt ein Anbieter ist
                 if isinstance(anbieter, entities.Anbieter):
                     if not session.query(anbieter.__class__).filter(entities.Anbieter.url == anbieter.url).all():
                         session.merge(anbieter)
@@ -176,9 +203,13 @@ class Datenzugriffsobjekt:
                 session.commit()
             session.close()
 
-    """Die Liste an Sets, die in der Methode übergeben wurde, wird gelöscht."""
 
     def loesche_sets(self, sets):
+        """
+        Diese Funktion setzt das entfernen von Sets aus der Datenbank um
+        :param sets: eine Liste von Legosets
+        :type: Liste mit Legosets
+        """
         with self.Session() as session:
             with session.begin():
                 for i in sets:
@@ -186,10 +217,14 @@ class Datenzugriffsobjekt:
                 session.commit()
             session.close()
 
-    """Hier wird eine Liste übergeben, wo Einzelteile ohne Marktpreise übergeben werden. Hier kann man auch ein Limit
-    setzen, wodurch man die Anzahl an Einzelteile begrenzen kann."""
 
     def einzelteil_ohne_marktpreis(self, anbieter):
+        """
+        Diese Funktion liefert eine Liste von Einzelteilen eines angegebenen
+        Anbieters, welche noch keinen Marktpreis besitzen
+        :param anbieter: Anbieter, nach dem gefiltert wird
+        :type anbieter: String
+        """
         session = self.Session()
         all_parts = session.query(entities.Einzelteil.einzelteil_id).all()
         print(all_parts)
@@ -197,8 +232,13 @@ class Datenzugriffsobjekt:
             .filter(entities.EinzelteilMarktpreis.anbieter_url == anbieter).all()
         return list(set(all_parts) - set(result))
 
-    """Zu der übergebenen LegosetID wird eine Liste von all ihren Einzelteilen übergeben"""
+
     def einzelteile_zu_legoset(self, set_id):
+        """
+        Diese Funktion liefert eine Liste von allen Einzelteilen eines angegebenen Legosets
+        :param set_id: eine SetID nach der die Einzelteile gesucht werden
+        :type set_id: string
+        """
         session = self.Session()
         result = session.query(entities.Einzelteil).join(entities.Einzelteil.sets).filter(entities.EinzelteilLegoset.set_id == set_id)
         return result
@@ -209,11 +249,23 @@ class Datenzugriffsobjekt:
         return result
 
     def legosets_zu_name(self, name):
+        """
+        Diese Funktion liefert alle LegosetIDs, in welchem der angegebene Name enthalten ist
+        :param name: ein Name, zu dem die LegosetId(s) gesucht werden
+        :type name: string
+        """
         session = self.Session()
         result = session.query(entities.Legoset).filter(entities.Legoset.name.like("%{}%".format(name))).all()
         return result
 
     def fuge_set_bild_hinzu(self, id, bild):
+        """
+        Diese Funktion fügt einem vorhandenen Legoset ein Bild hinzu
+        :param id: LegosetID, welchem ein Bild hinzugefügt werden soll
+        :type id: string
+        :param bild: das Bild, welches hinzugefügt wird
+        :type bild: ?!?!?
+        """
         session = self.Session()
         set_bild = entities.SetBild(set=id,set_bild=bild)
         session.merge(set_bild)
@@ -221,12 +273,22 @@ class Datenzugriffsobjekt:
         session.close()
 
     def fuge_kategorie_hinzu(self, kategorie):
+        """
+        Diese Funktion fügt eine neue Kategorie in die Datenbank ein
+        :param kategorie: ?!?!?
+        :type kategorie: ?!?!?
+        """
         session = self.Session()
         session.merge(kategorie)
         session.commit()
         session.close()
 
     def fuge_einzelteildetails_hinzu(self, einzelteildetail):
+        """
+        Diese Funktion fügt in die Datenbank ein neues Einzelteildetail Objekt ein
+        :param einzelteildetail: Einzelteildetail Objekt welches hinzugefügt werden soll
+        :type einzelteildetail: EinzelteilDetails Objekt
+        """
         with (self.Session() as session):
             with session.begin():
                 for i in einzelteildetail:

@@ -21,23 +21,28 @@ class ToyproCrawler(Crawler):
         pass
 
     def crawl_preis(self, legoteile):
+        """
+        Crawlt die Preise zu einer Liste von Einzelteilen
+        :param legoteile: Eine Liste von Legoeinzelteilen
+        :type Legoteile: Eine Liste von Einzelteil-ID
+        """
 
         process = CrawlerProcess()
 
-        """result sammelt die gecrawlten Ergebnisse mit prozess.crawl wird der Crawl prozess initialisiert und der
-        Spider werden die Initialisierungsparameter übergeben"""
+
         results = []
+        # die .crawl Methode übergibt der Spider die Initialisierungsparameter, also was gecrawelt wird und wohin
+        # es gespeichert wird. results ist eine Liste und hat den Aufbau (0:einzelteil, 1:preis, 2:name, 3:url)
         process.crawl(ToyproSpider, legoteile=legoteile, result=results)
         process.start()
         einzelteil_marktpreise = []
         failed_einzelteile = []
         for i in results:
-            """Realtaufbau:(0:einzelteil, 1:preis, 2:name, 3:url)"""
             if i[1] is None:
-                """Fall gescheitertes Einzelteil wird zu den failed Einzelteilen hinzugefügt"""
+                # 1. Fall: die Element-IDs der fehlgeschlagenen Crawlvorgänge werden gespeichert
                 failed_einzelteile.append(Einzelteil(einzelteil_id=i[0]))
             else:
-                """Fall erfolgreiche Einzelteil wird als Marktwert erstellt und zu den Erfolgreichen hinzugefügt"""
+                # 2. Fall: jeder erfolgreicher Crawlvorgang erzeugt eine neue Einzelteil_Marktpreis Entity
                 einzelteil_marktpreise.append(
                     EinzelteilMarktpreis(einzelteile=Einzelteil(einzelteil_id=i[0]),
                                          preis=preis_zu_float(i[1]),
