@@ -1,5 +1,6 @@
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, distinct
+from sqlalchemy import func
 import os
 
 if(os.name == 'posix'):
@@ -23,11 +24,27 @@ class Datenzugriffsobjekt:
         result = session.query(entities.Einzelteil).all()
         return result
 
+    def einzelteildetail_liste(self):
+        session = self.Session()
+        result = session.query(entities.Einzelteildetails).all()
+        return result
+
     """Eine Liste von allen Legosets wird übergeben"""
 
     def lego_set_liste(self):
         session = self.Session()
         result = session.query(entities.Legoset).all()
+        return result
+
+    def lego_set_mit_einzelteil_ohne_einzelteildetails(self, zahl):
+        session = self.Session()
+        result = (session.query(entities.Legoset.set_id,func.count(distinct(entities.Einzelteil.einzelteil_id))).join(entities.EinzelteilLegoset, entities.Legoset.set_id
+                                                              == entities.EinzelteilLegoset.set_id).join(
+            entities.Einzelteil, entities.EinzelteilLegoset.einzelteil_id == entities.Einzelteil.einzelteil_id)
+                  .outerjoin(entities.Einzelteildetails, entities.Einzelteil.einzelteil_id ==
+                             entities.Einzelteildetails.sonderteil_id).filter(
+            entities.Einzelteildetails.sonderteil_id.is_(None)).group_by(entities.Legoset.set_id)
+                  .having(func.count(distinct(entities.Einzelteil.einzelteil_id)) > zahl).all())
         return result
 
     def lego_set_liste_ohne_bilder(self):

@@ -84,6 +84,11 @@ class Einzelteildetails(Base):
     kategorie = relationship("Kategorie")
     einzelteile = relationship("Einzelteil")
 
+    def __eq__(self, other):
+        return self.einzelteile.einzelteil_id == other.einzelteile.einzelteil_id
+
+    def __hash__(self):
+        return int(self.einzelteile.einzelteil_id)
 
     def __repr__(self):
         return f"{self.sonderteil_id}, {self.beschreibung},{self.farbe}, {self.kategorie_id}"

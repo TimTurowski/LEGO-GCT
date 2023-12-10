@@ -56,6 +56,8 @@ for i in a:
     b += 1
     print(i.set_id)
 print(b)"""
-a = entities.Kategorie(kategorie_id=69,kategorie="Schräge")
-dao.fuge_kategorie_hinzu(a)
+a = dao.lego_set_mit_einzelteil_ohne_einzelteildetails(10)
+print(len(a))
+for i in a:
+    print(i[0])
 
