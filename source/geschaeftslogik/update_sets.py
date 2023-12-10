@@ -29,13 +29,28 @@ else:
 
 
 def search_sets(set_crawler, conn2):
+    """
+    Diese Funktion sucht nach neuen Legosets und sendet diese in conn2
+    :param set_crawler: Ein SetCrawler Objekt
+    :type set_crawler: SetCrawler
+    :param conn2: eine Connection für Multiprocessing
+    :type conn2: multiprocessing.Pipe
+    """
     result = set_crawler.crawl_unreleased_sets()
     conn2.send(result)
 
 def execute_download(set_id, conn2):
+    """
+    Diese Funktion downloaded die Anleitung-PDFS von einem Legoset
+    :param set_id: Die ID des Legosets, dessen Anleitung runtergeladen werden soll
+    :type set_id: LegosetID
+    :param conn2: eine Connection für Multiprocessing
+    :type conn2: multiprocessing.Pipe
+    """
     p = PdfDownloader()
     download_result = p.download_anleitung(set_ids=[set_id], save_path=DOWNLOAD_PATH)
     conn2.send(download_result)
+    # kürzt die Anleitung PDFs um den Parsingvorgang zu verkürzen
     p.cut_anleitungen(source_path=DOWNLOAD_PATH, destination_path=DOWNLOAD_PATH, cut_pages=15)
 
 def remove_pdfs(path):
@@ -48,9 +63,7 @@ def remove_pdfs(path):
     except Exception as e:
         print(f"Fehler beim Leeren des Ordners: {str(e)}")
 
-"""
-This Script searches for new 
-"""
+
 if __name__ == "__main__":
     """erster Step aktualisieren der Watchlist"""
 

@@ -8,7 +8,7 @@ else:
 
 
 class LegoSpider(scrapy.Spider):
-    """Die Klasse Lego Spider ist eine Scrapy Spider, welcher die einzelteilpreise Crawlen kann"""
+    """Die Klasse Lego Spider ist eine Scrapy Spider, welcher die Einzelteilpreise Crawlen kann"""
 
     name = "lego_spider"
     custom_settings = {
@@ -25,13 +25,17 @@ class LegoSpider(scrapy.Spider):
         element_ids = list(map(lambda n: n.einzelteil_id, legoteile))
 
         for i in element_ids:
+            # füllt eine die Liste search_urls mit den URLs der zu crawlenden Einzelteile
             self.search_urls.append(shop_url + "?query=" + i)
         self.result = result
         self.__legoteile = legoteile
 
-    # die generierten search_urls werden als zu crawlende Urls übergeben und der Crawl prozess wird gestartet
+
 
     def start_requests(self):
+        """
+        Die generierten search_urls werden als zu crawlende Urls übergeben und der Crawl Prozess wird gestartet
+        """
         urls = self.search_urls
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)
@@ -39,8 +43,12 @@ class LegoSpider(scrapy.Spider):
     # parst die jeweiligen HTML seiten und filtert die relevanten HTML-Tags, welche im Result benötigt werden
 
     def parse(self, response):
-        # Vollständige Xpath zu den jeweiligen Elementen der Html Seite
+        """
+        Diese Funktion parsed den Xpath der HTML Seite zu den Elementen die wir haben wollen
+        :param response: Der HTML Outline der gecrawleten Seite
+        """
 
+        # Vollständige Xpath zu den jeweiligen Elementen der Html Seite
         preis_xpath = "/html/body/div[1]/div/main/div[1]/div[6]/div[3]/div/div/ul/li[1]/div/div[1]/span/span/text()"
         name_xpath = "/html/body/div[1]/div/main/div[1]/div[6]/div[3]/div/div/ul/li/div/button/span/text()"
 
@@ -49,11 +57,11 @@ class LegoSpider(scrapy.Spider):
         name = response.xpath(name_xpath).get(default=None)
 
         if preis == name is None:
-            # Fall: das Einzelteil wird nicht gefunden"""
+            # 1. Fall: das Einzelteil wird nicht gefunden"""
 
             self.result.append((element_id_von_url(response.request.url), None, None, None))
         else:
-            # Fall: das Einzelteil wird gefunden
+            # 2. Fall: das Einzelteil wird gefunden
 
             self.result.append(
                 (element_id_von_url(response.request.url), preis, name, response.request.url))

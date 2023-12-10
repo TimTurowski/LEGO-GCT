@@ -1,7 +1,7 @@
 import os
-
 from pikepdf import Pdf
 from scrapy.crawler import CrawlerProcess
+
 if(os.name == 'posix'):
     from anleitungs_downloader.pdf_spider import PdfSpider
     from datastructures import DownloadResult

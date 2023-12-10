@@ -15,13 +15,12 @@ else:
     from source.Entity.entities import Einzelteil, EinzelteilMarktpreis, Anbieter
     from source.utility.converter import preis_zu_float
 
-"""API für die Lego.com Spider"""
+
 class LegoCrawler(Crawler):
+    """API für die Lego.com Spider"""
     def __init__(self):
         pass
 
-    """startet eine Spider, welche zu einer Element Id den Preis vom Offiziellen Lego Shop abfragt. Wenn diese Methode
-    angewendet muss sie in einem Prozess gestartet werden"""
     def crawl_preis(self, legoteile):
         """
         Crawlt die Preise zu einer Liste von Einzelteilen
