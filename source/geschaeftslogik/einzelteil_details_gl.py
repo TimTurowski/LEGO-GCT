@@ -26,7 +26,7 @@ if __name__ == "__main__":
     mp_queue = multiprocessing.JoinableQueue()
 
     # erstellen einer Liste von Set Ids
-    ids = list(map(lambda a: a.set_id, dao.lego_set_liste()))[10:100]
+    ids = list(map(lambda a: a[0], dao.lego_set_mit_einzelteil_ohne_einzelteildetails(5)))
     print(len(ids))
     # crawlt zu allen übergebenen Sets die Einzelteildetails
     p = Process(target=execute_crawling, args=(ids, PartCrawler(), mp_queue))
@@ -43,7 +43,6 @@ if __name__ == "__main__":
             break
         else:
             einzelteil_details.append(queue_value)
-    dao.gib_alle
     print(einzelteil_details)
     dao.fuge_einzelteildetails_hinzu(einzelteil_details)
 
