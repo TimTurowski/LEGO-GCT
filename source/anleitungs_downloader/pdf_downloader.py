@@ -10,13 +10,22 @@ else:
     from source.datastructures import DownloadResult
 
 class PdfDownloader():
+    """
+    Objekte dieser Klasse besitzen Methoden zum Downloaden und Verkürzen von Anleitungs PDF
+    """
     def download_anleitung(self,set_ids, save_path="./anleitungen/"):
+        """
+        Diese Funktion enthält die Logik des Anleitung Downloadens
+        :param set_ids: Die ID des Legosets, dessen Anleitung runtergladen werden soll
+        :type set_ids: string
+        :param save_path: Angabe des Pfades, wo die PDF gespeichert werden sollen, standardmäßig angegeben
+        :type save_path: string
+        """
         process = CrawlerProcess()
         result = {}
         process.crawl(PdfSpider, set_ids=set_ids, result=result, path_base=save_path)
         process.start()
 
-        """textuelle Darstellung als Platzhalter wird später durch entsprechende Entität ersetzt"""
         succesfull_sets = []
         failed_sets = []
 

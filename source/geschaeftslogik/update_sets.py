@@ -54,6 +54,11 @@ def execute_download(set_id, conn2):
     p.cut_anleitungen(source_path=DOWNLOAD_PATH, destination_path=DOWNLOAD_PATH, cut_pages=15)
 
 def remove_pdfs(path):
+    """
+    Diese Funktion löscht angegebenes Verzeichnis
+    :param path: Pfad zum Verzeichnis, welches gelöscht werden soll
+    :type path: string
+    """
     try:
         if not os.path.isdir(path):
             raise ValueError("Der angegebene Pfad ist kein Verzeichnis.")
@@ -65,8 +70,6 @@ def remove_pdfs(path):
 
 
 if __name__ == "__main__":
-    """erster Step aktualisieren der Watchlist"""
-
     starttime = datetime.datetime.now()
     conn1, conn2 = multiprocessing.Pipe()
     p = Process(target=search_sets, args=(SetCrawler(), conn2))
@@ -74,17 +77,17 @@ if __name__ == "__main__":
     p.join()
 
     set_crawl_result = conn1.recv()
+    # als erstes wird die Watchlist aktualisiert
     update_logger = SetUpdateLogger(WATCHLIST_PATH, 10)
     update_logger.update_sets(crawl_result=set_crawl_result)
     sets = update_logger.get_sets()
     print(sets)
 
     setcount = 0
-    """2. Step versuchen vom Herunterladen von Sets der Watchlist"""
     for set in sets:
         remove_pdfs(DOWNLOAD_PATH)
 
-        """Versuchter Download der PDF"""
+        # Versuch, die Anleitungen eines Sets zu downloaden
         conn1, conn2 = multiprocessing.Pipe()
         p = Process(target=execute_download, args=(set[0],conn2))
         p.start()
@@ -99,19 +102,23 @@ if __name__ == "__main__":
         files = os.listdir(DOWNLOAD_PATH)
         dao = Datenzugriffsobjekt()
         for file in files:
-
+            # gekürzte PDFs als erstes parsen
             if file.endswith("-cut.pdf"):
+                # Text aus Anleitung PDF extrahieren
                 URL = extract_text(r"" + DOWNLOAD_PATH + str(file))
+                # extrahierten Text auf Stückliste untersuchen/parsen
                 stueckliste = PDFParser.parse_text(pdfparser, URL, set[0], set[1])
                 print(file)
                 if len(stueckliste.stueckliste) > 0:
                     break
         if stueckliste is not None and len(stueckliste.stueckliste) == 0:
-
+            # falls gekürzte PDFs keine Stückliste enthalten die ungekürzten PDFs ansehen
             for file in files:
 
                 if not file.endswith("-cut.pdf"):
+                    # Text aus Anleitung PDF extrahieren
                     URL = extract_text(r"" + DOWNLOAD_PATH + str(file))
+                    # extrahierten Text auf Stückliste untersuchen/parsen
                     stueckliste = PDFParser.parse_text(pdfparser, URL, set[0], set[1])
                     print(file)
                     if len(stueckliste.stueckliste) > 0:

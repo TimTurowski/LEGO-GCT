@@ -9,8 +9,7 @@ else:
     from source.utility import set_id_von_url
     from source.utility import clean_setname
 
-"""Direkter Link zur Seite ,welche über Ajax geladen wird 
-https://www.steinelager.de/de/buildinstructions/SETID-1?additionalManuals=0"""
+
 class PdfSpider(scrapy.Spider):
     name = "pdfSpider"
     url_base = "https://www.steinelager.de/de/buildinstructions/"
@@ -23,21 +22,25 @@ class PdfSpider(scrapy.Spider):
         self.path_base = path_base
 
     def start_requests(self):
-        """Seite hat informationen über Lego sets und verweist auf Lego set anleitungen"""
+        """
+        Diese Funktion startet die Reihe an Funktionsaufrufen für die PDF-Spider
+        """
+        # ausgehend von, in das PDFSpider Objekt, übergebenen urls wird zu jeder dieser urls die .parse() methode
+        # aufgerufen
         urls = self.start_urls
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
-        # download_xpath = "/html/body/div/div[2]/div/div/div[2]/div/div[2]/div[5]/div/div[2]/div/div/div[1]/div/div[3]"
-        # """soll alle Download Links auslesen und Pdf herunterladen"""
-
-
-        """nimmt alle Download urls aus dem Download bereich und entfernt Duplikate"""
-
+        """
+        Diese Funktion startet das parsen über die angegebene HTML Seite
+        :param response: zu parsende HTML Seite
+        :type response: scrapy.Request
+        """
+        # nimmt alle Download urls aus dem Download bereich und entfernt Duplikate
         download_urls = list(set(response.css("a::attr(href)").getall()))
         print(download_urls)
-        """als Result wird ein dict übergeben, welches  den Namen des Sets beinhaltet und ob das Set eine Anleitung hat"""
+        # als Result wird ein dict übergeben, welches  den Namen des Sets beinhaltet und ob das Set eine Anleitung hat
 
         self.result[set_id_von_url(response.url)] = len(download_urls) > 0
         for i in download_urls:
@@ -45,11 +48,15 @@ class PdfSpider(scrapy.Spider):
                 yield scrapy.Request(url=i, callback=self.savePdf)
 
     def savePdf(self, response):
-
-        """pfad zum Speichern der Dateien. Dateien werden nach der Artikelnummer der Anleitung bennant"""
+        """
+        Diese Funktion speichert die PDFs
+        :param response: zu speichernde PDF
+        :type response: scrapy.Request
+        """
+        # Pfad zum Speichern der Dateien. Dateien werden nach der Artikelnummer der Anleitung benannt
         path = self.path_base + response.url.split('/')[-1]
         self.logger.info('PDF speichern %s', path)
-        """pdf Writer wb für binary modus"""
+        # pdf Writer wb für binary modus
         with open(path, 'wb') as writer:
             writer.write(response.body)
 
