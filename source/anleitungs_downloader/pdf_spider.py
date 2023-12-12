@@ -11,6 +11,9 @@ else:
 
 
 class PdfSpider(scrapy.Spider):
+    """
+    Objekte dieser Klasse sind speziell für das Downloaden der Anleitungs PDF angepasste Spider
+    """
     name = "pdfSpider"
     url_base = "https://www.steinelager.de/de/buildinstructions/"
 

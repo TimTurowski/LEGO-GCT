@@ -11,13 +11,19 @@ else:
     from source.utility.converter import clean_line
 
 
-# Klasse des PDFParsers
+
 class PDFParser:
+    """
+    Objekte dieser Klasse besitzen Methoden zum Parsen von PDF-Dateien
+    """
     def __init__(self):
         pass
     
-    # Schneidet die letzten 10 Seiten der PDF-Datei ab und gibt diese als seperate PDF-Datei zurück
+
     def cut_pdf(URL):
+        """
+        Diese Funktion schneidet die letzten 10 Seiten der PDF-Datei ab und gibt diese als seperate PDF-Datei zurück
+        """
         with open(URL, 'rb') as file:
             pdfReader = PyPDF2.PdfFileReader(file)
             totalPages = pdfReader.getNumPages()
@@ -32,8 +38,12 @@ class PDFParser:
             stueckliste_pdf = pdfWriter
             return stueckliste_pdf 
         
-    # Parst die PDF "URL" nach den Einzelteil-Ids und der Häufigkeit und speichert die Informationen in die Stücklist
+
     def parse_text(self, URL, set_id, name):
+        """
+        Diese Funktion parst die PDF URL nach den Einzelteil-Ids und der Häufigkeit und speichert die Informationen
+        in die Stückliste
+        """
         stueckliste = Stueckliste()
         ##stueckliste_pdf = PDFParser.cut_pdf(URL)
         lines = URL.split('\n')

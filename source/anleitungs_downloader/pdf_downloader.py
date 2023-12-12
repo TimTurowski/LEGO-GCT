@@ -29,6 +29,7 @@ class PdfDownloader():
         succesfull_sets = []
         failed_sets = []
 
+        # aufteilen der URLs in Listen zur späteren verarbeitung
         for key in result:
             if not result[key]:
                 failed_sets.append(key)
@@ -37,10 +38,20 @@ class PdfDownloader():
             else:
                 succesfull_sets.append(key + " " + str(result[key]))
 
+        # Speichern der Listen in ein download_result objekt
         download_result = DownloadResult(succesfull_sets, failed_sets)
         return download_result
 
     def cut_anleitungen(self, source_path, destination_path, cut_pages=10):
+        """
+        Diese Funktion verkürzt alle Anleitungs PDF
+        :param source_path: Pfadangabe der ungekürzten PDF
+        :type source_path: string
+        :param destination_path: Pfadangabe wohin gekürzte PDF gespeichert werden sollen
+        :type destination_path: string
+        :param cut_pages: Anzahl, wieviele letzte Pages abgespeichert werden sollen
+        :type cut_pages: int
+        """
 
         files = os.listdir(source_path)
         for file in files:
@@ -50,7 +61,7 @@ class PdfDownloader():
                 1: [max(0, len(pdf.pages) - cut_pages), len(pdf.pages)],
             }
             new_pdf_files = [Pdf.new() for i in file2pages]
-            """Index für die Numerierung der PDF Teile"""
+            # Index für die Numerierung der PDF Teile
             new_pdf_index = 0
 
             for n, page in enumerate(pdf.pages):
@@ -58,7 +69,7 @@ class PdfDownloader():
                     new_pdf_files[new_pdf_index].pages.append(page)
 
                 else:
-                    """nächste datei"""
+                    # nächste Datei
                     new_pdf_index += 1
                     new_pdf_files[new_pdf_index].pages.append(page)
 
