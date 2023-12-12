@@ -201,7 +201,7 @@ class Datenzugriffsobjekt:
         :param einzelteildetails: Einzelteildetail Objekte welche hinzugefügt werden sollen
         :type einzelteildetails: Liste von entities.Einzelteildetails
         """
-        with (self.Session() as session):
+        with self.Session() as session:
             with session.begin():
                 for i in einzelteildetails:
                     result = "Das übergebene Objekt ist kein Einzelteildetails"
