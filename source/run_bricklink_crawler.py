@@ -9,19 +9,17 @@ from source.datenbanklogik.datenzugriffsobjekt import Datenzugriffsobjekt
 
 
 def execute_bricklink_crawling(mp_queue, shop_url, shop_name):
-    """Diese Funktion führt einen Crawlvorgang bei Bricklink
+    """Diese Funktion führt einen Crawlvorgang bei Bricklink aus
         :param mp_queue: Queue, die Bricklinkergebnisse entgegen nimmt.
         :type mp_queue: multiprocessing Queue
         :param shop_url: url des zu crawlenden Shops.
         :type shop_url: string
         :param shop_name: name des zu crawlenden Shops.
-        :type shop_url: string"""
+        :type shop_url: string
+    """
 
     bricklink_crawler = BricklinkCrawler()
-    result = bricklink_crawler.crawl(
-        shop_url,
-        shop_name,
-        [0,3])
+    result = bricklink_crawler.crawl(shop_url,shop_name,[0,3])
 
     print(result)
     # Legt alle Objekte in der Queue ab um im Hauptprozess drauf zuzugreifen
@@ -79,13 +77,13 @@ if __name__ == '__main__':
 
     # Datenstruktur zur Verwaltung der Desing Id und Farbcode wird aufgebaut
     for i in raw_results:
-        # prüfe, ob die Desing Id bereits in der Liste ist
+        # prüfe, ob die Design Id bereits in der Liste ist
         filtered = list(filter(lambda a: a.design_id == i[0], results))
         if len(filtered) == 0:
-            # fügt neues BricklinkEinzelteil in die Liste, da zur gegebenen Desing Id noch kein Element vorhanden ist
+            # fügt neues BricklinkEinzelteil in die Liste, da zur gegebenen Design Id noch kein Element vorhanden ist
             results.append(BricklinkEinzelteil(i[0], i[1].rstrip(), i[2]))
         else:
-            # fügt zur existierenden Desing Id eine wieter Farbe mit preis hinzu
+            # fügt zur existierenden Design Id eine weitere Farbe mit preis hinzu
             filtered[0].add_color(i[1].rstrip(), i[2])
 
     # Prozess zum starten der Übersetzung

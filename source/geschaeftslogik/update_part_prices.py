@@ -33,9 +33,9 @@ def execute_crawling(einzelteile, teile_crawler, anbieter):
     # updated die Preise der erfolgreich gecrawlten Einzelteile
     dao.update_einzelteil_marktpreise(result.einzelteil_marktpreise)
 
-    # löscht alle Marktpreise aus der DB, welche nicht mehr verfügbar sind
-    print(result.failed_lego_teile)
-    dao.remove_einzelteil_marktpreise(result.failed_lego_teile, anbieter)
+    ## löscht alle Marktpreise aus der DB, welche nicht mehr verfügbar sind
+    #print(result.failed_lego_teile)
+    #dao.remove_einzelteil_marktpreise(result.failed_lego_teile, anbieter)
 
 
 if __name__ == "__main__":

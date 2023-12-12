@@ -43,7 +43,6 @@ if __name__ == "__main__":
             break
         else:
             einzelteil_details.append(queue_value)
-    print(einzelteil_details)
     dao.fuge_einzelteildetails_hinzu(einzelteil_details)
 
 
