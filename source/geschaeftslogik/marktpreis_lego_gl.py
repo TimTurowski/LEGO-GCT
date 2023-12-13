@@ -1,10 +1,10 @@
 import multiprocessing
+import sys
 from multiprocessing import Process
 
 from source.crawler import LegoCrawler
 from source.crawler.toypro_crawler import ToyproCrawler
 from source.datenbanklogik.datenzugriffsobjekt import Datenzugriffsobjekt
-from source.utility.part_logger import PartLogger
 
 
 def execute_crawling(einzelteile, teile_crawler, mp_queue):
@@ -26,17 +26,29 @@ def execute_crawling(einzelteile, teile_crawler, mp_queue):
 
 
 if __name__ == '__main__':
+
+    # wertet die Argumente aus, welcher Crawler ausgewählt ist
+    if len(sys.argv) > 1:
+        if sys.argv[1] == "toypro":
+            shop_url = "https://www.toypro.com"
+            shop_crawler = ToyproCrawler()
+        elif sys.argv[1] == "lego":
+            shop_url = "https://www.lego.com/de-de/pick-and-build/pick-a-brick"
+            shop_crawler = LegoCrawler()
+    else:
+        shop_url = "https://www.toypro.com"
+        shop_crawler = ToyproCrawler()
+
     dao = Datenzugriffsobjekt()
+
     mp_queue = multiprocessing.JoinableQueue()
 
-    # die Logger haben die Aufgabe mitzuschreiben, welche Teile gecrawlt worden sind und welche nicht dies ermöglicht
-    # es den Crawlvorgang beim Aufbau der Bestandsdatenbank zu unterbrechen und an der unterbrochenen Stelle wieder
-    # einzusteigen
-    pl = PartLogger("../setIds/partIds/")
-    parts = pl.missing_parts("parts", "parts_toypro_log")
+    # parts enthält alle einzelteile, welche keinen Marktpreis haben
+    # es ist durchaus sinnvoll in den Klammern eine Rangfe anzugeben [von:bis]
+    parts = dao.einzelteil_ohne_marktpreis(shop_url)
 
     # hier können die Crawler angepasst werden der
-    p = Process(target=execute_crawling, args=(parts, ToyproCrawler(), mp_queue))
+    p = Process(target=execute_crawling, args=(parts, shop_crawler, mp_queue))
     p.start()
 
     successful_marktpreise = []
@@ -65,7 +77,4 @@ if __name__ == '__main__':
     # ausgabe zur Erfolgsquote des Crawlvorgangs
     print(f"{len(successful_marktpreise) * 100 / (len(failed_marktpreise) + len(successful_marktpreise))}%")
 
-    # loggen der Einzelteile
-    pl.log_succesful_parts("parts_toypro_log", successful_marktpreise)
-    pl.log_failed_parts("parts_toypro_log", failed_marktpreise)
-    p.join()
+
