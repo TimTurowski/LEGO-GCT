@@ -1,24 +1,40 @@
-import datetime
 from scrapy.crawler import CrawlerProcess
 import csv
-
-from unidecode import unidecode
-
-from source.crawler.minifigur_spider import MinifigurSpider
-from source.crawler.minifgur_part_spider import MinifigurPartSpider
-from source.crawler.design_id_spider import DesignIdSpider
-from source.crawler.part_details_spider import PartDetailsSpider
-from source.crawler.set_part_spider import SetPartSpider
-from source.parser.stueckliste import Stueckliste
-from source.Entity.entities import EinzelteilMarktpreis, Einzelteil, Anbieter, Einzelteildetails, Kategorie
-from source.utility import preis_zu_float
+import os
+if(os.name == 'posix'):
+    from crawler.minifigur_spider import MinifigurSpider
+    from crawler.minifgur_part_spider import MinifigurPartSpider
+    from crawler.design_id_spider import DesignIdSpider
+    from crawler.part_details_spider import PartDetailsSpider
+    from crawler.set_part_spider import SetPartSpider
+    from parser.stueckliste import Stueckliste
+    from Entity.entities import EinzelteilMarktpreis, Einzelteil, Anbieter, Einzelteildetails, Kategorie
+    from utility import preis_zu_float
+else:
+    from source.crawler.minifigur_spider import MinifigurSpider
+    from source.crawler.minifgur_part_spider import MinifigurPartSpider
+    from source.crawler.design_id_spider import DesignIdSpider
+    from source.crawler.part_details_spider import PartDetailsSpider
+    from source.crawler.set_part_spider import SetPartSpider
+    from source.parser.stueckliste import Stueckliste
+    from source.Entity.entities import EinzelteilMarktpreis, Einzelteil, Anbieter, Einzelteildetails, Kategorie
+    from source.utility import preis_zu_float
 
 
 class PartCrawler:
+    """
+    Objekte dieser Klasse besitzen Methoden um viele unterschiedliche Informationen zu crawlen
+    """
 
 
     def crawl_set_parts(self, set_id, set_name):
-        """Diese Methode crawlt zu einer Set Id die entsprechenden Einzelteile"""
+        """
+        Diese Methode crawlt zu einer Set Id die entsprechenden Einzelteile
+        :param set_id: Set_ID, zu der die Einzelteile gecrawelt werden sollen
+        :type set_id: string
+        :param set_name: Name des Sets, dessen Einzelteile gecrawelt werden sollen
+        :type set_name: string
+        """
 
         stueckliste = Stueckliste()
         # result enhällt die rohen Informationen über die Einzelteile als Tupel

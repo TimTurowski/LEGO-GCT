@@ -1,5 +1,11 @@
-from source.crawler.set_crawler import SetCrawler
-from source.datenbanklogik.datenzugriffsobjekt import Datenzugriffsobjekt
+import os
+
+if(os.name == 'posix'):
+    from crawler.set_crawler import SetCrawler
+    from datenbanklogik.datenzugriffsobjekt import Datenzugriffsobjekt
+else:
+    from source.crawler.set_crawler import SetCrawler
+    from source.datenbanklogik.datenzugriffsobjekt import Datenzugriffsobjekt
 
 if __name__ == "__main__":
     """Es soll zu jeder vorhandenen Set-Id das entsprechende Bild hinzugefügt werden"""

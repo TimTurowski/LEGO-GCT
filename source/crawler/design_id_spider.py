@@ -1,5 +1,4 @@
 import scrapy
-from scrapy.crawler import CrawlerProcess
 
 color_dict = {"Aqua": "Light Bluish Green",
               "Black": "Black",

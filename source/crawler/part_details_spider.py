@@ -1,5 +1,4 @@
 import scrapy
-from scrapy.crawler import CrawlerProcess
 
 
 class PartDetailsSpider(scrapy.Spider):

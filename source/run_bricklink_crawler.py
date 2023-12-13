@@ -1,10 +1,17 @@
 import multiprocessing
 from multiprocessing import Process
+import os
 
-from source.crawler.part_crawler import PartCrawler
-from source.datastructures.bricklink_einzelteil import BricklinkEinzelteil
-from source.crawler.bricklink_crawler import BricklinkCrawler
-from source.datenbanklogik.datenzugriffsobjekt import Datenzugriffsobjekt
+if(os.name == 'posix'):
+    from crawler.part_crawler import PartCrawler
+    from datastructures.bricklink_einzelteil import BricklinkEinzelteil
+    from crawler.bricklink_crawler import BricklinkCrawler
+    from datenbanklogik.datenzugriffsobjekt import Datenzugriffsobjekt
+else:
+    from source.crawler.part_crawler import PartCrawler
+    from source.datastructures.bricklink_einzelteil import BricklinkEinzelteil
+    from source.crawler.bricklink_crawler import BricklinkCrawler
+    from source.datenbanklogik.datenzugriffsobjekt import Datenzugriffsobjekt
 
 
 
@@ -19,7 +26,7 @@ def execute_bricklink_crawling(mp_queue, shop_url, shop_name):
     """
 
     bricklink_crawler = BricklinkCrawler()
-    result = bricklink_crawler.crawl(shop_url,shop_name,[0,3])
+    result = bricklink_crawler.crawl(shop_url,shop_name, None)
 
     print(result)
     # Legt alle Objekte in der Queue ab um im Hauptprozess drauf zuzugreifen
@@ -103,4 +110,4 @@ if __name__ == '__main__':
     # Marktpreise in die Datenbank ablegen
     dao = Datenzugriffsobjekt()
 
-    # dao.fuge_einzelteil_marktpreis_hinzu(marktpreise)
+    dao.update_einzelteil_marktpreise(marktpreise)

@@ -1,6 +1,10 @@
 from scrapy.crawler import CrawlerProcess
+import os
 
-from source.crawler.teileSpider.teileSpider.spiders.bricklink_spider import BrickLinkSpider
+if(os.name == 'posix'):
+    from crawler.teileSpider.teileSpider.spiders.bricklink_spider import BrickLinkSpider
+else:
+    from source.crawler.teileSpider.teileSpider.spiders.bricklink_spider import BrickLinkSpider
 
 
 class BricklinkCrawler:

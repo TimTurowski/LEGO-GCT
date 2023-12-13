@@ -1,7 +1,4 @@
 import scrapy
-from scrapy.crawler import CrawlerProcess
-from source.utility.converter import clean_set_id
-from source.utility.validator import set_id_filter
 
 class MinifigurPartSpider(scrapy.Spider):
     name = "Part Spider"
@@ -27,9 +24,3 @@ class MinifigurPartSpider(scrapy.Spider):
             pass
         else:
             yield scrapy.Request(url=next_url, callback=self.parse)
-
-# results = []
-# process = CrawlerProcess()
-# process.crawl(PartSpider, url="https://brickset.com/parts/category-Figure-Wigs/page-1", result=results)
-# process.start()
-# print(results)

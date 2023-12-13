@@ -34,7 +34,7 @@ class BrickLinkSpider(scrapy.Spider):
         chrome_options = Options()
         chrome_options.add_argument('--ignore-certificate-errors')
         chrome_options.add_argument('--ignore-ssl-errors')
-        # chrome_options.add_argument('--headless')
+        chrome_options.add_argument('--headless')
 
         driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
         driver.get(
@@ -52,7 +52,7 @@ class BrickLinkSpider(scrapy.Spider):
 
         parts = []
         if self.category_limit is None:
-            self.category_limit = len(categories)
+            self.category_limit = [0,len(categories)]
 
         """Iterieren über die Kategorien"""
         for i in categories[self.category_limit[0]:self.category_limit[1]]:

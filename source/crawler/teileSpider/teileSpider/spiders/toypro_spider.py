@@ -15,7 +15,7 @@ class ToyproSpider(scrapy.Spider):
 
     custom_settings = {
         "LOG_ENABLED": True,
-        "DOWNLOAD_DELAY": 0.25,
+        "DOWNLOAD_DELAY": 0.5,
     }
 
     def __init__(self, legoteile, result, shop_url="https://www.toypro.com/en/"):
