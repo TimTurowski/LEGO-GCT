@@ -29,10 +29,10 @@ class SetImageSpider(scrapy.Spider):
         :param set_id: Set_ID der Seite, die geparsed werden soll
         :type set_id: string
         """
-
         # image hat die URL zu dem zughörigen Bild
         image = response.xpath("/html/body/div/div[2]/div/div/div[2]/div/div[2]/div[1]/div/div/div[1]/a/img/@src").get()
-        yield scrapy.Request(url="https://www.steinelager.de" + image, callback=self.load_image ,cb_kwargs={"set_id": set_id})
+        if image is not None:
+            yield scrapy.Request(url="https://www.steinelager.de" + image, callback=self.load_image ,cb_kwargs={"set_id": set_id})
 
     def load_image(self, response, set_id):
         """
