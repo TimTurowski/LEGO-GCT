@@ -1,10 +1,15 @@
-import csv
 import multiprocessing
 from multiprocessing import Process
+import os
 
-from source.Entity.entities import SetMarktpreis, Anbieter
-from source.crawler.set_crawler import SetCrawler
-from source.datenbanklogik.datenzugriffsobjekt import Datenzugriffsobjekt
+if(os.name == 'posix'):
+    from Entity.entities import SetMarktpreis, Anbieter
+    from crawler.set_crawler import SetCrawler
+    from datenbanklogik.datenzugriffsobjekt import Datenzugriffsobjekt
+else:
+    from source.Entity.entities import SetMarktpreis, Anbieter
+    from source.crawler.set_crawler import SetCrawler
+    from source.datenbanklogik.datenzugriffsobjekt import Datenzugriffsobjekt
 
 
 def excute_crawl_setpreise(crawler, ids, mp_queue):
