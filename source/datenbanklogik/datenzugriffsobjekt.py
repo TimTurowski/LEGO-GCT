@@ -159,11 +159,14 @@ class Datenzugriffsobjekt:
             marktpreis_entity = session.query(entities.EinzelteilMarktpreis)\
                 .filter(entities.EinzelteilMarktpreis.einzelteil_id == i.einzelteile.einzelteil_id)\
                 .filter(entities.EinzelteilMarktpreis.anbieter_url == i.anbieter.url).first()
-
-            # Preis aktualisieren und mitzählen für die Discord Ausgabe
-            if float(marktpreis_entity.preis) != float(i.preis):
+            if marktpreis_entity is None:
+                session.merge(i)
                 update_count += 1
-                marktpreis_entity.preis = i.preis
+            else:
+                # Preis aktualisieren und mitzählen für die Discord Ausgabe
+                if float(marktpreis_entity.preis) != float(i.preis):
+                    update_count += 1
+                    marktpreis_entity.preis = i.preis
         send_discord_message(f"```ansi\n[0;36m{update_count} Einzelteile von {len(new_marktpreise)}"
                              f" haben einen neuen Preis```")
         session.commit()
