@@ -18,10 +18,10 @@ def excute_crawl_setpreise(crawler, ids, mp_queue):
 
 if __name__ == "__main__":
     dao = Datenzugriffsobjekt()
-    """Nimmt ein Intervall von SetIDs aus der Datenbank"""
-    ids = list(map(lambda a:a.set_id, dao.lego_set_liste()))[4000:]
+    # Nimmt ein Intervall von SetIDs aus der Datenbank
+    ids = list(map(lambda a:a.set_id, dao.lego_set_liste()))
 
-    """startet Prozess für das Crawlen von Setpreisen"""
+    # startet Prozess für das Crawlen von Setpreisen
 
     mp_queue = multiprocessing.JoinableQueue()
 
@@ -31,6 +31,7 @@ if __name__ == "__main__":
 
     set_prices = []
 
+    # holt Setpreise aus dem Prozess
     while True:
         queue_value = mp_queue.get()
         if queue_value is None:
@@ -38,10 +39,10 @@ if __name__ == "__main__":
         else:
             set_prices.append(queue_value)
     p.join()
-    """holt Setpreise aus dem Prozess"""
 
 
-    """Liste welche alle fertigen Entities enthalten soll."""
+
+    # Liste welche alle fertigen Entities enthalten soll
     marktpreis_entities = []
     for i in set_prices:
         set_price = SetMarktpreis(set= list(filter(lambda a:a.set_id == i[0],dao.lego_set_liste()))[0],

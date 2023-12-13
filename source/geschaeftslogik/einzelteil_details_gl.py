@@ -1,8 +1,13 @@
 import multiprocessing
 from multiprocessing import Process
+import os
 
-from source.crawler.part_crawler import PartCrawler
-from source.datenbanklogik.datenzugriffsobjekt import Datenzugriffsobjekt
+if(os.name == 'posix'):
+    from crawler.part_crawler import PartCrawler
+    from datenbanklogik.datenzugriffsobjekt import Datenzugriffsobjekt
+else:
+    from source.crawler.part_crawler import PartCrawler
+    from source.datenbanklogik.datenzugriffsobjekt import Datenzugriffsobjekt
 
 
 def execute_crawling(set_ids, details_crawler, mp_queue):
@@ -25,8 +30,9 @@ if __name__ == "__main__":
 
     mp_queue = multiprocessing.JoinableQueue()
 
-    # erstellen einer Liste von Set Ids
-    ids = list(map(lambda a: a[0], dao.lego_set_mit_einzelteil_ohne_einzelteildetails(5)))
+    # erstellen einer Liste von Set Ids, die Zahl beschränkt die Sets auf alle, welche minimum von (z.b.) 5 Einzelteilen
+    # ohne Details besitzen
+    ids = list(map(lambda a: a[0], dao.lego_set_mit_einzelteil_ohne_einzelteildetails(25)))
     print(len(ids))
     # crawlt zu allen übergebenen Sets die Einzelteildetails
     p = Process(target=execute_crawling, args=(ids, PartCrawler(), mp_queue))

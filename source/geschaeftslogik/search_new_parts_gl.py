@@ -1,10 +1,16 @@
 import multiprocessing
 import sys
 from multiprocessing import Process
+import os
 
-from source.crawler import LegoCrawler
-from source.crawler.toypro_crawler import ToyproCrawler
-from source.datenbanklogik.datenzugriffsobjekt import Datenzugriffsobjekt
+if(os.name == 'posix'):
+    from crawler import LegoCrawler
+    from crawler.toypro_crawler import ToyproCrawler
+    from datenbanklogik.datenzugriffsobjekt import Datenzugriffsobjekt
+else:
+    from source.crawler import LegoCrawler
+    from source.crawler.toypro_crawler import ToyproCrawler
+    from source.datenbanklogik.datenzugriffsobjekt import Datenzugriffsobjekt
 
 
 def execute_crawling(einzelteile, teile_crawler, mp_queue):
