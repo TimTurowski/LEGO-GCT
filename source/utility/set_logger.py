@@ -1,5 +1,7 @@
 import csv
 import os
+import datetime
+
 if(os.name == 'posix'):
     LOGS_PATH = "/home/student/LEGO-GCT/source/setIds/logs/"
     SET_IDS = "/home/student/LEGO-GCT/source/setIds/"
@@ -8,6 +10,17 @@ else:
     SET_IDS = "../setIds/"
 
 class SetLogger:
+
+    def __init__(self):
+        year = datetime.datetime.now().year
+        file_name = SET_IDS + f"{year}.csv"
+        if not os.path.exists(file_name):
+            open (file_name, 'w')
+
+        file_name = LOGS_PATH + f"{year}_log.csv"
+        if not os.path.exists(file_name):
+            open(file_name, 'w')
+
 
     def add_succesful_set(self, id, name, year, log_path=LOGS_PATH):
 

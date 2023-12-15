@@ -32,8 +32,9 @@ if __name__ == "__main__":
 
     # erstellen einer Liste von Set Ids, die Zahl beschränkt die Sets auf alle, welche minimum von (z.b.) 5 Einzelteilen
     # ohne Details besitzen
-    ids = list(map(lambda a: a[0], dao.lego_set_mit_einzelteil_ohne_einzelteildetails(25)))
+    ids = list(map(lambda a: a[0], dao.lego_set_mit_einzelteil_ohne_einzelteildetails(5)))
     print(len(ids))
+    dao.Session.close_all()
     # crawlt zu allen übergebenen Sets die Einzelteildetails
     p = Process(target=execute_crawling, args=(ids, PartCrawler(), mp_queue))
 
@@ -49,6 +50,5 @@ if __name__ == "__main__":
             break
         else:
             einzelteil_details.append(queue_value)
+    dao = Datenzugriffsobjekt()
     dao.fuge_einzelteildetails_hinzu(einzelteil_details)
-
-

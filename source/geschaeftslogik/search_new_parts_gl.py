@@ -52,6 +52,7 @@ if __name__ == '__main__':
     # parts enthält alle einzelteile, welche keinen Marktpreis haben
     # es ist durchaus sinnvoll in den Klammern eine Rangfe anzugeben [von:bis]
     parts = dao.einzelteil_ohne_marktpreis(shop_url)
+    dao.Session.close_all()
 
     # hier können die Crawler angepasst werden der
     p = Process(target=execute_crawling, args=(parts, shop_crawler, mp_queue))
@@ -77,6 +78,7 @@ if __name__ == '__main__':
         else:
             failed_marktpreise.append(queue_value)
 
+    dao = Datenzugriffsobjekt()
     # fügt alle gefundenen Marktpreise in die DB hinzu
     dao.fuge_einzelteil_marktpreis_hinzu(successful_marktpreise)
 

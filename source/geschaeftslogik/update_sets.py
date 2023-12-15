@@ -129,7 +129,7 @@ if __name__ == "__main__":
         if stueckliste is not None and len(stueckliste.stueckliste) > 0:
             dao.fuge_einzelteil_legoset_hinzu(stueckliste.stueckliste)
 
-            send_discord_message(f"```ansi\n[0;32m{set[0]}, {set[1]} wurde erfolgreich der Datenbank hinzugefügt```")
+            #send_discord_message(f"```ansi\n[0;32m{set[0]}, {set[1]} wurde erfolgreich der Datenbank hinzugefügt```")
             print(f"{download_result.succesful_sets[0]} wurde erfolgreich in die Datenbank hinzugefügt")
             update_logger.remove_succesful_sets(download_result.succesful_sets[0])
 
