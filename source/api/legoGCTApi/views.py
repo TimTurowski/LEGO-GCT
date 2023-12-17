@@ -31,7 +31,7 @@ def result(set):
             return result
         def fetch_shop_results(cursor):
 
-            #Dictonaries für die verschiedenen Einzelteilanbieter
+            #Dictonaries für die Verschiedenen Einzelteilanbieter
             lego_dict = {"shop_name": "Lego", "shop_url": "https://www.lego.com/de-de/pick-and-build/pick-a-brick",
                          "parts": []}
             toypro_dict = {"shop_name": "Toypro", "shop_url": "https://www.toypro.com", "parts": []}
@@ -59,7 +59,7 @@ def result(set):
                     lego_dict["parts"].append(part)
                 else:
 
-                    # erstellen eines Dicts für die Informationen eines Einzelteils für Lego,
+                    # erstellen eines Dicts für die Informationen eines Einzelteils für Lego
                     # wenn keine Preise bei Lego gefunden worden sind
 
                     row = first_row[0]
@@ -136,20 +136,36 @@ def result(set):
 
 
 def sets_result(legosets):
+    """
+    Diese Funktion dient als Hilfsfunktion und macht aus allen übergebenen Legosets ein Dictionary mit den wichtigen
+    Informationen
+    :param legosets: eine Liste mit den vorgeschlagenen Legosets bei uneindeutiger Namen-Suche
+    """
+    # Eine Liste für die resultierenden Legoset-Dictionaries erstellen
     legosets_dict = []
-    with connection.cursor() as cursor:
-        for legoset in legosets:
-            result_dict = {"set_id": legoset.set_id, "set_name": legoset.name, "set_bild": ""}
-            legosets_dict.append(result_dict)
+    # Durch jedes Legoset in der übergebenen Liste iterieren
+    for legoset in legosets:
+        # Ein Dictionary für jedes Legoset erstellen und 'set_id' sowie 'set_name' hinzufügen
+        result_dict = {"set_id": legoset.set_id, "set_name": legoset.name, "set_bild": ""}
+        legosets_dict.append(result_dict)
     return legosets_dict
 
 
 def verlauf_result(user_id):
+    """
+    Diese Funktion dient als Hilfsfunktion und gibt zur User-ID die jeweiligen benötigten Daten zurück, für die
+    User-Suchliste
+    :param user_id: ID des Users
+    """
+    # Suchverlaufinformationen aus der Datenbank abrufen, beinhaltend Legoset-ID, Legoset-Name, User-Suchliste-ID und
+    # Datum der Suche
     with connection.cursor() as cursor:
         cursor.execute('SELECT "Legoset".set_id, name,"UserSuchliste".id, datum '
                        'FROM "UserSuchliste" join "Legoset" on ("Legoset".set_id = "UserSuchliste".set_id) '
                        'WHERE "user" = %s '
                        'ORDER BY datum DESC', [user_id])
+
+        # Ergebnisse in ein Listendictionary umwandeln
         result = []
         for i in cursor.fetchall():
             dict = {"set_id": i[0], "set_name": i[1], "such_id": i[2], "date": i[3]}
@@ -160,12 +176,12 @@ def verlauf_result(user_id):
 @api_view(['GET'])
 def eingabe(request):
     """
-    Verarbeitet eine anfrage für ein Legoset, welches als Id übergeben wird
-    :param request: http Request mit id zum gesuchten Set
-    :type request: http request
-    :return: Json mit allen Informationen zum gefragten Legoset
+    Diese Funktion dient zur Abarbeitung einer HTTP-Request in der Suchleiste und unterscheidet zwischen einer Namen-
+    suche, einer ID-Suche und einer Suche wo es einen uneindeutigen Namen gibt
+    :param request: komplette HTTP-Request mit allen wichtigen Daten
     """
-    # id des Sets aus request lesen
+    # Holen der Parametern 'id' und 'name' aus der GET-Anfrage, falls eine 'id' vorhanden ist, ist es eine ID-Suche und
+    # falls ein 'name' vorhanden ist, dann ist es entweder eine eindeutige oder uneindeutige Namensuche
     id = request.GET.get('id', None)
 
     # track_search bestimmt, ob die Suche in der Datenbank gespeichert wird
@@ -178,8 +194,11 @@ def eingabe(request):
 
     name = request.GET.get('name', None)
 
-    if request.META.get('HTTP_AUTHORIZATION') and track_search:
+    # Überprüfen, ob ein Authorization-Token in der Anfrage vorhanden ist
+    if request.META.get('HTTP_AUTHORIZATION'):
+        # Wenn ein Token vorhanden ist, den zugehörigen Benutzer erhalten
         user = Token.objects.get(key=request.META.get('HTTP_AUTHORIZATION')).user
+        # Wenn eine ID-Suche ausgeführt wurde, ein Legoset mit dieser 'id' zur User-Suchliste hinzuzufügen
         if id is not None:
             try:
                 set = Legoset.objects.get(set_id=id)
@@ -187,6 +206,8 @@ def eingabe(request):
                 u.save(force_insert=True)
             except Legoset.DoesNotExist:
                 pass
+        # Wenn ein 'name' vorhanden ist, versuchen, ein Legoset zum eindeutigen oder uneindeutigen Namen zu finden,
+        # falls es ein eindeutiger Name ist, wird das Legoset der User-Suchliste hinzugefügt
         if name is not None:
             try:
                 set = Legoset.objects.get(name=name)
@@ -194,6 +215,8 @@ def eingabe(request):
                 u.save(force_insert=True)
             except (Legoset.DoesNotExist, Legoset.MultipleObjectsReturned):
                 pass
+
+    # Wenn eine ID-Suche ausgeführt wurde, versuchen, Informationen über das Legoset mit dieser 'id' abzurufen
     if id is not None:
         try:
             set = Legoset.objects.get(set_id=id)
@@ -205,52 +228,72 @@ def eingabe(request):
                 set_dict = {"set_id": set.set_id, "set_name": set.name, "preis": setpreis[0].preis,
                             "anbieter_url": setpreis[0].anbieter_url.url, "set_url": setpreis[0].url}
         except Legoset.DoesNotExist:
-            return JsonResponse({'message': 'Die eingegebene ID entspricht keinem Legoset in unserer Datenbank'}, safe=False)
+            return JsonResponse({'message': 'Die eingegebene ID entspricht keinem Legoset in unserer Datenbank'},
+                                status=status.HTTP_404_NOT_FOUND)
         return JsonResponse(result(set_dict), safe=False)
+
+    # Wenn ein 'name' vorhanden ist, versuchen, Informationen über das Legoset mit diesem 'name' abzurufen
     if name is not None:
         try:
             set = Legoset.objects.get(name=name)
             setpreis = Setmarktpreis.objects.filter(set=set.set_id)
             set_dict = {"set_id": set.set_id, "set_name": set.name, "preis": setpreis[0].preis,
                         "anbieter_url": setpreis[0].anbieter_url.url, "set_url": setpreis[0].url}
-
+        # Wenn mehrere Legosets mit dem uneindeutigen Namen in ihrem Namen gefunden wurden, gib die ersten 50 zurück
         except (Legoset.DoesNotExist, Legoset.MultipleObjectsReturned):
             sets = Legoset.objects.filter(name__icontains=name)[:25]
             if not sets:
                 return JsonResponse({'message': 'Der eingegebene Name ähnelt keinem Legoset in unserer Datenbank'},
-                                    safe=False)
+                                    status=status.HTTP_404_NOT_FOUND)
             return JsonResponse(sets_result(sets), safe=False)
         return JsonResponse(result(set_dict), safe=False)
+    # Wenn weder 'id' noch 'name' vorhanden sind, gibt einen Fehler zurück
     return JsonResponse({'message': 'Es wurde keine Eingabe getätigt, bitte geben Sie entweder eine ID oder einen '
                                     'Namen in die Suchleiste ein'}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['GET'])
 def verlauf(request):
+    """
+    Diese Funktion gibt die Daten für den User-Suchverlauf zurück und nutzt die Hilfsfunktion verlauf_result, um alle
+    wichtigen Daten zu erhalten.
+    :param request: komplette HTTP-Request mit allen wichtigen Daten
+    """
+    # Den Benutzer anhand des Authorization-Tokens erhalten
     user = Token.objects.get(key=request.META.get('HTTP_AUTHORIZATION')).user.id
-
+    # Rückgabe der Ergebnisse der 'verlauf_result' Methode als JSON
     return JsonResponse(verlauf_result(user), safe=False)
 
 
 @api_view(['GET'])
 def delete_set_entry(request):
+    """
+    Diese Funktion löscht einen Eintrag von einem User aus seinem Suchverlauf
+    :param request: komplette HTTP-Request mit allen wichtigen Daten
+    """
     # id die des zu löschenden Eintrags
     id = request.GET.get('id', None)
-
+    # Löschen des Eintrags aus der "UserSuchliste" Tabelle mit der gegebenen ID
     with connection.cursor() as cursor:
         cursor.execute('DELETE FROM "UserSuchliste"'
                        'WHERE "UserSuchliste".id = %s', [id])
-
     return JsonResponse({}, safe=False)
 
 
 @api_view(['GET'])
 def bilder_wiedergabe(request):
+    """
+    Diese Funktion sucht zu einer Legoset-ID, das jeweilige Bild und sendet dieses zurück
+    :param request: komplette HTTP-Request mit allen wichtigen Daten
+    """
+    # ID aus der GET-Anfrage erhalten
     id = request.GET.get('id', None)
+    # Bild zu dem Legoset aus der Datenbank holen
     with connection.cursor() as cursor:
         cursor.execute('SELECT set_bild FROM "SetBild"'
                        'WHERE set = %s', [id])
         result = cursor.fetchall()
+        # Überprüfen, ob ein Bild vorhanden ist
         if result:
             set_bild = result[0]
         else:
@@ -261,9 +304,15 @@ def bilder_wiedergabe(request):
 
 @api_view(['POST'])
 def register(request):
+    """
+    Diese Funktion fügt einen neuen Nutzer in unsere Datenbank mit dem gegebenen Passwort und Username
+    :param request: komplette HTTP-Request mit allen wichtigen Daten
+    """
+    # JSON-Daten aus der Anfrage laden
     json_data = json.loads(request.body)
     passwort = json_data['password']
     user = json_data['username']
+    # Neuen Benutzer erstellen und speichern
     u = User.objects.create_user(user, password=passwort)
     u.save()
     return JsonResponse({"user": user})

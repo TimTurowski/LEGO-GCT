@@ -17,21 +17,26 @@ class Datenzugriffsobjekt:
         engine = create_engine("postgresql+psycopg2://postgres:27R569RX@192.168.198.47:5432/LegoGCT")
         self.Session = sessionmaker(engine)
 
-    """Eine Liste von allen Einzelteilen wird übergeben"""
-
     def einzelteil_liste(self):
+        """
+        Diese Funktion liefert eine Liste von allen Einzelteilen in der Datenbank
+        """
         session = self.Session()
         result = session.query(entities.Einzelteil).all()
         return result
 
     def einzelteildetail_liste(self):
+        """
+        Diese Funktion liefert eine Liste von allen Einzelteildetails
+        """
         session = self.Session()
         result = session.query(entities.Einzelteildetails).all()
         return result
 
-    """Eine Liste von allen Legosets wird übergeben"""
-
     def lego_set_liste(self):
+        """
+        Diese Funktion liefert eine Liste von allen Legosets in der Datenbank
+        """
         session = self.Session()
         result = session.query(entities.Legoset).all()
         return result
