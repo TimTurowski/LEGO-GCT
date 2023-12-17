@@ -9,8 +9,6 @@ from rest_framework.authtoken.models import Token
 from django.contrib.auth.models import User
 from itertools import groupby
 
-from django.contrib.auth.hashers import make_password
-
 
 def result(set):
     result_dict = {}
@@ -108,13 +106,14 @@ def result(set):
 
                     bricklink_dict["parts"].append(part)
 
+            # zusammenfügen von allen erstellten dict
             result_list_shop_structure.append(lego_dict)
             result_list_shop_structure.append(toypro_dict)
             result_list_shop_structure.append(bricklink_dict)
 
             return result_list_shop_structure
 
-
+        # SQL abfrage, wo alle wichtigen Daten fürs Frontend geholt wird
         cursor.execute(
             'SELECT EL.einzelteil_id, anzahl, anbieter_url, preis, url, Ed.beschreibung,Ed.farbe,Ed.kategorie_id'
             ' FROM ("Einzelteil_legoset" El LEFT OUTER JOIN "EinzelteilMarktpreis" on'
@@ -124,7 +123,7 @@ def result(set):
             [set["set_id"]])
         result_dict = fetch_shop_results(cursor)
 
-
+        # SQL abfrage, wo das Bild zu dem Set geholt wird
         cursor.execute('SELECT set_bild FROM "SetBild" WHERE set = %s', [set["set_id"]])
         result = cursor.fetchall()
         if result:
@@ -140,12 +139,6 @@ def sets_result(legosets):
     legosets_dict = []
     with connection.cursor() as cursor:
         for legoset in legosets:
-            # cursor.execute('SELECT set_bild FROM "SetBild" WHERE set = %s', [legoset.set_id])
-            # result = cursor.fetchall()
-            # if result:
-            #     set_bild = result[0]
-            # else:
-            #     set_bild = " "
             result_dict = {"set_id": legoset.set_id, "set_name": legoset.name, "set_bild": ""}
             legosets_dict.append(result_dict)
     return legosets_dict

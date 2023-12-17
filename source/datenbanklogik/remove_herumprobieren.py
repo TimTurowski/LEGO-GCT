@@ -56,8 +56,34 @@ for i in a:
     b += 1
     print(i.set_id)
 print(b)"""
-a = dao.lego_set_mit_einzelteil_ohne_einzelteildetails(10)
+"""a = dao.lego_set_mit_einzelteil_ohne_einzelteildetails(10)
 print(len(a))
 for i in a:
-    print(i[0])
-
+    print(i[0])"""
+"""a = dao.einzelteil_liste()[50285:]
+dao.remove_einzelteil_marktpreise(einzelteile=a,shop_url="https://www.lego.com/de-de/pick-and-build/pick-a-brick")"""
+"""dao = Datenzugriffsobjekt()
+session = dao.Session()
+i = session.query(entities.EinzelteilMarktpreis).first()
+a = session.query(entities.EinzelteilMarktpreis).filter(entities.EinzelteilMarktpreis.einzelteil_id == i.einzelteile.einzelteil_id).filter(entities.EinzelteilMarktpreis.anbieter_url == i.anbieter.url).all()
+if not a:
+    print(a, "ney")
+else:
+    print(a, "hey")"""
+"""session = dao.Session()
+session.begin()
+b = session.query(entities.SetMarktpreis).all()[4]
+print(b)
+set_preis = session.query(b.__class__).filter(entities.SetMarktpreis.set_id == b.set.set_id).filter(entities.SetMarktpreis.anbieter_url == b.anbieter.url).first()
+if not set_preis:
+    session.merge(b)
+    result = "Neues SetMarktpreis wurde hinzugefügt"
+else:
+    if float(set_preis.preis) != float(b.preis):
+        set_preis.preis = b.preis
+        result = "SetMarktpreis ist schon vorhanden und Preis wurde geändert"
+    else:
+        result = "SetMarktpreis ist schon vorhanden und Preis ist gleich geblieben"
+print(result)
+session.commit()
+session.close()"""

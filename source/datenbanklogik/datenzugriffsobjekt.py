@@ -187,7 +187,8 @@ class Datenzugriffsobjekt:
                 .filter(entities.EinzelteilMarktpreis.anbieter_url == shop_url).first()
             print(marktpreis_entity)
             # Löscht das Markpreis Objekt
-            session.delete(marktpreis_entity)
+            if marktpreis_entity is not None:
+                session.delete(marktpreis_entity)
         session.commit()
 
     def anbieter_liste(self):
@@ -267,13 +268,17 @@ class Datenzugriffsobjekt:
                     if isinstance(i, entities.SetMarktpreis):
                         # Hier wird kontrolliert, ob der zusammengesetzter Schlüssel vom SetMarktpreis schon in der
                         # Datenbank vorhanden ist
-                        if not session.query(i.__class__) \
-                                .filter(entities.SetMarktpreis.set_id == i.set.set_id) \
-                                .filter(entities.SetMarktpreis.anbieter_url == i.anbieter.url).all():
+                        set_preis = session.query(i.__class__).filter(entities.SetMarktpreis.set_id == i.set.set_id) \
+                                .filter(entities.SetMarktpreis.anbieter_url == i.anbieter.url).first()
+                        if not set_preis:
                             session.merge(i)
                             result = "Neues SetMarktpreis wurde hinzugefügt"
                         else:
-                            result = "SetMarktpreis ist schon vorhanden"
+                            if float(set_preis.preis) != float(i.preis):
+                                set_preis.preis = i.preis
+                                result = "SetMarktpreis ist schon vorhanden und Preis wurde geändert"
+                            else:
+                                result = "SetMarktpreis ist schon vorhanden und Preis ist gleich geblieben"
                     # Falls man im Python prompt sehen will, ob irgendwas hinzugefügt wird oder vorhand ist, die nächste
                     # Zeile auskommentieren
                     # print(result)
