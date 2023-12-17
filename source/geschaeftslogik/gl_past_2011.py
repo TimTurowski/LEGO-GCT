@@ -2,11 +2,17 @@ import datetime
 import os
 from multiprocessing import Process
 from pdfminer.high_level import extract_text
-from source.anleitungs_downloader.pdf_downloader import PdfDownloader
-from source.datenbanklogik.datenzugriffsobjekt import Datenzugriffsobjekt
-from source.parser.pdfparser import PDFParser
-from source.parser.stueckliste import Stueckliste
-from source.utility.set_logger import SetLogger
+
+if(os.name == 'posix'):
+    from anleitungs_downloader.pdf_downloader import PdfDownloader
+    from datenbanklogik.datenzugriffsobjekt import Datenzugriffsobjekt
+    from parser.pdfparser import PDFParser
+    from utility.set_logger import SetLogger
+else:
+    from source.anleitungs_downloader.pdf_downloader import PdfDownloader
+    from source.datenbanklogik.datenzugriffsobjekt import Datenzugriffsobjekt
+    from source.parser.pdfparser import PDFParser
+    from source.utility.set_logger import SetLogger
 
 
 def execute_download(set_id):

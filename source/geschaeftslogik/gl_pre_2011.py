@@ -1,10 +1,16 @@
-# Importieren der erforderlichen Module
 import multiprocessing
 import datetime
 from multiprocessing import Process
-from source.crawler.part_crawler import PartCrawler
-from source.datenbanklogik.datenzugriffsobjekt import Datenzugriffsobjekt
-from source.utility.set_logger import SetLogger
+import os
+
+if(os.name == 'posix'):
+    from crawler.part_crawler import PartCrawler
+    from datenbanklogik.datenzugriffsobjekt import Datenzugriffsobjekt
+    from utility.set_logger import SetLogger
+else:
+    from source.crawler.part_crawler import PartCrawler
+    from source.datenbanklogik.datenzugriffsobjekt import Datenzugriffsobjekt
+    from source.utility.set_logger import SetLogger
 
 # Definition der Funktion für den Crawl-Prozess
 def execute_crawling(set_id, set_name, part_crawler, mp_queue):
