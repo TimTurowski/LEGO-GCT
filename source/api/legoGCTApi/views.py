@@ -31,7 +31,7 @@ def result(set):
             return result
         def fetch_shop_results(cursor):
 
-            #Dictonaries für die Verschiedenen Einzelteilanbieter
+            #Dictonaries für die verschiedenen Einzelteilanbieter
             lego_dict = {"shop_name": "Lego", "shop_url": "https://www.lego.com/de-de/pick-and-build/pick-a-brick",
                          "parts": []}
             toypro_dict = {"shop_name": "Toypro", "shop_url": "https://www.toypro.com", "parts": []}
@@ -59,7 +59,7 @@ def result(set):
                     lego_dict["parts"].append(part)
                 else:
 
-                    # erstellen eines Dicts für die Informationen eines Einzelteils für Lego
+                    # erstellen eines Dicts für die Informationen eines Einzelteils für Lego,
                     # wenn keine Preise bei Lego gefunden worden sind
 
                     row = first_row[0]
@@ -159,9 +159,26 @@ def verlauf_result(user_id):
 
 @api_view(['GET'])
 def eingabe(request):
+    """
+    Verarbeitet eine anfrage für ein Legoset, welches als Id übergeben wird
+    :param request: http Request mit id zum gesuchten Set
+    :type request: http request
+    :return: Json mit allen Informationen zum gefragten Legoset
+    """
+    # id des Sets aus request lesen
     id = request.GET.get('id', None)
+
+    # track_search bestimmt, ob die Suche in der Datenbank gespeichert wird
+    track_search = True
+
+    # wenn die Id mit dem char 't' endet wird die Suche nicht getrackt
+    if id is not None and id[-1] == 't':
+        id = id[:-1]
+        track_search = False
+
     name = request.GET.get('name', None)
-    if request.META.get('HTTP_AUTHORIZATION'):
+
+    if request.META.get('HTTP_AUTHORIZATION') and track_search:
         user = Token.objects.get(key=request.META.get('HTTP_AUTHORIZATION')).user
         if id is not None:
             try:
@@ -188,8 +205,7 @@ def eingabe(request):
                 set_dict = {"set_id": set.set_id, "set_name": set.name, "preis": setpreis[0].preis,
                             "anbieter_url": setpreis[0].anbieter_url.url, "set_url": setpreis[0].url}
         except Legoset.DoesNotExist:
-            return JsonResponse({'message': 'Die eingegebene ID entspricht keinem Legoset in unserer Datenbank'},
-                                status=status.HTTP_404_NOT_FOUND)
+            return JsonResponse({'message': 'Die eingegebene ID entspricht keinem Legoset in unserer Datenbank'}, safe=False)
         return JsonResponse(result(set_dict), safe=False)
     if name is not None:
         try:
@@ -199,10 +215,10 @@ def eingabe(request):
                         "anbieter_url": setpreis[0].anbieter_url.url, "set_url": setpreis[0].url}
 
         except (Legoset.DoesNotExist, Legoset.MultipleObjectsReturned):
-            sets = Legoset.objects.filter(name__icontains=name)[:50]
+            sets = Legoset.objects.filter(name__icontains=name)[:25]
             if not sets:
                 return JsonResponse({'message': 'Der eingegebene Name ähnelt keinem Legoset in unserer Datenbank'},
-                                    status=status.HTTP_404_NOT_FOUND)
+                                    safe=False)
             return JsonResponse(sets_result(sets), safe=False)
         return JsonResponse(result(set_dict), safe=False)
     return JsonResponse({'message': 'Es wurde keine Eingabe getätigt, bitte geben Sie entweder eine ID oder einen '
