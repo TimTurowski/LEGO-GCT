@@ -80,11 +80,3 @@ class BrickLinkSpider(scrapy.Spider):
                                   .find_elements(By.CSS_SELECTOR, "strong")[-1].text.replace("EUR ", "€")
 
                     self.result.append([desing_id, color, price, driver.current_url, self.shop_name])
-
-        """schreiben der CSV Datei mit den Einzelteilen"""
-        with open("parts.csv", 'w', newline='', encoding='utf-8') as file:
-            writer = csv.writer(file)
-            for i in self.result:
-                writer.writerow(i)
-
-
