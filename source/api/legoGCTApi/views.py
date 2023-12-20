@@ -1,5 +1,7 @@
 import json
 
+import django.db.utils
+import psycopg2.errors
 from django.http.response import JsonResponse
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -310,6 +312,11 @@ def register(request):
     passwort = json_data['password']
     user = json_data['username']
     # Neuen Benutzer erstellen und speichern
-    u = User.objects.create_user(user, password=passwort)
-    u.save()
-    return JsonResponse({"user": user})
+    try:
+        u = User.objects.create_user(user, password=passwort)
+        u.save()
+        return JsonResponse({"user": user})
+    except django.db.utils.IntegrityError as error:
+        print(error)
+        return JsonResponse({"message": "Nutzername bereits vergeben"})
+
