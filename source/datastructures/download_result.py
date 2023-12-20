@@ -45,11 +45,13 @@ class DownloadResult:
             s = "Erfolgreich Heruntergeladene Anleitungen:\n"
 
         for i in self.succesful_sets:
-            s = s + "   " + i + "\n"
+            if i is not None:
+                s = s + "   " + i + "\n"
 
         if len(self.failed_sets) > 0:
             s = s + "Gescheiterte Sets:\n"
         for i in self.failed_sets:
-            s = s + "   " + i + "\n"
+            if i is not None:
+                s = s + "   " + i + "\n"
         return  s
 
