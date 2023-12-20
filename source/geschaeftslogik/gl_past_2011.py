@@ -14,11 +14,11 @@ else:
     from source.parser.pdfparser import PDFParser
     from source.utility.set_logger import SetLogger
 
-
+TEMP_DOWNLOADER_PATH = "/home/student/LEGO-GCT/source/geschaeftslogik/temp_downloader/"
 def execute_download(set_id):
     p = PdfDownloader()
-    print(p.download_anleitung(set_ids=[set_id], save_path="./temp_downloader/"))
-    p.cut_anleitungen(source_path="./temp_downloader/", destination_path="./temp_downloader/", cut_pages=15)
+    print(p.download_anleitung(set_ids=[set_id], save_path=TEMP_DOWNLOADER_PATH))
+    p.cut_anleitungen(source_path=TEMP_DOWNLOADER_PATH, destination_path=TEMP_DOWNLOADER_PATH, cut_pages=15)
 
 def remove_pdfs(path):
     try:
@@ -32,14 +32,16 @@ def remove_pdfs(path):
 
 if __name__ == "__main__":
     """PDF Download"""
+    if not os.path.exists(TEMP_DOWNLOADER_PATH):
+        os.makedirs(TEMP_DOWNLOADER_PATH)
     sl = SetLogger()
     starttime = datetime.datetime.now()
     years = ["2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023"]
     for year in years:
-        remaining_sets = sl.missing_set_log(year=year, set_ids_path="../setIds/")
+        remaining_sets = sl.missing_set_log(year=year)
         setcount = 0
         for set in remaining_sets:
-            remove_pdfs("./temp_downloader/")
+            remove_pdfs(TEMP_DOWNLOADER_PATH)
 
             # nächstes verfügbare Set
 
@@ -50,12 +52,12 @@ if __name__ == "__main__":
             pdfparser = PDFParser()
             stueckliste = None
 
-            files = os.listdir("./temp_downloader/")
+            files = os.listdir(TEMP_DOWNLOADER_PATH)
             dao = Datenzugriffsobjekt()
             for file in files:
 
                 if file.endswith("-cut.pdf"):
-                    URL = extract_text(r"../geschaeftslogik/temp_downloader/" + str(file))
+                    URL = extract_text(TEMP_DOWNLOADER_PATH + str(file))
                     stueckliste = PDFParser.parse_text(pdfparser, URL, set[0], set[1])
                     print(file)
                     # print(stueckliste)
@@ -67,7 +69,7 @@ if __name__ == "__main__":
                 for file in files:
 
                     if not file.endswith("-cut.pdf"):
-                        URL = extract_text(r"../geschaeftslogik/temp_downloader/" + str(file))
+                        URL = extract_text(TEMP_DOWNLOADER_PATH + str(file))
                         stueckliste = PDFParser.parse_text(pdfparser, URL, set[0], set[1])
                         print(file)
                         if len(stueckliste.stueckliste) > 0:

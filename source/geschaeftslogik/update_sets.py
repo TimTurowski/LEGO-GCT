@@ -70,6 +70,8 @@ def remove_pdfs(path):
 
 
 if __name__ == "__main__":
+    if not os.path.exists(DOWNLOAD_PATH):
+        os.makedirs(DOWNLOAD_PATH)
     starttime = datetime.datetime.now()
     conn1, conn2 = multiprocessing.Pipe()
     p = Process(target=search_sets, args=(SetCrawler(), conn2))

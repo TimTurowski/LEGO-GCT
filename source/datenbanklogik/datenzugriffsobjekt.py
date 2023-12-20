@@ -302,17 +302,20 @@ class Datenzugriffsobjekt:
                 for i in einzelteil_legoset:
                     result = "Das übergebene Objekt ist kein EinzelteilLegoset"
                     # Überprüfung ob das übergebene Objekt überhaupt ein EinzelteilLegoset ist
-                    if isinstance(i, entities.EinzelteilLegoset):
-                        # Hier wird kontrolliert, ob der zusammengesetzter Schlüssel vom EinzelteilLegoset schon
-                        # in der Datenbank vorhanden ist
-                        if not session.query(i.__class__) \
-                                .filter(
-                            entities.EinzelteilLegoset.einzelteil_id == i.einzelteile.einzelteil_id) \
-                                .filter(entities.EinzelteilLegoset.set_id == i.set.set_id).all():
-                            session.merge(i)
-                            result = "Neues EinzelteilLegoset wurde hinzugefügt"
-                        else:
-                            result = "EinzelteilLegoset ist schon vorhanden"
+                    try:
+                        if isinstance(i, entities.EinzelteilLegoset):
+                            # Hier wird kontrolliert, ob der zusammengesetzter Schlüssel vom EinzelteilLegoset schon
+                            # in der Datenbank vorhanden ist
+                            if not session.query(i.__class__) \
+                                    .filter(
+                                entities.EinzelteilLegoset.einzelteil_id == i.einzelteile.einzelteil_id) \
+                                    .filter(entities.EinzelteilLegoset.set_id == i.set.set_id).all():
+                                session.merge(i)
+                                result = "Neues EinzelteilLegoset wurde hinzugefügt"
+                            else:
+                                result = "EinzelteilLegoset ist schon vorhanden"
+                    except Exception as e:
+                        pass
                     # Falls man im Python prompt sehen will, ob irgendwas hinzugefügt wird oder vorhand ist, die nächste
                     # Zeile auskommentieren
                     # print(result)

@@ -36,7 +36,7 @@ if __name__ == "__main__":
     starttime = datetime.datetime.now()
     years = ["2006", "2007", "2008", "2009", "2010"]
     for year in years:
-        remaining_sets = sl.missing_set_log(year=year, set_ids_path="../setIds/")
+        remaining_sets = sl.missing_set_log(year=year)
         setcount = 0
 
         # Schleife durch die ausstehenden Sets
