@@ -228,8 +228,7 @@ def eingabe(request):
                 set_dict = {"set_id": set.set_id, "set_name": set.name, "preis": setpreis[0].preis,
                             "anbieter_url": setpreis[0].anbieter_url.url, "set_url": setpreis[0].url}
         except Legoset.DoesNotExist:
-            return JsonResponse({'message': 'Die eingegebene ID entspricht keinem Legoset in unserer Datenbank'},
-                                status=status.HTTP_404_NOT_FOUND)
+            return JsonResponse({'message': 'Die eingegebene ID entspricht keinem Legoset in unserer Datenbank'}, safe=False)
         return JsonResponse(result(set_dict), safe=False)
 
     # Wenn ein 'name' vorhanden ist, versuchen, Informationen über das Legoset mit diesem 'name' abzurufen
@@ -242,14 +241,12 @@ def eingabe(request):
         # Wenn mehrere Legosets mit dem uneindeutigen Namen in ihrem Namen gefunden wurden, gib die ersten 50 zurück
         except (Legoset.DoesNotExist, Legoset.MultipleObjectsReturned):
             sets = Legoset.objects.filter(name__icontains=name)[:25]
-            if not sets:
-                return JsonResponse({'message': 'Der eingegebene Name ähnelt keinem Legoset in unserer Datenbank'},
-                                    status=status.HTTP_404_NOT_FOUND)
+
             return JsonResponse(sets_result(sets), safe=False)
         return JsonResponse(result(set_dict), safe=False)
     # Wenn weder 'id' noch 'name' vorhanden sind, gibt einen Fehler zurück
     return JsonResponse({'message': 'Es wurde keine Eingabe getätigt, bitte geben Sie entweder eine ID oder einen '
-                                    'Namen in die Suchleiste ein'}, status=status.HTTP_400_BAD_REQUEST)
+                                    'Namen in die Suchleiste ein'}, safe=False)
 
 
 @api_view(['GET'])
