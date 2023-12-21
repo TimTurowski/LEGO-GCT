@@ -82,7 +82,6 @@ prompt-toolkit==2.0.10
 Protego==0.3.0
 protobuf==3.6.1
 psycopg2-binary==2.9.9
-psycopg2==2.8.6
 pyasn1==0.4.2
 pyasn1-modules==0.2.1
 pycairo==1.16.2
